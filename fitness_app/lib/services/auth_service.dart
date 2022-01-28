@@ -31,7 +31,7 @@ class AuthService {
     var user = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
 
-    await _firestore.collection("Users").doc(user.user?.uid ?? "").set({
+    await _firestore.collection(collection_name).doc(user.user?.uid ?? "").set({
       "username": username,
       "email": email,
       "name": name,
@@ -43,3 +43,5 @@ class AuthService {
     return user.user;
   }
 }
+
+const String collection_name = "Users";

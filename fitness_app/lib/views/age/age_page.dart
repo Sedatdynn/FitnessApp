@@ -5,7 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class AgePage extends StatefulWidget {
-  const AgePage({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? password;
+  final String? name;
+  final String? gender;
+  const AgePage(
+      {Key? key,
+      this.username,
+      this.mail,
+      this.password,
+      this.name,
+      this.gender})
+      : super(key: key);
 
   @override
   _AgePageState createState() => _AgePageState();
@@ -76,7 +88,15 @@ class _AgePageState extends State<AgePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HeightPage()),
+              MaterialPageRoute(
+                  builder: (context) => HeightPage(
+                        username: widget.username,
+                        mail: widget.mail,
+                        password: widget.password,
+                        name: widget.name,
+                        gender: widget.gender,
+                        age: _currentValue.toString(),
+                      )),
             );
           },
           child: Text('Contiune',

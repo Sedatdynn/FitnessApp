@@ -1,8 +1,12 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:fistness_app_firebase/const/loading_page.dart';
+import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/forgotPassword/forgot_password.dart';
+import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fistness_app_firebase/src/texts.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isVisible = true;
   bool _isLoading = false;
+  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +53,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
-        )
+        ),
+        if (_isLoading) const LoadingPage()
       ],
     );
   }
@@ -81,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 40,
               ),
-              myButton(),
+              _myButton(),
             ],
           ),
         ),
@@ -167,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  myButton() {
+  _myButton() {
     Size mediaQuery = MediaQuery.of(context).size;
 
     return Center(
@@ -181,12 +187,54 @@ class _LoginPageState extends State<LoginPage> {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
-          onPressed: () {},
+          onPressed: _logInWithEmail,
           child: Text('Contiune',
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
     );
+  }
+
+  _logInWithEmail() async {
+    if (_emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      setState(() {
+        _isLoading = true;
+      });
+      await _authService
+          .signInWithEmail(_emailController.text, _passwordController.text)
+          .then((value) async {
+        await Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+            (route) => false);
+      }).catchError((error) async {
+        if (error.toString().contains('invalid-email')) {
+          await _warningToast(myText.loginWrongEmailText);
+        } else if (error.toString().contains('user-not-found')) {
+          await _warningToast(myText.loginNoAccountText);
+        } else if (error.toString().contains('wrong-password')) {
+          await _warningToast(myText.loginWrongPasswordText);
+        } else {
+          await _warningToast(myText.errorText);
+        }
+      }).whenComplete(() async {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+  }
+
+  Future<bool?> _warningToast(String text) async {
+    return await Fluttertoast.showToast(
+        msg: text,
+        timeInSecForIosWeb: 2,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 14);
   }
 
   _forgotPassword() {

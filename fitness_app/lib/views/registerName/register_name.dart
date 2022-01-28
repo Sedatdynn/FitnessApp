@@ -1,17 +1,26 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/gender/gender.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterNamePage extends StatefulWidget {
-  const RegisterNamePage({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? password;
+
+  const RegisterNamePage({Key? key, this.username, this.mail, this.password})
+      : super(key: key);
 
   @override
   _RegisterNamePageState createState() => _RegisterNamePageState();
 }
 
 class _RegisterNamePageState extends State<RegisterNamePage> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  bool _isLoading = false;
+  final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,11 +66,11 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
 
   _nameField() {
     return TextField(
-        controller: _emailController,
+        controller: _nameController,
         cursorColor: Colors.black,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          hintText: 'Your Nmae?',
+          hintText: 'Your Name?',
         ));
   }
 
@@ -77,15 +86,41 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => GenderPage()),
-            );
-          },
+          onPressed: _registerOnTap,
           child: Text('Next'),
         ),
       ),
     );
+  }
+
+  void _registerOnTap() {
+    if (_nameController.text.isNotEmpty) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => GenderPage(
+                    username: widget.username,
+                    mail: widget.mail,
+                    password: widget.password,
+                    name: _nameController.text,
+                  )));
+    } else {
+      _warningToast("You should enter your name!");
+    }
+  }
+
+  Future<bool?> _warningToast(String text) {
+    return Fluttertoast.showToast(
+        msg: text,
+        timeInSecForIosWeb: 2,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 14);
   }
 }

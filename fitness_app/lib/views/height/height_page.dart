@@ -5,7 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class HeightPage extends StatefulWidget {
-  const HeightPage({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? password;
+  final String? name;
+  final String? gender;
+  final String? age;
+  const HeightPage(
+      {Key? key,
+      this.username,
+      this.mail,
+      this.password,
+      this.name,
+      this.gender,
+      this.age})
+      : super(key: key);
 
   @override
   _HeightPageState createState() => _HeightPageState();
@@ -80,7 +94,16 @@ class _HeightPageState extends State<HeightPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => WeightPage()),
+              MaterialPageRoute(
+                  builder: (context) => WeightPage(
+                        username: widget.username,
+                        mail: widget.mail,
+                        password: widget.password,
+                        name: widget.name,
+                        gender: widget.gender,
+                        age: widget.age,
+                        height: _currentValue.toString(),
+                      )),
             );
           },
           child: Text('Next',

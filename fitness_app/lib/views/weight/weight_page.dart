@@ -1,10 +1,31 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new
+// ignore_for_file: prefer_const_constructors, unnecessary_new, unused_field
 
+import 'package:fistness_app_firebase/services/auth_service.dart';
+import 'package:fistness_app_firebase/src/texts.dart';
+import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class WeightPage extends StatefulWidget {
-  const WeightPage({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? password;
+  final String? name;
+  final String? gender;
+  final String? age;
+  final String? height;
+
+  const WeightPage(
+      {Key? key,
+      this.username,
+      this.mail,
+      this.password,
+      this.name,
+      this.gender,
+      this.age,
+      this.height})
+      : super(key: key);
 
   @override
   _WeightPageState createState() => _WeightPageState();
@@ -12,6 +33,8 @@ class WeightPage extends StatefulWidget {
 
 class _WeightPageState extends State<WeightPage> {
   int _currentValue = 65;
+  final AuthService _authService = AuthService();
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +99,7 @@ class _WeightPageState extends State<WeightPage> {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
-          onPressed: () {
-            //  Navigator.push(
-            //    context,
-            //    MaterialPageRoute(builder: (context) => RegisterNamePage()),
-            // );
-          },
+          onPressed: _registerOnTap,
           child: Text('Next',
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
@@ -124,4 +142,40 @@ class _WeightPageState extends State<WeightPage> {
       ],
     );
   }
+
+  void _registerOnTap() {
+    _authService
+        .createPerson(
+            widget.username!,
+            widget.mail!,
+            widget.password!,
+            widget.name!,
+            widget.gender!,
+            widget.age!,
+            widget.height!,
+            _currentValue.toString())
+        .then((value) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+          (route) => false);
+    }).catchError((error) {
+      _warningToast(myText.errorText);
+    }).whenComplete(() {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+}
+
+Future<bool?> _warningToast(String text) {
+  return Fluttertoast.showToast(
+      msg: text,
+      timeInSecForIosWeb: 2,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 14);
 }

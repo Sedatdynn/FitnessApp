@@ -1,8 +1,10 @@
-// ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
+import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/registerName/register_name.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fistness_app_firebase/src/texts.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _isVisible = true;
   bool _isLoading = false;
+  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -201,16 +204,43 @@ class _RegisterPageState extends State<RegisterPage> {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => RegisterNamePage()),
-            );
-          },
+          onPressed: _registerOnTap,
           child: Text('Contiune',
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
     );
+  }
+
+  void _registerOnTap() {
+    if (_usernameController.text.isNotEmpty &&
+        _emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => RegisterNamePage(
+                    username: _usernameController.text,
+                    mail: _emailController.text,
+                    password: _passwordController.text,
+                  )));
+    } else {
+      _warningToast("Eksik bilgi mevcut");
+    }
+  }
+
+  Future<bool?> _warningToast(String text) {
+    return Fluttertoast.showToast(
+        msg: text,
+        timeInSecForIosWeb: 2,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 14);
   }
 }

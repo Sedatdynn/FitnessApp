@@ -1,10 +1,18 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, unused_field, empty_statements
 
+import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/age/age_page.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class GenderPage extends StatefulWidget {
-  const GenderPage({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? name;
+  final String? password;
+  const GenderPage(
+      {Key? key, this.username, this.mail, this.name, this.password})
+      : super(key: key);
 
   @override
   _GenderPageState createState() => _GenderPageState();
@@ -12,6 +20,9 @@ class GenderPage extends StatefulWidget {
 
 class _GenderPageState extends State<GenderPage> {
   late List<bool> isSelected;
+  bool _isLoading = false;
+  final AuthService _authService = AuthService();
+  var choice = "";
 
   @override
   void initState() {
@@ -46,7 +57,7 @@ class _GenderPageState extends State<GenderPage> {
                 ),
                 _toggleButton(),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                myButton()
+                myButton(),
               ],
             ),
           ),
@@ -100,6 +111,7 @@ class _GenderPageState extends State<GenderPage> {
           for (var i = 0; i < isSelected.length; i++) {
             if (i == index) {
               isSelected[i] = true;
+              choiceControl();
             } else {
               isSelected[i] = false;
             }
@@ -132,12 +144,7 @@ class _GenderPageState extends State<GenderPage> {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AgePage()),
-            );
-          },
+          onPressed: _registerOnTap,
           child: Text('Contiune',
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
@@ -150,5 +157,46 @@ class _GenderPageState extends State<GenderPage> {
       "What is your sex?",
       style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
     );
+  }
+
+  void _registerOnTap() {
+    if (isSelected.isNotEmpty) {
+      setState(() {
+        _isLoading = true;
+      });
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => AgePage(
+                    mail: widget.mail,
+                    username: widget.username,
+                    password: widget.password,
+                    name: widget.name,
+                    gender: choiceControl().toString(),
+                  )));
+    } else {
+      _warningToast("You should choice your sex!");
+    }
+  }
+
+  Future<bool?> _warningToast(String text) {
+    return Fluttertoast.showToast(
+        msg: text,
+        timeInSecForIosWeb: 2,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 14);
+  }
+
+  choiceControl() {
+    if (isSelected[0] == true) {
+      choice = "Woman";
+    } else {
+      choice = "Man";
+    }
+    return choice;
   }
 }
