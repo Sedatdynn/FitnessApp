@@ -223,6 +223,8 @@ class _LoginPageState extends State<LoginPage> {
           _isLoading = false;
         });
       });
+    } else {
+      _warningToast(myText.errorText);
     }
   }
 

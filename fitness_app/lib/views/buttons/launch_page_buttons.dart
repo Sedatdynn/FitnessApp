@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:fistness_app_firebase/services/auth_service.dart';
+import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LaunchPageButtons extends StatefulWidget {
@@ -11,6 +13,7 @@ class LaunchPageButtons extends StatefulWidget {
 
 class _LaunchPageButtonsState extends State<LaunchPageButtons> {
   bool isLoading = false;
+  final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return !isLoading
@@ -29,15 +32,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                         'assets/google.png',
                         height: 27,
                       ),
-                      onPressed: () {
-                        setState(() {
-                          isLoading = true;
-                        });
-
-                        setState(() {
-                          isLoading = false;
-                        });
-                      },
+                      onPressed: loginWithGoogle,
                       label: Text(
                         " Google ",
                         style: TextStyle(
@@ -80,5 +75,18 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
             ),
           )
         : CircularProgressIndicator();
+  }
+
+  void loginWithGoogle() {
+    try {
+      _authService.signInWithGoogle().then((value) async {
+        return await Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const HomePage()),
+            (route) => false);
+      });
+    } catch (e) {
+      debugPrint("HATAAAAAA: " + e.toString());
+    }
   }
 }

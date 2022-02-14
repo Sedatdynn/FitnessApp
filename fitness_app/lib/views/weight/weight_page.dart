@@ -3,6 +3,7 @@
 import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/home/home_page.dart';
+import 'package:fistness_app_firebase/views/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -144,28 +145,46 @@ class _WeightPageState extends State<WeightPage> {
   }
 
   void _registerOnTap() {
-    _authService
-        .createPerson(
-            widget.username!,
-            widget.mail!,
-            widget.password!,
-            widget.name!,
-            widget.gender!,
-            widget.age!,
-            widget.height!,
-            _currentValue.toString())
-        .then((value) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
-          (route) => false);
-    }).catchError((error) {
-      _warningToast(myText.errorText);
-    }).whenComplete(() {
+    if (widget.username.toString().isNotEmpty &&
+        widget.mail.toString().isNotEmpty &&
+        widget.password.toString().isNotEmpty) {
       setState(() {
-        _isLoading = false;
+        _isLoading = true;
       });
-    });
+      try {
+        _authService
+            .createPerson(
+                widget.username!,
+                widget.mail!,
+                widget.password!,
+                widget.name!,
+                widget.gender!,
+                widget.age!,
+                widget.height!,
+                _currentValue.toString())
+            .then((value) {
+          _warningToast(myText.registerSuccesfully);
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginPage()),
+              (route) => false);
+        }).catchError((error) {
+          if (error.toString().contains("email-already-in-use")) {
+            _warningToast(myText.registerUniqueMail);
+          }
+        }).whenComplete(() {
+          setState(() {
+            _isLoading = false;
+          });
+        });
+      } catch (e) {
+        if (e.toString().contains("email-already-in-use")) {
+          _warningToast(myText.registerUniqueMail);
+        }
+      }
+    } else {
+      _warningToast(myText.errorText);
+    }
   }
 }
 

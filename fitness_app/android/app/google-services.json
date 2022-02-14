@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "709281065819",
-    "project_id": "fitness-project-948b2",
-    "storage_bucket": "fitness-project-948b2.appspot.com"
+    "project_number": "890034566376",
+    "project_id": "fitness-app-f4ef3",
+    "storage_bucket": "fitness-app-f4ef3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:709281065819:android:7477db51e793396faa487e",
+        "mobilesdk_app_id": "1:890034566376:android:696482ff723fbe0144c55d",
         "android_client_info": {
           "package_name": "com.example.test_pro_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "709281065819-u241jst0fh1362085pjk94vppnqa15ao.apps.googleusercontent.com",
+          "client_id": "890034566376-4iqalltvje9h7t0j7pplbc88ofkqvavf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.test_pro_project",
-            "certificate_hash": "28eac8fcdbbb841236a8144726c43ff5c6cbd88e"
+            "certificate_hash": "0775e7bec1dfbda1972afcd40f242c62a557e84e"
           }
         },
         {
-          "client_id": "709281065819-qgnndmguttadtv7allfc0uch9qjda825.apps.googleusercontent.com",
+          "client_id": "890034566376-issqupj39onii1nmgvsfcc0aiilgmcdf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCO98FACGUDtRqB6MeFTcqnuVP0zKyap5Q"
+          "current_key": "AIzaSyBNKP-BMy4PMWKhqlDfMN2bmajuYIdhZ6U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "709281065819-qgnndmguttadtv7allfc0uch9qjda825.apps.googleusercontent.com",
+              "client_id": "890034566376-issqupj39onii1nmgvsfcc0aiilgmcdf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

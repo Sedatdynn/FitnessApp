@@ -5,6 +5,7 @@ import 'package:fistness_app_firebase/views/registerName/register_name.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
+import 'package:email_validator/email_validator.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -215,7 +216,10 @@ class _RegisterPageState extends State<RegisterPage> {
   void _registerOnTap() {
     if (_usernameController.text.isNotEmpty &&
         _emailController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
+        _emailController.text.contains("@") &&
+        _emailController.text.contains(".com") &&
+        _passwordController.text.isNotEmpty &&
+        _passwordController.text.length >= 6) {
       setState(() {
         _isLoading = true;
       });
@@ -228,8 +232,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     mail: _emailController.text,
                     password: _passwordController.text,
                   )));
+    } else if (_usernameController.text.isEmpty) {
+      _warningToast(myText.registerEmptyUsername);
+    } else if (_emailController.text.toString().isEmpty) {
+      _warningToast(myText.registerEmptyEmail);
+    } else if (_passwordController.text.toString().isEmpty) {
+      _warningToast(myText.registerUnvalidPassword);
+    } else if (_passwordController.text.length < 6) {
+      _warningToast(myText.registerUnvalidPassword);
     } else {
-      _warningToast("Eksik bilgi mevcut");
+      _warningToast(myText.registerUnvalidEmail);
     }
   }
 

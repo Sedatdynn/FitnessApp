@@ -28,9 +28,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LaunchPage(),
+      theme: ThemeData(primarySwatch: Colors.red),
+      home: const LaunchPage(),
     );
   }
 }
