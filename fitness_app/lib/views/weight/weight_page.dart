@@ -2,7 +2,6 @@
 
 import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
-import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:fistness_app_firebase/views/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

@@ -109,7 +109,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
                     name: _nameController.text,
                   )));
     } else {
-      _warningToast("You should enter your name!");
+      _warningToast("You should enter your name! ");
     }
   }
 
