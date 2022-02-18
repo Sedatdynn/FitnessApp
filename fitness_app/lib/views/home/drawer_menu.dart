@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:fistness_app_firebase/views/launch/launch_page.dart';
 import 'package:flutter/material.dart';
 
@@ -36,13 +37,19 @@ class _DrawerMenuState extends State<DrawerMenu> {
           Expanded(
             child: ListView(
               children: <Widget>[
-                ListTile(
-                  leading: Icon(Icons.home),
-                  title: Text(
-                    "Homepage",
-                    style: TextStyle(fontSize: 16.0),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  },
+                  child: ListTile(
+                    leading: Icon(Icons.home),
+                    title: Text(
+                      "Homepage",
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    trailing: Icon(Icons.chevron_right),
                   ),
-                  trailing: Icon(Icons.chevron_right),
                 ),
                 ListTile(
                   leading: Icon(Icons.search),
