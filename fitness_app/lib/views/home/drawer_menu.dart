@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:fistness_app_firebase/views/launch/launch_page.dart';
 import 'package:flutter/material.dart';
+import 'package:fistness_app_firebase/src/texts.dart';
 
 class DrawerMenu extends StatefulWidget {
   const DrawerMenu({Key? key}) : super(key: key);
@@ -70,8 +72,12 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 Divider(),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LaunchPage()));
+                    myText.authService.signOut();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LaunchPage()),
+                        (route) => false);
                   },
                   child: ListTile(
                     leading: Icon(Icons.golf_course),

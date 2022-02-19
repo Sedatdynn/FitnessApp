@@ -1,6 +1,9 @@
 // ignore_for_file: camel_case_types
 
+import 'package:fistness_app_firebase/services/auth_service.dart';
+
 class myText {
+  static final AuthService authService = AuthService();
   static String errorText = "An unexpected error has occurred...";
   static String loginNoAccountText = "User not found!";
   static String loginWrongPasswordText = "Wrong password!";

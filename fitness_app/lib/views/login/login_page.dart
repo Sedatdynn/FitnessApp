@@ -1,7 +1,6 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:fistness_app_firebase/const/loading_page.dart';
-import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/forgotPassword/forgot_password.dart';
 import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,6 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isVisible = true;
   bool _isLoading = false;
-  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         _isLoading = true;
       });
-      await _authService
+      await myText.authService
           .signInWithEmail(_emailController.text, _passwordController.text)
           .then((value) async {
         await Navigator.pushAndRemoveUntil(

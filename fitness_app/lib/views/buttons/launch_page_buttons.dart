@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:fistness_app_firebase/services/auth_service.dart';
+import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class LaunchPageButtons extends StatefulWidget {
 
 class _LaunchPageButtonsState extends State<LaunchPageButtons> {
   bool isLoading = false;
-  final AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return !isLoading
@@ -32,7 +33,9 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                         'assets/google.png',
                         height: 27,
                       ),
-                      onPressed: loginWithGoogle,
+                      onPressed: () {
+                        loginWithGoogle();
+                      },
                       label: Text(
                         " Google ",
                         style: TextStyle(
@@ -77,16 +80,18 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
         : CircularProgressIndicator();
   }
 
-  void loginWithGoogle() {
-    try {
-      _authService.signInWithGoogle().then((value) async {
-        return await Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => const HomePage()),
-            (route) => false);
-      });
-    } catch (e) {
-      debugPrint("HATAAAAAA: " + e.toString());
-    }
+  /*callit() async {
+    print("objec");
+    await loginWithGoogle();
+  }*/
+
+  loginWithGoogle() {
+    myText.authService.signInWithGoogle().then((value) async {
+      debugPrint("goıogle pushsd sdhkjklfsd");
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+          (route) => false);
+    }).catchError((error) => print(error.toString()));
   }
 }
