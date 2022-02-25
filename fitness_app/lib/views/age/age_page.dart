@@ -8,6 +8,7 @@ class AgePage extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
+  final String uid;
   final String? name;
   final String? gender;
   const AgePage(
@@ -15,6 +16,7 @@ class AgePage extends StatefulWidget {
       this.username,
       this.mail,
       this.password,
+      required this.uid,
       this.name,
       this.gender})
       : super(key: key);
@@ -93,6 +95,7 @@ class _AgePageState extends State<AgePage> {
                         username: widget.username,
                         mail: widget.mail,
                         password: widget.password,
+                        uid: widget.uid,
                         name: widget.name,
                         gender: widget.gender,
                         age: _currentValue.toString(),

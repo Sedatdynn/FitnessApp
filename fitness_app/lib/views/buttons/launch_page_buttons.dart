@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, invalid_return_type_for_catch_error
 
-import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/home/home_page.dart';
+import 'package:fistness_app_firebase/views/registerName/register_name.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LaunchPageButtons extends StatefulWidget {
   const LaunchPageButtons({Key? key}) : super(key: key);
@@ -80,18 +81,37 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
         : CircularProgressIndicator();
   }
 
-  /*callit() async {
-    print("objec");
-    await loginWithGoogle();
-  }*/
-
   loginWithGoogle() {
     myText.authService.signInWithGoogle().then((value) async {
-      debugPrint("goıogle pushsd sdhkjklfsd");
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
-          (route) => false);
-    }).catchError((error) => print(error.toString()));
+      //dynamic check_email = digerFoonks(value.user!.email);
+      bool anyUid = await myText.authService.checkUid(value.user!.uid);
+      if (anyUid) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+            (route) => false);
+      } else {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (context) => RegisterNamePage(
+                      mail: value.user!.email,
+                      uid: value.user!.uid,
+                      username: value.user!.displayName,
+                    )),
+            (route) => false);
+      }
+    }).catchError((error) => debugPrint(error));
+  }
+
+  Future<bool?> _warningToast(String text) async {
+    return await Fluttertoast.showToast(
+        msg: text,
+        timeInSecForIosWeb: 2,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 14);
   }
 }

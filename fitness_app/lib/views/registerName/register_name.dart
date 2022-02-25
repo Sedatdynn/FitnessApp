@@ -9,8 +9,10 @@ class RegisterNamePage extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
+  final String? uid;
 
-  const RegisterNamePage({Key? key, this.username, this.mail, this.password})
+  const RegisterNamePage(
+      {Key? key, this.username, this.mail, this.password, this.uid})
       : super(key: key);
 
   @override
@@ -20,7 +22,6 @@ class RegisterNamePage extends StatefulWidget {
 class _RegisterNamePageState extends State<RegisterNamePage> {
   final TextEditingController _nameController = TextEditingController();
   bool _isLoading = false;
-  final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,6 +106,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
               builder: (context) => GenderPage(
                     username: widget.username,
                     mail: widget.mail,
+                    uid: widget.uid.toString(),
                     password: widget.password,
                     name: _nameController.text,
                   )));

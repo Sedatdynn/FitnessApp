@@ -10,8 +10,14 @@ class GenderPage extends StatefulWidget {
   final String? mail;
   final String? name;
   final String? password;
+  final String uid;
   const GenderPage(
-      {Key? key, this.username, this.mail, this.name, this.password})
+      {Key? key,
+      this.username,
+      this.mail,
+      this.name,
+      this.password,
+      required this.uid})
       : super(key: key);
 
   @override
@@ -172,6 +178,7 @@ class _GenderPageState extends State<GenderPage> {
                     mail: widget.mail,
                     username: widget.username,
                     password: widget.password,
+                    uid: widget.uid,
                     name: widget.name,
                     gender: choiceControl().toString(),
                   )));

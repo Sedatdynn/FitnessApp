@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, unused_field
 
-import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
+import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:fistness_app_firebase/views/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -15,12 +15,14 @@ class WeightPage extends StatefulWidget {
   final String? gender;
   final String? age;
   final String? height;
+  final String uid;
 
   const WeightPage(
       {Key? key,
       this.username,
       this.mail,
       this.password,
+      required this.uid,
       this.name,
       this.gender,
       this.age,
@@ -33,7 +35,7 @@ class WeightPage extends StatefulWidget {
 
 class _WeightPageState extends State<WeightPage> {
   int _currentValue = 65;
-  final AuthService _authService = AuthService();
+
   bool _isLoading = false;
 
   @override
@@ -99,7 +101,17 @@ class _WeightPageState extends State<WeightPage> {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
-          onPressed: _registerOnTap,
+          onPressed: () {
+            try {
+              if (widget.password!.isNotEmpty) {
+                _registerOnTap();
+              } else {
+                registerUser();
+              }
+            } catch (e) {
+              registerUser();
+            }
+          },
           child: Text('Next',
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
@@ -150,12 +162,14 @@ class _WeightPageState extends State<WeightPage> {
       setState(() {
         _isLoading = true;
       });
+
       try {
-        _authService
-            .createPerson(
+        myText.authService
+            .createPersonEmail(
                 widget.username!,
                 widget.mail!,
                 widget.password!,
+                widget.uid,
                 widget.name!,
                 widget.gender!,
                 widget.age!,
@@ -183,6 +197,26 @@ class _WeightPageState extends State<WeightPage> {
       }
     } else {
       _warningToast(myText.errorText);
+    }
+  }
+
+  void registerUser() async {
+    dynamic user = await myText.authService.createPerson(
+        widget.username!,
+        widget.mail!,
+        widget.uid,
+        widget.name!,
+        widget.gender!,
+        widget.age!,
+        widget.height!,
+        _currentValue.toString());
+
+    if (user) {
+      _warningToast(myText.registerSuccesfully);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+          (route) => false);
     }
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:fistness_app_firebase/services/auth_service.dart';
+import 'package:fistness_app_firebase/views/buttons/launch_page_buttons.dart';
 import 'package:fistness_app_firebase/views/registerName/register_name.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -42,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 5.0),
+          padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 5.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,14 +66,14 @@ class _RegisterPageState extends State<RegisterPage> {
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 20.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _logoBody(),
               SizedBox(
-                height: 50,
+                height: 40,
               ),
               _usernameTextfield(),
               const SizedBox(
@@ -84,7 +85,15 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               _passwordTextfield(),
               SizedBox(
-                height: 40,
+                height: 5,
+              ),
+              _orText(),
+              SizedBox(
+                height: 30,
+              ),
+              LaunchPageButtons(),
+              SizedBox(
+                height: 20.0,
               ),
               myButton(),
             ],
@@ -179,6 +188,16 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           borderRadius: BorderRadius.circular(10),
         ),
+      ),
+    );
+  }
+
+  _orText() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Text(
+        "Or Sign-Up with: ",
+        style: TextStyle(color: Colors.grey, fontSize: 14.0),
       ),
     );
   }
