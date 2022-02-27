@@ -55,7 +55,7 @@ class _GenderPageState extends State<GenderPage> {
               children: [
                 _logoBody(),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 7,
+                  height: MediaQuery.of(context).size.height / 17,
                 ),
                 _myText(),
                 SizedBox(
@@ -80,8 +80,7 @@ class _GenderPageState extends State<GenderPage> {
           children: [
             Icon(Icons.male,
                 size: MediaQuery.of(context).size.height / 6,
-                color:
-                    isSelected[0] == false ? Colors.grey : Colors.red.shade900),
+                color: isSelected[0] == false ? Colors.grey : Colors.red),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
@@ -105,7 +104,9 @@ class _GenderPageState extends State<GenderPage> {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
                 "Man",
-                style: TextStyle(fontSize: 16.0),
+                style: TextStyle(
+                    fontSize: 16.0,
+                    color: isSelected[0] == true ? Colors.grey : Colors.blue),
               ),
             )
           ],

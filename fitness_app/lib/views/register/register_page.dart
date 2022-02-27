@@ -91,10 +91,6 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 30,
               ),
-              LaunchPageButtons(),
-              SizedBox(
-                height: 20.0,
-              ),
               myButton(),
             ],
           ),

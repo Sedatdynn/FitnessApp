@@ -1,10 +1,31 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables
 
 import 'package:fistness_app_firebase/views/home/drawer_menu.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? password;
+  final String? name;
+  final String? gender;
+  final String? age;
+  final String? height;
+  final String? weight;
+
+  final String uid;
+  HomePage(
+      {Key? key,
+      this.username,
+      this.mail,
+      this.password,
+      required this.uid,
+      this.name,
+      this.gender,
+      this.age,
+      this.height,
+      this.weight})
+      : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -14,7 +35,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerMenu(),
+      drawer: DrawerMenu(
+        username: widget.username,
+        mail: widget.mail,
+        password: widget.password,
+        uid: widget.uid,
+        name: widget.name,
+        gender: widget.gender,
+        age: widget.age,
+        height: widget.height,
+        weight: widget.weight,
+      ),
       appBar: AppBar(
         title: Text("FİTNESS"),
       ),
@@ -31,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 3,
                             blurRadius: 3,
-                            offset: Offset(0, 2), // changes position of shadow
+                            offset: Offset(0, 2),
                           ),
                         ],
                         borderRadius: BorderRadius.circular(25.0),

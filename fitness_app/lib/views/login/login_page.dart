@@ -8,7 +8,28 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? password;
+  final String? uid;
+
+  final String? name;
+  final String? gender;
+  final String? age;
+  final String? height;
+  final String? weight;
+  const LoginPage(
+      {Key? key,
+      this.username,
+      this.mail,
+      this.password,
+      required this.uid,
+      this.name,
+      this.gender,
+      this.age,
+      this.height,
+      this.weight})
+      : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -204,7 +225,18 @@ class _LoginPageState extends State<LoginPage> {
           .then((value) async {
         await Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(
+                builder: (context) => HomePage(
+                      username: widget.username,
+                      mail: widget.mail,
+                      password: widget.password,
+                      uid: widget.uid.toString(),
+                      name: widget.name,
+                      gender: widget.gender,
+                      age: widget.age,
+                      height: widget.height,
+                      weight: widget.weight,
+                    )),
             (route) => false);
       }).catchError((error) async {
         if (error.toString().contains('invalid-email')) {

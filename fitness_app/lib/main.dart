@@ -34,7 +34,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red),
-      home: const LaunchPage(),
+      home: LaunchPage(
+        uid: null,
+      ),
     );
   }
 }

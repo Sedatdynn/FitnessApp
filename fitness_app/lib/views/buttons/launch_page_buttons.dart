@@ -7,7 +7,28 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LaunchPageButtons extends StatefulWidget {
-  const LaunchPageButtons({Key? key}) : super(key: key);
+  final String? username;
+  final String? mail;
+  final String? password;
+  final String? uid;
+
+  final String? name;
+  final String? gender;
+  final String? age;
+  final String? height;
+  final String? weight;
+  const LaunchPageButtons(
+      {Key? key,
+      this.username,
+      this.mail,
+      this.password,
+      required this.uid,
+      this.name,
+      this.gender,
+      this.age,
+      this.height,
+      this.weight})
+      : super(key: key);
 
   @override
   _LaunchPageButtonsState createState() => _LaunchPageButtonsState();
@@ -88,7 +109,18 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
       if (anyUid) {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(
+                builder: (context) => HomePage(
+                      username: widget.username,
+                      mail: widget.mail,
+                      password: widget.password,
+                      uid: widget.uid.toString(),
+                      name: widget.name,
+                      gender: widget.gender,
+                      age: widget.age,
+                      height: widget.height,
+                      weight: widget.weight,
+                    )),
             (route) => false);
       } else {
         Navigator.pushAndRemoveUntil(

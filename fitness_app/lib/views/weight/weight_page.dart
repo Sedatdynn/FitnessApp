@@ -17,17 +17,17 @@ class WeightPage extends StatefulWidget {
   final String? height;
   final String uid;
 
-  const WeightPage(
-      {Key? key,
-      this.username,
-      this.mail,
-      this.password,
-      required this.uid,
-      this.name,
-      this.gender,
-      this.age,
-      this.height})
-      : super(key: key);
+  const WeightPage({
+    Key? key,
+    this.username,
+    this.mail,
+    this.password,
+    required this.uid,
+    this.name,
+    this.gender,
+    this.age,
+    this.height,
+  }) : super(key: key);
 
   @override
   _WeightPageState createState() => _WeightPageState();
@@ -56,7 +56,7 @@ class _WeightPageState extends State<WeightPage> {
             children: [
               _logoBody(),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 7,
+                height: MediaQuery.of(context).size.height / 17,
               ),
               _myText(),
               SizedBox(
@@ -179,7 +179,18 @@ class _WeightPageState extends State<WeightPage> {
           _warningToast(myText.registerSuccesfully);
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => const LoginPage()),
+              MaterialPageRoute(
+                  builder: (context) => LoginPage(
+                        username: widget.username,
+                        mail: widget.mail,
+                        password: widget.password,
+                        uid: widget.uid,
+                        name: widget.name,
+                        gender: widget.gender,
+                        age: widget.age,
+                        height: widget.height,
+                        weight: _currentValue.toString(),
+                      )),
               (route) => false);
         }).catchError((error) {
           if (error.toString().contains("email-already-in-use")) {
@@ -215,7 +226,18 @@ class _WeightPageState extends State<WeightPage> {
       _warningToast(myText.registerSuccesfully);
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
+          MaterialPageRoute(
+              builder: (context) => HomePage(
+                    username: widget.username,
+                    mail: widget.mail,
+                    password: widget.password,
+                    uid: widget.uid,
+                    name: widget.name,
+                    gender: widget.gender,
+                    age: widget.age,
+                    height: widget.height,
+                    weight: _currentValue.toString(),
+                  )),
           (route) => false);
     }
   }

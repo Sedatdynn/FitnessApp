@@ -48,7 +48,7 @@ class _HeightPageState extends State<HeightPage> {
             children: [
               _logoBody(),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 7,
+                height: MediaQuery.of(context).size.height / 17,
               ),
               _myText(),
               SizedBox(
@@ -118,22 +118,18 @@ class _HeightPageState extends State<HeightPage> {
 
   _pickerBody() {
     return Row(
-      mainAxisAlignment:
-          MainAxisAlignment.center, //Center Row contents horizontally,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-
       children: [
         NumberPicker(
           selectedTextStyle: TextStyle(color: Colors.red, fontSize: 20.0),
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                //                   <--- left side
                 color: Colors.grey,
                 width: 3.0,
               ),
               bottom: BorderSide(
-                //                    <--- top side
                 color: Colors.grey,
                 width: 3.0,
               ),

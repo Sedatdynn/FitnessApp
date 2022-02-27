@@ -46,7 +46,7 @@ class _AgePageState extends State<AgePage> {
             children: [
               _logoBody(),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 7,
+                height: MediaQuery.of(context).size.height / 17,
               ),
               Text(
                 "How old are you?",
