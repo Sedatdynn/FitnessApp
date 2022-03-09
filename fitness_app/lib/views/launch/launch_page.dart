@@ -6,28 +6,9 @@ import 'package:fistness_app_firebase/views/register/register_page.dart';
 import 'package:flutter/material.dart';
 
 class LaunchPage extends StatefulWidget {
-  final String? username;
-  final String? mail;
-  final String? password;
-  final String? uid;
-
-  final String? name;
-  final String? gender;
-  final String? age;
-  final String? height;
-  final String? weight;
-  LaunchPage(
-      {Key? key,
-      this.username,
-      this.mail,
-      this.password,
-      required this.uid,
-      this.name,
-      this.gender,
-      this.age,
-      this.height,
-      this.weight})
-      : super(key: key);
+  LaunchPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _LaunchPageState createState() => _LaunchPageState();
@@ -82,18 +63,7 @@ class _LaunchPageState extends State<LaunchPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginPage(
-                                    username: widget.username,
-                                    mail: widget.mail,
-                                    password: widget.password,
-                                    uid: widget.uid,
-                                    name: widget.name,
-                                    gender: widget.gender,
-                                    age: widget.age,
-                                    height: widget.height,
-                                    weight: widget.weight,
-                                  )),
+                          MaterialPageRoute(builder: (context) => LoginPage()),
                         );
                       },
                       icon: Icon(
@@ -126,17 +96,7 @@ class _LaunchPageState extends State<LaunchPage> {
             SizedBox(
               height: 20.0,
             ),
-            LaunchPageButtons(
-              username: widget.username,
-              mail: widget.mail,
-              password: widget.password,
-              uid: widget.uid,
-              name: widget.name,
-              gender: widget.gender,
-              age: widget.age,
-              height: widget.height,
-              weight: widget.weight,
-            ),
+            LaunchPageButtons(),
             SizedBox(
               height: 20.0,
             ),

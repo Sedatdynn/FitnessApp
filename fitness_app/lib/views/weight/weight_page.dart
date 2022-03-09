@@ -179,18 +179,7 @@ class _WeightPageState extends State<WeightPage> {
           _warningToast(myText.registerSuccesfully);
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(
-                  builder: (context) => LoginPage(
-                        username: widget.username,
-                        mail: widget.mail,
-                        password: widget.password,
-                        uid: widget.uid,
-                        name: widget.name,
-                        gender: widget.gender,
-                        age: widget.age,
-                        height: widget.height,
-                        weight: _currentValue.toString(),
-                      )),
+              MaterialPageRoute(builder: (context) => LoginPage()),
               (route) => false);
         }).catchError((error) {
           if (error.toString().contains("email-already-in-use")) {
@@ -226,18 +215,7 @@ class _WeightPageState extends State<WeightPage> {
       _warningToast(myText.registerSuccesfully);
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-              builder: (context) => HomePage(
-                    username: widget.username,
-                    mail: widget.mail,
-                    password: widget.password,
-                    uid: widget.uid,
-                    name: widget.name,
-                    gender: widget.gender,
-                    age: widget.age,
-                    height: widget.height,
-                    weight: _currentValue.toString(),
-                  )),
+          MaterialPageRoute(builder: (context) => HomePage()),
           (route) => false);
     }
   }

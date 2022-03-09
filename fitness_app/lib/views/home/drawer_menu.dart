@@ -1,35 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/home/home_page.dart';
 import 'package:fistness_app_firebase/views/launch/launch_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 
 class DrawerMenu extends StatefulWidget {
-  final String? username;
-  final String? mail;
-  final String? password;
-  final String? uid;
-
-  final String? name;
-  final String? gender;
-  final String? age;
-  final String? height;
-  final String? weight;
-
-  const DrawerMenu(
-      {Key? key,
-      this.username,
-      this.mail,
-      this.password,
-      required this.uid,
-      this.name,
-      this.gender,
-      this.age,
-      this.height,
-      this.weight})
-      : super(key: key);
+  const DrawerMenu({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _DrawerMenuState createState() => _DrawerMenuState();
@@ -43,7 +22,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text(
-              widget.name.toString(),
+              "Sedat Dayan",
               style: TextStyle(fontSize: 16.0),
             ),
             accountEmail: Text("sedatdayan@gmail.com"),
@@ -63,20 +42,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomePage(
-                                  username: widget.username,
-                                  mail: widget.mail,
-                                  password: widget.password,
-                                  uid: widget.uid.toString(),
-                                  name: widget.name,
-                                  gender: widget.gender,
-                                  age: widget.age,
-                                  height: widget.height,
-                                  weight: widget.weight,
-                                )));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
                   },
                   child: ListTile(
                     leading: Icon(Icons.home),
@@ -109,18 +76,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     myText.authService.signOut();
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => LaunchPage(
-                                  username: widget.username,
-                                  mail: widget.mail,
-                                  password: widget.password,
-                                  uid: widget.uid,
-                                  name: widget.name,
-                                  gender: widget.gender,
-                                  age: widget.age,
-                                  height: widget.height,
-                                  weight: widget.weight,
-                                )),
+                        MaterialPageRoute(builder: (context) => LaunchPage()),
                         (route) => false);
                   },
                   child: ListTile(
