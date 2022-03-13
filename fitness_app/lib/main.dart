@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'firebase_options.dart';
 import 'views/launch/launch_page.dart';
 
@@ -8,6 +11,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.top]);
 
   runApp(const MyApp());
 }
@@ -32,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: Colors.white,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red),
       home: LaunchPage(),

@@ -1,7 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, sized_box_for_whitespace, use_full_hex_values_for_flutter_colors
 
-import 'package:fistness_app_firebase/views/home/drawer_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -18,16 +18,16 @@ class _HomePageState extends State<HomePage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: DrawerMenu(),
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text("FİTNESS"),
+      backgroundColor: const Color(
+        0xFFFFFBE9,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Container(
+        padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
         child: ListView(
+          shrinkWrap: true,
           children: [
             Container(
+                margin: EdgeInsets.all(16),
                 height: height / 3.3,
                 width: width,
                 decoration: BoxDecoration(
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                       bottomRight: Radius.circular(10.0)),
                   boxShadow: [
                     BoxShadow(
-                        offset: Offset(5, 10),
+                        offset: Offset(5, 1),
                         blurRadius: 20,
                         color: Colors.red.shade900)
                   ],
@@ -141,9 +141,130 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 )),
-            SizedBox(
-              height: 10,
-            ),
+            Flex(
+              direction: Axis.horizontal,
+              children: [
+                Expanded(
+                    child: ListView.builder(
+                        physics: ScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 4,
+                        itemBuilder: (context, i) {
+                          return Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.symmetric(vertical: 18),
+                                    height: 200,
+                                    width: width / 2.4,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: [
+                                            const Color(0xFFC00F0C),
+                                            const Color(0xFFFA993D),
+                                          ],
+                                          begin:
+                                              const FractionalOffset(0.0, 0.0),
+                                          end: const FractionalOffset(1.0, 1.0),
+                                          stops: [0.0, 1.0],
+                                          tileMode: TileMode.clamp),
+                                      borderRadius: BorderRadius.circular(16.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.red.shade700
+                                                .withOpacity(0.5),
+                                            offset: Offset(10, 10.0),
+                                            blurRadius: 3)
+                                      ],
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 150,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/exercise.png"),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: Text(
+                                            "Exercises",
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.symmetric(vertical: 18),
+                                    height: 200,
+                                    width: width / 2.4,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: [
+                                            const Color(0xFFC00F0C),
+                                            const Color(0xFFFA993D),
+                                          ],
+                                          begin:
+                                              const FractionalOffset(0.0, 0.0),
+                                          end: const FractionalOffset(1.0, 1.0),
+                                          stops: [0.0, 1.0],
+                                          tileMode: TileMode.clamp),
+                                      borderRadius: BorderRadius.circular(16.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.red.shade700
+                                                .withOpacity(0.5),
+                                            offset: Offset(10, 10.0),
+                                            blurRadius: 3)
+                                      ],
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 150,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/exercise.png"),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Align(
+                                          alignment: Alignment.bottomCenter,
+                                          child: Text(
+                                            "Exercises",
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          );
+                        }))
+              ],
+            )
           ],
         ),
       ),

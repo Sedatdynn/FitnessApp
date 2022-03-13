@@ -103,7 +103,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     )),
             (route) => false);
       }
-    }).catchError((error) => debugPrint(error));
+    }).catchError((error) => _warningToast(error));
   }
 
   Future<bool?> _warningToast(String text) async {
