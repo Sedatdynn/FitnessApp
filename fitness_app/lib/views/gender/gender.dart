@@ -41,7 +41,7 @@ class _GenderPageState extends State<GenderPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.grey),
+          icon: Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
@@ -80,7 +80,7 @@ class _GenderPageState extends State<GenderPage> {
           children: [
             Icon(Icons.male,
                 size: MediaQuery.of(context).size.height / 6,
-                color: isSelected[0] == false ? Colors.grey : Colors.red),
+                color: isSelected[0] == false ? Colors.white : Colors.red),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
@@ -88,7 +88,7 @@ class _GenderPageState extends State<GenderPage> {
                 style: TextStyle(
                     fontSize: 16.0,
                     color: isSelected[0] == false
-                        ? Colors.grey
+                        ? Colors.white
                         : Colors.red.shade900),
               ),
             )
@@ -98,15 +98,16 @@ class _GenderPageState extends State<GenderPage> {
           children: [
             Icon(Icons.female,
                 size: MediaQuery.of(context).size.height / 6,
-                color:
-                    isSelected[0] == true ? Colors.grey : Colors.blue.shade900),
+                color: isSelected[0] == true
+                    ? Colors.white
+                    : Colors.blue.shade900),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
                 "Man",
                 style: TextStyle(
                     fontSize: 16.0,
-                    color: isSelected[0] == true ? Colors.grey : Colors.blue),
+                    color: isSelected[0] == true ? Colors.white : Colors.blue),
               ),
             )
           ],
@@ -162,7 +163,8 @@ class _GenderPageState extends State<GenderPage> {
   _myText() {
     return Text(
       "What is your sex?",
-      style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+      style: TextStyle(
+          fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
     );
   }
 

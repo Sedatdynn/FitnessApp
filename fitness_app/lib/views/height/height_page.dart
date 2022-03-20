@@ -35,7 +35,7 @@ class _HeightPageState extends State<HeightPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.grey),
+          icon: Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
@@ -75,7 +75,8 @@ class _HeightPageState extends State<HeightPage> {
   _myText() {
     return Text(
       "How much is your length?",
-      style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+      style: TextStyle(
+          fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
     );
   }
 
@@ -123,20 +124,20 @@ class _HeightPageState extends State<HeightPage> {
       children: [
         NumberPicker(
           selectedTextStyle: TextStyle(color: Colors.red, fontSize: 20.0),
+          textStyle: TextStyle(fontSize: 14.0, color: Colors.white),
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: Colors.grey,
+                color: Color(0xFFC4FB6D),
                 width: 3.0,
               ),
               bottom: BorderSide(
-                color: Colors.grey,
+                color: Color(0xFFC4FB6D),
                 width: 3.0,
               ),
             ),
           ),
           value: (_currentValue),
-          textStyle: TextStyle(fontSize: 14.0),
           minValue: 100,
           maxValue: 220,
           onChanged: (value) => setState(() => _currentValue = value),
@@ -145,7 +146,7 @@ class _HeightPageState extends State<HeightPage> {
           margin: EdgeInsets.only(left: 12.0),
           child: Text(
             "cm",
-            style: TextStyle(fontSize: 16.0),
+            style: TextStyle(fontSize: 16.0, color: Colors.white),
           ),
         )
       ],

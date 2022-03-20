@@ -29,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.grey),
+          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
@@ -63,7 +63,6 @@ class _RegisterPageState extends State<RegisterPage> {
     return Flexible(
         child: Container(
       decoration: const BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 20.0),
@@ -101,14 +100,16 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _usernameTextfield() {
     return TextField(
+      style: TextStyle(color: Colors.white),
       controller: _usernameController,
-      cursorColor: Colors.black,
+      cursorColor: Colors.white,
       decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.account_circle,
             color: Colors.red.shade900,
           ),
           hintText: 'User name',
+          hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -120,8 +121,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _emailTextfield() {
     return TextField(
+      style: TextStyle(color: Colors.white),
       controller: _emailController,
-      cursorColor: Colors.black,
+      cursorColor: Colors.white,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
           prefixIcon: Icon(
@@ -129,6 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
             color: Colors.red.shade900,
           ),
           hintText: 'Email',
+          hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -140,9 +143,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _passwordTextfield() {
     return TextField(
+      style: TextStyle(color: Colors.white),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
-      cursorColor: Colors.black,
+      cursorColor: Colors.white,
       decoration: InputDecoration(
         suffixIcon: InkWell(
           onTap: () {
@@ -172,6 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
           color: Colors.red.shade900,
         ),
         hintText: "Password",
+        hintStyle: TextStyle(color: Colors.white),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.grey.shade200,
@@ -193,7 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: const EdgeInsets.only(left: 8.0),
       child: Text(
         "Or Sign-Up with: ",
-        style: TextStyle(color: Colors.grey, fontSize: 14.0),
+        style: TextStyle(color: Colors.white, fontSize: 14.0),
       ),
     );
   }

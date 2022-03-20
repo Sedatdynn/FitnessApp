@@ -51,7 +51,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Flexible(
         child: Container(
       decoration: const BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -84,8 +83,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   TextField _emailTextfield() {
     return TextField(
+      style: TextStyle(color: Colors.white),
       controller: _emailController,
-      cursorColor: Colors.black,
+      cursorColor: Colors.white,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
           prefixIcon: Icon(
@@ -93,6 +93,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             color: Colors.red.shade900,
           ),
           hintText: 'Email',
+          hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -148,7 +149,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Text(
           "Enter the Email address associated with your account",
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+          style: TextStyle(
+              fontSize: 18.0, fontWeight: FontWeight.w500, color: Colors.white),
         )
       ],
     );

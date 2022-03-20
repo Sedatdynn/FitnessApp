@@ -42,7 +42,7 @@ class _LaunchPageState extends State<LaunchPage> {
                 style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey),
+                    color: Colors.white),
               ),
             ),
             Column(
@@ -55,7 +55,7 @@ class _LaunchPageState extends State<LaunchPage> {
                     child: TextButton.icon(
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.red.shade900,
-                        textStyle: TextStyle(color: Colors.grey),
+                        textStyle: TextStyle(color: Colors.white),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -90,7 +90,7 @@ class _LaunchPageState extends State<LaunchPage> {
               child: Text(
                 "Or log in with: ",
                 textAlign: TextAlign.left,
-                style: TextStyle(color: Colors.grey, fontSize: 16.0),
+                style: TextStyle(color: Colors.white, fontSize: 16.0),
               ),
             ),
             SizedBox(
@@ -109,7 +109,7 @@ class _LaunchPageState extends State<LaunchPage> {
                   Expanded(child: Container()),
                   Text(
                     "Don't you have an account?",
-                    style: TextStyle(color: Colors.grey, fontSize: 14.0),
+                    style: TextStyle(color: Colors.white, fontSize: 14.0),
                   ),
                   SizedBox(
                     width: 15,

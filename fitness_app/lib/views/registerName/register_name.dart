@@ -26,7 +26,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.grey),
+          icon: Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
@@ -60,18 +60,26 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
         width: mediaQuery.width * 0.87,
         child: Text(
           "Your Name?",
-          style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
         ));
   }
 
   _nameField() {
     return TextField(
+        style: TextStyle(color: Colors.white),
         controller: _nameController,
-        cursorColor: Colors.black,
+        cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          hintText: 'Your Name?',
-        ));
+            hintText: 'Your Name?',
+            hintStyle: TextStyle(color: Colors.white),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey.shade200),
+                borderRadius: BorderRadius.circular(10)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red.shade900),
+                borderRadius: BorderRadius.circular(10))));
   }
 
   _mybutton() {

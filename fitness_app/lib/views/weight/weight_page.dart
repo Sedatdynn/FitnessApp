@@ -43,7 +43,7 @@ class _WeightPageState extends State<WeightPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.grey),
+          icon: Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
@@ -83,7 +83,8 @@ class _WeightPageState extends State<WeightPage> {
   _myText() {
     return Text(
       "How much is your weight?",
-      style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+      style: TextStyle(
+          fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
     );
   }
 
@@ -126,20 +127,20 @@ class _WeightPageState extends State<WeightPage> {
       children: [
         NumberPicker(
           selectedTextStyle: TextStyle(color: Colors.red, fontSize: 20.0),
+          textStyle: TextStyle(fontSize: 14.0, color: Colors.white),
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: Colors.grey,
+                color: Color(0xFFC4FB6D),
                 width: 3.0,
               ),
               bottom: BorderSide(
-                color: Colors.grey,
+                color: Color(0xFFC4FB6D),
                 width: 3.0,
               ),
             ),
           ),
           value: _currentValue,
-          textStyle: TextStyle(fontSize: 14.0),
           minValue: 30,
           maxValue: 200,
           onChanged: (value) => setState(() => _currentValue = value),
@@ -148,7 +149,7 @@ class _WeightPageState extends State<WeightPage> {
           margin: EdgeInsets.only(left: 12.0),
           child: Text(
             "kg",
-            style: TextStyle(fontSize: 16.0),
+            style: TextStyle(fontSize: 16.0, color: Colors.white),
           ),
         )
       ],

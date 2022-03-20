@@ -33,7 +33,7 @@ class _AgePageState extends State<AgePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.grey),
+          icon: Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
@@ -50,7 +50,10 @@ class _AgePageState extends State<AgePage> {
               ),
               Text(
                 "How old are you?",
-                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 15,
@@ -112,16 +115,17 @@ class _AgePageState extends State<AgePage> {
   _pickerBody() {
     return NumberPicker(
       selectedTextStyle: TextStyle(color: Colors.red, fontSize: 20.0),
+      textStyle: TextStyle(color: Colors.white),
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
             //                   <--- left side
-            color: Colors.grey,
+            color: Color(0xFFC4FB6D),
             width: 3.0,
           ),
           bottom: BorderSide(
             //                    <--- top side
-            color: Colors.grey,
+            color: Color(0xFFC4FB6D),
             width: 3.0,
           ),
         ),

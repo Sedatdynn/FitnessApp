@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.grey),
+          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.transparent,
@@ -63,7 +63,6 @@ class _LoginPageState extends State<LoginPage> {
     return Flexible(
         child: Container(
       decoration: const BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -97,6 +96,7 @@ class _LoginPageState extends State<LoginPage> {
 
   TextField _emailTextfield() {
     return TextField(
+      style: TextStyle(color: Colors.white),
       controller: _emailController,
       cursorColor: Colors.black,
       keyboardType: TextInputType.emailAddress,
@@ -106,6 +106,7 @@ class _LoginPageState extends State<LoginPage> {
             color: Colors.red.shade900,
           ),
           hintText: 'Email',
+          hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -117,9 +118,10 @@ class _LoginPageState extends State<LoginPage> {
 
   TextField _passwordTextfield() {
     return TextField(
+      style: TextStyle(color: Colors.white),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
-      cursorColor: Colors.black,
+      cursorColor: Colors.white,
       decoration: InputDecoration(
         suffixIcon: InkWell(
           onTap: () {
@@ -149,6 +151,7 @@ class _LoginPageState extends State<LoginPage> {
           color: Colors.red.shade900,
         ),
         hintText: "Password",
+        hintStyle: TextStyle(color: Colors.white),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.grey.shade200,
@@ -249,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       child: Text(
         "Forgot password?",
-        style: TextStyle(color: Colors.grey, fontSize: 16.0),
+        style: TextStyle(color: Colors.white, fontSize: 16.0),
       ),
     );
   }

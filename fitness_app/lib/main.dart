@@ -8,11 +8,10 @@ import 'views/launch/launch_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-      overlays: [SystemUiOverlay.top]);
 
   runApp(const MyApp());
 }
@@ -39,7 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       color: Colors.white,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.red),
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+        scaffoldBackgroundColor: Color(
+          (0xFF19282F),
+        ),
+      ),
       home: LaunchPage(),
     );
   }
