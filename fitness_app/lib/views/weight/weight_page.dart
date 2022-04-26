@@ -1,11 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, unused_field
-
-import 'package:fistness_app_firebase/src/texts.dart';
-import 'package:fistness_app_firebase/views/home/home_page.dart';
-import 'package:fistness_app_firebase/views/login/login_page.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:numberpicker/numberpicker.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class WeightPage extends StatefulWidget {
   final String? username;
@@ -73,16 +67,17 @@ class _WeightPageState extends State<WeightPage> {
   }
 
   _logoBody() {
+    String image_path = "assets/logo.png";
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset(image_path),
       alignment: Alignment.center,
     );
   }
 
   _myText() {
     return Text(
-      "How much is your weight?",
+      questionsText.weightText,
       style: TextStyle(
           fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
     );
@@ -113,7 +108,7 @@ class _WeightPageState extends State<WeightPage> {
               registerUser();
             }
           },
-          child: Text('Next',
+          child: Text(myText.nextText,
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
@@ -148,7 +143,7 @@ class _WeightPageState extends State<WeightPage> {
         Container(
           margin: EdgeInsets.only(left: 12.0),
           child: Text(
-            "kg",
+            registerText.kgText,
             style: TextStyle(fontSize: 16.0, color: Colors.white),
           ),
         )
@@ -177,14 +172,14 @@ class _WeightPageState extends State<WeightPage> {
                 widget.height!,
                 _currentValue.toString())
             .then((value) {
-          _warningToast(myText.registerSuccesfully);
+          _warningToast(registerText.registerSuccesfully);
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => LoginPage()),
               (route) => false);
         }).catchError((error) {
           if (error.toString().contains("email-already-in-use")) {
-            _warningToast(myText.registerUniqueMail);
+            _warningToast(warningText.registerUniqueMail);
           }
         }).whenComplete(() {
           setState(() {
@@ -193,11 +188,11 @@ class _WeightPageState extends State<WeightPage> {
         });
       } catch (e) {
         if (e.toString().contains("email-already-in-use")) {
-          _warningToast(myText.registerUniqueMail);
+          _warningToast(warningText.registerUniqueMail);
         }
       }
     } else {
-      _warningToast(myText.errorText);
+      _warningToast(warningText.errorText);
     }
   }
 
@@ -213,7 +208,7 @@ class _WeightPageState extends State<WeightPage> {
         _currentValue.toString());
 
     if (user) {
-      _warningToast(myText.registerSuccesfully);
+      _warningToast(registerText.registerSuccesfully);
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),

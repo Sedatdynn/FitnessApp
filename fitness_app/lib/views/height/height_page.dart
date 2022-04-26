@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:fistness_app_firebase/views/weight/weight_page.dart';
-import 'package:flutter/material.dart';
-import 'package:numberpicker/numberpicker.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class HeightPage extends StatefulWidget {
   final String? username;
@@ -65,16 +63,17 @@ class _HeightPageState extends State<HeightPage> {
   }
 
   _logoBody() {
+    String image_path = "assets/logo.png";
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset(image_path),
       alignment: Alignment.center,
     );
   }
 
   _myText() {
     return Text(
-      "How much is your length?",
+      questionsText.heightText,
       style: TextStyle(
           fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
     );
@@ -110,7 +109,7 @@ class _HeightPageState extends State<HeightPage> {
                       )),
             );
           },
-          child: Text('Next',
+          child: Text(myText.nextText,
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
@@ -145,7 +144,7 @@ class _HeightPageState extends State<HeightPage> {
         Container(
           margin: EdgeInsets.only(left: 12.0),
           child: Text(
-            "cm",
+            registerText.cmText,
             style: TextStyle(fontSize: 16.0, color: Colors.white),
           ),
         )

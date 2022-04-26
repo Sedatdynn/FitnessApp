@@ -1,11 +1,7 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:fistness_app_firebase/const/loading_page.dart';
-import 'package:fistness_app_firebase/views/forgotPassword/forgot_password.dart';
-import 'package:fistness_app_firebase/views/home/home_page.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -105,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
             Icons.mail,
             color: Colors.red.shade900,
           ),
-          hintText: 'Email',
+          hintText: registerText.emailText,
           hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
@@ -150,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
           Icons.vpn_key,
           color: Colors.red.shade900,
         ),
-        hintText: "Password",
+        hintText: registerText.passwordText,
         hintStyle: TextStyle(color: Colors.white),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -169,9 +165,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _logoBody() {
+    String image_path = "assets/logo.png";
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset(image_path),
       alignment: Alignment.center,
     );
   }
@@ -191,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
           onPressed: _logInWithEmail,
-          child: Text('Contiune',
+          child: Text(myText.contiuneText,
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
@@ -213,13 +210,13 @@ class _LoginPageState extends State<LoginPage> {
             (route) => false);
       }).catchError((error) async {
         if (error.toString().contains('invalid-email')) {
-          await _warningToast(myText.loginWrongEmailText);
+          await _warningToast(warningText.loginWrongEmailText);
         } else if (error.toString().contains('user-not-found')) {
-          await _warningToast(myText.loginNoAccountText);
+          await _warningToast(warningText.loginNoAccountText);
         } else if (error.toString().contains('wrong-password')) {
-          await _warningToast(myText.loginWrongPasswordText);
+          await _warningToast(warningText.loginWrongPasswordText);
         } else {
-          await _warningToast(myText.errorText);
+          await _warningToast(warningText.errorText);
         }
       }).whenComplete(() async {
         setState(() {
@@ -227,7 +224,7 @@ class _LoginPageState extends State<LoginPage> {
         });
       });
     } else {
-      _warningToast(myText.errorText);
+      _warningToast(warningText.errorText);
     }
   }
 
@@ -251,7 +248,7 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
       child: Text(
-        "Forgot password?",
+        questionsText.forgotPassText,
         style: TextStyle(color: Colors.white, fontSize: 16.0),
       ),
     );

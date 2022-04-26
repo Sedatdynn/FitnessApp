@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'firebase_options.dart';
-import 'views/launch/launch_page.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +8,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   runApp(const MyApp());
 }
 

@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, sized_box_for_whitespace, use_full_hex_values_for_flutter_colors
 
-import 'package:fistness_app_firebase/views/launch/launch_page.dart';
-import 'package:fistness_app_firebase/views/profile/profile_page.dart';
-import 'package:flutter/material.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({
@@ -18,6 +16,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    String image_url =
+        "https://image.shutterstock.com/image-vector/vector-illustration-bodybuilder-muscular-arm-260nw-1464554840.jpg";
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -155,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       padding: EdgeInsets.fromLTRB(16.0, 16.0, 20.0, 16.0),
                       child: Text(
-                        "Good Morning Sedat Dayan ",
+                        myText.homeWelcomeText,
                         style: TextStyle(color: Colors.white, fontSize: 20.0),
                         textAlign: TextAlign.start,
                       ),
@@ -169,8 +170,7 @@ class _HomePageState extends State<HomePage> {
                                 tag: 0,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10.0),
-                                  child: Image.network(
-                                      "https://image.shutterstock.com/image-vector/vector-illustration-bodybuilder-muscular-arm-260nw-1464554840.jpg",
+                                  child: Image.network(image_url,
                                       fit: BoxFit.cover,
                                       height: 70.0,
                                       width: 70.0),
@@ -252,6 +252,7 @@ class _HomePageState extends State<HomePage> {
                         shrinkWrap: true,
                         itemCount: 4,
                         itemBuilder: (context, i) {
+                          String image_path = "assets/exercise.png";
                           return Column(
                             children: [
                               Row(
@@ -292,8 +293,7 @@ class _HomePageState extends State<HomePage> {
                                             borderRadius: BorderRadius.only(
                                                 topLeft: Radius.circular(50)),
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/exercise.png"),
+                                              image: AssetImage(image_path),
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -304,7 +304,7 @@ class _HomePageState extends State<HomePage> {
                                         Align(
                                           alignment: Alignment.bottomCenter,
                                           child: Text(
-                                            "Exercises",
+                                            myText.exerciseText,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 color: Colors.white),
@@ -347,8 +347,7 @@ class _HomePageState extends State<HomePage> {
                                             borderRadius: BorderRadius.only(
                                                 topRight: Radius.circular(50)),
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/exercise.png"),
+                                              image: AssetImage(image_path),
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -359,7 +358,7 @@ class _HomePageState extends State<HomePage> {
                                         Align(
                                           alignment: Alignment.bottomCenter,
                                           child: Text(
-                                            "Exercises",
+                                            myText.exerciseText,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 color: Colors.white),
@@ -382,17 +381,17 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: Colors.white,
         selectedItemColor: Colors.grey,
         backgroundColor: Colors.black,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
               color: Color(0xFFC4FB6D),
             ),
-            label: 'Home',
+            label: myText.bnFirstText,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search, color: Color(0xFFC4FB6D)),
-            label: 'Search',
+            label: myText.bnSecondText,
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
@@ -400,7 +399,7 @@ class _HomePageState extends State<HomePage> {
               Icons.account_circle,
               color: Color(0xFFC4FB6D),
             ),
-            label: 'Profile',
+            label: myText.bnThirdText,
           ),
         ],
       ),

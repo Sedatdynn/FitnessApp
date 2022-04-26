@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, unused_field, empty_statements
 
-import 'package:fistness_app_firebase/services/auth_service.dart';
-import 'package:fistness_app_firebase/views/age/age_page.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fistness_app_firebase/src/texts.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class GenderPage extends StatefulWidget {
   final String? username;
@@ -84,7 +82,7 @@ class _GenderPageState extends State<GenderPage> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
-                "Woman",
+                registerText.womanText,
                 style: TextStyle(
                     fontSize: 16.0,
                     color: isSelected[0] == false
@@ -104,7 +102,7 @@ class _GenderPageState extends State<GenderPage> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
-                "Man",
+                registerText.manText,
                 style: TextStyle(
                     fontSize: 16.0,
                     color: isSelected[0] == true ? Colors.white : Colors.blue),
@@ -131,9 +129,10 @@ class _GenderPageState extends State<GenderPage> {
   }
 
   _logoBody() {
+    String image_path = "assets/logo.png";
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset(image_path),
       alignment: Alignment.center,
     );
   }
@@ -153,7 +152,7 @@ class _GenderPageState extends State<GenderPage> {
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
           onPressed: _registerOnTap,
-          child: Text('Contiune',
+          child: Text(myText.contiuneText,
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
@@ -162,7 +161,7 @@ class _GenderPageState extends State<GenderPage> {
 
   _myText() {
     return Text(
-      "What is your sex?",
+      questionsText.sexText,
       style: TextStyle(
           fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
     );
@@ -186,7 +185,7 @@ class _GenderPageState extends State<GenderPage> {
                     gender: choiceControl().toString(),
                   )));
     } else {
-      _warningToast("You should choice your sex!");
+      _warningToast(warningText.sexWarningText);
     }
   }
 
@@ -203,9 +202,9 @@ class _GenderPageState extends State<GenderPage> {
 
   choiceControl() {
     if (isSelected[0] == true) {
-      choice = "Woman";
+      choice = registerText.womanText;
     } else {
-      choice = "Man";
+      choice = registerText.manText;
     }
     return choice;
   }

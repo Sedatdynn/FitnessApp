@@ -1,9 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, avoid_print, dead_code, sized_box_for_whitespace, prefer_const_constructors_in_immutables
 
-import 'package:fistness_app_firebase/views/buttons/launch_page_buttons.dart';
-import 'package:fistness_app_firebase/views/login/login_page.dart';
-import 'package:fistness_app_firebase/views/register/register_page.dart';
-import 'package:flutter/material.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPage extends StatefulWidget {
   LaunchPage({
@@ -20,6 +17,7 @@ class _LaunchPageState extends State<LaunchPage> {
     double mediaQueryHeight = MediaQuery.of(context).size.height;
     double mediaQueryWidth = MediaQuery.of(context).size.width;
 
+    String image_path = "assets/logo.png";
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -30,7 +28,7 @@ class _LaunchPageState extends State<LaunchPage> {
               margin: EdgeInsets.only(top: 120, bottom: 10),
               decoration: BoxDecoration(),
               height: 200,
-              child: Image.asset('assets/logo.png'),
+              child: Image.asset(image_path),
               alignment: Alignment.center,
             ),
             SizedBox(
@@ -38,7 +36,7 @@ class _LaunchPageState extends State<LaunchPage> {
             ),
             Center(
               child: Text(
-                "Fitness Is The Key",
+                myText.fitText,
                 style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
@@ -73,7 +71,7 @@ class _LaunchPageState extends State<LaunchPage> {
                       label: Align(
                         alignment: Alignment.center,
                         child: Text(
-                          'Sign in with Email ',
+                          registerText.signEmailText,
                           style: TextStyle(color: Colors.white, fontSize: 16.0),
                         ),
                       ),
@@ -88,7 +86,7 @@ class _LaunchPageState extends State<LaunchPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 45.0),
               child: Text(
-                "Or log in with: ",
+                registerText.orLogText,
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.white, fontSize: 16.0),
               ),
@@ -108,7 +106,7 @@ class _LaunchPageState extends State<LaunchPage> {
                 children: [
                   Expanded(child: Container()),
                   Text(
-                    "Don't you have an account?",
+                    questionsText.accountText,
                     style: TextStyle(color: Colors.white, fontSize: 14.0),
                   ),
                   SizedBox(
@@ -122,7 +120,7 @@ class _LaunchPageState extends State<LaunchPage> {
                       );
                     },
                     child: Text(
-                      "Create Account",
+                      registerText.createText,
                       style:
                           TextStyle(color: Colors.red.shade900, fontSize: 14.0),
                     ),

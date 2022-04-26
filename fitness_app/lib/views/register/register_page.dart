@@ -1,12 +1,6 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
-import 'package:fistness_app_firebase/services/auth_service.dart';
-import 'package:fistness_app_firebase/views/buttons/launch_page_buttons.dart';
-import 'package:fistness_app_firebase/views/registerName/register_name.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:fistness_app_firebase/src/texts.dart';
-import 'package:email_validator/email_validator.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -108,7 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Icons.account_circle,
             color: Colors.red.shade900,
           ),
-          hintText: 'User name',
+          hintText: myText.usernameText,
           hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
@@ -130,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Icons.mail,
             color: Colors.red.shade900,
           ),
-          hintText: 'Email',
+          hintText: registerText.emailText,
           hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
@@ -175,7 +169,7 @@ class _RegisterPageState extends State<RegisterPage> {
           Icons.vpn_key,
           color: Colors.red.shade900,
         ),
-        hintText: "Password",
+        hintText: registerText.passwordText,
         hintStyle: TextStyle(color: Colors.white),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -197,16 +191,17 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
       child: Text(
-        "Or Sign-Up with: ",
+        registerText.orSignText,
         style: TextStyle(color: Colors.white, fontSize: 14.0),
       ),
     );
   }
 
   _logoBody() {
+    String image_path = "assets/logo.png";
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset(image_path),
       alignment: Alignment.center,
     );
   }
@@ -226,7 +221,7 @@ class _RegisterPageState extends State<RegisterPage> {
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
           onPressed: _registerOnTap,
-          child: Text('Contiune',
+          child: Text(myText.contiuneText,
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
@@ -253,15 +248,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     password: _passwordController.text,
                   )));
     } else if (_usernameController.text.isEmpty) {
-      _warningToast(myText.registerEmptyUsername);
+      _warningToast(warningText.registerEmptyUsername);
     } else if (_emailController.text.toString().isEmpty) {
-      _warningToast(myText.registerEmptyEmail);
+      _warningToast(warningText.registerEmptyEmail);
     } else if (_passwordController.text.toString().isEmpty) {
-      _warningToast(myText.registerUnvalidPassword);
+      _warningToast(warningText.registerUnvalidPassword);
     } else if (_passwordController.text.length < 6) {
-      _warningToast(myText.registerUnvalidPassword);
+      _warningToast(warningText.registerUnvalidPassword);
     } else {
-      _warningToast(myText.registerUnvalidEmail);
+      _warningToast(warningText.loginWrongEmailText);
     }
   }
 

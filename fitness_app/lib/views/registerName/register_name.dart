@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:fistness_app_firebase/views/gender/gender.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class RegisterNamePage extends StatefulWidget {
   final String? username;
@@ -59,7 +57,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
         height: mediaQuery.height * 0.09,
         width: mediaQuery.width * 0.87,
         child: Text(
-          "Your Name?",
+          questionsText.nameText,
           style: TextStyle(
               fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
         ));
@@ -72,7 +70,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-            hintText: 'Your Name?',
+            hintText: questionsText.nameText,
             hintStyle: TextStyle(color: Colors.white),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey.shade200),
@@ -95,7 +93,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
           onPressed: _registerOnTap,
-          child: Text('Next'),
+          child: Text(myText.nextText),
         ),
       ),
     );
@@ -118,7 +116,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
                     name: _nameController.text,
                   )));
     } else {
-      _warningToast("You should enter your name! ");
+      _warningToast(warningText.nameWarningText);
     }
   }
 

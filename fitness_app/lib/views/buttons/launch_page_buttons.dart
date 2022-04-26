@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors, invalid_return_type_for_catch_error
 
-import 'package:fistness_app_firebase/src/texts.dart';
-import 'package:fistness_app_firebase/views/home/home_page.dart';
-import 'package:fistness_app_firebase/views/registerName/register_name.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {
   const LaunchPageButtons({
@@ -20,6 +16,8 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
 
   @override
   Widget build(BuildContext context) {
+    String image_path = "assets/google.png";
+    String face_image_path = "assets/facebook.png";
     return !isLoading
         ? Center(
             child: SizedBox(
@@ -33,14 +31,14 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: Image.asset(
-                        'assets/google.png',
+                        image_path,
                         height: 27,
                       ),
                       onPressed: () {
                         loginWithGoogle();
                       },
                       label: Text(
-                        " Google ",
+                        registerText.googleText,
                         style: TextStyle(
                             color: Colors.grey.shade600,
                             fontWeight: FontWeight.bold),
@@ -60,12 +58,12 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: Image.asset(
-                        'assets/facebook.png',
+                        face_image_path,
                         height: 23,
                       ),
                       onPressed: () {},
                       label: Text(
-                        "Facebook",
+                        registerText.faceText,
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),

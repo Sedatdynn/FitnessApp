@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:fistness_app_firebase/views/height/height_page.dart';
-import 'package:flutter/material.dart';
-import 'package:numberpicker/numberpicker.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class AgePage extends StatefulWidget {
   final String? username;
@@ -49,7 +47,7 @@ class _AgePageState extends State<AgePage> {
                 height: MediaQuery.of(context).size.height / 17,
               ),
               Text(
-                "How old are you?",
+                questionsText.ageText,
                 style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w500,
@@ -69,9 +67,10 @@ class _AgePageState extends State<AgePage> {
   }
 
   _logoBody() {
+    String image_path = 'assets/logo.png';
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset(image_path),
       alignment: Alignment.center,
     );
   }
@@ -105,7 +104,7 @@ class _AgePageState extends State<AgePage> {
                       )),
             );
           },
-          child: Text('Contiune',
+          child: Text(myText.contiuneText,
               style: TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:flutter/material.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -92,7 +92,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Icons.mail,
             color: Colors.red.shade900,
           ),
-          hintText: 'Email',
+          hintText: registerText.emailText,
           hintStyle: TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
@@ -104,9 +104,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   }
 
   _logoBody() {
+    String image_path = "assets/logo.png";
     return Container(
       height: 200,
-      child: Image.asset('assets/logo.png'),
+      child: Image.asset(image_path),
       alignment: Alignment.center,
     );
   }
@@ -126,7 +127,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
           onPressed: () {},
-          child: Text('Verify Email',
+          child: Text(registerText.verifyEmailText,
               style: TextStyle(color: Colors.white, fontSize: 18.0)),
         ),
       ),
@@ -138,7 +139,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       children: [
         Center(
           child: Text(
-            "Forgot Your Password?",
+            questionsText.forgotPassText,
             style: TextStyle(
                 color: Colors.grey, fontSize: 24, fontWeight: FontWeight.bold),
           ),
@@ -147,7 +148,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           height: 10,
         ),
         Text(
-          "Enter the Email address associated with your account",
+          registerText.emailAssociated,
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 18.0, fontWeight: FontWeight.w500, color: Colors.white),

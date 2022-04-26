@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables
 
-import 'package:fistness_app_firebase/views/launch/launch_page.dart';
-import 'package:flutter/material.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -216,9 +215,10 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildProfileImage() {
+    String image_path =
+        "https://avatars.githubusercontent.com/u/70951966?s=400&u=38f9ccae5707c0e357afed6f02ff02f2d563c58c&v=4";
     return CircleAvatar(
-      backgroundImage: NetworkImage(
-          "https://avatars.githubusercontent.com/u/70951966?s=400&u=38f9ccae5707c0e357afed6f02ff02f2d563c58c&v=4"),
+      backgroundImage: NetworkImage(image_path),
       radius: 60,
     );
   }
