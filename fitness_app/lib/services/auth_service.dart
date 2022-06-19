@@ -11,13 +11,15 @@ class AuthService {
 
   Future<User?> signInWithEmail(String email, String password) async {
     var user = await _auth.signInWithEmailAndPassword(
-        email: email, password: password);
+        email: email.trim(), password: password);
 
     return user.user;
   }
 
   Future signOut() async {
-    await _google.disconnect();
+    if (_google.currentUser.toString().length < 5) {
+      _google.disconnect();
+    }
     await _auth.signOut();
   }
 

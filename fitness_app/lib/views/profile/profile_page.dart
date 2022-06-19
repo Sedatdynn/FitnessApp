@@ -194,7 +194,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             subtitle: Text("Have a good day"),
                             textColor: Colors.white,
                           ),
-                          onTap: () {
+                          onTap: () async {
+                            await myText.authService.signOut();
                             Navigator.push(
                                 context,
                                 (MaterialPageRoute(
