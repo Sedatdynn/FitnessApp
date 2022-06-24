@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:fistness_app_firebase/services/auth_service.dart';
+import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class myText {
   static final AuthService authService = AuthService();
@@ -60,4 +61,13 @@ class warningText {
       "Password must be at least 6 character";
   static String registerUniqueMail =
       "Mail is already in use! Please register with difference mail ";
+}
+
+class allColors {
+  static Color gradColor1 = Color(0xFF19282F);
+  static Color gradColor2 = Color(0xFF3d444e);
+  static Color gradColor3 = Color(0xFF2c2f37);
+  static Color gradColor4 = Color(0xFF000000);
+  static Color gradColor5 = Color(0xFF2a2d32);
+  static Color gradColor6 = Color(0xFF4b4f5b);
 }

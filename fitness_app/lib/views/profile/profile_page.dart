@@ -15,21 +15,21 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
               offset: Offset(5, 1),
               blurRadius: 20,
-              color: const Color(0xFF19282F),
+              color: Color(0xFF19282F),
             )
           ],
           gradient: LinearGradient(
               colors: [
-                const Color(0xFF3d444e),
-                const Color(0xFF2c2f37),
+                Color(0xFF3d444e),
+                Color(0xFF2c2f37),
               ],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(1.0, 1.0),
+              begin: FractionalOffset(0.0, 0.0),
+              end: FractionalOffset(1.0, 1.0),
               stops: [0.0, 1.0],
               tileMode: TileMode.clamp),
         ),
