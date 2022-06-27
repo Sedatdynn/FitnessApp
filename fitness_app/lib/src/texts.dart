@@ -9,7 +9,7 @@ class myText {
   static String bnFirstText = "Home";
   static String bnSecondText = "Search";
   static String bnThirdText = "Profile";
-  static String homeWelcomeText = "Good Morning Sedat Dayan ";
+  static String homeWelcomeText = "Good Morning ";
   static String contiuneText = "Contiune";
   static String nextText = "Next";
   static String exerciseText = "Exercises";

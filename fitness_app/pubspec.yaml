@@ -29,7 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  syncfusion_flutter_gauges: ^20.1.60  
+  
+  syncfusion_flutter_gauges: ^20.1.61
 
   numberpicker: ^2.1.1
   font_awesome_flutter: ^10.1.0

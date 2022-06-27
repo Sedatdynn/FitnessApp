@@ -2,11 +2,20 @@
 
 import 'package:fistness_app_firebase/const/const_container.dart';
 import 'package:fistness_app_firebase/const/const_deco.dart';
+import 'package:fistness_app_firebase/views/bmi/bmi_gauge.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'bmi_page_child.dart';
+import 'row_value.dart';
 
 class BmiCalculater extends StatefulWidget {
-  const BmiCalculater({Key? key}) : super(key: key);
+  String user_height;
+  String user_weight;
+
+  BmiCalculater({
+    Key? key,
+    required this.user_height,
+    required this.user_weight,
+  }) : super(key: key);
 
   @override
   State<BmiCalculater> createState() => _BmiCalculaterState();
@@ -66,15 +75,39 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                 context,
                 width / 2.4,
                 150,
-                bmi_column_body(width: width),
+                bmi_column_body(
+                  width: width,
+                  user_height: widget.user_height,
+                  user_weight: widget.user_weight,
+                ),
                 allColors.gradColor1.withOpacity(0.5),
                 allColors.gradColor5,
                 allColors.gradColor6,
                 EdgeInsets.all(0),
-                EdgeInsets.symmetric(vertical: 18))
+                EdgeInsets.symmetric(vertical: 18)),
+            topBox(
+                context,
+                width / 1.16,
+                50,
+                RowValues("BMI Result : ",
+                    BmiCalculate(widget.user_height, widget.user_weight)),
+                allColors.gradColor1,
+                allColors.gradColor1,
+                allColors.gradColor4,
+                EdgeInsets.fromLTRB(25, 10, 25, 10),
+                EdgeInsets.all(8)),
+            bmiGauge1(
+                context, BmiCalculate(widget.user_height, widget.user_weight))
           ],
         ),
       ),
     );
+  }
+
+  String BmiCalculate(dynamic length, dynamic weight) {
+    double finalresult =
+        int.parse(weight) / (int.parse(length) * int.parse(length) / 10000);
+    String bmi = finalresult.toStringAsFixed(2);
+    return bmi;
   }
 }

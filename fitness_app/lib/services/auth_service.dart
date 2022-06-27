@@ -23,6 +23,13 @@ class AuthService {
     await _auth.signOut();
   }
 
+  Future<DocumentSnapshot> fetchCurrentUserDoc() async {
+    return await _firestore
+        .collection('Users')
+        .doc(_auth.currentUser!.uid)
+        .get();
+  }
+
   Future<bool?> createPerson(
       String username,
       String email,
