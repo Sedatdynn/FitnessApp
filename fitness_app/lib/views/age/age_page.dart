@@ -31,11 +31,11 @@ class _AgePageState extends State<AgePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 5.0),

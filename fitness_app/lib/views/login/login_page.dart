@@ -24,11 +24,11 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Color(0xFFC4FB6D)),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
       ),
       body: _body(context),
     );

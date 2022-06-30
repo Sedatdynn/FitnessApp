@@ -38,7 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
         scaffoldBackgroundColor: Color(
           (0xFF19282F),
         ),
-      ),
+      ).copyWith(
+          appBarTheme: AppBarTheme(
+              color: Colors.transparent,
+              elevation: 0,
+              iconTheme: IconThemeData(color: Color(0xFFC4FB6D)))),
       home: LaunchPage(),
     );
   }
