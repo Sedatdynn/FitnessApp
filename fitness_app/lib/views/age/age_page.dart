@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:fistness_app_firebase/const/const_appbar.dart';
-import 'package:fistness_app_firebase/const/const_logo_body.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+import '../../const/const_shelf.dart';
 
 class AgePage extends StatefulWidget {
   final String? username;
@@ -32,19 +29,19 @@ class _AgePageState extends State<AgePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(),
+      appBar: const CommonAppBar(),
       body: Padding(
         padding: context.minLtrb,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              LogoBody(),
+              const LogoBody(),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 17,
               ),
               Text(
-                questionsText.ageText,
-                style: TextStyle(
+                QuestionsText.ageText,
+                style: const TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
@@ -91,8 +88,8 @@ class _AgePageState extends State<AgePage> {
                       )),
             );
           },
-          child: Text(myText.contiuneText,
-              style: TextStyle(color: Colors.white, fontSize: 16.0)),
+          child: Text(MyText.contiuneText,
+              style: const TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
     );
@@ -100,9 +97,9 @@ class _AgePageState extends State<AgePage> {
 
   _pickerBody() {
     return NumberPicker(
-      selectedTextStyle: TextStyle(color: Colors.red, fontSize: 20.0),
-      textStyle: TextStyle(color: Colors.white),
-      decoration: BoxDecoration(
+      selectedTextStyle: const TextStyle(color: Colors.red, fontSize: 20.0),
+      textStyle: const TextStyle(color: Colors.white),
+      decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(
             //                   <--- left side

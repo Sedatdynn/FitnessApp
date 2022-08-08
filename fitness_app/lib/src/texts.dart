@@ -1,8 +1,6 @@
-// ignore_for_file: camel_case_types
-
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
-class myText {
+class MyText {
   static final AuthService authService = AuthService();
   static String usernameText = "User name";
   static String bnFirstText = "Home";
@@ -13,10 +11,10 @@ class myText {
   static String nextText = "Next";
   static String exerciseText = "Exercises";
   static String fitText = "Fitness Is The Key";
-  myText._();
+  MyText._();
 }
 
-class registerText {
+class RegisterText {
   static String registerSuccesfully =
       "Your registration has been completed successfully.";
   static String signEmailText = 'Sign in with Email ';
@@ -36,7 +34,7 @@ class registerText {
   static String passwordText = "Password";
 }
 
-class questionsText {
+class QuestionsText {
   static String sexText = "What is your sex?";
   static String ageText = "How old are you?";
   static String heightText = "How much is your length?";
@@ -46,7 +44,7 @@ class questionsText {
   static String weightText = "How much is your weight?";
 }
 
-class warningText {
+class WarningText {
   static String registerEmptyUsername = "Username can't be empty";
   static String registerEmptyEmail = "Mail can't be emoty";
   static String registerEmptyPassword = "Password can't be empty";
@@ -62,7 +60,7 @@ class warningText {
       "Mail is already in use! Please register with difference mail ";
 }
 
-class allColors {
+class AllColors {
   static Color gradColor1 = const Color(0xFF19282F);
   static Color gradColor2 = const Color(0xFF3d444e);
   static Color gradColor3 = const Color(0xFF2c2f37);

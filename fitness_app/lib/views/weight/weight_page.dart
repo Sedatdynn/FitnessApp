@@ -1,8 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new, unused_field
-import 'package:fistness_app_firebase/const/const_appbar.dart';
-import 'package:fistness_app_firebase/const/const_button.dart';
-import 'package:fistness_app_firebase/const/const_text.dart';
-import 'package:fistness_app_firebase/const/const_logo_body.dart';
+import 'package:fistness_app_firebase/const/const_shelf.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -35,29 +31,29 @@ class WeightPage extends StatefulWidget {
 class _WeightPageState extends State<WeightPage> {
   int _currentValue = 65;
 
-  bool _isLoading = false;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(),
+      appBar: const CommonAppBar(),
       body: Padding(
         padding: context.minLtrb,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              LogoBody(),
+              const LogoBody(),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 17,
               ),
-              ConstText(text: questionsText.weightText),
+              ConstText(text: QuestionsText.weightText),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 10,
               ),
               _pickerBody(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               CommonButton(
-                text: myText.nextText,
+                text: MyText.nextText,
                 onPressed: _tryAndCatch,
               ),
             ],
@@ -85,9 +81,9 @@ class _WeightPageState extends State<WeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle: TextStyle(color: Colors.red, fontSize: 20.0),
-          textStyle: TextStyle(fontSize: 14.0, color: Colors.white),
-          decoration: BoxDecoration(
+          selectedTextStyle: const TextStyle(color: Colors.red, fontSize: 20.0),
+          textStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
+          decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
                 color: Color(0xFFC4FB6D),
@@ -107,8 +103,8 @@ class _WeightPageState extends State<WeightPage> {
         Container(
           margin: context.midLeft,
           child: Text(
-            registerText.kgText,
-            style: TextStyle(fontSize: 16.0, color: Colors.white),
+            RegisterText.kgText,
+            style: const TextStyle(fontSize: 16.0, color: Colors.white),
           ),
         )
       ],
@@ -120,11 +116,11 @@ class _WeightPageState extends State<WeightPage> {
         widget.mail.toString().isNotEmpty &&
         widget.password.toString().isNotEmpty) {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
 
       try {
-        myText.authService
+        MyText.authService
             .createPersonEmail(
                 widget.username!,
                 widget.mail!,
@@ -136,32 +132,32 @@ class _WeightPageState extends State<WeightPage> {
                 widget.height!,
                 _currentValue.toString())
             .then((value) {
-          _warningToast(registerText.registerSuccesfully);
+          _warningToast(RegisterText.registerSuccesfully);
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => LoginPage()),
+              MaterialPageRoute(builder: (context) => const LoginPage()),
               (route) => false);
         }).catchError((error) {
           if (error.toString().contains("email-already-in-use")) {
-            _warningToast(warningText.registerUniqueMail);
+            _warningToast(WarningText.registerUniqueMail);
           }
         }).whenComplete(() {
           setState(() {
-            _isLoading = false;
+            isLoading = false;
           });
         });
       } catch (e) {
         if (e.toString().contains("email-already-in-use")) {
-          _warningToast(warningText.registerUniqueMail);
+          _warningToast(WarningText.registerUniqueMail);
         }
       }
     } else {
-      _warningToast(warningText.errorText);
+      _warningToast(WarningText.errorText);
     }
   }
 
   void registerUser() async {
-    dynamic user = await myText.authService.createPerson(
+    dynamic user = await MyText.authService.createPerson(
         widget.username!,
         widget.mail!,
         widget.uid,
@@ -172,10 +168,10 @@ class _WeightPageState extends State<WeightPage> {
         _currentValue.toString());
 
     if (user) {
-      _warningToast(registerText.registerSuccesfully);
+      _warningToast(RegisterText.registerSuccesfully);
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => const HomePage()),
           (route) => false);
     }
   }

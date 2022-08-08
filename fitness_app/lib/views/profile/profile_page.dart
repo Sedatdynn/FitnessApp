@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables
-
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -46,24 +44,24 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           offset: Offset(5, 1),
                           blurRadius: 20,
-                          color: const Color(0xFF19282F),
+                          color: Color(0xFF19282F),
                         )
                       ],
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                           colors: [
-                            const Color(0xFF19282F),
-                            const Color(0xFF000000),
+                            Color(0xFF19282F),
+                            Color(0xFF000000),
                           ],
-                          begin: const FractionalOffset(0.0, 0.0),
-                          end: const FractionalOffset(1.0, 1.0),
+                          begin: FractionalOffset(0.0, 0.0),
+                          end: FractionalOffset(1.0, 1.0),
                           stops: [0.0, 1.0],
                           tileMode: TileMode.clamp),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_back_ios,
                       color: Color(0xFFC4FB6D),
                     ),
@@ -82,24 +80,24 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           offset: Offset(5, 1),
                           blurRadius: 20,
-                          color: const Color(0xFF19282F),
+                          color: Color(0xFF19282F),
                         )
                       ],
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                           colors: [
-                            const Color(0xFF19282F),
-                            const Color(0xFF000000),
+                            Color(0xFF19282F),
+                            Color(0xFF000000),
                           ],
-                          begin: const FractionalOffset(0.0, 0.0),
-                          end: const FractionalOffset(1.0, 1.0),
+                          begin: FractionalOffset(0.0, 0.0),
+                          end: FractionalOffset(1.0, 1.0),
                           stops: [0.0, 1.0],
                           tileMode: TileMode.clamp),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.receipt_outlined,
                       color: Color(0xFFC4FB6D),
                     ),
@@ -108,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Navigator.push(
                         context,
                         (MaterialPageRoute(
-                          builder: (context) => LaunchPage(),
+                          builder: (context) => const LaunchPage(),
                         )));
                   },
                 ),
@@ -116,7 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Container(
               alignment: Alignment.center,
-              child: Text(
+              child: const Text(
                 "Sedat Dayan",
                 style: TextStyle(
                     fontSize: 24,
@@ -127,24 +125,24 @@ class _ProfilePageState extends State<ProfilePage> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                       offset: Offset(5, 1),
                       blurRadius: 20,
                       color: Color(0xFF0B0B0C))
                 ],
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                     colors: [
-                      const Color(0xFF19282F),
-                      const Color(0xFF000000),
+                      Color(0xFF19282F),
+                      Color(0xFF000000),
                     ],
-                    begin: const FractionalOffset(0.0, 0.0),
-                    end: const FractionalOffset(1.0, 1.0),
+                    begin: FractionalOffset(0.0, 0.0),
+                    end: FractionalOffset(1.0, 1.0),
                     stops: [0.0, 1.0],
                     tileMode: TileMode.clamp),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
             Column(
@@ -156,19 +154,19 @@ class _ProfilePageState extends State<ProfilePage> {
                       tiles: [
                         ListTile(
                           contentPadding: context.symVertPadding,
-                          leading:
-                              Icon(Icons.my_location, color: Color(0xFFC4FB6D)),
-                          title: Text("Location"),
-                          subtitle: Text("TR"),
+                          leading: const Icon(Icons.my_location,
+                              color: Color(0xFFC4FB6D)),
+                          title: const Text("Location"),
+                          subtitle: const Text("TR"),
                           textColor: Colors.white,
                         ),
-                        ListTile(
+                        const ListTile(
                           leading: Icon(Icons.email, color: Color(0xFFC4FB6D)),
                           title: Text("Email"),
                           subtitle: Text("dayan.sedat1998@gmail.com"),
                           textColor: Colors.white,
                         ),
-                        ListTile(
+                        const ListTile(
                           leading: Icon(
                             Icons.phone,
                             color: Color(0xFFC4FB6D),
@@ -177,7 +175,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           subtitle: Text("533--*4*--4**9"),
                           textColor: Colors.white,
                         ),
-                        ListTile(
+                        const ListTile(
                           leading: Icon(
                             Icons.update,
                             color: Color(0xFFC4FB6D),
@@ -187,7 +185,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           textColor: Colors.white,
                         ),
                         GestureDetector(
-                          child: ListTile(
+                          child: const ListTile(
                             leading:
                                 Icon(Icons.logout, color: Color(0xFFC4FB6D)),
                             title: Text("Logout"),
@@ -195,11 +193,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             textColor: Colors.white,
                           ),
                           onTap: () async {
-                            await myText.authService.signOut();
+                            await MyText.authService.signOut();
                             Navigator.push(
                                 context,
                                 (MaterialPageRoute(
-                                  builder: (context) => LaunchPage(),
+                                  builder: (context) => const LaunchPage(),
                                 )));
                           },
                         ),
@@ -216,10 +214,10 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildProfileImage() {
-    String image_path =
+    String imagePath =
         "https://avatars.githubusercontent.com/u/70951966?s=400&u=38f9ccae5707c0e357afed6f02ff02f2d563c58c&v=4";
     return CircleAvatar(
-      backgroundImage: NetworkImage(image_path),
+      backgroundImage: NetworkImage(imagePath),
       radius: 60,
     );
   }

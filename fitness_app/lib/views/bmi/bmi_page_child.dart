@@ -1,22 +1,23 @@
-import 'package:fistness_app_firebase/const/const_container.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/bmi/row_value.dart';
 import 'package:flutter/material.dart';
 
-class bmi_column_body extends StatelessWidget {
-  bmi_column_body(
+import '../../const/const_shelf.dart';
+
+class BmiColumnBody extends StatelessWidget {
+  BmiColumnBody(
       {Key? key,
       required this.width,
-      required this.user_height,
-      required this.user_weight})
+      required this.userHeight,
+      required this.userWeight})
       : super(
           key: key,
         );
 
   final double width;
-  String user_height;
-  String user_weight;
+  String userHeight;
+  String userWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +34,10 @@ class bmi_column_body extends StatelessWidget {
                   context,
                   width / 1.16,
                   50,
-                  RowValues("Height", "$user_height"),
-                  allColors.gradColor1,
-                  allColors.gradColor1,
-                  allColors.gradColor4,
+                  rowValues("Height", userHeight),
+                  AllColors.gradColor1,
+                  AllColors.gradColor1,
+                  AllColors.gradColor4,
                   context.midLargeLtrb,
                   context.zeroAllPadding),
             ],
@@ -52,10 +53,10 @@ class bmi_column_body extends StatelessWidget {
                   context,
                   width / 1.16,
                   50,
-                  RowValues("Weight", "$user_weight"),
-                  allColors.gradColor1,
-                  allColors.gradColor1,
-                  allColors.gradColor4,
+                  rowValues("Weight", userWeight),
+                  AllColors.gradColor1,
+                  AllColors.gradColor1,
+                  AllColors.gradColor4,
                   context.midLargeLtrb,
                   context.zeroAllPadding),
             ],

@@ -1,8 +1,5 @@
-// ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
+import 'package:fistness_app_firebase/const/const_shelf.dart';
 
-import 'package:fistness_app_firebase/const/const_appbar.dart';
-import 'package:fistness_app_firebase/const/const_button.dart';
-import 'package:fistness_app_firebase/const/const_logo_body.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -19,13 +16,13 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool _isVisible = true;
-  bool _isLoading = false;
-  final AuthService _authService = AuthService();
+  bool isLoading = false;
+  final AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(),
+      appBar: const CommonAppBar(),
       body: _body(context),
     );
   }
@@ -61,8 +58,8 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              LogoBody(),
-              SizedBox(
+              const LogoBody(),
+              const SizedBox(
                 height: 40,
               ),
               _usernameTextfield(),
@@ -74,15 +71,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 20,
               ),
               _passwordTextfield(),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               _orText(),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               CommonButton(
-                  text: myText.contiuneText, onPressed: _registerOnTap),
+                  text: MyText.contiuneText, onPressed: _registerOnTap),
             ],
           ),
         ),
@@ -92,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _usernameTextfield() {
     return TextField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       textInputAction: TextInputAction.next,
       controller: _usernameController,
       cursorColor: Colors.white,
@@ -101,8 +98,8 @@ class _RegisterPageState extends State<RegisterPage> {
             Icons.account_circle,
             color: Colors.red.shade900,
           ),
-          hintText: myText.usernameText,
-          hintStyle: TextStyle(color: Colors.white),
+          hintText: MyText.usernameText,
+          hintStyle: const TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -115,7 +112,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextField _emailTextfield() {
     return TextField(
       textInputAction: TextInputAction.next,
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       controller: _emailController,
       cursorColor: Colors.white,
       keyboardType: TextInputType.emailAddress,
@@ -124,8 +121,8 @@ class _RegisterPageState extends State<RegisterPage> {
             Icons.mail,
             color: Colors.red.shade900,
           ),
-          hintText: registerText.emailText,
-          hintStyle: TextStyle(color: Colors.white),
+          hintText: RegisterText.emailText,
+          hintStyle: const TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -137,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _passwordTextfield() {
     return TextField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
       cursorColor: Colors.white,
@@ -169,8 +166,8 @@ class _RegisterPageState extends State<RegisterPage> {
           Icons.vpn_key,
           color: Colors.red.shade900,
         ),
-        hintText: registerText.passwordText,
-        hintStyle: TextStyle(color: Colors.white),
+        hintText: RegisterText.passwordText,
+        hintStyle: const TextStyle(color: Colors.white),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.grey.shade200,
@@ -191,8 +188,8 @@ class _RegisterPageState extends State<RegisterPage> {
     return Padding(
       padding: context.minLeft,
       child: Text(
-        registerText.orSignText,
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
+        RegisterText.orSignText,
+        style: const TextStyle(color: Colors.white, fontSize: 14.0),
       ),
     );
   }
@@ -205,7 +202,7 @@ class _RegisterPageState extends State<RegisterPage> {
         _passwordController.text.isNotEmpty &&
         _passwordController.text.length >= 6) {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
 
       Navigator.push(
@@ -217,15 +214,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     password: _passwordController.text,
                   )));
     } else if (_usernameController.text.isEmpty) {
-      _warningToast(warningText.registerEmptyUsername);
+      _warningToast(WarningText.registerEmptyUsername);
     } else if (_emailController.text.toString().isEmpty) {
-      _warningToast(warningText.registerEmptyEmail);
+      _warningToast(WarningText.registerEmptyEmail);
     } else if (_passwordController.text.toString().isEmpty) {
-      _warningToast(warningText.registerUnvalidPassword);
+      _warningToast(WarningText.registerUnvalidPassword);
     } else if (_passwordController.text.length < 6) {
-      _warningToast(warningText.registerUnvalidPassword);
+      _warningToast(WarningText.registerUnvalidPassword);
     } else {
-      _warningToast(warningText.loginWrongEmailText);
+      _warningToast(WarningText.loginWrongEmailText);
     }
   }
 

@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, sized_box_for_whitespace, use_full_hex_values_for_flutter_colors
-
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({
+  const HomePage({
     Key? key,
   }) : super(key: key);
 
@@ -18,32 +16,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    String image_url =
+    const String imageUrl =
         "https://image.shutterstock.com/image-vector/vector-illustration-bodybuilder-muscular-arm-260nw-1464554840.jpg";
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
               offset: Offset(5, 1),
               blurRadius: 20,
-              color: const Color(0xFF19282F),
+              color: Color(0xFF19282F),
             )
           ],
           gradient: LinearGradient(
               colors: [
-                const Color(0xFF3d444e),
-                const Color(0xFF2c2f37),
+                Color(0xFF3d444e),
+                Color(0xFF2c2f37),
               ],
-              begin: const FractionalOffset(0.0, 0.0),
-              end: const FractionalOffset(1.0, 1.0),
+              begin: FractionalOffset(0.0, 0.0),
+              end: FractionalOffset(1.0, 1.0),
               stops: [0.0, 1.0],
               tileMode: TileMode.clamp),
         ),
         padding: context.midVerticalPadding,
         child: FutureBuilder(
-            future: myText.authService.fetchCurrentUserDoc(),
+            future: MyText.authService.fetchCurrentUserDoc(),
             builder: (context, AsyncSnapshot<dynamic> snapshot) {
               if (snapshot.connectionState != ConnectionState.waiting) {
                 if (snapshot.hasData) {
@@ -59,24 +57,24 @@ class _HomePageState extends State<HomePage> {
                                 width: 50,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: [
+                                  boxShadow: const [
                                     BoxShadow(
                                       offset: Offset(5, 1),
                                       blurRadius: 20,
-                                      color: const Color(0xFF19282F),
+                                      color: Color(0xFF19282F),
                                     )
                                   ],
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                       colors: [
-                                        const Color(0xFF19282F),
-                                        const Color(0xFF000000),
+                                        Color(0xFF19282F),
+                                        Color(0xFF000000),
                                       ],
-                                      begin: const FractionalOffset(0.0, 0.0),
-                                      end: const FractionalOffset(1.0, 1.0),
+                                      begin: FractionalOffset(0.0, 0.0),
+                                      end: FractionalOffset(1.0, 1.0),
                                       stops: [0.0, 1.0],
                                       tileMode: TileMode.clamp),
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.receipt_outlined,
                                   color: Color(0xFFC4FB6D),
                                 ),
@@ -85,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                     context,
                                     (MaterialPageRoute(
-                                      builder: (context) => LaunchPage(),
+                                      builder: (context) => const LaunchPage(),
                                     )));
                               },
                             ),
@@ -96,24 +94,24 @@ class _HomePageState extends State<HomePage> {
                                 width: 50,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
-                                  color: Color(0xFF19282F),
-                                  boxShadow: [
+                                  color: const Color(0xFF19282F),
+                                  boxShadow: const [
                                     BoxShadow(
                                         offset: Offset(5, 1),
                                         blurRadius: 20,
                                         color: Color(0xFF0B0B0C))
                                   ],
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                       colors: [
-                                        const Color(0xFF19282F),
-                                        const Color(0xFF000000),
+                                        Color(0xFF19282F),
+                                        Color(0xFF000000),
                                       ],
-                                      begin: const FractionalOffset(0.0, 0.0),
-                                      end: const FractionalOffset(1.0, 1.0),
+                                      begin: FractionalOffset(0.0, 0.0),
+                                      end: FractionalOffset(1.0, 1.0),
                                       stops: [0.0, 1.0],
                                       tileMode: TileMode.clamp),
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.account_box,
                                   color: Color(0xFFC4FB6D),
                                 ),
@@ -122,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                     context,
                                     (MaterialPageRoute(
-                                      builder: (context) => ProfilePage(),
+                                      builder: (context) => const ProfilePage(),
                                     )));
                               },
                             )
@@ -133,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                           margin: context.midAllPadding,
                           height: height / 3.5,
                           width: width,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(80.0),
                                 topLeft: Radius.circular(10.0),
@@ -143,16 +141,15 @@ class _HomePageState extends State<HomePage> {
                               BoxShadow(
                                 offset: Offset(5, 1),
                                 blurRadius: 20,
-                                color: const Color(0xFF19282F),
+                                color: Color(0xFF19282F),
                               )
                             ],
                             gradient: LinearGradient(
                                 colors: [
-                                  const Color(0xFF2a2d32),
-                                  const Color(0xFF4b4f5b),
+                                  Color(0xFF2a2d32),
+                                  Color(0xFF4b4f5b),
                                 ],
-                                begin: const FractionalOffset(0.0, 0.0),
-                                end: const FractionalOffset(1.0, 1.0),
+                                begin: FractionalOffset(0.0, 0.0),
                                 stops: [0.0, 1.0],
                                 tileMode: TileMode.clamp),
                           ),
@@ -163,9 +160,9 @@ class _HomePageState extends State<HomePage> {
                               Container(
                                 padding: context.largeLtrb,
                                 child: Text(
-                                  myText.homeWelcomeText +
+                                  MyText.homeWelcomeText +
                                       snapshot.data["username"],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20.0),
                                   textAlign: TextAlign.start,
                                 ),
@@ -181,32 +178,32 @@ class _HomePageState extends State<HomePage> {
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
-                                            child: Image.network(image_url,
+                                            child: Image.network(imageUrl,
                                                 fit: BoxFit.cover,
                                                 height: 70.0,
                                                 width: 70.0),
                                           )),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
-                                      Text("25",
+                                      const Text("25",
                                           style: TextStyle(
                                             color: Colors.white,
                                           )),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
-                                      Text("Normal",
+                                      const Text("Normal",
                                           style: TextStyle(
                                             color: Colors.white,
                                           )),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Column(
-                                    children: [
+                                    children: const [
                                       Text("Kg: 85",
                                           style: TextStyle(
                                             color: Colors.white,
@@ -236,15 +233,15 @@ class _HomePageState extends State<HomePage> {
                                     padding: context.riBottom,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(24.0),
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           offset: Offset(1, 2),
                                           blurRadius: 10,
-                                          color: const Color(0xFF19282F),
+                                          color: Color(0xFF19282F),
                                         )
                                       ],
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.settings,
                                       size: 35,
                                       color: Color(0xFFC4FB6D),
@@ -259,11 +256,11 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Expanded(
                               child: ListView.builder(
-                                  physics: ScrollPhysics(),
+                                  physics: const ScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount: 4,
                                   itemBuilder: (context, i) {
-                                    String image_path = "assets/exercise.png";
+                                    String imagePath = "assets/exercise.png";
                                     return Column(
                                       children: [
                                         Row(
@@ -277,10 +274,10 @@ class _HomePageState extends State<HomePage> {
                                                     (MaterialPageRoute(
                                                         builder: (context) =>
                                                             BmiCalculater(
-                                                              user_height:
+                                                              userHeight:
                                                                   snapshot.data[
                                                                       "length"],
-                                                              user_weight:
+                                                              userWeight:
                                                                   snapshot.data[
                                                                       "weight"],
                                                             ))));
@@ -291,21 +288,22 @@ class _HomePageState extends State<HomePage> {
                                                 height: 200,
                                                 width: width / 2.4,
                                                 decoration: BoxDecoration(
-                                                  gradient: LinearGradient(
-                                                      colors: [
-                                                        const Color(0xFF2a2d32),
-                                                        const Color(0xFF4b4f5b),
-                                                      ],
-                                                      begin:
-                                                          const FractionalOffset(
-                                                              0.0, 0.0),
-                                                      end:
-                                                          const FractionalOffset(
+                                                  gradient:
+                                                      const LinearGradient(
+                                                          colors: [
+                                                            Color(0xFF2a2d32),
+                                                            Color(0xFF4b4f5b),
+                                                          ],
+                                                          begin:
+                                                              FractionalOffset(
+                                                                  0.0, 0.0),
+                                                          end: FractionalOffset(
                                                               1.0, 1.0),
-                                                      stops: [0.0, 1.0],
-                                                      tileMode: TileMode.clamp),
+                                                          stops: [0.0, 1.0],
+                                                          tileMode:
+                                                              TileMode.clamp),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                           topLeft:
                                                               Radius.circular(
                                                                   16),
@@ -317,8 +315,8 @@ class _HomePageState extends State<HomePage> {
                                                         color: const Color(
                                                                 0xFF19282F)
                                                             .withOpacity(0.5),
-                                                        offset:
-                                                            Offset(10, 10.0),
+                                                        offset: const Offset(
+                                                            10, 10.0),
                                                         blurRadius: 3)
                                                   ],
                                                 ),
@@ -328,26 +326,27 @@ class _HomePageState extends State<HomePage> {
                                                       height: 150,
                                                       decoration: BoxDecoration(
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius
+                                                                    .only(
                                                                 topLeft: Radius
                                                                     .circular(
                                                                         50)),
                                                         image: DecorationImage(
                                                           image: AssetImage(
-                                                              image_path),
+                                                              imagePath),
                                                           fit: BoxFit.cover,
                                                         ),
                                                       ),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 10,
                                                     ),
                                                     Align(
                                                       alignment: Alignment
                                                           .bottomCenter,
                                                       child: Text(
-                                                        myText.exerciseText,
-                                                        style: TextStyle(
+                                                        MyText.exerciseText,
+                                                        style: const TextStyle(
                                                             fontSize: 18,
                                                             color:
                                                                 Colors.white),
@@ -363,29 +362,31 @@ class _HomePageState extends State<HomePage> {
                                               height: 200,
                                               width: width / 2.4,
                                               decoration: BoxDecoration(
-                                                gradient: LinearGradient(
+                                                gradient: const LinearGradient(
                                                     colors: [
-                                                      const Color(0xFF2a2d32),
-                                                      const Color(0xFF4b4f5b),
+                                                      Color(0xFF2a2d32),
+                                                      Color(0xFF4b4f5b),
                                                     ],
-                                                    begin:
-                                                        const FractionalOffset(
-                                                            0.0, 0.0),
-                                                    end: const FractionalOffset(
+                                                    begin: FractionalOffset(
+                                                        0.0, 0.0),
+                                                    end: FractionalOffset(
                                                         1.0, 1.0),
                                                     stops: [0.0, 1.0],
                                                     tileMode: TileMode.clamp),
-                                                borderRadius: BorderRadius.only(
-                                                    topRight:
-                                                        Radius.circular(16),
-                                                    bottomRight:
-                                                        Radius.circular(16)),
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                        topRight:
+                                                            Radius.circular(16),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                16)),
                                                 boxShadow: [
                                                   BoxShadow(
                                                       color: const Color(
                                                               0xFF19282F)
                                                           .withOpacity(0.5),
-                                                      offset: Offset(10, 10.0),
+                                                      offset: const Offset(
+                                                          10, 10.0),
                                                       blurRadius: 3)
                                                 ],
                                               ),
@@ -395,26 +396,27 @@ class _HomePageState extends State<HomePage> {
                                                     height: 150,
                                                     decoration: BoxDecoration(
                                                       borderRadius:
-                                                          BorderRadius.only(
+                                                          const BorderRadius
+                                                                  .only(
                                                               topRight: Radius
                                                                   .circular(
                                                                       50)),
                                                       image: DecorationImage(
                                                         image: AssetImage(
-                                                            image_path),
+                                                            imagePath),
                                                         fit: BoxFit.cover,
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 10,
                                                   ),
                                                   Align(
                                                     alignment:
                                                         Alignment.bottomCenter,
                                                     child: Text(
-                                                      myText.exerciseText,
-                                                      style: TextStyle(
+                                                      MyText.exerciseText,
+                                                      style: const TextStyle(
                                                           fontSize: 18,
                                                           color: Colors.white),
                                                     ),
@@ -432,10 +434,10 @@ class _HomePageState extends State<HomePage> {
                     ],
                   );
                 } else {
-                  return Center(child: Text("data yok"));
+                  return const Center(child: Text("data yok"));
                 }
               } else {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
             }),
       ),
@@ -445,23 +447,23 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.home,
               color: Color(0xFFC4FB6D),
             ),
-            label: myText.bnFirstText,
+            label: MyText.bnFirstText,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search, color: Color(0xFFC4FB6D)),
-            label: myText.bnSecondText,
+            icon: const Icon(Icons.search, color: Color(0xFFC4FB6D)),
+            label: MyText.bnSecondText,
             backgroundColor: Colors.red,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.account_circle,
               color: Color(0xFFC4FB6D),
             ),
-            label: myText.bnThirdText,
+            label: MyText.bnThirdText,
           ),
         ],
       ),

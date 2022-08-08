@@ -1,12 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, unused_field, empty_statements
-
-import 'package:fistness_app_firebase/const/const_appbar.dart';
-import 'package:fistness_app_firebase/const/const_button.dart';
-import 'package:fistness_app_firebase/const/const_text.dart';
-import 'package:fistness_app_firebase/const/const_logo_body.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/src/texts.dart';
+
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+
+import '../../const/const_shelf.dart';
 
 class GenderPage extends StatefulWidget {
   final String? username;
@@ -29,8 +25,8 @@ class GenderPage extends StatefulWidget {
 
 class _GenderPageState extends State<GenderPage> {
   late List<bool> isSelected;
-  bool _isLoading = false;
-  final AuthService _authService = AuthService();
+  bool isLoading = false;
+  final AuthService authService = AuthService();
   var choice = "";
 
   @override
@@ -42,19 +38,19 @@ class _GenderPageState extends State<GenderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(),
+      appBar: const CommonAppBar(),
       body: Padding(
         padding: context.minLtrb,
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
-                LogoBody(),
+                const LogoBody(),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 17,
                 ),
                 ConstText(
-                  text: questionsText.sexText,
+                  text: QuestionsText.sexText,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 15,
@@ -62,7 +58,7 @@ class _GenderPageState extends State<GenderPage> {
                 _toggleButton(),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 CommonButton(
-                  text: myText.contiuneText,
+                  text: MyText.contiuneText,
                   onPressed: _registerOnTap,
                 ),
               ],
@@ -85,7 +81,7 @@ class _GenderPageState extends State<GenderPage> {
             Padding(
               padding: context.midVerticalPadding,
               child: Text(
-                registerText.womanText,
+                RegisterText.womanText,
                 style: TextStyle(
                     fontSize: 16.0,
                     color: isSelected[0] == false
@@ -105,7 +101,7 @@ class _GenderPageState extends State<GenderPage> {
             Padding(
               padding: context.midVerticalPadding,
               child: Text(
-                registerText.manText,
+                RegisterText.manText,
                 style: TextStyle(
                     fontSize: 16.0,
                     color: isSelected[0] == true ? Colors.white : Colors.blue),
@@ -134,7 +130,7 @@ class _GenderPageState extends State<GenderPage> {
   void _registerOnTap() {
     if (isSelected.isNotEmpty) {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
 
       Navigator.push(
@@ -149,7 +145,7 @@ class _GenderPageState extends State<GenderPage> {
                     gender: choiceControl().toString(),
                   )));
     } else {
-      _warningToast(warningText.sexWarningText);
+      _warningToast(WarningText.sexWarningText);
     }
   }
 
@@ -166,9 +162,9 @@ class _GenderPageState extends State<GenderPage> {
 
   choiceControl() {
     if (isSelected[0] == true) {
-      choice = registerText.womanText;
+      choice = RegisterText.womanText;
     } else {
-      choice = registerText.manText;
+      choice = RegisterText.manText;
     }
     return choice;
   }

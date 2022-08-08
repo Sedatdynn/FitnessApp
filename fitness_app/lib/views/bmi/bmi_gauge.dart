@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -21,7 +19,8 @@ Widget bmiGauge1(BuildContext context, String deger) {
         ], annotations: <GaugeAnnotation>[
           GaugeAnnotation(
               widget: Text(deger,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.bold)),
               angle: 90,
               positionFactor: 0.5)
         ])

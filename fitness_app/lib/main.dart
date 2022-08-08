@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'firebase_options.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -35,15 +34,15 @@ class _MyHomePageState extends State<MyHomePage> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.grey,
-        scaffoldBackgroundColor: Color(
+        scaffoldBackgroundColor: const Color(
           (0xFF19282F),
         ),
       ).copyWith(
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
               color: Colors.transparent,
               elevation: 0,
               iconTheme: IconThemeData(color: Color(0xFFC4FB6D)))),
-      home: LaunchPage(),
+      home: const LaunchPage(),
     );
   }
 }

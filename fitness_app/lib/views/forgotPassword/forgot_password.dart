@@ -1,8 +1,6 @@
-// ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:fistness_app_firebase/const/const_logo_body.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+import '../../const/const_shelf.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -60,19 +58,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              LogoBody(),
-              SizedBox(
+              const LogoBody(),
+              const SizedBox(
                 height: 40,
               ),
               _forgotText(),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               _emailTextfield(),
               const SizedBox(
                 height: 20,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               myButton(),
@@ -85,7 +83,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   TextField _emailTextfield() {
     return TextField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       controller: _emailController,
       cursorColor: Colors.white,
       keyboardType: TextInputType.emailAddress,
@@ -94,8 +92,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Icons.mail,
             color: Colors.red.shade900,
           ),
-          hintText: registerText.emailText,
-          hintStyle: TextStyle(color: Colors.white),
+          hintText: RegisterText.emailText,
+          hintStyle: const TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -120,8 +118,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
           onPressed: () {},
-          child: Text(registerText.verifyEmailText,
-              style: TextStyle(color: Colors.white, fontSize: 18.0)),
+          child: Text(RegisterText.verifyEmailText,
+              style: const TextStyle(color: Colors.white, fontSize: 18.0)),
         ),
       ),
     );
@@ -132,18 +130,18 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       children: [
         Center(
           child: Text(
-            questionsText.forgotPassText,
-            style: TextStyle(
+            QuestionsText.forgotPassText,
+            style: const TextStyle(
                 color: Colors.grey, fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Text(
-          registerText.emailAssociated,
+          RegisterText.emailAssociated,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 18.0, fontWeight: FontWeight.w500, color: Colors.white),
         )
       ],

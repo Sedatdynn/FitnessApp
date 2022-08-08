@@ -1,10 +1,8 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new, avoid_print, dead_code, sized_box_for_whitespace, prefer_const_constructors_in_immutables
-
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPage extends StatefulWidget {
-  LaunchPage({
+  const LaunchPage({
     Key? key,
   }) : super(key: key);
 
@@ -18,7 +16,7 @@ class _LaunchPageState extends State<LaunchPage> {
     double mediaQueryHeight = MediaQuery.of(context).size.height;
     double mediaQueryWidth = MediaQuery.of(context).size.width;
 
-    String image_path = "assets/logo.png";
+    String imagePath = "assets/logo.png";
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -27,18 +25,18 @@ class _LaunchPageState extends State<LaunchPage> {
           children: [
             Container(
               margin: context.midTopBottom,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               height: 200,
-              child: Image.asset(image_path),
+              child: Image.asset(imagePath),
               alignment: Alignment.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Center(
               child: Text(
-                myText.fitText,
-                style: TextStyle(
+                MyText.fitText,
+                style: const TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
@@ -54,7 +52,7 @@ class _LaunchPageState extends State<LaunchPage> {
                     child: TextButton.icon(
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.red.shade900,
-                        textStyle: TextStyle(color: Colors.white),
+                        textStyle: const TextStyle(color: Colors.white),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -62,18 +60,20 @@ class _LaunchPageState extends State<LaunchPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
                         );
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.email_outlined,
                         color: Colors.white,
                       ),
                       label: Align(
                         alignment: Alignment.center,
                         child: Text(
-                          registerText.signEmailText,
-                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                          RegisterText.signEmailText,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16.0),
                         ),
                       ),
                     ),
@@ -81,22 +81,22 @@ class _LaunchPageState extends State<LaunchPage> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Padding(
               padding: context.largeHorizontalPadding,
               child: Text(
-                registerText.orLogText,
+                RegisterText.orLogText,
                 textAlign: TextAlign.left,
-                style: TextStyle(color: Colors.white, fontSize: 16.0),
+                style: const TextStyle(color: Colors.white, fontSize: 16.0),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
-            LaunchPageButtons(),
-            SizedBox(
+            const LaunchPageButtons(),
+            const SizedBox(
               height: 20.0,
             ),
             Padding(
@@ -107,21 +107,22 @@ class _LaunchPageState extends State<LaunchPage> {
                 children: [
                   Expanded(child: Container()),
                   Text(
-                    questionsText.accountText,
-                    style: TextStyle(color: Colors.white, fontSize: 14.0),
+                    QuestionsText.accountText,
+                    style: const TextStyle(color: Colors.white, fontSize: 14.0),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()),
+                        MaterialPageRoute(
+                            builder: (context) => const RegisterPage()),
                       );
                     },
                     child: Text(
-                      registerText.createText,
+                      RegisterText.createText,
                       style:
                           TextStyle(color: Colors.red.shade900, fontSize: 14.0),
                     ),

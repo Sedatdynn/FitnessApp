@@ -1,8 +1,5 @@
-// ignore_for_file: prefer_const_constructors
+import 'package:fistness_app_firebase/const/const_shelf.dart';
 
-import 'package:fistness_app_firebase/const/const_appbar.dart';
-import 'package:fistness_app_firebase/const/const_button.dart';
-import 'package:fistness_app_firebase/const/const_text.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -22,17 +19,17 @@ class RegisterNamePage extends StatefulWidget {
 
 class _RegisterNamePageState extends State<RegisterNamePage> {
   final TextEditingController _nameController = TextEditingController();
-  bool _isLoading = false;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(),
+      appBar: const CommonAppBar(),
       body: Padding(
         padding: context.xLargeLtrb,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _myText(),
+              myText(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
@@ -40,7 +37,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.3,
               ),
-              CommonButton(text: myText.nextText, onPressed: _registerOnTap)
+              CommonButton(text: MyText.nextText, onPressed: _registerOnTap)
             ],
           ),
         ),
@@ -48,25 +45,25 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
     );
   }
 
-  _myText() {
+  myText() {
     var mediaQuery = MediaQuery.of(context).size;
     return SizedBox(
         height: mediaQuery.height * 0.09,
         width: mediaQuery.width * 0.87,
         child: ConstText(
-          text: questionsText.nameText,
+          text: QuestionsText.nameText,
         ));
   }
 
   _nameField() {
     return TextField(
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
         controller: _nameController,
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-            hintText: questionsText.nameText,
-            hintStyle: TextStyle(color: Colors.white),
+            hintText: QuestionsText.nameText,
+            hintStyle: const TextStyle(color: Colors.white),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey.shade200),
                 borderRadius: BorderRadius.circular(10)),
@@ -78,7 +75,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
   void _registerOnTap() {
     if (_nameController.text.isNotEmpty) {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
 
       Navigator.push(
@@ -92,7 +89,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
                     name: _nameController.text,
                   )));
     } else {
-      _warningToast(warningText.nameWarningText);
+      _warningToast(WarningText.nameWarningText);
     }
   }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Row RowValues(String text1, String text2) {
+Row rowValues(String text1, String text2) {
   return Row(
     children: [
       Text(

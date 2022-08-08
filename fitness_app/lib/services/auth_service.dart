@@ -1,5 +1,3 @@
-// ignore_for_file: unused_field, unused_local_variable, constant_identifier_names
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -43,7 +41,7 @@ class AuthService {
     //var user = await _auth.createUserWithEmailAndPassword(
     //    email: email, password: password);
 
-    await _firestore.collection(collection_name).doc(uid).set({
+    await _firestore.collection(collectionName).doc(uid).set({
       "username": username,
       "email": email,
       "name": name,
@@ -68,7 +66,7 @@ class AuthService {
     dynamic user = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
 
-    await _firestore.collection(collection_name).doc(user.user!.uid).set({
+    await _firestore.collection(collectionName).doc(user.user!.uid).set({
       "username": username,
       "email": email,
       "name": name,
@@ -82,7 +80,7 @@ class AuthService {
 
   Future<bool> checkUid(String? uid) async {
     dynamic user =
-        await _firestore.collection(collection_name).doc(uid.toString()).get();
+        await _firestore.collection(collectionName).doc(uid.toString()).get();
     if (user.exists) {
       return true;
     } else {
@@ -102,4 +100,4 @@ class AuthService {
   }
 }
 
-const String collection_name = "Users";
+const String collectionName = "Users";

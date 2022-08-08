@@ -1,21 +1,18 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:fistness_app_firebase/const/const_container.dart';
-import 'package:fistness_app_firebase/const/const_deco.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_gauge.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+import '../../const/const_shelf.dart';
 import 'bmi_page_child.dart';
 import 'row_value.dart';
 
 class BmiCalculater extends StatefulWidget {
-  String user_height;
-  String user_weight;
+  String userHeight;
+  String userWeight;
 
   BmiCalculater({
     Key? key,
-    required this.user_height,
-    required this.user_weight,
+    required this.userHeight,
+    required this.userWeight,
   }) : super(key: key);
 
   @override
@@ -31,7 +28,7 @@ class _BmiCalculaterState extends State<BmiCalculater> {
       body: Container(
         padding: context.midAllPadding,
         decoration: commonBoxDec(
-            allColors.gradColor1, allColors.gradColor2, allColors.gradColor3),
+            AllColors.gradColor1, AllColors.gradColor2, AllColors.gradColor3),
         child: ListView(
           children: [
             Row(
@@ -43,10 +40,11 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                       context,
                       50,
                       50,
-                      Icon(Icons.arrow_back_ios_new, color: Color(0xFFC4FB6D)),
-                      allColors.gradColor1,
-                      allColors.gradColor1,
-                      allColors.gradColor4,
+                      const Icon(Icons.arrow_back_ios_new,
+                          color: Color(0xFFC4FB6D)),
+                      AllColors.gradColor1,
+                      AllColors.gradColor1,
+                      AllColors.gradColor4,
                       context.zeroAllPadding,
                       context.zeroAllPadding),
                   onTap: () {
@@ -57,14 +55,14 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                     context,
                     150,
                     50,
-                    Text(
+                    const Text(
                       "BMI Calculater",
                       style: TextStyle(color: Colors.white, fontSize: 16.0),
                       textAlign: TextAlign.center,
                     ),
-                    allColors.gradColor1,
-                    allColors.gradColor1,
-                    allColors.gradColor4,
+                    AllColors.gradColor1,
+                    AllColors.gradColor1,
+                    AllColors.gradColor4,
                     context.minMidAllPadding,
                     context.zeroAllPadding)
               ],
@@ -76,36 +74,36 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                 context,
                 width / 2.4,
                 150,
-                bmi_column_body(
+                BmiColumnBody(
                   width: width,
-                  user_height: widget.user_height,
-                  user_weight: widget.user_weight,
+                  userHeight: widget.userHeight,
+                  userWeight: widget.userWeight,
                 ),
-                allColors.gradColor1.withOpacity(0.5),
-                allColors.gradColor5,
-                allColors.gradColor6,
+                AllColors.gradColor1.withOpacity(0.5),
+                AllColors.gradColor5,
+                AllColors.gradColor6,
                 context.zeroAllPadding,
                 context.midLargeVerticalPadding),
             topBox(
                 context,
                 width / 1.16,
                 50,
-                RowValues("BMI Result : ",
-                    BmiCalculate(widget.user_height, widget.user_weight)),
-                allColors.gradColor1,
-                allColors.gradColor1,
-                allColors.gradColor4,
+                rowValues("BMI Result : ",
+                    bmiCalculate(widget.userHeight, widget.userWeight)),
+                AllColors.gradColor1,
+                AllColors.gradColor1,
+                AllColors.gradColor4,
                 context.midLargeLtrb,
                 context.midAllPadding),
             bmiGauge1(
-                context, BmiCalculate(widget.user_height, widget.user_weight))
+                context, bmiCalculate(widget.userHeight, widget.userWeight))
           ],
         ),
       ),
     );
   }
 
-  String BmiCalculate(dynamic length, dynamic weight) {
+  String bmiCalculate(dynamic length, dynamic weight) {
     double finalresult =
         int.parse(weight) / (int.parse(length) * int.parse(length) / 10000);
     String bmi = finalresult.toStringAsFixed(2);

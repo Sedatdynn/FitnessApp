@@ -1,11 +1,7 @@
-// ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:fistness_app_firebase/const/const_appbar.dart';
-import 'package:fistness_app_firebase/const/const_button.dart';
-import 'package:fistness_app_firebase/const/const_logo_body.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+
+import '../../const/const_shelf.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -21,12 +17,12 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool _isVisible = true;
-  bool _isLoading = false;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(),
+      appBar: const CommonAppBar(),
       body: _body(context),
     );
   }
@@ -47,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
-        if (_isLoading) const LoadingPage()
+        if (isLoading) const LoadingPage()
       ],
     );
   }
@@ -63,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              LogoBody(),
-              SizedBox(
+              const LogoBody(),
+              const SizedBox(
                 height: 50,
               ),
               _emailTextfield(),
@@ -72,15 +68,15 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               _passwordTextfield(),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               _forgotPassword(),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               CommonButton(
-                  text: myText.contiuneText, onPressed: _logInWithEmail),
+                  text: MyText.contiuneText, onPressed: _logInWithEmail),
             ],
           ),
         ),
@@ -90,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
 
   TextField _emailTextfield() {
     return TextField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       controller: _emailController,
       cursorColor: Colors.black,
       keyboardType: TextInputType.emailAddress,
@@ -99,8 +95,8 @@ class _LoginPageState extends State<LoginPage> {
             Icons.mail,
             color: Colors.red.shade900,
           ),
-          hintText: registerText.emailText,
-          hintStyle: TextStyle(color: Colors.white),
+          hintText: RegisterText.emailText,
+          hintStyle: const TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.shade200),
               borderRadius: BorderRadius.circular(10)),
@@ -112,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
 
   TextField _passwordTextfield() {
     return TextField(
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
       cursorColor: Colors.white,
@@ -144,8 +140,8 @@ class _LoginPageState extends State<LoginPage> {
           Icons.vpn_key,
           color: Colors.red.shade900,
         ),
-        hintText: registerText.passwordText,
-        hintStyle: TextStyle(color: Colors.white),
+        hintText: RegisterText.passwordText,
+        hintStyle: const TextStyle(color: Colors.white),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.grey.shade200,
@@ -166,32 +162,32 @@ class _LoginPageState extends State<LoginPage> {
     if (_emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
-      await myText.authService
+      await MyText.authService
           .signInWithEmail(_emailController.text, _passwordController.text)
           .then((value) async {
         await Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => const HomePage()),
             (route) => false);
       }).catchError((error) async {
         if (error.toString().contains('invalid-email')) {
-          await _warningToast(warningText.loginWrongEmailText);
+          await _warningToast(WarningText.loginWrongEmailText);
         } else if (error.toString().contains('user-not-found')) {
-          await _warningToast(warningText.loginNoAccountText);
+          await _warningToast(WarningText.loginNoAccountText);
         } else if (error.toString().contains('wrong-password')) {
-          await _warningToast(warningText.loginWrongPasswordText);
+          await _warningToast(WarningText.loginWrongPasswordText);
         } else {
-          await _warningToast(warningText.errorText);
+          await _warningToast(WarningText.errorText);
         }
       }).whenComplete(() async {
         setState(() {
-          _isLoading = false;
+          isLoading = false;
         });
       });
     } else {
-      _warningToast(warningText.errorText);
+      _warningToast(WarningText.errorText);
     }
   }
 
@@ -211,12 +207,12 @@ class _LoginPageState extends State<LoginPage> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
+          MaterialPageRoute(builder: (context) => const ForgotPasswordPage()),
         );
       },
       child: Text(
-        questionsText.forgotPassText,
-        style: TextStyle(color: Colors.white, fontSize: 16.0),
+        QuestionsText.forgotPassText,
+        style: const TextStyle(color: Colors.white, fontSize: 16.0),
       ),
     );
   }

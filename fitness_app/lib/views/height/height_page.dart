@@ -1,9 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:fistness_app_firebase/const/const_appbar.dart';
-import 'package:fistness_app_firebase/const/const_button.dart';
-import 'package:fistness_app_firebase/const/const_text.dart';
-import 'package:fistness_app_firebase/const/const_logo_body.dart';
+import 'package:fistness_app_firebase/const/const_shelf.dart';
 import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -36,18 +31,18 @@ class _HeightPageState extends State<HeightPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(),
+      appBar: const CommonAppBar(),
       body: Padding(
         padding: context.minLtrb,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              LogoBody(),
+              const LogoBody(),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 17,
               ),
               ConstText(
-                text: questionsText.heightText,
+                text: QuestionsText.heightText,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 12,
@@ -55,7 +50,7 @@ class _HeightPageState extends State<HeightPage> {
               _pickerBody(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               CommonButton(
-                text: myText.nextText,
+                text: MyText.nextText,
                 onPressed: _onPressed,
               )
             ],
@@ -88,9 +83,9 @@ class _HeightPageState extends State<HeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle: TextStyle(color: Colors.red, fontSize: 20.0),
-          textStyle: TextStyle(fontSize: 14.0, color: Colors.white),
-          decoration: BoxDecoration(
+          selectedTextStyle: const TextStyle(color: Colors.red, fontSize: 20.0),
+          textStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
+          decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
                 color: Color(0xFFC4FB6D),
@@ -110,8 +105,8 @@ class _HeightPageState extends State<HeightPage> {
         Container(
           margin: context.midLeft,
           child: Text(
-            registerText.cmText,
-            style: TextStyle(fontSize: 16.0, color: Colors.white),
+            RegisterText.cmText,
+            style: const TextStyle(fontSize: 16.0, color: Colors.white),
           ),
         )
       ],

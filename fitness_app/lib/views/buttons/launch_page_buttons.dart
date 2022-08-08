@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, invalid_return_type_for_catch_error
-
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {
@@ -16,8 +14,8 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
 
   @override
   Widget build(BuildContext context) {
-    String image_path = "assets/google.png";
-    String face_image_path = "assets/facebook.png";
+    String imagePath = "assets/google.png";
+    String faceImagePath = "assets/facebook.png";
     return !isLoading
         ? Center(
             child: SizedBox(
@@ -31,14 +29,14 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: Image.asset(
-                        image_path,
+                        imagePath,
                         height: 27,
                       ),
                       onPressed: () {
                         loginWithGoogle();
                       },
                       label: Text(
-                        registerText.googleText,
+                        RegisterText.googleText,
                         style: TextStyle(
                             color: Colors.grey.shade600,
                             fontWeight: FontWeight.bold),
@@ -50,7 +48,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                               BorderSide.none)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   SizedBox(
@@ -58,18 +56,18 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: Image.asset(
-                        face_image_path,
+                        faceImagePath,
                         height: 23,
                       ),
                       onPressed: () {},
                       label: Text(
-                        registerText.faceText,
-                        style: TextStyle(
+                        RegisterText.faceText,
+                        style: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Color(0xff4267B2)),
+                              const Color(0xff4267B2)),
                           side: MaterialStateProperty.all<BorderSide>(
                               BorderSide.none)),
                     ),
@@ -78,17 +76,17 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
               ),
             ),
           )
-        : CircularProgressIndicator();
+        : const CircularProgressIndicator();
   }
 
   loginWithGoogle() {
-    myText.authService.signInWithGoogle().then((value) async {
+    MyText.authService.signInWithGoogle().then((value) async {
       //dynamic check_email = digerFoonks(value.user!.email);
-      bool anyUid = await myText.authService.checkUid(value.user!.uid);
+      bool anyUid = await MyText.authService.checkUid(value.user!.uid);
       if (anyUid) {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => const HomePage()),
             (route) => false);
       } else {
         Navigator.pushAndRemoveUntil(

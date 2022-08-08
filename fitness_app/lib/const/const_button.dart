@@ -24,8 +24,8 @@ class CommonButton extends StatelessWidget {
             backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
           ),
           onPressed: onPressed,
-          child:
-              Text(text, style: TextStyle(color: Colors.white, fontSize: 16.0)),
+          child: Text(text,
+              style: const TextStyle(color: Colors.white, fontSize: 16.0)),
         ),
       ),
     );
