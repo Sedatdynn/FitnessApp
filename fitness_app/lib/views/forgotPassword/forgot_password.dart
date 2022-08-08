@@ -1,5 +1,7 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:fistness_app_firebase/const/const_logo_body.dart';
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -31,7 +33,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 5.0),
+          padding: context.minLargeLtrb,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,12 +55,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: context.largeAllPadding,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              _logoBody(),
+              LogoBody(),
               SizedBox(
                 height: 40,
               ),
@@ -100,15 +102,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.red.shade900),
               borderRadius: BorderRadius.circular(10))),
-    );
-  }
-
-  _logoBody() {
-    String image_path = "assets/logo.png";
-    return Container(
-      height: 200,
-      child: Image.asset(image_path),
-      alignment: Alignment.center,
     );
   }
 

@@ -1,5 +1,9 @@
 // ignore_for_file: unused_field, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
+import 'package:fistness_app_firebase/const/const_appbar.dart';
+import 'package:fistness_app_firebase/const/const_button.dart';
+import 'package:fistness_app_firebase/const/const_logo_body.dart';
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -21,14 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: CommonAppBar(),
       body: _body(context),
     );
   }
@@ -37,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 5.0),
+          padding: context.minMidLtrb,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,12 +56,12 @@ class _RegisterPageState extends State<RegisterPage> {
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 20.0),
+        padding: context.midLtrb,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _logoBody(),
+              LogoBody(),
               SizedBox(
                 height: 40,
               ),
@@ -84,7 +81,8 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 30,
               ),
-              myButton(),
+              CommonButton(
+                  text: myText.contiuneText, onPressed: _registerOnTap),
             ],
           ),
         ),
@@ -95,6 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextField _usernameTextfield() {
     return TextField(
       style: TextStyle(color: Colors.white),
+      textInputAction: TextInputAction.next,
       controller: _usernameController,
       cursorColor: Colors.white,
       decoration: InputDecoration(
@@ -115,6 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _emailTextfield() {
     return TextField(
+      textInputAction: TextInputAction.next,
       style: TextStyle(color: Colors.white),
       controller: _emailController,
       cursorColor: Colors.white,
@@ -189,41 +189,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   _orText() {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0),
+      padding: context.minLeft,
       child: Text(
         registerText.orSignText,
         style: TextStyle(color: Colors.white, fontSize: 14.0),
-      ),
-    );
-  }
-
-  _logoBody() {
-    String image_path = "assets/logo.png";
-    return Container(
-      height: 200,
-      child: Image.asset(image_path),
-      alignment: Alignment.center,
-    );
-  }
-
-  myButton() {
-    Size mediaQuery = MediaQuery.of(context).size;
-
-    return Center(
-      child: SizedBox(
-        height: mediaQuery.height * 0.06,
-        width: mediaQuery.width * 0.81,
-        child: OutlinedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
-          ),
-          onPressed: _registerOnTap,
-          child: Text(myText.contiuneText,
-              style: TextStyle(color: Colors.white, fontSize: 16.0)),
-        ),
       ),
     );
   }

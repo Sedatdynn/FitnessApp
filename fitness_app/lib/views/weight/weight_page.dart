@@ -1,4 +1,9 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, unused_field
+import 'package:fistness_app_firebase/const/const_appbar.dart';
+import 'package:fistness_app_firebase/const/const_button.dart';
+import 'package:fistness_app_firebase/const/const_text.dart';
+import 'package:fistness_app_firebase/const/const_logo_body.dart';
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class WeightPage extends StatefulWidget {
@@ -35,30 +40,26 @@ class _WeightPageState extends State<WeightPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: CommonAppBar(),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 5.0),
+        padding: context.minLtrb,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _logoBody(),
+              LogoBody(),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 17,
               ),
-              _myText(),
+              ConstText(text: questionsText.weightText),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 10,
               ),
               _pickerBody(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-              _myButton(),
+              CommonButton(
+                text: myText.nextText,
+                onPressed: _tryAndCatch,
+              ),
             ],
           ),
         ),
@@ -66,53 +67,16 @@ class _WeightPageState extends State<WeightPage> {
     );
   }
 
-  _logoBody() {
-    String image_path = "assets/logo.png";
-    return Container(
-      height: 200,
-      child: Image.asset(image_path),
-      alignment: Alignment.center,
-    );
-  }
-
-  _myText() {
-    return Text(
-      questionsText.weightText,
-      style: TextStyle(
-          fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
-    );
-  }
-
-  _myButton() {
-    Size mediaQuery = MediaQuery.of(context).size;
-
-    return Center(
-      child: SizedBox(
-        height: mediaQuery.height * 0.06,
-        width: mediaQuery.width * 0.81,
-        child: OutlinedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
-          ),
-          onPressed: () {
-            try {
-              if (widget.password!.isNotEmpty) {
-                _registerOnTap();
-              } else {
-                registerUser();
-              }
-            } catch (e) {
-              registerUser();
-            }
-          },
-          child: Text(myText.nextText,
-              style: TextStyle(color: Colors.white, fontSize: 16.0)),
-        ),
-      ),
-    );
+  void _tryAndCatch() {
+    try {
+      if (widget.password!.isNotEmpty) {
+        _registerOnTap();
+      } else {
+        registerUser();
+      }
+    } catch (e) {
+      registerUser();
+    }
   }
 
   _pickerBody() {
@@ -141,7 +105,7 @@ class _WeightPageState extends State<WeightPage> {
           onChanged: (value) => setState(() => _currentValue = value),
         ),
         Container(
-          margin: EdgeInsets.only(left: 12.0),
+          margin: context.midLeft,
           child: Text(
             registerText.kgText,
             style: TextStyle(fontSize: 16.0, color: Colors.white),

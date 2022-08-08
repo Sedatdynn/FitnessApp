@@ -2,6 +2,7 @@
 
 import 'package:fistness_app_firebase/const/const_container.dart';
 import 'package:fistness_app_firebase/const/const_deco.dart';
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_gauge.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'bmi_page_child.dart';
@@ -28,7 +29,7 @@ class _BmiCalculaterState extends State<BmiCalculater> {
 
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.all(16),
+        padding: context.midAllPadding,
         decoration: commonBoxDec(
             allColors.gradColor1, allColors.gradColor2, allColors.gradColor3),
         child: ListView(
@@ -46,8 +47,8 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                       allColors.gradColor1,
                       allColors.gradColor1,
                       allColors.gradColor4,
-                      EdgeInsets.all(0),
-                      EdgeInsets.all(0)),
+                      context.zeroAllPadding,
+                      context.zeroAllPadding),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -64,8 +65,8 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                     allColors.gradColor1,
                     allColors.gradColor1,
                     allColors.gradColor4,
-                    EdgeInsets.all(10),
-                    EdgeInsets.all(0))
+                    context.minMidAllPadding,
+                    context.zeroAllPadding)
               ],
             ),
             const SizedBox(
@@ -83,8 +84,8 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                 allColors.gradColor1.withOpacity(0.5),
                 allColors.gradColor5,
                 allColors.gradColor6,
-                EdgeInsets.all(0),
-                EdgeInsets.symmetric(vertical: 18)),
+                context.zeroAllPadding,
+                context.midLargeVerticalPadding),
             topBox(
                 context,
                 width / 1.16,
@@ -94,8 +95,8 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                 allColors.gradColor1,
                 allColors.gradColor1,
                 allColors.gradColor4,
-                EdgeInsets.fromLTRB(25, 10, 25, 10),
-                EdgeInsets.all(8)),
+                context.midLargeLtrb,
+                context.midAllPadding),
             bmiGauge1(
                 context, BmiCalculate(widget.user_height, widget.user_weight))
           ],

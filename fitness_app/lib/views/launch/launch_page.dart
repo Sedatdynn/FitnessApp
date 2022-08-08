@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, avoid_print, dead_code, sized_box_for_whitespace, prefer_const_constructors_in_immutables
 
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _LaunchPageState extends State<LaunchPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 120, bottom: 10),
+              margin: context.midTopBottom,
               decoration: BoxDecoration(),
               height: 200,
               child: Image.asset(image_path),
@@ -47,7 +48,7 @@ class _LaunchPageState extends State<LaunchPage> {
               children: [
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 70),
+                    margin: context.midTop,
                     height: mediaQueryHeight * 0.06,
                     width: mediaQueryWidth * 0.8,
                     child: TextButton.icon(
@@ -84,7 +85,7 @@ class _LaunchPageState extends State<LaunchPage> {
               height: 25,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 45.0),
+              padding: context.largeHorizontalPadding,
               child: Text(
                 registerText.orLogText,
                 textAlign: TextAlign.left,
@@ -99,7 +100,7 @@ class _LaunchPageState extends State<LaunchPage> {
               height: 20.0,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 45.0),
+              padding: context.largeHorizontalPadding,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,

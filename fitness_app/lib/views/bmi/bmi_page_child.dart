@@ -1,4 +1,5 @@
 import 'package:fistness_app_firebase/const/const_container.dart';
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/bmi/row_value.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class bmi_column_body extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: context.minAllPadding,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,13 +37,13 @@ class bmi_column_body extends StatelessWidget {
                   allColors.gradColor1,
                   allColors.gradColor1,
                   allColors.gradColor4,
-                  EdgeInsets.fromLTRB(25, 10, 25, 10),
-                  EdgeInsets.all(0)),
+                  context.midLargeLtrb,
+                  context.zeroAllPadding),
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: context.minAllPadding,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -55,8 +56,8 @@ class bmi_column_body extends StatelessWidget {
                   allColors.gradColor1,
                   allColors.gradColor1,
                   allColors.gradColor4,
-                  EdgeInsets.fromLTRB(25, 10, 25, 10),
-                  EdgeInsets.all(0)),
+                  context.midLargeLtrb,
+                  context.zeroAllPadding),
             ],
           ),
         ),

@@ -1,6 +1,5 @@
 // ignore_for_file: camel_case_types
 
-import 'package:fistness_app_firebase/services/auth_service.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class myText {
@@ -64,10 +63,10 @@ class warningText {
 }
 
 class allColors {
-  static Color gradColor1 = Color(0xFF19282F);
-  static Color gradColor2 = Color(0xFF3d444e);
-  static Color gradColor3 = Color(0xFF2c2f37);
-  static Color gradColor4 = Color(0xFF000000);
-  static Color gradColor5 = Color(0xFF2a2d32);
-  static Color gradColor6 = Color(0xFF4b4f5b);
+  static Color gradColor1 = const Color(0xFF19282F);
+  static Color gradColor2 = const Color(0xFF3d444e);
+  static Color gradColor3 = const Color(0xFF2c2f37);
+  static Color gradColor4 = const Color(0xFF000000);
+  static Color gradColor5 = const Color(0xFF2a2d32);
+  static Color gradColor6 = const Color(0xFF4b4f5b);
 }

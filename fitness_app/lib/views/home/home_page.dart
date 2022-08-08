@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, sized_box_for_whitespace, use_full_hex_values_for_flutter_colors
 
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               stops: [0.0, 1.0],
               tileMode: TileMode.clamp),
         ),
-        padding: EdgeInsets.symmetric(vertical: 16),
+        padding: context.midVerticalPadding,
         child: FutureBuilder(
             future: myText.authService.fetchCurrentUserDoc(),
             builder: (context, AsyncSnapshot<dynamic> snapshot) {
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                   return ListView(
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        padding: context.midVerticalPadding,
                         child: Row(
                           children: [
                             GestureDetector(
@@ -129,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.all(16),
+                          margin: context.midAllPadding,
                           height: height / 3.5,
                           width: width,
                           decoration: BoxDecoration(
@@ -160,8 +161,7 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                padding:
-                                    EdgeInsets.fromLTRB(16.0, 16.0, 20.0, 16.0),
+                                padding: context.largeLtrb,
                                 child: Text(
                                   myText.homeWelcomeText +
                                       snapshot.data["username"],
@@ -233,8 +233,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Expanded(child: Container()),
                                   Container(
-                                    padding: const EdgeInsets.only(
-                                        right: 10.0, bottom: 5),
+                                    padding: context.riBottom,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(24.0),
                                       boxShadow: [
@@ -287,8 +286,8 @@ class _HomePageState extends State<HomePage> {
                                                             ))));
                                               },
                                               child: Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    vertical: 18),
+                                                margin: context
+                                                    .midLargeVerticalPadding,
                                                 height: 200,
                                                 width: width / 2.4,
                                                 decoration: BoxDecoration(
@@ -359,8 +358,8 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 18),
+                                              margin: context
+                                                  .midLargeVerticalPadding,
                                               height: 200,
                                               width: width / 2.4,
                                               decoration: BoxDecoration(

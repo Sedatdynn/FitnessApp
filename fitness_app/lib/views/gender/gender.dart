@@ -1,5 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, unused_field, empty_statements
 
+import 'package:fistness_app_firebase/const/const_appbar.dart';
+import 'package:fistness_app_firebase/const/const_button.dart';
+import 'package:fistness_app_firebase/const/const_text.dart';
+import 'package:fistness_app_firebase/const/const_logo_body.dart';
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -37,31 +42,29 @@ class _GenderPageState extends State<GenderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: CommonAppBar(),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 5.0),
+        padding: context.minLtrb,
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
-                _logoBody(),
+                LogoBody(),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 17,
                 ),
-                _myText(),
+                ConstText(
+                  text: questionsText.sexText,
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 15,
                 ),
                 _toggleButton(),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                myButton(),
+                CommonButton(
+                  text: myText.contiuneText,
+                  onPressed: _registerOnTap,
+                ),
               ],
             ),
           ),
@@ -80,7 +83,7 @@ class _GenderPageState extends State<GenderPage> {
                 size: MediaQuery.of(context).size.height / 6,
                 color: isSelected[0] == false ? Colors.white : Colors.red),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: context.midVerticalPadding,
               child: Text(
                 registerText.womanText,
                 style: TextStyle(
@@ -100,7 +103,7 @@ class _GenderPageState extends State<GenderPage> {
                     ? Colors.white
                     : Colors.blue.shade900),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: context.midVerticalPadding,
               child: Text(
                 registerText.manText,
                 style: TextStyle(
@@ -125,45 +128,6 @@ class _GenderPageState extends State<GenderPage> {
         });
       },
       color: Colors.grey,
-    );
-  }
-
-  _logoBody() {
-    String image_path = "assets/logo.png";
-    return Container(
-      height: 200,
-      child: Image.asset(image_path),
-      alignment: Alignment.center,
-    );
-  }
-
-  myButton() {
-    Size mediaQuery = MediaQuery.of(context).size;
-
-    return Center(
-      child: SizedBox(
-        height: mediaQuery.height * 0.06,
-        width: mediaQuery.width * 0.81,
-        child: OutlinedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
-          ),
-          onPressed: _registerOnTap,
-          child: Text(myText.contiuneText,
-              style: TextStyle(color: Colors.white, fontSize: 16.0)),
-        ),
-      ),
-    );
-  }
-
-  _myText() {
-    return Text(
-      questionsText.sexText,
-      style: TextStyle(
-          fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
     );
   }
 

@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:fistness_app_firebase/const/const_appbar.dart';
+import 'package:fistness_app_firebase/const/const_logo_body.dart';
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class AgePage extends StatefulWidget {
@@ -29,20 +32,13 @@ class _AgePageState extends State<AgePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: CommonAppBar(),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 5.0),
+        padding: context.minLtrb,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _logoBody(),
+              LogoBody(),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 17,
               ),
@@ -63,15 +59,6 @@ class _AgePageState extends State<AgePage> {
           ),
         ),
       ),
-    );
-  }
-
-  _logoBody() {
-    String image_path = 'assets/logo.png';
-    return Container(
-      height: 200,
-      child: Image.asset(image_path),
-      alignment: Alignment.center,
     );
   }
 

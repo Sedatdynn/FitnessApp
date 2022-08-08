@@ -4,8 +4,8 @@ Row RowValues(String text1, String text2) {
   return Row(
     children: [
       Text(
-        "$text1",
-        style: TextStyle(
+        text1,
+        style: const TextStyle(
             color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),
@@ -13,8 +13,8 @@ Row RowValues(String text1, String text2) {
         child: Container(),
       ),
       Text(
-        "$text2",
-        style: TextStyle(
+        text2,
+        style: const TextStyle(
             color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),

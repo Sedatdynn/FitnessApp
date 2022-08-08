@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables
 
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: context.minMidAllPadding,
         decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -72,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 32.0, bottom: 5),
+                  padding: context.minTopBottom,
                   child: Center(child: _buildProfileImage()),
                 ),
                 GestureDetector(
@@ -154,8 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       color: Colors.red,
                       tiles: [
                         ListTile(
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                          contentPadding: context.symVertPadding,
                           leading:
                               Icon(Icons.my_location, color: Color(0xFFC4FB6D)),
                           title: Text("Location"),

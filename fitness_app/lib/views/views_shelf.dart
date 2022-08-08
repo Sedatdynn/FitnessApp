@@ -15,7 +15,7 @@ export 'package:fistness_app_firebase/views/age/age_page.dart';
 export 'package:fistness_app_firebase/views/weight/weight_page.dart';
 export 'package:fistness_app_firebase/views/launch/launch_page.dart';
 export 'package:fistness_app_firebase/views/profile/profile_page.dart';
-export 'package:fistness_app_firebase/const/loading_page.dart';
+export 'package:fistness_app_firebase/const/const_loading_page.dart';
 export 'package:fistness_app_firebase/views/forgotPassword/forgot_password.dart';
 export 'package:email_validator/email_validator.dart';
 export 'package:fistness_app_firebase/views/gender/gender.dart';

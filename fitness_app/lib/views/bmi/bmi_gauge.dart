@@ -1,11 +1,12 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:fistness_app_firebase/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 Widget bmiGauge1(BuildContext context, String deger) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 16.0),
+    padding: context.midVerticalPadding,
     child: Center(
       child: SfRadialGauge(axes: <RadialAxis>[
         RadialAxis(minimum: 0, maximum: 40, ranges: <GaugeRange>[
@@ -19,7 +20,7 @@ Widget bmiGauge1(BuildContext context, String deger) {
           NeedlePointer(value: double.parse(deger))
         ], annotations: <GaugeAnnotation>[
           GaugeAnnotation(
-              widget: Text("$deger",
+              widget: Text(deger,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
               angle: 90,
               positionFactor: 0.5)
