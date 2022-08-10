@@ -93,7 +93,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _usernameTextfield() {
     return TextField(
-      style: TextStyle(color: context.textColor),
+      style: Theme.of(context)
+          .textTheme
+          .subtitle1
+          ?.copyWith(color: context.textColor),
       textInputAction: TextInputAction.next,
       controller: _usernameController,
       cursorColor: context.textColor,
@@ -103,7 +106,6 @@ class _RegisterPageState extends State<RegisterPage> {
             color: context.mainColor,
           ),
           hintText: MyText.usernameText,
-          hintStyle: TextStyle(color: context.textColor),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: context.shadeGreyColor),
               borderRadius: BorderRadius.circular(10)),
@@ -116,7 +118,10 @@ class _RegisterPageState extends State<RegisterPage> {
   TextField _emailTextfield() {
     return TextField(
       textInputAction: TextInputAction.next,
-      style: TextStyle(color: context.textColor),
+      style: Theme.of(context)
+          .textTheme
+          .subtitle2
+          ?.copyWith(color: context.textColor),
       controller: _emailController,
       cursorColor: context.textColor,
       keyboardType: TextInputType.emailAddress,
@@ -126,7 +131,6 @@ class _RegisterPageState extends State<RegisterPage> {
             color: context.mainColor,
           ),
           hintText: RegisterText.emailText,
-          hintStyle: TextStyle(color: context.textColor),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: context.shadeGreyColor),
               borderRadius: BorderRadius.circular(10)),
@@ -138,7 +142,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _passwordTextfield() {
     return TextField(
-      style: TextStyle(color: context.textColor),
+      style: Theme.of(context)
+          .textTheme
+          .subtitle1
+          ?.copyWith(color: context.textColor),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
       cursorColor: context.textColor,
@@ -171,7 +178,6 @@ class _RegisterPageState extends State<RegisterPage> {
           color: context.mainColor,
         ),
         hintText: RegisterText.passwordText,
-        hintStyle: TextStyle(color: context.textColor),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: context.shadeGreyColor,
@@ -193,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: context.minLeft,
       child: Text(
         RegisterText.orSignText,
-        style: TextStyle(color: context.textColor, fontSize: 14.0),
+        style: Theme.of(context).textTheme.bodySmall,
       ),
     );
   }
@@ -236,7 +242,7 @@ class _RegisterPageState extends State<RegisterPage> {
         timeInSecForIosWeb: 2,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        backgroundColor: context.greenColor,
+        backgroundColor: context.mainColor,
         textColor: context.textColor,
         fontSize: 14);
   }

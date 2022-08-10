@@ -1,4 +1,5 @@
 import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'firebase_options.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        canvasColor: context.greenColor,
+        canvasColor: Colors.green,
         errorColor: const Color.fromRGBO(183, 28, 28, 1),
         primaryColor: Colors.grey,
         shadowColor: Colors.grey.shade200,
@@ -42,11 +43,34 @@ class _MyHomePageState extends State<MyHomePage> {
         scaffoldBackgroundColor: const Color(
           (0xFF19282F),
         ),
-      ).copyWith(
-          appBarTheme: const AppBarTheme(
-              color: Colors.transparent,
-              elevation: 0,
-              iconTheme: IconThemeData(color: Color(0xFFC4FB6D)))),
+        appBarTheme: const AppBarTheme(
+            color: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Color(0xFFC4FB6D))),
+        listTileTheme: const ListTileThemeData(
+          iconColor: Color(0xFFC4FB6D),
+          textColor: Colors.white,
+        ),
+        iconTheme: const IconThemeData(color: Color(0xFFC4FB6D)),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: Colors.black,
+            selectedIconTheme: IconThemeData(color: Color(0xFFC4FB6D)),
+            unselectedIconTheme: IconThemeData(color: Colors.red)),
+
+        //textTheme
+        textTheme: TextTheme(
+          subtitle1: TextStyle(
+            color: Theme.of(context).hintColor,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          subtitle2: TextStyle(
+            color: Theme.of(context).hintColor,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+        ),
+      ),
       home: const LaunchPage(),
     );
   }

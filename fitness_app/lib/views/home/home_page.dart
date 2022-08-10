@@ -77,7 +77,6 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 child: const Icon(
                                   Icons.receipt_outlined,
-                                  color: Color(0xFFC4FB6D),
                                 ),
                               ),
                               onTap: () {
@@ -114,7 +113,6 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 child: const Icon(
                                   Icons.account_box,
-                                  color: Color(0xFFC4FB6D),
                                 ),
                               ),
                               onTap: () {
@@ -245,7 +243,6 @@ class _HomePageState extends State<HomePage> {
                                     child: const Icon(
                                       Icons.settings,
                                       size: 35,
-                                      color: Color(0xFFC4FB6D),
                                     ),
                                   ),
                                 ],
@@ -446,24 +443,23 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: context.textColor,
         selectedItemColor: context.scndTxtColor,
-        backgroundColor: Colors.black,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(
               Icons.home,
-              color: Color(0xFFC4FB6D),
             ),
             label: MyText.bnFirstText,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.search, color: Color(0xFFC4FB6D)),
+            icon: const Icon(
+              Icons.search,
+            ),
             label: MyText.bnSecondText,
             backgroundColor: context.mainColor,
           ),
           BottomNavigationBarItem(
             icon: const Icon(
               Icons.account_circle,
-              color: Color(0xFFC4FB6D),
             ),
             label: MyText.bnThirdText,
           ),

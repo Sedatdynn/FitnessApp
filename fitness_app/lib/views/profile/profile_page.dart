@@ -64,7 +64,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     child: const Icon(
                       Icons.arrow_back_ios,
-                      color: Color(0xFFC4FB6D),
                     ),
                   ),
                   onTap: () {
@@ -100,7 +99,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     child: const Icon(
                       Icons.receipt_outlined,
-                      color: Color(0xFFC4FB6D),
                     ),
                   ),
                   onTap: () {
@@ -155,44 +153,40 @@ class _ProfilePageState extends State<ProfilePage> {
                       tiles: [
                         ListTile(
                           contentPadding: context.symVertPadding,
-                          leading: const Icon(Icons.my_location,
-                              color: Color(0xFFC4FB6D)),
+                          leading: const Icon(
+                            Icons.my_location,
+                          ),
                           title: const Text("Location"),
                           subtitle: const Text("TR"),
-                          textColor: context.textColor,
                         ),
-                        ListTile(
-                          leading:
-                              const Icon(Icons.email, color: Color(0xFFC4FB6D)),
-                          title: const Text("Email"),
-                          subtitle: const Text("dayan.sedat1998@gmail.com"),
-                          textColor: context.textColor,
+                        const ListTile(
+                          leading: Icon(
+                            Icons.email,
+                          ),
+                          title: Text("Email"),
+                          subtitle: Text("dayan.sedat1998@gmail.com"),
                         ),
-                        ListTile(
-                          leading: const Icon(
+                        const ListTile(
+                          leading: Icon(
                             Icons.phone,
-                            color: Color(0xFFC4FB6D),
                           ),
-                          title: const Text("Phone"),
-                          subtitle: const Text("533--*4*--4**9"),
-                          textColor: context.textColor,
+                          title: Text("Phone"),
+                          subtitle: Text("533--*4*--4**9"),
                         ),
-                        ListTile(
-                          leading: const Icon(
+                        const ListTile(
+                          leading: Icon(
                             Icons.update,
-                            color: Color(0xFFC4FB6D),
                           ),
-                          title: const Text("Update"),
-                          subtitle: const Text("Update my information"),
-                          textColor: context.textColor,
+                          title: Text("Update"),
+                          subtitle: Text("Update my information"),
                         ),
                         GestureDetector(
-                          child: ListTile(
-                            leading: const Icon(Icons.logout,
-                                color: Color(0xFFC4FB6D)),
-                            title: const Text("Logout"),
-                            subtitle: const Text("Have a good day"),
-                            textColor: context.textColor,
+                          child: const ListTile(
+                            leading: Icon(
+                              Icons.logout,
+                            ),
+                            title: Text("Logout"),
+                            subtitle: Text("Have a good day"),
                           ),
                           onTap: () async {
                             await MyText.authService.signOut();

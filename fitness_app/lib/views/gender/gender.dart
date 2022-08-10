@@ -161,7 +161,7 @@ class _GenderPageState extends State<GenderPage> {
         timeInSecForIosWeb: 2,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        backgroundColor: context.greenColor,
+        backgroundColor: context.mainColor,
         textColor: context.textColor,
         fontSize: 14);
   }
