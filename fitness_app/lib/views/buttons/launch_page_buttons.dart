@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {
@@ -38,12 +39,12 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                       label: Text(
                         RegisterText.googleText,
                         style: TextStyle(
-                            color: Colors.grey.shade600,
+                            color: context.scndTxtColor,
                             fontWeight: FontWeight.bold),
                       ),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.grey.shade200),
+                              context.shadeGreyColor),
                           side: MaterialStateProperty.all<BorderSide>(
                               BorderSide.none)),
                     ),
@@ -62,8 +63,9 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                       onPressed: () {},
                       label: Text(
                         RegisterText.faceText,
-                        style: const TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: context.textColor,
+                            fontWeight: FontWeight.bold),
                       ),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -99,7 +101,9 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     )),
             (route) => false);
       }
-    }).catchError((error) => _warningToast(error));
+    }).catchError((error) {
+      _warningToast(error);
+    });
   }
 
   Future<bool?> _warningToast(String text) async {
@@ -108,8 +112,8 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
         timeInSecForIosWeb: 2,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
+        backgroundColor: context.greenColor,
+        textColor: context.textColor,
         fontSize: 14);
   }
 }

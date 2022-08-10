@@ -1,6 +1,8 @@
-import 'package:fistness_app_firebase/const/const_shelf.dart';
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+
+import '../../core/const/const_shelf.dart';
 
 class HeightPage extends StatefulWidget {
   final String? username;
@@ -83,8 +85,9 @@ class _HeightPageState extends State<HeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle: const TextStyle(color: Colors.red, fontSize: 20.0),
-          textStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
+          selectedTextStyle:
+              TextStyle(color: context.mainColor, fontSize: 20.0),
+          textStyle: TextStyle(fontSize: 14.0, color: context.textColor),
           decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
@@ -106,7 +109,7 @@ class _HeightPageState extends State<HeightPage> {
           margin: context.midLeft,
           child: Text(
             RegisterText.cmText,
-            style: const TextStyle(fontSize: 16.0, color: Colors.white),
+            style: TextStyle(fontSize: 16.0, color: context.textColor),
           ),
         )
       ],

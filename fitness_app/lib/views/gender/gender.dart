@@ -1,8 +1,10 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
-import '../../const/const_shelf.dart';
+import '../../core/const/const_shelf.dart';
+import '../../core/service/auth_service.dart';
 
 class GenderPage extends StatefulWidget {
   final String? username;
@@ -77,7 +79,9 @@ class _GenderPageState extends State<GenderPage> {
           children: [
             Icon(Icons.male,
                 size: MediaQuery.of(context).size.height / 6,
-                color: isSelected[0] == false ? Colors.white : Colors.red),
+                color: isSelected[0] == false
+                    ? context.textColor
+                    : context.mainColor),
             Padding(
               padding: context.midVerticalPadding,
               child: Text(
@@ -85,8 +89,8 @@ class _GenderPageState extends State<GenderPage> {
                 style: TextStyle(
                     fontSize: 16.0,
                     color: isSelected[0] == false
-                        ? Colors.white
-                        : Colors.red.shade900),
+                        ? context.textColor
+                        : context.mainColor),
               ),
             )
           ],
@@ -96,7 +100,7 @@ class _GenderPageState extends State<GenderPage> {
             Icon(Icons.female,
                 size: MediaQuery.of(context).size.height / 6,
                 color: isSelected[0] == true
-                    ? Colors.white
+                    ? context.textColor
                     : Colors.blue.shade900),
             Padding(
               padding: context.midVerticalPadding,
@@ -104,7 +108,9 @@ class _GenderPageState extends State<GenderPage> {
                 RegisterText.manText,
                 style: TextStyle(
                     fontSize: 16.0,
-                    color: isSelected[0] == true ? Colors.white : Colors.blue),
+                    color: isSelected[0] == true
+                        ? context.textColor
+                        : Colors.blue),
               ),
             )
           ],
@@ -123,7 +129,7 @@ class _GenderPageState extends State<GenderPage> {
           }
         });
       },
-      color: Colors.grey,
+      color: context.scndTxtColor,
     );
   }
 
@@ -155,8 +161,8 @@ class _GenderPageState extends State<GenderPage> {
         timeInSecForIosWeb: 2,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
+        backgroundColor: context.greenColor,
+        textColor: context.textColor,
         fontSize: 14);
   }
 

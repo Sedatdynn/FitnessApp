@@ -1,4 +1,5 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -162,8 +163,8 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   MyText.homeWelcomeText +
                                       snapshot.data["username"],
-                                  style: const TextStyle(
-                                      color: Colors.white, fontSize: 20.0),
+                                  style: TextStyle(
+                                      color: context.textColor, fontSize: 20.0),
                                   textAlign: TextAlign.start,
                                 ),
                               ),
@@ -186,16 +187,16 @@ class _HomePageState extends State<HomePage> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      const Text("25",
+                                      Text("25",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: context.textColor,
                                           )),
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      const Text("Normal",
+                                      Text("Normal",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: context.textColor,
                                           )),
                                     ],
                                   ),
@@ -203,23 +204,23 @@ class _HomePageState extends State<HomePage> {
                                     width: 5,
                                   ),
                                   Column(
-                                    children: const [
+                                    children: [
                                       Text("Kg: 85",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: context.textColor,
                                           )),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 15,
                                       ),
                                       Text("Age: 22",
-                                          style:
-                                              TextStyle(color: Colors.white)),
-                                      SizedBox(
+                                          style: TextStyle(
+                                              color: context.textColor)),
+                                      const SizedBox(
                                         height: 15,
                                       ),
                                       Text("Tall: 193",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: context.textColor,
                                           )),
                                     ],
                                   )
@@ -346,10 +347,10 @@ class _HomePageState extends State<HomePage> {
                                                           .bottomCenter,
                                                       child: Text(
                                                         MyText.exerciseText,
-                                                        style: const TextStyle(
+                                                        style: TextStyle(
                                                             fontSize: 18,
-                                                            color:
-                                                                Colors.white),
+                                                            color: context
+                                                                .textColor),
                                                       ),
                                                     ),
                                                   ],
@@ -416,9 +417,10 @@ class _HomePageState extends State<HomePage> {
                                                         Alignment.bottomCenter,
                                                     child: Text(
                                                       MyText.exerciseText,
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
                                                           fontSize: 18,
-                                                          color: Colors.white),
+                                                          color: context
+                                                              .textColor),
                                                     ),
                                                   ),
                                                 ],
@@ -442,8 +444,8 @@ class _HomePageState extends State<HomePage> {
             }),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.grey,
+        unselectedItemColor: context.textColor,
+        selectedItemColor: context.scndTxtColor,
         backgroundColor: Colors.black,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -456,7 +458,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: const Icon(Icons.search, color: Color(0xFFC4FB6D)),
             label: MyText.bnSecondText,
-            backgroundColor: Colors.red,
+            backgroundColor: context.mainColor,
           ),
           BottomNavigationBarItem(
             icon: const Icon(

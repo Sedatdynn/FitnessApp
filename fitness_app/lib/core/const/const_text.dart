@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class ConstText extends StatelessWidget {
@@ -11,8 +12,10 @@ class ConstText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
-          fontSize: 24.0, fontWeight: FontWeight.w500, color: Colors.white),
+      style: TextStyle(
+          fontSize: 24.0,
+          fontWeight: FontWeight.w500,
+          color: context.textColor),
     );
   }
 }

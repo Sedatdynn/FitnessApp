@@ -1,12 +1,15 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/bmi/row_value.dart';
 import 'package:flutter/material.dart';
 
-import '../../const/const_shelf.dart';
+import '../../core/const/const_container.dart';
 
 class BmiColumnBody extends StatelessWidget {
-  BmiColumnBody(
+  final double width;
+  final String userHeight;
+  final String userWeight;
+  const BmiColumnBody(
       {Key? key,
       required this.width,
       required this.userHeight,
@@ -14,10 +17,6 @@ class BmiColumnBody extends StatelessWidget {
       : super(
           key: key,
         );
-
-  final double width;
-  String userHeight;
-  String userWeight;
 
   @override
   Widget build(BuildContext context) {

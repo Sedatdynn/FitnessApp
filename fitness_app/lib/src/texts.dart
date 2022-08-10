@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class MyText {

@@ -10,7 +10,6 @@ export 'package:fistness_app_firebase/views/home/home_page.dart';
 export 'package:fistness_app_firebase/views/registerName/register_name.dart';
 export 'package:flutter/material.dart';
 export 'package:fluttertoast/fluttertoast.dart';
-export 'package:fistness_app_firebase/services/auth_service.dart';
 export 'package:fistness_app_firebase/views/age/age_page.dart';
 export 'package:fistness_app_firebase/views/weight/weight_page.dart';
 export 'package:fistness_app_firebase/views/launch/launch_page.dart';

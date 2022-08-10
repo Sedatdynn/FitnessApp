@@ -1,4 +1,5 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPage extends StatefulWidget {
@@ -36,10 +37,10 @@ class _LaunchPageState extends State<LaunchPage> {
             Center(
               child: Text(
                 MyText.fitText,
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: context.textColor),
               ),
             ),
             Column(
@@ -51,8 +52,8 @@ class _LaunchPageState extends State<LaunchPage> {
                     width: mediaQueryWidth * 0.8,
                     child: TextButton.icon(
                       style: TextButton.styleFrom(
-                        backgroundColor: Colors.red.shade900,
-                        textStyle: const TextStyle(color: Colors.white),
+                        backgroundColor: context.mainColor,
+                        textStyle: TextStyle(color: context.textColor),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -64,16 +65,16 @@ class _LaunchPageState extends State<LaunchPage> {
                               builder: (context) => const LoginPage()),
                         );
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.email_outlined,
-                        color: Colors.white,
+                        color: context.textColor,
                       ),
                       label: Align(
                         alignment: Alignment.center,
                         child: Text(
                           RegisterText.signEmailText,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16.0),
+                          style: TextStyle(
+                              color: context.textColor, fontSize: 16.0),
                         ),
                       ),
                     ),
@@ -89,7 +90,7 @@ class _LaunchPageState extends State<LaunchPage> {
               child: Text(
                 RegisterText.orLogText,
                 textAlign: TextAlign.left,
-                style: const TextStyle(color: Colors.white, fontSize: 16.0),
+                style: TextStyle(color: context.textColor, fontSize: 16.0),
               ),
             ),
             const SizedBox(
@@ -108,7 +109,7 @@ class _LaunchPageState extends State<LaunchPage> {
                   Expanded(child: Container()),
                   Text(
                     QuestionsText.accountText,
-                    style: const TextStyle(color: Colors.white, fontSize: 14.0),
+                    style: TextStyle(color: context.textColor, fontSize: 14.0),
                   ),
                   const SizedBox(
                     width: 15,
@@ -124,7 +125,7 @@ class _LaunchPageState extends State<LaunchPage> {
                     child: Text(
                       RegisterText.createText,
                       style:
-                          TextStyle(color: Colors.red.shade900, fontSize: 14.0),
+                          TextStyle(color: context.mainColor, fontSize: 14.0),
                     ),
                   ),
                 ],

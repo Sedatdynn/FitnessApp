@@ -1,4 +1,5 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -114,12 +115,12 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Container(
               alignment: Alignment.center,
-              child: const Text(
+              child: Text(
                 "Sedat Dayan",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: context.textColor),
               ),
             ),
             Container(
@@ -150,7 +151,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Column(
                   children: <Widget>[
                     ...ListTile.divideTiles(
-                      color: Colors.red,
+                      color: context.mainColor,
                       tiles: [
                         ListTile(
                           contentPadding: context.symVertPadding,
@@ -158,39 +159,40 @@ class _ProfilePageState extends State<ProfilePage> {
                               color: Color(0xFFC4FB6D)),
                           title: const Text("Location"),
                           subtitle: const Text("TR"),
-                          textColor: Colors.white,
+                          textColor: context.textColor,
                         ),
-                        const ListTile(
-                          leading: Icon(Icons.email, color: Color(0xFFC4FB6D)),
-                          title: Text("Email"),
-                          subtitle: Text("dayan.sedat1998@gmail.com"),
-                          textColor: Colors.white,
+                        ListTile(
+                          leading:
+                              const Icon(Icons.email, color: Color(0xFFC4FB6D)),
+                          title: const Text("Email"),
+                          subtitle: const Text("dayan.sedat1998@gmail.com"),
+                          textColor: context.textColor,
                         ),
-                        const ListTile(
-                          leading: Icon(
+                        ListTile(
+                          leading: const Icon(
                             Icons.phone,
                             color: Color(0xFFC4FB6D),
                           ),
-                          title: Text("Phone"),
-                          subtitle: Text("533--*4*--4**9"),
-                          textColor: Colors.white,
+                          title: const Text("Phone"),
+                          subtitle: const Text("533--*4*--4**9"),
+                          textColor: context.textColor,
                         ),
-                        const ListTile(
-                          leading: Icon(
+                        ListTile(
+                          leading: const Icon(
                             Icons.update,
                             color: Color(0xFFC4FB6D),
                           ),
-                          title: Text("Update"),
-                          subtitle: Text("Update my information"),
-                          textColor: Colors.white,
+                          title: const Text("Update"),
+                          subtitle: const Text("Update my information"),
+                          textColor: context.textColor,
                         ),
                         GestureDetector(
-                          child: const ListTile(
-                            leading:
-                                Icon(Icons.logout, color: Color(0xFFC4FB6D)),
-                            title: Text("Logout"),
-                            subtitle: Text("Have a good day"),
-                            textColor: Colors.white,
+                          child: ListTile(
+                            leading: const Icon(Icons.logout,
+                                color: Color(0xFFC4FB6D)),
+                            title: const Text("Logout"),
+                            subtitle: const Text("Have a good day"),
+                            textColor: context.textColor,
                           ),
                           onTap: () async {
                             await MyText.authService.signOut();

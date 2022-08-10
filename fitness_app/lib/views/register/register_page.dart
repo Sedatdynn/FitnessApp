@@ -1,7 +1,11 @@
-import 'package:fistness_app_firebase/const/const_shelf.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import '../../core/const/const_shelf.dart';
+
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+
+import '../../core/service/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -89,22 +93,22 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _usernameTextfield() {
     return TextField(
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: context.textColor),
       textInputAction: TextInputAction.next,
       controller: _usernameController,
-      cursorColor: Colors.white,
+      cursorColor: context.textColor,
       decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.account_circle,
-            color: Colors.red.shade900,
+            color: context.mainColor,
           ),
           hintText: MyText.usernameText,
-          hintStyle: const TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: context.textColor),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade200),
+              borderSide: BorderSide(color: context.shadeGreyColor),
               borderRadius: BorderRadius.circular(10)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red.shade900),
+              borderSide: BorderSide(color: context.mainColor),
               borderRadius: BorderRadius.circular(10))),
     );
   }
@@ -112,32 +116,32 @@ class _RegisterPageState extends State<RegisterPage> {
   TextField _emailTextfield() {
     return TextField(
       textInputAction: TextInputAction.next,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: context.textColor),
       controller: _emailController,
-      cursorColor: Colors.white,
+      cursorColor: context.textColor,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.mail,
-            color: Colors.red.shade900,
+            color: context.mainColor,
           ),
           hintText: RegisterText.emailText,
-          hintStyle: const TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: context.textColor),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade200),
+              borderSide: BorderSide(color: context.shadeGreyColor),
               borderRadius: BorderRadius.circular(10)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red.shade900),
+              borderSide: BorderSide(color: context.mainColor),
               borderRadius: BorderRadius.circular(10))),
     );
   }
 
   TextField _passwordTextfield() {
     return TextField(
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: context.textColor),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
-      cursorColor: Colors.white,
+      cursorColor: context.textColor,
       decoration: InputDecoration(
         suffixIcon: InkWell(
           onTap: () {
@@ -155,28 +159,28 @@ class _RegisterPageState extends State<RegisterPage> {
           child: _isVisible
               ? Icon(
                   Icons.remove_red_eye,
-                  color: Colors.red.shade900,
+                  color: context.mainColor,
                 )
               : Icon(
                   Icons.remove_red_eye_outlined,
-                  color: Colors.red.shade900,
+                  color: context.mainColor,
                 ),
         ),
         prefixIcon: Icon(
           Icons.vpn_key,
-          color: Colors.red.shade900,
+          color: context.mainColor,
         ),
         hintText: RegisterText.passwordText,
-        hintStyle: const TextStyle(color: Colors.white),
+        hintStyle: TextStyle(color: context.textColor),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.grey.shade200,
+            color: context.shadeGreyColor,
           ),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.red.shade900,
+            color: context.mainColor,
           ),
           borderRadius: BorderRadius.circular(10),
         ),
@@ -189,7 +193,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: context.minLeft,
       child: Text(
         RegisterText.orSignText,
-        style: const TextStyle(color: Colors.white, fontSize: 14.0),
+        style: TextStyle(color: context.textColor, fontSize: 14.0),
       ),
     );
   }
@@ -232,8 +236,8 @@ class _RegisterPageState extends State<RegisterPage> {
         timeInSecForIosWeb: 2,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
+        backgroundColor: context.greenColor,
+        textColor: context.textColor,
         fontSize: 14);
   }
 }

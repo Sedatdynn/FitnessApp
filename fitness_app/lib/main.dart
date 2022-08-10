@@ -1,3 +1,5 @@
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+
 import 'firebase_options.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -30,10 +32,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      color: Colors.white,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        canvasColor: context.greenColor,
+        errorColor: const Color.fromRGBO(183, 28, 28, 1),
+        primaryColor: Colors.grey,
+        shadowColor: Colors.grey.shade200,
+        hintColor: Colors.white,
         scaffoldBackgroundColor: const Color(
           (0xFF19282F),
         ),

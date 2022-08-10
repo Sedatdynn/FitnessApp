@@ -1,6 +1,7 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
-import '../../const/const_shelf.dart';
+import '../../core/const/const_logo_body.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -83,22 +84,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   TextField _emailTextfield() {
     return TextField(
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: context.textColor),
       controller: _emailController,
-      cursorColor: Colors.white,
+      cursorColor: context.textColor,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-          prefixIcon: Icon(
-            Icons.mail,
-            color: Colors.red.shade900,
-          ),
+          prefixIcon: Icon(Icons.mail, color: context.mainColor),
           hintText: RegisterText.emailText,
-          hintStyle: const TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: context.textColor),
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade200),
+              borderSide: BorderSide(color: context.shadeGreyColor),
               borderRadius: BorderRadius.circular(10)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red.shade900),
+              borderSide: BorderSide(color: context.mainColor),
               borderRadius: BorderRadius.circular(10))),
     );
   }
@@ -114,12 +112,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           style: ButtonStyle(
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
+            foregroundColor:
+                MaterialStateProperty.all<Color>(context.textColor),
+            backgroundColor: MaterialStateProperty.all(context.mainColor),
           ),
           onPressed: () {},
           child: Text(RegisterText.verifyEmailText,
-              style: const TextStyle(color: Colors.white, fontSize: 18.0)),
+              style: TextStyle(color: context.textColor, fontSize: 18.0)),
         ),
       ),
     );
@@ -131,8 +130,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Center(
           child: Text(
             QuestionsText.forgotPassText,
-            style: const TextStyle(
-                color: Colors.grey, fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: context.scndTxtColor,
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(
@@ -141,8 +142,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Text(
           RegisterText.emailAssociated,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-              fontSize: 18.0, fontWeight: FontWeight.w500, color: Colors.white),
+          style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w500,
+              color: context.textColor),
         )
       ],
     );

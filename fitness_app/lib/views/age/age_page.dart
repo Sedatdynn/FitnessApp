@@ -1,6 +1,8 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
-import '../../const/const_shelf.dart';
+import '../../core/const/const_appbar.dart';
+import '../../core/const/const_logo_body.dart';
 
 class AgePage extends StatefulWidget {
   final String? username;
@@ -41,10 +43,10 @@ class _AgePageState extends State<AgePage> {
               ),
               Text(
                 QuestionsText.ageText,
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white),
+                    color: context.textColor),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 15,
@@ -70,8 +72,9 @@ class _AgePageState extends State<AgePage> {
           style: ButtonStyle(
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
+            foregroundColor:
+                MaterialStateProperty.all<Color>(context.textColor),
+            backgroundColor: MaterialStateProperty.all(context.mainColor),
           ),
           onPressed: () {
             Navigator.push(
@@ -89,7 +92,7 @@ class _AgePageState extends State<AgePage> {
             );
           },
           child: Text(MyText.contiuneText,
-              style: const TextStyle(color: Colors.white, fontSize: 16.0)),
+              style: TextStyle(color: context.textColor, fontSize: 16.0)),
         ),
       ),
     );
@@ -97,8 +100,8 @@ class _AgePageState extends State<AgePage> {
 
   _pickerBody() {
     return NumberPicker(
-      selectedTextStyle: const TextStyle(color: Colors.red, fontSize: 20.0),
-      textStyle: const TextStyle(color: Colors.white),
+      selectedTextStyle: TextStyle(color: context.mainColor, fontSize: 20.0),
+      textStyle: TextStyle(color: context.textColor),
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(

@@ -1,6 +1,8 @@
-import 'package:fistness_app_firebase/const/const_shelf.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import '../../core/const/const_shelf.dart';
+
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class RegisterNamePage extends StatefulWidget {
@@ -57,18 +59,18 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
 
   _nameField() {
     return TextField(
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(color: context.textColor),
         controller: _nameController,
-        cursorColor: Colors.white,
+        cursorColor: context.textColor,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
             hintText: QuestionsText.nameText,
-            hintStyle: const TextStyle(color: Colors.white),
+            hintStyle: TextStyle(color: context.textColor),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade200),
+                borderSide: BorderSide(color: context.shadeGreyColor),
                 borderRadius: BorderRadius.circular(10)),
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red.shade900),
+                borderSide: BorderSide(color: context.mainColor),
                 borderRadius: BorderRadius.circular(10))));
   }
 
@@ -99,8 +101,8 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
         timeInSecForIosWeb: 2,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
+        backgroundColor: context.greenColor,
+        textColor: context.textColor,
         fontSize: 14);
   }
 }

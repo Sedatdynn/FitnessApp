@@ -1,15 +1,17 @@
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_gauge.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
-import '../../const/const_shelf.dart';
+import '../../core/const/const_container.dart';
+import '../../core/const/const_deco.dart';
 import 'bmi_page_child.dart';
 import 'row_value.dart';
 
 class BmiCalculater extends StatefulWidget {
-  String userHeight;
-  String userWeight;
+  final String userHeight;
+  final String userWeight;
 
-  BmiCalculater({
+  const BmiCalculater({
     Key? key,
     required this.userHeight,
     required this.userWeight,
@@ -55,9 +57,10 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                     context,
                     150,
                     50,
-                    const Text(
+                    Text(
                       "BMI Calculater",
-                      style: TextStyle(color: Colors.white, fontSize: 16.0),
+                      style:
+                          TextStyle(color: context.textColor, fontSize: 16.0),
                       textAlign: TextAlign.center,
                     ),
                     AllColors.gradColor1,

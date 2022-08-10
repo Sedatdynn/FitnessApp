@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class LoadingPage extends StatelessWidget {
@@ -5,9 +6,9 @@ class LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: CircularProgressIndicator(
-        color: Colors.green,
+        color: context.greenColor,
       ),
     );
   }

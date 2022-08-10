@@ -1,5 +1,7 @@
-import 'package:fistness_app_firebase/const/const_shelf.dart';
-import 'package:fistness_app_firebase/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+
+import '../../core/const/const_shelf.dart';
+import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class WeightPage extends StatefulWidget {
@@ -81,8 +83,9 @@ class _WeightPageState extends State<WeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle: const TextStyle(color: Colors.red, fontSize: 20.0),
-          textStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
+          selectedTextStyle:
+              TextStyle(color: context.mainColor, fontSize: 20.0),
+          textStyle: TextStyle(fontSize: 14.0, color: context.textColor),
           decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
@@ -104,7 +107,7 @@ class _WeightPageState extends State<WeightPage> {
           margin: context.midLeft,
           child: Text(
             RegisterText.kgText,
-            style: const TextStyle(fontSize: 16.0, color: Colors.white),
+            style: TextStyle(fontSize: 16.0, color: context.textColor),
           ),
         )
       ],
@@ -132,14 +135,14 @@ class _WeightPageState extends State<WeightPage> {
                 widget.height!,
                 _currentValue.toString())
             .then((value) {
-          _warningToast(RegisterText.registerSuccesfully);
+          _warningToast(RegisterText.registerSuccesfully, context);
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const LoginPage()),
               (route) => false);
         }).catchError((error) {
           if (error.toString().contains("email-already-in-use")) {
-            _warningToast(WarningText.registerUniqueMail);
+            _warningToast(WarningText.registerUniqueMail, context);
           }
         }).whenComplete(() {
           setState(() {
@@ -148,11 +151,11 @@ class _WeightPageState extends State<WeightPage> {
         });
       } catch (e) {
         if (e.toString().contains("email-already-in-use")) {
-          _warningToast(WarningText.registerUniqueMail);
+          _warningToast(WarningText.registerUniqueMail, context);
         }
       }
     } else {
-      _warningToast(WarningText.errorText);
+      _warningToast(WarningText.errorText, context);
     }
   }
 
@@ -168,7 +171,7 @@ class _WeightPageState extends State<WeightPage> {
         _currentValue.toString());
 
     if (user) {
-      _warningToast(RegisterText.registerSuccesfully);
+      _warningToast(RegisterText.registerSuccesfully, context);
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const HomePage()),
@@ -177,13 +180,13 @@ class _WeightPageState extends State<WeightPage> {
   }
 }
 
-Future<bool?> _warningToast(String text) {
+Future<bool?> _warningToast(String text, BuildContext context) {
   return Fluttertoast.showToast(
       msg: text,
       timeInSecForIosWeb: 2,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
+      backgroundColor: context.mainColor,
+      textColor: context.textColor,
       fontSize: 14);
 }

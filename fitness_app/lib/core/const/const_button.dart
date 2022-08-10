@@ -1,8 +1,9 @@
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class CommonButton extends StatelessWidget {
   final String text;
-  final onPressed;
+  final dynamic onPressed;
   const CommonButton({
     Key? key,
     required this.text,
@@ -20,12 +21,13 @@ class CommonButton extends StatelessWidget {
           style: ButtonStyle(
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            backgroundColor: MaterialStateProperty.all(Colors.red.shade900),
+            foregroundColor:
+                MaterialStateProperty.all<Color>(context.textColor),
+            backgroundColor: MaterialStateProperty.all(context.mainColor),
           ),
           onPressed: onPressed,
           child: Text(text,
-              style: const TextStyle(color: Colors.white, fontSize: 16.0)),
+              style: TextStyle(color: context.textColor, fontSize: 16.0)),
         ),
       ),
     );
