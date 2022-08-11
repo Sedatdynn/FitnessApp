@@ -2,6 +2,8 @@ import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
+import '../../core/const/const_shelf.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -15,23 +17,10 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       body: Container(
         padding: context.minMidAllPadding,
-        decoration: const BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(5, 1),
-              blurRadius: 20,
-              color: Color(0xFF19282F),
-            )
-          ],
-          gradient: LinearGradient(
-              colors: [
-                Color(0xFF3d444e),
-                Color(0xFF2c2f37),
-              ],
-              begin: FractionalOffset(0.0, 0.0),
-              end: FractionalOffset(1.0, 1.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp),
+        decoration: commonBoxDec(
+          const Color(0xFF19282F),
+          const Color(0xFF3d444e),
+          const Color(0xFF2c2f37),
         ),
         child: ListView(
           children: [
@@ -43,24 +32,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Container(
                     height: 50,
                     width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          offset: Offset(5, 1),
-                          blurRadius: 20,
-                          color: Color(0xFF19282F),
-                        )
-                      ],
-                      gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF19282F),
-                            Color(0xFF000000),
-                          ],
-                          begin: FractionalOffset(0.0, 0.0),
-                          end: FractionalOffset(1.0, 1.0),
-                          stops: [0.0, 1.0],
-                          tileMode: TileMode.clamp),
+                    decoration: commonBoxDec(
+                      const Color(0xFF19282F),
+                      const Color(0xFF19282F),
+                      const Color(0xFF000000),
                     ),
                     child: const Icon(
                       Icons.arrow_back_ios,
@@ -78,24 +53,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Container(
                     height: 50,
                     width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      boxShadow: const [
-                        BoxShadow(
-                          offset: Offset(5, 1),
-                          blurRadius: 20,
-                          color: Color(0xFF19282F),
-                        )
-                      ],
-                      gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF19282F),
-                            Color(0xFF000000),
-                          ],
-                          begin: FractionalOffset(0.0, 0.0),
-                          end: FractionalOffset(1.0, 1.0),
-                          stops: [0.0, 1.0],
-                          tileMode: TileMode.clamp),
+                    decoration: commonBoxDec(
+                      const Color(0xFF19282F),
+                      const Color(0xFF19282F),
+                      const Color(0xFF000000),
                     ),
                     child: const Icon(
                       Icons.receipt_outlined,
@@ -119,23 +80,10 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: const [
-                  BoxShadow(
-                      offset: Offset(5, 1),
-                      blurRadius: 20,
-                      color: Color(0xFF0B0B0C))
-                ],
-                gradient: const LinearGradient(
-                    colors: [
-                      Color(0xFF19282F),
-                      Color(0xFF000000),
-                    ],
-                    begin: FractionalOffset(0.0, 0.0),
-                    end: FractionalOffset(1.0, 1.0),
-                    stops: [0.0, 1.0],
-                    tileMode: TileMode.clamp),
+              decoration: commonBoxDec(
+                const Color(0xFF0B0B0C),
+                const Color(0xFF19282F),
+                const Color(0xFF000000),
               ),
             ),
             const SizedBox(

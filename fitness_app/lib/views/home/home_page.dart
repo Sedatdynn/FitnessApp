@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
@@ -22,23 +23,10 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(5, 1),
-              blurRadius: 20,
-              color: Color(0xFF19282F),
-            )
-          ],
-          gradient: LinearGradient(
-              colors: [
-                Color(0xFF3d444e),
-                Color(0xFF2c2f37),
-              ],
-              begin: FractionalOffset(0.0, 0.0),
-              end: FractionalOffset(1.0, 1.0),
-              stops: [0.0, 1.0],
-              tileMode: TileMode.clamp),
+        decoration: commonBoxDec(
+          const Color(0xFF19282F),
+          const Color(0xFF3d444e),
+          const Color(0xFF2c2f37),
         ),
         padding: context.midVerticalPadding,
         child: FutureBuilder(
@@ -56,24 +44,10 @@ class _HomePageState extends State<HomePage> {
                               child: Container(
                                 height: 50,
                                 width: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      offset: Offset(5, 1),
-                                      blurRadius: 20,
-                                      color: Color(0xFF19282F),
-                                    )
-                                  ],
-                                  gradient: const LinearGradient(
-                                      colors: [
-                                        Color(0xFF19282F),
-                                        Color(0xFF000000),
-                                      ],
-                                      begin: FractionalOffset(0.0, 0.0),
-                                      end: FractionalOffset(1.0, 1.0),
-                                      stops: [0.0, 1.0],
-                                      tileMode: TileMode.clamp),
+                                decoration: commonBoxDec(
+                                  const Color(0xFF19282F),
+                                  const Color(0xFF19282F),
+                                  const Color(0xFF000000),
                                 ),
                                 child: const Icon(
                                   Icons.receipt_outlined,
@@ -92,24 +66,10 @@ class _HomePageState extends State<HomePage> {
                               child: Container(
                                 height: 50,
                                 width: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: const Color(0xFF19282F),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                        offset: Offset(5, 1),
-                                        blurRadius: 20,
-                                        color: Color(0xFF0B0B0C))
-                                  ],
-                                  gradient: const LinearGradient(
-                                      colors: [
-                                        Color(0xFF19282F),
-                                        Color(0xFF000000),
-                                      ],
-                                      begin: FractionalOffset(0.0, 0.0),
-                                      end: FractionalOffset(1.0, 1.0),
-                                      stops: [0.0, 1.0],
-                                      tileMode: TileMode.clamp),
+                                decoration: commonBoxDec(
+                                  const Color(0xFF19282F),
+                                  const Color(0xFF19282F),
+                                  const Color(0xFF000000),
                                 ),
                                 child: const Icon(
                                   Icons.account_box,
@@ -130,27 +90,10 @@ class _HomePageState extends State<HomePage> {
                           margin: context.midAllPadding,
                           height: height / 3.5,
                           width: width,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(80.0),
-                                topLeft: Radius.circular(10.0),
-                                bottomLeft: Radius.circular(10.0),
-                                bottomRight: Radius.circular(10.0)),
-                            boxShadow: [
-                              BoxShadow(
-                                offset: Offset(5, 1),
-                                blurRadius: 20,
-                                color: Color(0xFF19282F),
-                              )
-                            ],
-                            gradient: LinearGradient(
-                                colors: [
-                                  Color(0xFF2a2d32),
-                                  Color(0xFF4b4f5b),
-                                ],
-                                begin: FractionalOffset(0.0, 0.0),
-                                stops: [0.0, 1.0],
-                                tileMode: TileMode.clamp),
+                          decoration: commonBoxDec(
+                            const Color(0xFF19282F),
+                            const Color(0xFF2a2d32),
+                            const Color(0xFF4b4f5b),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -275,39 +218,10 @@ class _HomePageState extends State<HomePage> {
                                                     .midLargeVerticalPadding,
                                                 height: 200,
                                                 width: width / 2.4,
-                                                decoration: BoxDecoration(
-                                                  gradient:
-                                                      const LinearGradient(
-                                                          colors: [
-                                                            Color(0xFF2a2d32),
-                                                            Color(0xFF4b4f5b),
-                                                          ],
-                                                          begin:
-                                                              FractionalOffset(
-                                                                  0.0, 0.0),
-                                                          end: FractionalOffset(
-                                                              1.0, 1.0),
-                                                          stops: [0.0, 1.0],
-                                                          tileMode:
-                                                              TileMode.clamp),
-                                                  borderRadius:
-                                                      const BorderRadius.only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  16),
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  16)),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: const Color(
-                                                                0xFF19282F)
-                                                            .withOpacity(0.5),
-                                                        offset: const Offset(
-                                                            10, 10.0),
-                                                        blurRadius: 3)
-                                                  ],
-                                                ),
+                                                decoration: commonBoxDec(
+                                                    const Color(0xFF2a2d32),
+                                                    const Color(0xFF4b4f5b),
+                                                    const Color(0xFF19282F)),
                                                 child: Column(
                                                   children: [
                                                     Container(
@@ -347,35 +261,10 @@ class _HomePageState extends State<HomePage> {
                                                   .midLargeVerticalPadding,
                                               height: 200,
                                               width: width / 2.4,
-                                              decoration: BoxDecoration(
-                                                gradient: const LinearGradient(
-                                                    colors: [
-                                                      Color(0xFF2a2d32),
-                                                      Color(0xFF4b4f5b),
-                                                    ],
-                                                    begin: FractionalOffset(
-                                                        0.0, 0.0),
-                                                    end: FractionalOffset(
-                                                        1.0, 1.0),
-                                                    stops: [0.0, 1.0],
-                                                    tileMode: TileMode.clamp),
-                                                borderRadius:
-                                                    const BorderRadius.only(
-                                                        topRight:
-                                                            Radius.circular(16),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                16)),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: const Color(
-                                                              0xFF19282F)
-                                                          .withOpacity(0.5),
-                                                      offset: const Offset(
-                                                          10, 10.0),
-                                                      blurRadius: 3)
-                                                ],
-                                              ),
+                                              decoration: commonBoxDec(
+                                                  const Color(0xFF2a2d32),
+                                                  const Color(0xFF4b4f5b),
+                                                  const Color(0xFF19282F)),
                                               child: Column(
                                                 children: [
                                                   Container(

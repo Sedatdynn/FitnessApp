@@ -15,8 +15,6 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
 
   @override
   Widget build(BuildContext context) {
-    String imagePath = "assets/google.png";
-    String faceImagePath = "assets/facebook.png";
     return !isLoading
         ? Center(
             child: SizedBox(
@@ -29,10 +27,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     height: MediaQuery.of(context).size.height * 0.06,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: OutlinedButton.icon(
-                      icon: Image.asset(
-                        imagePath,
-                        height: 27,
-                      ),
+                      icon: ImagePaths.google.googletoWidget(),
                       onPressed: () {
                         loginWithGoogle();
                       },
@@ -56,10 +51,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: OutlinedButton.icon(
-                      icon: Image.asset(
-                        faceImagePath,
-                        height: 23,
-                      ),
+                      icon: ImagePaths.facebook.facetoWidget(),
                       onPressed: () {},
                       label: Text(RegisterText.faceText,
                           style: context
@@ -113,5 +105,31 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
         backgroundColor: context.mainColor,
         textColor: context.textColor,
         fontSize: 14);
+  }
+}
+
+enum ImagePaths { google, facebook }
+
+extension ImageExtension on ImagePaths {
+  String googlePath() {
+    return "assets/${ImagePaths.google.name}.png";
+  }
+
+  String facePath() {
+    return "assets/${ImagePaths.facebook.name}.png";
+  }
+
+  Widget facetoWidget() {
+    return Image.asset(
+      facePath(),
+      height: 23,
+    ); //
+  }
+
+  Widget googletoWidget() {
+    return Image.asset(
+      googlePath(),
+      height: 23,
+    ); //
   }
 }
