@@ -87,29 +87,22 @@ class _LoginPageState extends State<LoginPage> {
 
   TextField _emailTextfield() {
     return TextField(
-      style: TextStyle(color: context.textColor),
-      controller: _emailController,
-      cursorColor: Colors.black,
-      keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
+        style: context.subtitle1(context),
+        controller: _emailController,
+        cursorColor: Colors.black,
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.mail,
             color: context.mainColor,
           ),
           hintText: RegisterText.emailText,
-          hintStyle: TextStyle(color: context.textColor),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.shadeGreyColor),
-              borderRadius: BorderRadius.circular(10)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.mainColor),
-              borderRadius: BorderRadius.circular(10))),
-    );
+        ));
   }
 
   TextField _passwordTextfield() {
     return TextField(
-      style: TextStyle(color: context.textColor),
+      style: context.subtitle1(context),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
       cursorColor: context.textColor,
@@ -142,19 +135,7 @@ class _LoginPageState extends State<LoginPage> {
           color: context.mainColor,
         ),
         hintText: RegisterText.passwordText,
-        hintStyle: TextStyle(color: context.textColor),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.shadeGreyColor,
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.mainColor,
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
+        hintStyle: context.subtitle1(context),
       ),
     );
   }
@@ -213,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       child: Text(
         QuestionsText.forgotPassText,
-        style: TextStyle(color: context.textColor, fontSize: 16.0),
+        style: context.subtitle2(context),
       ),
     );
   }

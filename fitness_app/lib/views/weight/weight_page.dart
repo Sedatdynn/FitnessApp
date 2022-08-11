@@ -84,8 +84,8 @@ class _WeightPageState extends State<WeightPage> {
       children: [
         NumberPicker(
           selectedTextStyle:
-              TextStyle(color: context.mainColor, fontSize: 20.0),
-          textStyle: TextStyle(fontSize: 14.0, color: context.textColor),
+              context.headline6(context)?.copyWith(color: context.mainColor),
+          textStyle: context.subtitle2(context),
           decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
@@ -107,7 +107,7 @@ class _WeightPageState extends State<WeightPage> {
           margin: context.midLeft,
           child: Text(
             RegisterText.kgText,
-            style: TextStyle(fontSize: 16.0, color: context.textColor),
+            style: context.subtitle2(context),
           ),
         )
       ],

@@ -9,4 +9,16 @@ extension ThemeExtension on BuildContext {
   Color get scndTxtColor => theme.primaryColor;
   Color get shadeGreyColor => theme.shadowColor;
   Color get greenColor => theme.canvasColor;
+
+  TextStyle? subtitle1(context) => theme.textTheme.subtitle1;
+
+  TextStyle? subtitle2(context) => theme.textTheme.subtitle2;
+
+  TextStyle? headline4(context) => theme.textTheme.headline4;
+
+  TextStyle? headline6(context) => theme.textTheme.headline6;
+
+  TextStyle? bdSmall(context) => theme.textTheme.bodySmall;
+
+  // TextStyle? headline2(context) => theme.textTheme.headline2;
 }

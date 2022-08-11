@@ -115,10 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
               alignment: Alignment.center,
               child: Text(
                 "Sedat Dayan",
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: context.textColor),
+                style: context.headline6(context),
               ),
             ),
             Container(

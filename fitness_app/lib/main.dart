@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        //colors
         canvasColor: Colors.green,
         errorColor: const Color.fromRGBO(183, 28, 28, 1),
         primaryColor: Colors.grey,
@@ -43,14 +44,27 @@ class _MyHomePageState extends State<MyHomePage> {
         scaffoldBackgroundColor: const Color(
           (0xFF19282F),
         ),
+        //appbar theme
         appBarTheme: const AppBarTheme(
             color: Colors.transparent,
             elevation: 0,
             iconTheme: IconThemeData(color: Color(0xFFC4FB6D))),
+        //listTile theme
         listTileTheme: const ListTileThemeData(
           iconColor: Color(0xFFC4FB6D),
           textColor: Colors.white,
         ),
+        //inputDecorationTheme
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.grey.shade200),
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: Colors.red.shade900)),
+        ),
+        //iconTheme
         iconTheme: const IconThemeData(color: Color(0xFFC4FB6D)),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: Colors.black,
@@ -59,14 +73,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
         //textTheme
         textTheme: TextTheme(
-          subtitle1: TextStyle(
-            color: Theme.of(context).hintColor,
+          subtitle1: GoogleFonts.poppins(
+            color: const Color(0xffFFFFFF),
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          subtitle2: TextStyle(
-            color: Theme.of(context).hintColor,
-            fontWeight: FontWeight.w400,
+          headline4: GoogleFonts.poppins(
+            color: const Color(0xffFFFFFF),
+          ),
+          headline6: GoogleFonts.poppins(color: const Color(0xffFFFFFF)),
+          subtitle2: GoogleFonts.poppins(
+            color: const Color(0xffFFFFFF),
+            fontWeight: FontWeight.w500,
             fontStyle: FontStyle.normal,
           ),
         ),

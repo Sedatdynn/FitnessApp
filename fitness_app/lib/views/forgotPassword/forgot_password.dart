@@ -84,20 +84,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   TextField _emailTextfield() {
     return TextField(
-      style: TextStyle(color: context.textColor),
+      style: context.subtitle1(context),
       controller: _emailController,
       cursorColor: context.textColor,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail, color: context.mainColor),
-          hintText: RegisterText.emailText,
-          hintStyle: TextStyle(color: context.textColor),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.shadeGreyColor),
-              borderRadius: BorderRadius.circular(10)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.mainColor),
-              borderRadius: BorderRadius.circular(10))),
+        prefixIcon: Icon(Icons.mail, color: context.mainColor),
+        hintText: RegisterText.emailText,
+        hintStyle: context.subtitle1(context),
+      ),
     );
   }
 
@@ -118,7 +113,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
           onPressed: () {},
           child: Text(RegisterText.verifyEmailText,
-              style: TextStyle(color: context.textColor, fontSize: 18.0)),
+              style: context.headline6(context)),
         ),
       ),
     );
@@ -130,10 +125,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Center(
           child: Text(
             QuestionsText.forgotPassText,
-            style: TextStyle(
-                color: context.scndTxtColor,
-                fontSize: 24,
-                fontWeight: FontWeight.bold),
+            style: context.headline4(context)?.copyWith(
+                fontWeight: FontWeight.bold, color: context.scndTxtColor),
           ),
         ),
         const SizedBox(
@@ -142,10 +135,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Text(
           RegisterText.emailAssociated,
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w500,
-              color: context.textColor),
+          style: context.subtitle2(context),
         )
       ],
     );

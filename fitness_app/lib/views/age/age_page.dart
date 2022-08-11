@@ -43,10 +43,7 @@ class _AgePageState extends State<AgePage> {
               ),
               Text(
                 QuestionsText.ageText,
-                style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.w500,
-                    color: context.textColor),
+                style: context.headline6(context),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 15,
@@ -91,8 +88,7 @@ class _AgePageState extends State<AgePage> {
                       )),
             );
           },
-          child: Text(MyText.contiuneText,
-              style: TextStyle(color: context.textColor, fontSize: 16.0)),
+          child: Text(MyText.contiuneText, style: context.headline6(context)),
         ),
       ),
     );
@@ -100,8 +96,9 @@ class _AgePageState extends State<AgePage> {
 
   _pickerBody() {
     return NumberPicker(
-      selectedTextStyle: TextStyle(color: context.mainColor, fontSize: 20.0),
-      textStyle: TextStyle(color: context.textColor),
+      selectedTextStyle:
+          context.headline6(context)?.copyWith(color: context.mainColor),
+      textStyle: context.subtitle2(context),
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(

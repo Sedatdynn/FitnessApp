@@ -161,8 +161,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   MyText.homeWelcomeText +
                                       snapshot.data["username"],
-                                  style: TextStyle(
-                                      color: context.textColor, fontSize: 20.0),
+                                  style: context.headline6(context),
                                   textAlign: TextAlign.start,
                                 ),
                               ),
@@ -186,16 +185,12 @@ class _HomePageState extends State<HomePage> {
                                         height: 5,
                                       ),
                                       Text("25",
-                                          style: TextStyle(
-                                            color: context.textColor,
-                                          )),
+                                          style: context.subtitle1(context)),
                                       const SizedBox(
                                         height: 5,
                                       ),
                                       Text("Normal",
-                                          style: TextStyle(
-                                            color: context.textColor,
-                                          )),
+                                          style: context.subtitle1(context)),
                                     ],
                                   ),
                                   const SizedBox(
@@ -204,22 +199,17 @@ class _HomePageState extends State<HomePage> {
                                   Column(
                                     children: [
                                       Text("Kg: 85",
-                                          style: TextStyle(
-                                            color: context.textColor,
-                                          )),
+                                          style: context.subtitle1(context)),
                                       const SizedBox(
                                         height: 15,
                                       ),
                                       Text("Age: 22",
-                                          style: TextStyle(
-                                              color: context.textColor)),
+                                          style: context.subtitle1(context)),
                                       const SizedBox(
                                         height: 15,
                                       ),
                                       Text("Tall: 193",
-                                          style: TextStyle(
-                                            color: context.textColor,
-                                          )),
+                                          style: context.subtitle1(context)),
                                     ],
                                   )
                                 ],
@@ -344,10 +334,8 @@ class _HomePageState extends State<HomePage> {
                                                           .bottomCenter,
                                                       child: Text(
                                                         MyText.exerciseText,
-                                                        style: TextStyle(
-                                                            fontSize: 18,
-                                                            color: context
-                                                                .textColor),
+                                                        style: context
+                                                            .subtitle1(context),
                                                       ),
                                                     ),
                                                   ],
@@ -414,10 +402,8 @@ class _HomePageState extends State<HomePage> {
                                                         Alignment.bottomCenter,
                                                     child: Text(
                                                       MyText.exerciseText,
-                                                      style: TextStyle(
-                                                          fontSize: 18,
-                                                          color: context
-                                                              .textColor),
+                                                      style: context
+                                                          .subtitle1(context),
                                                     ),
                                                   ),
                                                 ],

@@ -38,7 +38,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                       },
                       label: Text(
                         RegisterText.googleText,
-                        style: TextStyle(
+                        style: context.subtitle1(context)?.copyWith(
                             color: context.scndTxtColor,
                             fontWeight: FontWeight.bold),
                       ),
@@ -61,12 +61,10 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                         height: 23,
                       ),
                       onPressed: () {},
-                      label: Text(
-                        RegisterText.faceText,
-                        style: TextStyle(
-                            color: context.textColor,
-                            fontWeight: FontWeight.bold),
-                      ),
+                      label: Text(RegisterText.faceText,
+                          style: context
+                              .subtitle1(context)
+                              ?.copyWith(fontWeight: FontWeight.bold)),
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                               const Color(0xff4267B2)),

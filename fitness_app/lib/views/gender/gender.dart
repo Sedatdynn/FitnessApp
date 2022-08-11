@@ -86,8 +86,7 @@ class _GenderPageState extends State<GenderPage> {
               padding: context.midVerticalPadding,
               child: Text(
                 RegisterText.womanText,
-                style: TextStyle(
-                    fontSize: 16.0,
+                style: context.subtitle1(context)?.copyWith(
                     color: isSelected[0] == false
                         ? context.textColor
                         : context.mainColor),
@@ -106,8 +105,7 @@ class _GenderPageState extends State<GenderPage> {
               padding: context.midVerticalPadding,
               child: Text(
                 RegisterText.manText,
-                style: TextStyle(
-                    fontSize: 16.0,
+                style: context.subtitle1(context)?.copyWith(
                     color: isSelected[0] == true
                         ? context.textColor
                         : Colors.blue),

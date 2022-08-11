@@ -12,10 +12,7 @@ class ConstText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
-          fontSize: 24.0,
-          fontWeight: FontWeight.w500,
-          color: context.textColor),
+      style: context.headline6(context),
     );
   }
 }

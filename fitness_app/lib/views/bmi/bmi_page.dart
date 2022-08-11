@@ -59,8 +59,7 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                     50,
                     Text(
                       "BMI Calculater",
-                      style:
-                          TextStyle(color: context.textColor, fontSize: 16.0),
+                      style: context.subtitle1(context),
                       textAlign: TextAlign.center,
                     ),
                     AllColors.gradColor1,
@@ -91,7 +90,7 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                 context,
                 width / 1.16,
                 50,
-                rowValues("BMI Result : ",
+                rowValues(context, "BMI Result : ",
                     bmiCalculate(widget.userHeight, widget.userWeight)),
                 AllColors.gradColor1,
                 AllColors.gradColor1,

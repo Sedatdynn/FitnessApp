@@ -26,13 +26,7 @@ class CommonButton extends StatelessWidget {
             backgroundColor: MaterialStateProperty.all(context.mainColor),
           ),
           onPressed: onPressed,
-          child: Text(
-            text,
-            style: Theme.of(context)
-                .textTheme
-                .headline6
-                ?.copyWith(color: context.textColor),
-          ),
+          child: Text(text, style: context.headline6(context)),
         ),
       ),
     );

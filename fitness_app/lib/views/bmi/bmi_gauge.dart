@@ -19,9 +19,7 @@ Widget bmiGauge1(BuildContext context, String deger) {
           NeedlePointer(value: double.parse(deger))
         ], annotations: <GaugeAnnotation>[
           GaugeAnnotation(
-              widget: Text(deger,
-                  style: const TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.bold)),
+              widget: Text(deger, style: context.headline4(context)),
               angle: 90,
               positionFactor: 0.5)
         ])

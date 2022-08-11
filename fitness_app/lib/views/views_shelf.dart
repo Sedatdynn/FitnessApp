@@ -1,5 +1,5 @@
 export 'package:fistness_app_firebase/src/texts.dart';
-export 'package:fistness_app_firebase/views/buttons/launch_page_buttons.dart';
+export 'package:fistness_app_firebase/views/launch/launch_page_buttons.dart';
 export 'package:fistness_app_firebase/views/login/login_page.dart';
 export 'package:fistness_app_firebase/views/register/register_page.dart';
 export 'package:flutter/material.dart';

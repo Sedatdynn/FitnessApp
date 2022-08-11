@@ -93,59 +93,40 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _usernameTextfield() {
     return TextField(
-      style: Theme.of(context)
-          .textTheme
-          .subtitle1
-          ?.copyWith(color: context.textColor),
+      style: context.subtitle1(context),
       textInputAction: TextInputAction.next,
       controller: _usernameController,
       cursorColor: context.textColor,
       decoration: InputDecoration(
-          prefixIcon: Icon(
-            Icons.account_circle,
-            color: context.mainColor,
-          ),
-          hintText: MyText.usernameText,
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.shadeGreyColor),
-              borderRadius: BorderRadius.circular(10)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.mainColor),
-              borderRadius: BorderRadius.circular(10))),
+        prefixIcon: Icon(
+          Icons.account_circle,
+          color: context.mainColor,
+        ),
+        hintText: MyText.usernameText,
+      ),
     );
   }
 
   TextField _emailTextfield() {
     return TextField(
       textInputAction: TextInputAction.next,
-      style: Theme.of(context)
-          .textTheme
-          .subtitle2
-          ?.copyWith(color: context.textColor),
+      style: context.subtitle1(context),
       controller: _emailController,
       cursorColor: context.textColor,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-          prefixIcon: Icon(
-            Icons.mail,
-            color: context.mainColor,
-          ),
-          hintText: RegisterText.emailText,
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.shadeGreyColor),
-              borderRadius: BorderRadius.circular(10)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: context.mainColor),
-              borderRadius: BorderRadius.circular(10))),
+        prefixIcon: Icon(
+          Icons.mail,
+          color: context.mainColor,
+        ),
+        hintText: RegisterText.emailText,
+      ),
     );
   }
 
   TextField _passwordTextfield() {
     return TextField(
-      style: Theme.of(context)
-          .textTheme
-          .subtitle1
-          ?.copyWith(color: context.textColor),
+      style: context.subtitle1(context),
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
       cursorColor: context.textColor,
@@ -178,18 +159,6 @@ class _RegisterPageState extends State<RegisterPage> {
           color: context.mainColor,
         ),
         hintText: RegisterText.passwordText,
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.shadeGreyColor,
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: context.mainColor,
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
       ),
     );
   }
@@ -199,7 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: context.minLeft,
       child: Text(
         RegisterText.orSignText,
-        style: Theme.of(context).textTheme.bodySmall,
+        style: context.bdSmall(context)?.copyWith(color: context.textColor),
       ),
     );
   }

@@ -37,10 +37,7 @@ class _LaunchPageState extends State<LaunchPage> {
             Center(
               child: Text(
                 MyText.fitText,
-                style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: context.textColor),
+                style: context.headline4(context),
               ),
             ),
             Column(
@@ -53,7 +50,6 @@ class _LaunchPageState extends State<LaunchPage> {
                     child: TextButton.icon(
                       style: TextButton.styleFrom(
                         backgroundColor: context.mainColor,
-                        textStyle: TextStyle(color: context.textColor),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -73,8 +69,7 @@ class _LaunchPageState extends State<LaunchPage> {
                         alignment: Alignment.center,
                         child: Text(
                           RegisterText.signEmailText,
-                          style: TextStyle(
-                              color: context.textColor, fontSize: 16.0),
+                          style: context.subtitle1(context),
                         ),
                       ),
                     ),
@@ -90,11 +85,13 @@ class _LaunchPageState extends State<LaunchPage> {
               child: Text(
                 RegisterText.orLogText,
                 textAlign: TextAlign.left,
-                style: TextStyle(color: context.textColor, fontSize: 16.0),
+                style: context
+                    .bdSmall(context)
+                    ?.copyWith(color: context.textColor),
               ),
             ),
             const SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             const LaunchPageButtons(),
             const SizedBox(
@@ -109,7 +106,7 @@ class _LaunchPageState extends State<LaunchPage> {
                   Expanded(child: Container()),
                   Text(
                     QuestionsText.accountText,
-                    style: TextStyle(color: context.textColor, fontSize: 14.0),
+                    style: context.subtitle2(context),
                   ),
                   const SizedBox(
                     width: 15,
@@ -124,8 +121,9 @@ class _LaunchPageState extends State<LaunchPage> {
                     },
                     child: Text(
                       RegisterText.createText,
-                      style:
-                          TextStyle(color: context.mainColor, fontSize: 14.0),
+                      style: context
+                          .bdSmall(context)
+                          ?.copyWith(color: context.mainColor),
                     ),
                   ),
                 ],

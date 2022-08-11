@@ -59,19 +59,14 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
 
   _nameField() {
     return TextField(
-        style: TextStyle(color: context.textColor),
+        style: context.subtitle1(context),
         controller: _nameController,
         cursorColor: context.textColor,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-            hintText: QuestionsText.nameText,
-            hintStyle: TextStyle(color: context.textColor),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: context.shadeGreyColor),
-                borderRadius: BorderRadius.circular(10)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: context.mainColor),
-                borderRadius: BorderRadius.circular(10))));
+          hintText: QuestionsText.nameText,
+          hintStyle: context.headline6(context),
+        ));
   }
 
   void _registerOnTap() {
