@@ -3,6 +3,7 @@ import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 import '../../core/const/const_shelf.dart';
+import '../../core/const/warning_toast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -155,13 +156,13 @@ class _LoginPageState extends State<LoginPage> {
             (route) => false);
       }).catchError((error) async {
         if (error.toString().contains('invalid-email')) {
-          await _warningToast(WarningText.loginWrongEmailText);
+          await warningToast(context, WarningText.loginWrongEmailText);
         } else if (error.toString().contains('user-not-found')) {
-          await _warningToast(WarningText.loginNoAccountText);
+          await warningToast(context, WarningText.loginNoAccountText);
         } else if (error.toString().contains('wrong-password')) {
-          await _warningToast(WarningText.loginWrongPasswordText);
+          await warningToast(context, WarningText.loginWrongPasswordText);
         } else {
-          await _warningToast(WarningText.errorText);
+          await warningToast(context, WarningText.errorText);
         }
       }).whenComplete(() async {
         setState(() {
@@ -169,19 +170,8 @@ class _LoginPageState extends State<LoginPage> {
         });
       });
     } else {
-      _warningToast(WarningText.errorText);
+      warningToast(context, WarningText.errorText);
     }
-  }
-
-  Future<bool?> _warningToast(String text) async {
-    return await Fluttertoast.showToast(
-        msg: text,
-        timeInSecForIosWeb: 2,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: context.mainColor,
-        textColor: context.textColor,
-        fontSize: 14);
   }
 
   _forgotPassword() {

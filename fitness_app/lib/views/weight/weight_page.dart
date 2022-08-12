@@ -4,6 +4,8 @@ import '../../core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
+import '../../core/const/warning_toast.dart';
+
 class WeightPage extends StatefulWidget {
   final String? username;
   final String? mail;
@@ -135,16 +137,15 @@ class _WeightPageState extends State<WeightPage> {
                 widget.height!,
                 _currentValue.toString())
             .then((value) {
-          _warningToast(
-              RegisterText.registerSuccesfully, context, context.greenColor);
+          warningToast(context, RegisterText.registerSuccesfully,
+              color: context.greenColor);
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const LoginPage()),
               (route) => false);
         }).catchError((error) {
           if (error.toString().contains("email-already-in-use")) {
-            _warningToast(
-                WarningText.registerUniqueMail, context, context.mainColor);
+            warningToast(context, WarningText.registerUniqueMail);
           }
         }).whenComplete(() {
           setState(() {
@@ -153,12 +154,11 @@ class _WeightPageState extends State<WeightPage> {
         });
       } catch (e) {
         if (e.toString().contains("email-already-in-use")) {
-          _warningToast(
-              WarningText.registerUniqueMail, context, context.mainColor);
+          warningToast(context, WarningText.registerUniqueMail);
         }
       }
     } else {
-      _warningToast(WarningText.errorText, context, context.mainColor);
+      warningToast(context, WarningText.errorText);
     }
   }
 
@@ -174,23 +174,12 @@ class _WeightPageState extends State<WeightPage> {
         _currentValue.toString());
 
     if (user) {
-      _warningToast(
-          RegisterText.registerSuccesfully, context, context.greenColor);
+      warningToast(context, RegisterText.registerSuccesfully,
+          color: context.greenColor);
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const HomePage()),
           (route) => false);
     }
   }
-}
-
-Future<bool?> _warningToast(String text, BuildContext context, Color color) {
-  return Fluttertoast.showToast(
-      msg: text,
-      timeInSecForIosWeb: 2,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-      backgroundColor: color, //context.mainColor
-      textColor: context.textColor,
-      fontSize: 14);
 }

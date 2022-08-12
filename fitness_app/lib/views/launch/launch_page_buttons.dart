@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/const/warning_toast.dart';
 import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -92,19 +93,8 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
             (route) => false);
       }
     }).catchError((error) {
-      _warningToast(error);
+      warningToast(context, error);
     });
-  }
-
-  Future<bool?> _warningToast(String text) async {
-    return await Fluttertoast.showToast(
-        msg: text,
-        timeInSecForIosWeb: 2,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: context.mainColor,
-        textColor: context.textColor,
-        fontSize: 14);
   }
 }
 

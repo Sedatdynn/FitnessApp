@@ -4,6 +4,7 @@ import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 import '../../core/const/const_shelf.dart';
+import '../../core/const/warning_toast.dart';
 import '../../core/service/auth_service.dart';
 
 class GenderPage extends StatefulWidget {
@@ -149,19 +150,8 @@ class _GenderPageState extends State<GenderPage> {
                     gender: choiceControl().toString(),
                   )));
     } else {
-      _warningToast(WarningText.sexWarningText);
+      warningToast(context, WarningText.sexWarningText);
     }
-  }
-
-  Future<bool?> _warningToast(String text) {
-    return Fluttertoast.showToast(
-        msg: text,
-        timeInSecForIosWeb: 2,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: context.mainColor,
-        textColor: context.textColor,
-        fontSize: 14);
   }
 
   choiceControl() {

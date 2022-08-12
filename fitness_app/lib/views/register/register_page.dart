@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/const/warning_toast.dart';
 import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 
 import '../../core/const/const_shelf.dart';
@@ -194,26 +195,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     password: _passwordController.text,
                   )));
     } else if (_usernameController.text.isEmpty) {
-      _warningToast(WarningText.registerEmptyUsername);
+      warningToast(context, WarningText.registerEmptyUsername);
     } else if (_emailController.text.toString().isEmpty) {
-      _warningToast(WarningText.registerEmptyEmail);
+      warningToast(context, WarningText.registerEmptyEmail);
     } else if (_passwordController.text.toString().isEmpty) {
-      _warningToast(WarningText.registerUnvalidPassword);
+      warningToast(context, WarningText.registerUnvalidPassword);
     } else if (_passwordController.text.length < 6) {
-      _warningToast(WarningText.registerUnvalidPassword);
+      warningToast(context, WarningText.registerUnvalidPassword);
     } else {
-      _warningToast(WarningText.loginWrongEmailText);
+      warningToast(context, WarningText.loginWrongEmailText);
     }
-  }
-
-  Future<bool?> _warningToast(String text) {
-    return Fluttertoast.showToast(
-        msg: text,
-        timeInSecForIosWeb: 2,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: context.mainColor,
-        textColor: context.textColor,
-        fontSize: 14);
   }
 }

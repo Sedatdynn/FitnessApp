@@ -5,6 +5,8 @@ import '../../core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
+import '../../core/const/warning_toast.dart';
+
 class RegisterNamePage extends StatefulWidget {
   final String? username;
   final String? mail;
@@ -86,18 +88,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
                     name: _nameController.text,
                   )));
     } else {
-      _warningToast(WarningText.nameWarningText);
+      warningToast(context, WarningText.nameWarningText);
     }
-  }
-
-  Future<bool?> _warningToast(String text) {
-    return Fluttertoast.showToast(
-        msg: text,
-        timeInSecForIosWeb: 2,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        backgroundColor: context.mainColor,
-        textColor: context.textColor,
-        fontSize: 14);
   }
 }
