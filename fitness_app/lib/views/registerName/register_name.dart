@@ -1,11 +1,7 @@
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 
 import '../../core/const/const_shelf.dart';
-
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
-
-import '../../core/const/warning_toast.dart';
 
 class RegisterNamePage extends StatefulWidget {
   final String? username;
@@ -35,11 +31,11 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
             children: [
               myText(),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
+                height: context.height * 0.01,
               ),
               _nameField(),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: context.height * 0.3,
               ),
               CommonButton(text: MyText.nextText, onPressed: _registerOnTap)
             ],
@@ -50,10 +46,9 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
   }
 
   myText() {
-    var mediaQuery = MediaQuery.of(context).size;
     return SizedBox(
-        height: mediaQuery.height * 0.09,
-        width: mediaQuery.width * 0.87,
+        height: context.height * 0.09,
+        width: context.width * 0.87,
         child: ConstText(
           text: QuestionsText.nameText,
         ));

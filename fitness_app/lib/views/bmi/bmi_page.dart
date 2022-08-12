@@ -1,5 +1,4 @@
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_gauge.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_container.dart';
@@ -24,8 +23,6 @@ class BmiCalculater extends StatefulWidget {
 class _BmiCalculaterState extends State<BmiCalculater> {
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: Container(
         padding: context.midAllPadding,
@@ -74,10 +71,10 @@ class _BmiCalculaterState extends State<BmiCalculater> {
             ),
             topBox(
                 context,
-                width / 2.4,
+                context.width / 2.4,
                 150,
                 BmiColumnBody(
-                  width: width,
+                  width: context.width,
                   userHeight: widget.userHeight,
                   userWeight: widget.userWeight,
                 ),
@@ -88,7 +85,7 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                 context.midLargeVerticalPadding),
             topBox(
                 context,
-                width / 1.16,
+                context.width / 1.16,
                 50,
                 rowValues(context, "BMI Result : ",
                     bmiCalculate(widget.userHeight, widget.userWeight)),

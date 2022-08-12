@@ -1,5 +1,4 @@
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_appbar.dart';
 import '../../core/const/const_logo_body.dart';
@@ -39,17 +38,17 @@ class _AgePageState extends State<AgePage> {
             children: [
               const LogoBody(),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 17,
+                height: context.height / 17,
               ),
               Text(
                 QuestionsText.ageText,
                 style: context.headline6(context),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 15,
+                height: context.height / 15,
               ),
               _pickerBody(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              SizedBox(height: context.height * 0.1),
               myButton(),
             ],
           ),
@@ -59,12 +58,10 @@ class _AgePageState extends State<AgePage> {
   }
 
   myButton() {
-    Size mediaQuery = MediaQuery.of(context).size;
-
     return Center(
       child: SizedBox(
-        height: mediaQuery.height * 0.06,
-        width: mediaQuery.width * 0.81,
+        height: context.height * 0.06,
+        width: context.width * 0.81,
         child: OutlinedButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all(RoundedRectangleBorder(

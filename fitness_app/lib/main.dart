@@ -1,6 +1,4 @@
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'firebase_options.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 

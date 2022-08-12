@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:flutter/material.dart';
 
 class CommonButton extends StatelessWidget {
@@ -12,11 +12,10 @@ class CommonButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size mediaQuery = MediaQuery.of(context).size;
     return Center(
       child: SizedBox(
-        height: mediaQuery.height * 0.06,
-        width: mediaQuery.width * 0.81,
+        height: context.height * 0.06,
+        width: context.width * 0.81,
         child: OutlinedButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all(RoundedRectangleBorder(

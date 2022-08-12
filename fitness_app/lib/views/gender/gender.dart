@@ -1,10 +1,6 @@
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
-
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
-
 import '../../core/const/const_shelf.dart';
-import '../../core/const/warning_toast.dart';
 import '../../core/service/auth_service.dart';
 
 class GenderPage extends StatefulWidget {
@@ -50,16 +46,16 @@ class _GenderPageState extends State<GenderPage> {
               children: [
                 const LogoBody(),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 17,
+                  height: context.height / 17,
                 ),
                 ConstText(
                   text: QuestionsText.sexText,
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 15,
+                  height: context.height / 15,
                 ),
                 _toggleButton(),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: context.height * 0.05),
                 CommonButton(
                   text: MyText.contiuneText,
                   onPressed: _registerOnTap,
@@ -79,7 +75,7 @@ class _GenderPageState extends State<GenderPage> {
         Column(
           children: [
             Icon(Icons.male,
-                size: MediaQuery.of(context).size.height / 6,
+                size: context.height / 6,
                 color: isSelected[0] == false
                     ? context.textColor
                     : context.mainColor),
@@ -98,7 +94,7 @@ class _GenderPageState extends State<GenderPage> {
         Column(
           children: [
             Icon(Icons.female,
-                size: MediaQuery.of(context).size.height / 6,
+                size: context.height / 6,
                 color: isSelected[0] == true
                     ? context.textColor
                     : Colors.blue.shade900),

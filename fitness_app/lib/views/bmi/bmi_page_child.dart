@@ -1,8 +1,7 @@
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:flutter/material.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/src/texts.dart';
 import 'package:fistness_app_firebase/views/bmi/row_value.dart';
-import 'package:flutter/material.dart';
-
 import '../../core/const/const_container.dart';
 
 class BmiColumnBody extends StatelessWidget {

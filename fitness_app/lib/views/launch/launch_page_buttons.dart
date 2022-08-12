@@ -1,5 +1,5 @@
 import 'package:fistness_app_firebase/core/const/warning_toast.dart';
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {
@@ -19,14 +19,14 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
     return !isLoading
         ? Center(
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
-              width: MediaQuery.of(context).size.width * 0.82,
+              height: context.height * 0.06,
+              width: context.width * 0.82,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: context.height * 0.06,
+                    width: context.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: ImagePaths.google.googletoWidget(),
                       onPressed: () {
@@ -49,8 +49,8 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     width: 5,
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: context.height,
+                    width: context.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: ImagePaths.facebook.facetoWidget(),
                       onPressed: () {},

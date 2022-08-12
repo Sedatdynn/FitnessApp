@@ -1,5 +1,4 @@
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 

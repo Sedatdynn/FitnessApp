@@ -1,6 +1,5 @@
 import 'package:fistness_app_firebase/core/const/const_shelf.dart';
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -16,19 +15,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     const String imageUrl =
         "https://image.shutterstock.com/image-vector/vector-illustration-bodybuilder-muscular-arm-260nw-1464554840.jpg";
 
     return Scaffold(
       body: Container(
+        padding: context.minMidAllPadding,
         decoration: commonBoxDec(
           const Color(0xFF19282F),
           const Color(0xFF3d444e),
           const Color(0xFF2c2f37),
         ),
-        padding: context.midVerticalPadding,
         child: FutureBuilder(
             future: MyText.authService.fetchCurrentUserDoc(),
             builder: (context, AsyncSnapshot<dynamic> snapshot) {
@@ -39,6 +36,8 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         padding: context.midVerticalPadding,
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             GestureDetector(
                               child: Container(
@@ -88,8 +87,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                           margin: context.midAllPadding,
-                          height: height / 3.5,
-                          width: width,
+                          height: context.height / 3.5,
+                          width: context.width,
                           decoration: commonBoxDec(
                             const Color(0xFF19282F),
                             const Color(0xFF2a2d32),
@@ -217,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                                                 margin: context
                                                     .midLargeVerticalPadding,
                                                 height: 200,
-                                                width: width / 2.4,
+                                                width: context.width / 2.4,
                                                 decoration: commonBoxDec(
                                                     const Color(0xFF2a2d32),
                                                     const Color(0xFF4b4f5b),
@@ -260,7 +259,7 @@ class _HomePageState extends State<HomePage> {
                                               margin: context
                                                   .midLargeVerticalPadding,
                                               height: 200,
-                                              width: width / 2.4,
+                                              width: context.width / 2.4,
                                               decoration: commonBoxDec(
                                                   const Color(0xFF2a2d32),
                                                   const Color(0xFF4b4f5b),
