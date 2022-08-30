@@ -2,6 +2,9 @@ import 'package:fistness_app_firebase/core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+import 'package:provider/provider.dart';
+
+import '../../product/global/theme_control.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -22,9 +25,15 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         padding: context.minMidAllPadding,
         decoration: commonBoxDec(
-          const Color(0xFF19282F),
-          const Color(0xFF3d444e),
-          const Color(0xFF2c2f37),
+          context.watch<ThemeNotifier>().isLight
+              ? Colors.grey
+              : const Color(0xFF19282F),
+          context.watch<ThemeNotifier>().isLight
+              ? Colors.white
+              : const Color(0xFF3d444e),
+          context.watch<ThemeNotifier>().isLight
+              ? Colors.white
+              : const Color(0xFF2c2f37),
         ),
         child: FutureBuilder(
             future: MyText.authService.fetchCurrentUserDoc(),
@@ -44,9 +53,15 @@ class _HomePageState extends State<HomePage> {
                                 height: 50,
                                 width: 50,
                                 decoration: commonBoxDec(
-                                  const Color(0xFF19282F),
-                                  const Color(0xFF19282F),
-                                  const Color(0xFF000000),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF19282F),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF19282F),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF000000),
                                 ),
                                 child: const Icon(
                                   Icons.receipt_outlined,
@@ -66,9 +81,15 @@ class _HomePageState extends State<HomePage> {
                                 height: 50,
                                 width: 50,
                                 decoration: commonBoxDec(
-                                  const Color(0xFF19282F),
-                                  const Color(0xFF19282F),
-                                  const Color(0xFF000000),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF19282F),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF19282F),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF000000),
                                 ),
                                 child: const Icon(
                                   Icons.account_box,
@@ -90,9 +111,15 @@ class _HomePageState extends State<HomePage> {
                           height: context.height / 3.5,
                           width: context.width,
                           decoration: commonBoxDec(
-                            const Color(0xFF19282F),
-                            const Color(0xFF2a2d32),
-                            const Color(0xFF4b4f5b),
+                            context.watch<ThemeNotifier>().isLight
+                                ? Colors.grey
+                                : const Color(0xFF19282F),
+                            context.watch<ThemeNotifier>().isLight
+                                ? Colors.grey
+                                : const Color(0xFF2a2d32),
+                            context.watch<ThemeNotifier>().isLight
+                                ? Colors.grey
+                                : const Color(0xFF4b4f5b),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -168,7 +195,8 @@ class _HomePageState extends State<HomePage> {
                                         BoxShadow(
                                           offset: Offset(1, 2),
                                           blurRadius: 10,
-                                          color: Color(0xFF19282F),
+                                          color: Color.fromARGB(
+                                              255, 166, 203, 220),
                                         )
                                       ],
                                     ),
@@ -218,9 +246,25 @@ class _HomePageState extends State<HomePage> {
                                                 height: 200,
                                                 width: context.width / 2.4,
                                                 decoration: commonBoxDec(
-                                                    const Color(0xFF2a2d32),
-                                                    const Color(0xFF4b4f5b),
-                                                    const Color(0xFF19282F)),
+                                                  context
+                                                          .watch<
+                                                              ThemeNotifier>()
+                                                          .isLight
+                                                      ? Colors.grey
+                                                      : const Color(0xFF2a2d32),
+                                                  context
+                                                          .watch<
+                                                              ThemeNotifier>()
+                                                          .isLight
+                                                      ? Colors.grey
+                                                      : const Color(0xFF4b4f5b),
+                                                  context
+                                                          .watch<
+                                                              ThemeNotifier>()
+                                                          .isLight
+                                                      ? Colors.grey
+                                                      : const Color(0xFF19282F),
+                                                ),
                                                 child: Column(
                                                   children: [
                                                     Container(
@@ -261,9 +305,22 @@ class _HomePageState extends State<HomePage> {
                                               height: 200,
                                               width: context.width / 2.4,
                                               decoration: commonBoxDec(
-                                                  const Color(0xFF2a2d32),
-                                                  const Color(0xFF4b4f5b),
-                                                  const Color(0xFF19282F)),
+                                                context
+                                                        .watch<ThemeNotifier>()
+                                                        .isLight
+                                                    ? Colors.grey
+                                                    : const Color(0xFF2a2d32),
+                                                context
+                                                        .watch<ThemeNotifier>()
+                                                        .isLight
+                                                    ? Colors.grey
+                                                    : const Color(0xFF4b4f5b),
+                                                context
+                                                        .watch<ThemeNotifier>()
+                                                        .isLight
+                                                    ? Colors.grey
+                                                    : const Color(0xFF19282F),
+                                              ),
                                               child: Column(
                                                 children: [
                                                   Container(

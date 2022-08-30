@@ -1,5 +1,7 @@
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+import 'package:provider/provider.dart';
 import '../../core/const/const_shelf.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -16,9 +18,15 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Container(
         padding: context.minMidAllPadding,
         decoration: commonBoxDec(
-          const Color(0xFF19282F),
-          const Color(0xFF3d444e),
-          const Color(0xFF2c2f37),
+          context.watch<ThemeNotifier>().isLight
+              ? Colors.grey
+              : const Color(0xFF19282F),
+          context.watch<ThemeNotifier>().isLight
+              ? Colors.white
+              : const Color(0xFF3d444e),
+          context.watch<ThemeNotifier>().isLight
+              ? Colors.white
+              : const Color(0xFF2c2f37),
         ),
         child: ListView(
           children: [
@@ -31,9 +39,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 50,
                     width: 50,
                     decoration: commonBoxDec(
-                      const Color(0xFF19282F),
-                      const Color(0xFF19282F),
-                      const Color(0xFF000000),
+                      context.watch<ThemeNotifier>().isLight
+                          ? Colors.grey
+                          : const Color(0xFF19282F),
+                      context.watch<ThemeNotifier>().isLight
+                          ? Colors.grey
+                          : const Color(0xFF19282F),
+                      context.watch<ThemeNotifier>().isLight
+                          ? Colors.grey
+                          : const Color(0xFF000000),
                     ),
                     child: const Icon(
                       Icons.arrow_back_ios,
@@ -52,9 +66,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 50,
                     width: 50,
                     decoration: commonBoxDec(
-                      const Color(0xFF19282F),
-                      const Color(0xFF19282F),
-                      const Color(0xFF000000),
+                      context.watch<ThemeNotifier>().isLight
+                          ? Colors.grey
+                          : const Color(0xFF19282F),
+                      context.watch<ThemeNotifier>().isLight
+                          ? Colors.grey
+                          : const Color(0xFF19282F),
+                      context.watch<ThemeNotifier>().isLight
+                          ? Colors.grey
+                          : const Color(0xFF000000),
                     ),
                     child: const Icon(
                       Icons.receipt_outlined,
@@ -109,12 +129,16 @@ class _ProfilePageState extends State<ProfilePage> {
                           title: Text("Email"),
                           subtitle: Text("dayan.sedat1998@gmail.com"),
                         ),
-                        const ListTile(
-                          leading: Icon(
-                            Icons.phone,
+                        GestureDetector(
+                          onTap: () =>
+                              context.read<ThemeNotifier>().changeTheme(),
+                          child: const ListTile(
+                            leading: Icon(
+                              Icons.phone,
+                            ),
+                            title: Text("Phone"),
+                            subtitle: Text("533--*4*--4**9"),
                           ),
-                          title: Text("Phone"),
-                          subtitle: Text("533--*4*--4**9"),
                         ),
                         const ListTile(
                           leading: Icon(
