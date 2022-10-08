@@ -1,0 +1,33 @@
+{
+    "kategori": [
+        {
+            "id": 1,
+            "name": "Sebze",
+            "icerik": [
+                {
+                    "isim": "patlican",
+                    "puan": 1
+                },
+                {
+                    "isim": "kabak",
+                    "puan": 2
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Tatli",
+            "icerik": [
+                {
+                    "isim": "Kunefe",
+                    "puan": 5
+                    
+                },
+                {
+                    "isim": "baklava",
+                    "puan": 4
+                }
+            ]
+        }
+    ]
+}

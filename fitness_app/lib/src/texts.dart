@@ -12,6 +12,7 @@ class MyText {
   static String nextText = "Next";
   static String exerciseText = "Exercises";
   static String fitText = "Fitness Is The Key";
+  static dynamic currentUser;
   MyText._();
 }
 

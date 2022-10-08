@@ -2,29 +2,43 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../src/texts.dart';
+
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final _google = GoogleSignIn();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final GoogleSignIn _google = GoogleSignIn(
+    // Optional clientId
+    // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
+    scopes: <String>[
+      'email',
+      'https://www.googleapis.com/auth/user.profile',
+    ],
+  );
 
-  Future<User?> signInWithEmail(String email, String password) async {
-    var user = await _auth.signInWithEmailAndPassword(
-        email: email.trim(), password: password);
+  Future<Object?> signInWithEmail(String email, String password) async {
+    final user = await auth
+        .signInWithEmailAndPassword(
+            email: email.trim(), password: password.trim())
+        .catchError((onError) => print("SignIn with Email error $onError"));
 
-    return user.user;
+    if (user.user?.email != null) {
+      MyText.currentUser = user;
+      return user.user;
+    }
+    return false;
   }
 
   Future signOut() async {
-    if (_google.currentUser.toString().length < 5) {
-      _google.disconnect();
-    }
-    await _auth.signOut();
+    MyText.currentUser = null;
+    await GoogleSignIn().signOut();
+    await auth.signOut();
   }
 
   Future<DocumentSnapshot> fetchCurrentUserDoc() async {
-    return await _firestore
+    return await firestore
         .collection('Users')
-        .doc(_auth.currentUser!.uid)
+        .doc(auth.currentUser!.uid.toString())
         .get();
   }
 
@@ -40,8 +54,7 @@ class AuthService {
       String weight) async {
     //var user = await _auth.createUserWithEmailAndPassword(
     //    email: email, password: password);
-
-    await _firestore.collection(collectionName).doc(uid).set({
+    final userInfo = <String, String>{
       "username": username,
       "email": email,
       "name": name,
@@ -49,7 +62,8 @@ class AuthService {
       "age": age,
       "length": length,
       "weight": weight,
-    });
+    };
+    await firestore.collection(collectionName).doc(uid).set(userInfo);
     return true;
   }
 
@@ -63,10 +77,10 @@ class AuthService {
       String age,
       String length,
       String weight) async {
-    dynamic user = await _auth.createUserWithEmailAndPassword(
-        email: email, password: password);
+    //dynamic user = await auth.createUserWithEmailAndPassword(
+    //    email: email, password: password);
 
-    await _firestore.collection(collectionName).doc(user.user!.uid).set({
+    await firestore.collection(collectionName).doc(uid).set({
       "username": username,
       "email": email,
       "name": name,
@@ -74,28 +88,49 @@ class AuthService {
       "age": age,
       "length": length,
       "weight": weight,
-    });
+    }).catchError((error) => print("Failed to set data: $error"));
     return true;
   }
 
   Future<bool> checkUid(String? uid) async {
-    dynamic user =
-        await _firestore.collection(collectionName).doc(uid.toString()).get();
-    if (user.exists) {
-      return true;
-    } else {
+    try {
+      dynamic user =
+          await firestore.collection(collectionName).doc(uid.toString()).get();
+      if (user.exists) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {
       return false;
     }
   }
 
   Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser!.authentication;
+    print("\n\n\n\n\n\n" + "signIn google a girdim");
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn(
+      scopes: ['email', "https://www.googleapis.com/auth/userinfo.profile"],
+    ).signIn();
+
+    print("\n\n\n\n\n\n" + "google user degiskeni" + googleUser.toString());
+
+    // Obtain the auth details from the request
+    GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    print("\n\n\n\n\n\n" + "googleauth degiskenii" + googleAuth.toString());
+    MyText.currentUser = googleAuth;
+    // Create a new credential
     final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
     );
+
+    print("\n\n\n\n\n\n" +
+        "googleauth credential bilgisii -->" +
+        credential.toString());
+
+    // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

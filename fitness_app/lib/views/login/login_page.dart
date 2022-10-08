@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_shelf.dart';
@@ -75,7 +77,8 @@ class _LoginPageState extends State<LoginPage> {
                 height: 40,
               ),
               CommonButton(
-                  text: MyText.contiuneText, onPressed: _logInWithEmail),
+                  text: MyText.contiuneText,
+                  onPressed: () async => {await _logInWithEmail()}),
             ],
           ),
         ),
@@ -138,20 +141,36 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  _logInWithEmail() async {
+  Future _logInWithEmail() async {
     if (_emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty) {
       setState(() {
         isLoading = true;
       });
-      await MyText.authService
-          .signInWithEmail(_emailController.text, _passwordController.text)
-          .then((value) async {
-        await Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => const HomePage()),
-            (route) => false);
-      }).catchError((error) async {
+
+      try {
+        MyText.currentUser = await MyText.authService.auth
+            .signInWithEmailAndPassword(
+                email: _emailController.text.trim(),
+                password: _passwordController.text.trim());
+
+        if (MyText.currentUser != null) {
+          setState(() {
+            isLoading = false;
+          });
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+              (route) => false);
+        } else {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      } catch (error) {
+        setState(() {
+          isLoading = false;
+        });
         if (error.toString().contains('invalid-email')) {
           await warningToast(context, WarningText.loginWrongEmailText);
         } else if (error.toString().contains('user-not-found')) {
@@ -161,12 +180,11 @@ class _LoginPageState extends State<LoginPage> {
         } else {
           await warningToast(context, WarningText.errorText);
         }
-      }).whenComplete(() async {
-        setState(() {
-          isLoading = false;
-        });
-      });
+      }
     } else {
+      setState(() {
+        isLoading = false;
+      });
       warningToast(context, WarningText.errorText);
     }
   }

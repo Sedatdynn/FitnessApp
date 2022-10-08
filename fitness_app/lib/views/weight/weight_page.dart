@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, invalid_return_type_for_catch_error, use_build_context_synchronously
+
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import '../../core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
@@ -51,28 +53,23 @@ class _WeightPageState extends State<WeightPage> {
                 height: context.height / 10,
               ),
               _pickerBody(),
+              if (isLoading) const LoadingPage(),
               SizedBox(height: context.height * 0.1),
               CommonButton(
                 text: MyText.nextText,
-                onPressed: _tryAndCatch,
+                onPressed: () async {
+                  setState(() async {
+                    isLoading = true;
+                    await registerTheUser();
+                    isLoading = false;
+                  });
+                },
               ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void _tryAndCatch() {
-    try {
-      if (widget.password!.isNotEmpty) {
-        _registerOnTap();
-      } else {
-        registerUser();
-      }
-    } catch (e) {
-      registerUser();
-    }
   }
 
   _pickerBody() {
@@ -112,70 +109,62 @@ class _WeightPageState extends State<WeightPage> {
     );
   }
 
-  void _registerOnTap() {
-    if (widget.username.toString().isNotEmpty &&
-        widget.mail.toString().isNotEmpty &&
-        widget.password.toString().isNotEmpty) {
-      setState(() {
-        isLoading = true;
-      });
+  Future registerTheUser() async {
+    try {
+      MyText.currentUser = await MyText.authService.auth
+          .createUserWithEmailAndPassword(
+              email: widget.mail!.trim(), password: widget.password!.trim());
+    } catch (error) {
+      isLoading = false;
+      warningToast(context, error.toString());
+    }
 
-      try {
-        MyText.authService
-            .createPersonEmail(
-                widget.username!,
-                widget.mail!,
-                widget.password!,
-                widget.uid,
-                widget.name!,
-                widget.gender!,
-                widget.age!,
-                widget.height!,
-                _currentValue.toString())
-            .then((value) {
-          warningToast(context, RegisterText.registerSuccesfully,
+    try {
+      if (MyText.currentUser != null) {
+        await MyText.authService.firestore
+            .collection("Users")
+            .doc(widget.uid)
+            .set({
+          "username": widget.username!,
+          "email": widget.mail!,
+          "name": widget.name!,
+          "gender": widget.gender!,
+          "age": widget.age!,
+          "length": widget.height!,
+          "weight": _currentValue.toString(),
+        }).then((value) async {
+          await warningToast(context, RegisterText.registerSuccesfully,
               color: context.greenColor);
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const LoginPage()),
               (route) => false);
-        }).catchError((error) {
+        }).catchError((error) async {
           if (error.toString().contains("email-already-in-use")) {
-            warningToast(context, WarningText.registerUniqueMail);
+            setState(() {
+              isLoading = false;
+            });
+            setState(() {
+              isLoading = false;
+            });
+            await warningToast(context, WarningText.registerUniqueMail);
           }
         }).whenComplete(() {
           setState(() {
             isLoading = false;
           });
         });
-      } catch (e) {
-        if (e.toString().contains("email-already-in-use")) {
-          warningToast(context, WarningText.registerUniqueMail);
-        }
+      } else {
+        setState(() {
+          isLoading = false;
+        });
       }
-    } else {
-      warningToast(context, WarningText.errorText);
-    }
-  }
-
-  void registerUser() async {
-    dynamic user = await MyText.authService.createPerson(
-        widget.username!,
-        widget.mail!,
-        widget.uid,
-        widget.name!,
-        widget.gender!,
-        widget.age!,
-        widget.height!,
-        _currentValue.toString());
-
-    if (user) {
-      warningToast(context, RegisterText.registerSuccesfully,
-          color: context.greenColor);
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
-          (route) => false);
+    } catch (error) {
+      setState(() {
+        isLoading = false;
+      });
+      await warningToast(context, error.toString());
+      print(error);
     }
   }
 }

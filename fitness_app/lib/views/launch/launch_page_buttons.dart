@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, use_build_context_synchronously, dead_code
+
 import 'package:fistness_app_firebase/core/const/warning_toast.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
@@ -29,8 +31,29 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     width: context.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: ImagePaths.google.googletoWidget(),
-                      onPressed: () {
-                        loginWithGoogle();
+                      onPressed: () async {
+                        MyText.currentUser =
+                            await MyText.authService.signInWithGoogle();
+                        bool isUidExist =
+                            true; //await MyText.authService.checkUid(User.user?.uid);
+
+                        isUidExist
+                            ? Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()),
+                                (route) => false)
+                            : Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterNamePage(
+                                          mail: MyText.currentUser.user?.email,
+                                          uid: MyText.currentUser.user?.uid,
+                                          username: MyText
+                                              .currentUser.user?.displayName,
+                                        )),
+                                (route) => false);
+                        ;
                       },
                       label: Text(
                         RegisterText.googleText,
@@ -72,29 +95,24 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
         : const CircularProgressIndicator();
   }
 
-  loginWithGoogle() {
-    MyText.authService.signInWithGoogle().then((value) async {
-      //dynamic check_email = digerFoonks(value.user!.email);
-      bool anyUid = await MyText.authService.checkUid(value.user!.uid);
-      if (anyUid) {
-        Navigator.pushAndRemoveUntil(
+  Future loginWithGoogle() async {
+    await MyText.authService.signInWithGoogle();
+    bool isUidExist = true; //await MyText.authService.checkUid(User.user?.uid);
+
+    isUidExist
+        ? Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const HomePage()),
-            (route) => false);
-      } else {
-        Navigator.pushAndRemoveUntil(
+            (route) => false)
+        : Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
                 builder: (context) => RegisterNamePage(
-                      mail: value.user!.email,
-                      uid: value.user!.uid,
-                      username: value.user!.displayName,
+                      mail: MyText.currentUser.user?.email,
+                      uid: MyText.currentUser.user?.uid,
+                      username: MyText.currentUser.user?.displayName,
                     )),
             (route) => false);
-      }
-    }).catchError((error) {
-      warningToast(context, error);
-    });
   }
 }
 

@@ -364,7 +364,21 @@ class _HomePageState extends State<HomePage> {
                     ],
                   );
                 } else {
-                  return const Center(child: Text("data yok"));
+                  return Column(
+                    children: [
+                      TextButton(
+                          onPressed: () async {
+                            await MyText.authService.signOut();
+                            Navigator.push(
+                                context,
+                                (MaterialPageRoute(
+                                  builder: (context) => const LaunchPage(),
+                                )));
+                          },
+                          child: Text(MyText.currentUser.idToken.toString())),
+                      const Center(child: Text("data yok")),
+                    ],
+                  );
                 }
               } else {
                 return const Center(child: CircularProgressIndicator());
