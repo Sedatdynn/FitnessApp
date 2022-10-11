@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/views/home/viewModel/home_page_model.dart';
+import 'package:fistness_app_firebase/product/service/dio_manager.dart';
+import 'package:fistness_app_firebase/views/home/service/foods_service.dart';
+import 'package:fistness_app_firebase/views/home/viewModel/hp_view_mode.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
+import 'package:provider/provider.dart';
+import '../model/foods_model.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -11,67 +15,101 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends HomeViewModel {
+class _HomeViewState extends State<HomeView> with ProjectDioMixin {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        color: context.scfBackColor,
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          itemCount: foods.length,
-          itemBuilder: (BuildContext ctxt, int i) {
-            return Column(
-              children: [
-                Card(
-                  child: Text(
-                    foods[i].name.toString(),
-                    style: TextStyle(fontSize: 35),
-                  ),
-                ),
-                Container(
-                  width: 400,
-                  height: 200,
-                  color: context.greenColor,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: foods[i].icerik!.length,
-                    itemBuilder: (BuildContext ctx, int j) {
-                      return Card(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                foods[i].icerik![j].isim.toString(),
-                                style: TextStyle(fontSize: 25),
-                              ),
-                              Text(
-                                foods[i].icerik![j].puan.toString() + " puan",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                              Checkbox(
-                                checkColor: Colors.white,
-                                //  fillColor: MaterialStateProperty.resolveWith(getColor),
-                                value: isChecked,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                },
-                              )
-                            ]),
-                      ); // display username as an example
-                    },
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
+    return ChangeNotifierProvider(
+      create: (context) => HomeViewModel(FoodService(service)),
+      builder: (context, child) {
+        return Scaffold(
+          appBar: AppBar(),
+          body: Column(
+            children: [
+              _foodsListView(context, context.watch<HomeViewModel>().foods),
+              _totalPointText(context)
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  ListView _foodsListView(BuildContext context, List<Kategori> items) {
+    return ListView.builder(
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      itemCount: items.length,
+      itemBuilder: (BuildContext ctxt, int i) {
+        return Column(
+          children: [
+            Card(
+              child: Text(
+                items[i].name.toString(),
+                style: TextStyle(fontSize: 35),
+              ),
+            ),
+            Container(
+              width: 500,
+              height: 200,
+              color: context.greenColor,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: items[i].icerik!.length,
+                itemBuilder: (BuildContext ctx, int j) {
+                  return Card(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            items[i].icerik![j].isim.toString(),
+                            style: TextStyle(fontSize: 25),
+                          ),
+                          Text(
+                            "${items[i].icerik![j].puan} puan",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          _checkBox(items, i, j, context),
+                        ]),
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Checkbox _checkBox(List<Kategori> items, int i, int j, BuildContext context) {
+    return Checkbox(
+      checkColor: Colors.white,
+      //  fillColor: MaterialStateProperty.resolveWith(getColor),
+      value: items[i].icerik![j].kontrol,
+
+      onChanged: (value) {
+        setState(() {
+          items[i].icerik![j].kontrol = value!;
+          if (items[i].icerik![j].kontrol!) {
+            context.read<HomeViewModel>().totalPoint +=
+                items[i].icerik![j].puan!;
+          } else {
+            context.read<HomeViewModel>().totalPoint -=
+                items[i].icerik![j].puan!;
+          }
+        });
+      },
+    );
+  }
+
+  Text _totalPointText(BuildContext context) {
+    return Text(
+      context.watch<HomeViewModel>().totalPoint.toString(),
+      style: TextStyle(fontSize: 35, color: Colors.blue),
     );
   }
 }
