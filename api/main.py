@@ -11,6 +11,10 @@ async def food_data():
     data = json.load(f)
     f.close()
     return data
-   
 
-    
+@app.get("/trainings")
+async def training_data():
+    f = open("trainings.json")
+    data = json.load(f)
+    f.close()
+    return data

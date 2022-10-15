@@ -6,7 +6,7 @@ import '../service/foods_service.dart';
 class HomeViewModel extends ChangeNotifier {
   List<Kategori> foods = [];
   final IFoodService foodService;
-  int totalPoint = 0;
+  double totalPoint = 0.0;
   bool isLoading = false;
 
   HomeViewModel(this.foodService) {
@@ -14,6 +14,7 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   void changeLoading() {
+    print("+++++++++++++++++++++++++" + "foods.toString()");
     isLoading = !isLoading;
     notifyListeners();
   }
@@ -21,6 +22,7 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> fetch() async {
     changeLoading();
     foods = (await foodService.fetchFoodsItem())?.kategori ?? [];
+    print("+++++++++++++++++++++++++" + foods.toString());
     changeLoading();
   }
 }

@@ -27,12 +27,15 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
       create: (context) => HomeViewModel(FoodService(service)),
       builder: (context, child) {
         return Scaffold(
-          appBar: AppBar(),
-          body: Column(
-            children: [
-              _foodsListView(context, context.watch<HomeViewModel>().foods),
-              _totalPointText(context)
-            ],
+          //appBar: AppBar(),
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                _foodsListView(context, context.watch<HomeViewModel>().foods),
+                _totalPointText(context),
+              ],
+            ),
           ),
         );
       },
@@ -42,7 +45,7 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
   ListView _foodsListView(BuildContext context, List<Kategori> items) {
     return ListView.builder(
       shrinkWrap: true,
-      scrollDirection: Axis.vertical,
+      physics: NeverScrollableScrollPhysics(),
       itemCount: items.length,
       itemBuilder: (BuildContext ctxt, int i) {
         return Column(
@@ -55,7 +58,7 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
             ),
             Container(
               width: 500,
-              height: 200,
+              height: 300,
               color: context.greenColor,
               child: ListView.builder(
                 shrinkWrap: true,
@@ -63,15 +66,15 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
                 itemBuilder: (BuildContext ctx, int j) {
                   return Card(
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             items[i].icerik![j].isim.toString(),
-                            style: TextStyle(fontSize: 25),
+                            style: TextStyle(fontSize: 18),
                           ),
                           Text(
-                            "${items[i].icerik![j].puan} puan",
-                            style: TextStyle(fontSize: 20),
+                            "${items[i].icerik![j].puan!.toDouble()} puan",
+                            style: TextStyle(fontSize: 16),
                           ),
                           _checkBox(items, i, j, context),
                         ]),

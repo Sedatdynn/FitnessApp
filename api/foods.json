@@ -2,22 +2,292 @@
     "kategori": [
         {
             "id": 1,
-            "name": "Sebze",
+            "name": "Ekmek Cesitleri",
             "icerik": [
                 {
-                    "isim": "patlican",
-                    "puan": 1,
+                    "isim": "1 dilim Baget ekmek",
+                    "puan": 4,
                     "kontrol" :false
                 },
                 {
-                    "isim": "kabak",
+                    "isim": "1 dilim Siyah ekmek",
+                    "puan": 1.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 dilim Ekmek",
                     "puan": 2,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 tane Tost ekmeği",
+                    "puan": 1,
                     "kontrol":false
                 }
             ]
         },
         {
             "id": 2,
+            "name": "Ekmek Ustune",
+            "icerik": [
+                {
+                    "isim": "1 yemek.k. krem peynir 30% yagli ",
+                    "puan": 0.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "2 y.k. kaymak ",
+                    "puan": 1,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 çay kasigi Fistik Ezmesi",
+                    "puan": 2,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "2 cay kasigi Recel",
+                    "puan": 0.5,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Yag Cesitleri, 2 Cay Kasigi",
+            "icerik": [
+                {
+                    "isim": "Tereyag",
+                    "puan": 1,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "Light Tereyag",
+                    "puan": 0.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "Bitkisel Siviyag ",
+                    "puan": 1,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "Mayonez, 50% yag",
+                    "puan": 0.5,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Balik Cesitleri",
+            "icerik": [
+                {
+                    "isim": "Yilan Baligi porsiyon ",
+                    "puan": 7.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "3 tane Istiridye",
+                    "puan": 0.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "300 gr Alabalik ",
+                    "puan": 6,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 tane Midye",
+                    "puan": 5,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Et Secenekleri",
+            "icerik": [
+                {
+                    "isim": "100 gr Kofte",
+                    "puan": 6,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 dilim Sucuk",
+                    "puan": 1,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 tane tavuk kanadi",
+                    "puan": 4,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "120 gr Hindi eti",
+                    "puan": 2,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Icecekler",
+            "icerik": [
+                {
+                    "isim": "200 ml Cola ",
+                    "puan": 2,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "Cola light",
+                    "puan": 0,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "200 ml Diyet meyve suyu ",
+                    "puan": 0.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 bardak CikolatalI icecek",
+                    "puan": 5,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Tahil Urunler",
+            "icerik": [
+                {
+                    "isim": "40 gr Misir patlama ",
+                    "puan": 2,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 y kasigi Yulaf ezmesi",
+                    "puan": 0.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 cay kasigi Un ",
+                    "puan": 0.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 y kasigi Pirinc",
+                    "puan": 1,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Sut ve Yogurt",
+            "icerik": [
+                {
+                    "isim": "0,5% yagli 150 gr Yogurt",
+                    "puan": 1,
+                    "kontrol" :false
+                },
+                {
+                    "isim": " 3 Çay kasigi Kahve Sutu",
+                    "puan": 0.5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1,5% yagli 250 ml Sut",
+                    "puan": 2,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "3,5% yagli 250 ml Sut",
+                    "puan": 3.5,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Fast Food",
+            "icerik": [
+                {
+                    "isim": "1 tane Lahmacun",
+                    "puan": 7,
+                    "kontrol" :false
+                },
+                {
+                    "isim": " 1 tane Doner",
+                    "puan": 14,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 tane Hamburger",
+                    "puan": 5,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 tane Cheeseburger",
+                    "puan": 6.5,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Sebze",
+            "icerik": [
+                {
+                    "isim": "domates",
+                    "puan": 0,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "patetes",
+                    "puan": 1,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "patlican",
+                    "puan": 0,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "kabak",
+                    "puan": 0,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Meyve",
+            "icerik": [
+                {
+                    "isim": "Elma",
+                    "puan": 0,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "Cilek",
+                    "puan": 0,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "1 tane Muz",
+                    "puan": 1,
+                    "kontrol" :false
+                },
+                {
+                    "isim": "3 tane Erik",
+                    "puan": 0.5,
+                    "kontrol":false
+                }
+            ]
+        },
+        {
+            "id": 12,
             "name": "Tatli",
             "icerik": [
                 {
@@ -27,8 +297,20 @@
                     
                 },
                 {
-                    "isim": "baklava",
+                    "isim": "125 gr Cikolatali puding",
+                    "puan": 3,
+                    "kontrol" : false
+                    
+                },
+                {
+                    "isim": "150 gr Irmik tatlisi",
                     "puan": 4,
+                    "kontrol" : false
+                    
+                },
+                {
+                    "isim": "baklava",
+                    "puan": 7,
                     "kontrol" : false
 
                 }

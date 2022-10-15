@@ -7,15 +7,15 @@ class FoodsModel {
     if (json['kategori'] != null) {
       kategori = <Kategori>[];
       json['kategori'].forEach((v) {
-        kategori!.add(new Kategori.fromJson(v));
+        kategori!.add(Kategori.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.kategori != null) {
-      data['kategori'] = this.kategori!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (kategori != null) {
+      data['kategori'] = kategori!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -34,17 +34,17 @@ class Kategori {
     if (json['icerik'] != null) {
       icerik = <Icerik>[];
       json['icerik'].forEach((v) {
-        icerik!.add(new Icerik.fromJson(v));
+        icerik!.add(Icerik.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    if (this.icerik != null) {
-      data['icerik'] = this.icerik!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    if (icerik != null) {
+      data['icerik'] = icerik!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -52,7 +52,7 @@ class Kategori {
 
 class Icerik {
   String? isim;
-  int? puan;
+  dynamic? puan;
   bool? kontrol;
 
   Icerik({this.isim, this.puan, this.kontrol});
@@ -64,10 +64,10 @@ class Icerik {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['isim'] = this.isim;
-    data['puan'] = this.puan;
-    data['kontrol'] = this.kontrol;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['isim'] = isim;
+    data['puan'] = puan;
+    data['kontrol'] = kontrol;
     return data;
   }
 }
