@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:fistness_app_firebase/core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/service/dio_manager.dart';
-import 'package:fistness_app_firebase/views/home/service/foods_service.dart';
+import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
 import 'package:fistness_app_firebase/views/home/viewModel/hp_view_mode.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:provider/provider.dart';
@@ -24,15 +25,20 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => HomeViewModel(FoodService(service)),
+      create: (context) {
+        String item = "foods";
+        return HomeViewModel(GeneralService(service, item));
+      },
       builder: (context, child) {
         return Scaffold(
-          //appBar: AppBar(),
-          body: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
+          appBar: CommonAppBar(),
+          body: Container(
+            decoration: commonBoxDec(context.scfBackColor, context.scfBackColor,
+                context.scfBackColor),
+            padding: context.midVerticalPadding,
+            child: ListView(
               children: [
-                _foodsListView(context, context.watch<HomeViewModel>().foods),
+                _allFoodsTitles(context, context.watch<HomeViewModel>().foods),
                 _totalPointText(context),
               ],
             ),
@@ -42,58 +48,70 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
     );
   }
 
-  ListView _foodsListView(BuildContext context, List<Kategori> items) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: items.length,
-      itemBuilder: (BuildContext ctxt, int i) {
-        return Column(
-          children: [
-            Card(
-              child: Text(
-                items[i].name.toString(),
-                style: TextStyle(fontSize: 35),
+  Container _allFoodsTitles(BuildContext context, List<Kategori> items) {
+    return Container(
+      padding: context.minHorzPadding,
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: items.length,
+        itemBuilder: (BuildContext ctxt, int i) {
+          return Column(
+            children: [
+              Container(
+                width: double.infinity,
+                margin: context.minTopBtm,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14.0),
+                  color: Colors.purple,
+                ),
+                child: Text(
+                  items[i].name.toString(),
+                  style: context.headline6(context),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Container(
-              width: 500,
-              height: 300,
-              color: context.greenColor,
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: items[i].icerik!.length,
-                itemBuilder: (BuildContext ctx, int j) {
-                  return Card(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            items[i].icerik![j].isim.toString(),
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(
-                            "${items[i].icerik![j].puan!.toDouble()} puan",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          _checkBox(items, i, j, context),
-                        ]),
-                  );
-                },
+              _allFoodsInfos(context, items, i),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Container _allFoodsInfos(BuildContext context, List<Kategori> items, int i) {
+    return Container(
+      padding: context.minHorzPadding,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: items[i].icerik!.length,
+        itemBuilder: (BuildContext ctx, int j) {
+          return Card(
+            color: context.scfBackColor,
+            child: Row(children: [
+              Text(
+                items[i].icerik![j].isim.toString(),
+                style: context.subtitle2(context),
               ),
-            ),
-          ],
-        );
-      },
+              Expanded(child: Container()),
+              Text(
+                "${items[i].icerik![j].puan!.toDouble()} puan",
+                style: context.subtitle2(context),
+              ),
+              _checkBox(items, i, j, context),
+            ]),
+          );
+        },
+      ),
     );
   }
 
   Checkbox _checkBox(List<Kategori> items, int i, int j, BuildContext context) {
     return Checkbox(
-      checkColor: Colors.white,
-      //  fillColor: MaterialStateProperty.resolveWith(getColor),
+      hoverColor: Colors.pink,
+      checkColor: context.textColor,
+      activeColor: context.mainColor,
       value: items[i].icerik![j].kontrol,
-
       onChanged: (value) {
         setState(() {
           items[i].icerik![j].kontrol = value!;
@@ -112,7 +130,7 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
   Text _totalPointText(BuildContext context) {
     return Text(
       context.watch<HomeViewModel>().totalPoint.toString(),
-      style: TextStyle(fontSize: 35, color: Colors.blue),
+      style: context.headline4(context),
     );
   }
 }

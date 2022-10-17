@@ -46,7 +46,7 @@ def training():
             break
         
     
-    with open('trainings.json', 'w', encoding='utf-8') as f:
+    with open('exercises.json', 'w', encoding='utf-8') as f:
         json.dump(datas["data"], f, ensure_ascii=False, indent=4)
 
 def trainingContent(categoryUrl):

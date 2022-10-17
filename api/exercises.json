@@ -1,4 +1,6 @@
-[
+{
+    
+  "exercise":  [
     {
         "categoryName": "Abductors",
         "imgUrl": "https://cdn.muscleandstrength.com/sites/default/files/taxonomy/image/videos/abductors.jpg",
@@ -642,3 +644,4 @@
         ]
     }
 ]
+}

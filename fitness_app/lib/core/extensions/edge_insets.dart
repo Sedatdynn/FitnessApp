@@ -15,6 +15,7 @@ extension Size on BuildContext {
 }
 
 extension SymetricPadding on BuildContext {
+  EdgeInsets get minHorzPadding => const EdgeInsets.symmetric(horizontal: 8.0);
   EdgeInsets get midVerticalPadding =>
       const EdgeInsets.symmetric(vertical: 16.0);
   EdgeInsets get midLargeVerticalPadding =>
@@ -25,11 +26,16 @@ extension SymetricPadding on BuildContext {
 
   EdgeInsets get symVertPadding =>
       const EdgeInsets.symmetric(horizontal: 12, vertical: 4);
+  EdgeInsets get symVertHorzPadding =>
+      const EdgeInsets.symmetric(horizontal: 12, vertical: 12);
 }
 
 extension OnlyPadding on BuildContext {
   EdgeInsets get minLeft => const EdgeInsets.only(left: 8.0);
   EdgeInsets get midLeft => const EdgeInsets.only(left: 12.0);
+  EdgeInsets get minTopBtm =>
+      const EdgeInsets.only(top: 20.0, right: 8, left: 8);
+
   EdgeInsets get midTop => const EdgeInsets.only(top: 70);
   EdgeInsets get riBottom => const EdgeInsets.only(right: 10.0, bottom: 5);
   EdgeInsets get minTopBottom => const EdgeInsets.only(top: 32.0, bottom: 5);

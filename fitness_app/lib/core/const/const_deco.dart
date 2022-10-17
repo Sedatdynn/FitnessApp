@@ -2,7 +2,7 @@ import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 BoxDecoration commonBoxDec(Color? color1, Color? color2, Color? color3) =>
     BoxDecoration(
-      borderRadius: BorderRadius.circular(12.0),
+      borderRadius: BorderRadius.circular(25.0),
       boxShadow: [
         BoxShadow(
           offset: const Offset(5, 1),

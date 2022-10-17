@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/extensions/theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class CommonAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -8,9 +9,11 @@ class CommonAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: context.scfBackColor,
       leading: IconButton(
-        icon: const Icon(
+        icon: Icon(
           Icons.arrow_back_outlined,
+          color: context.mainColor,
         ),
         onPressed: () => Navigator.of(context).pop(),
       ),
