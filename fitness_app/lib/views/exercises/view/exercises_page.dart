@@ -3,6 +3,7 @@ import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
+import 'package:fistness_app_firebase/views/exercises/view/detail_exercises_page.dart';
 import 'package:fistness_app_firebase/views/exercises/viewModel/exercises_view_model.dart';
 import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,21 @@ class _ExercisesPageState extends State<ExercisesPage> with ProjectDioMixin {
                 context.scfBackColor),
             child: ListView(
               children: [
+                Container(
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  margin: context.minTopBtm,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.0),
+                    color: Colors.purple,
+                  ),
+                  child: Text(
+                    "Exercises",
+                    style: context.headline6(context),
+                  ),
+                ),
                 _exercisesImages(
-                    context, context.watch<ExercisesViewModel>().exercises)
+                    context, context.watch<ExercisesViewModel>().exercises),
               ],
             ),
           ),
@@ -67,7 +81,8 @@ class _ExercisesPageState extends State<ExercisesPage> with ProjectDioMixin {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeView(),
+                        builder: (context) =>
+                            DetailExercisesPage(items: items[i].categoryData!),
                       ));
                 },
                 child: Container(

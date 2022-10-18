@@ -28,6 +28,8 @@ extension SymetricPadding on BuildContext {
       const EdgeInsets.symmetric(horizontal: 12, vertical: 4);
   EdgeInsets get symVertHorzPadding =>
       const EdgeInsets.symmetric(horizontal: 12, vertical: 12);
+  EdgeInsets get minsymVertHorzPadding =>
+      const EdgeInsets.symmetric(horizontal: 4, vertical: 4);
 }
 
 extension OnlyPadding on BuildContext {
