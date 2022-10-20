@@ -1,6 +1,5 @@
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
-
 import '../../service/foods_exercises_service.dart';
 
 class ExercisesViewModel extends ChangeNotifier {

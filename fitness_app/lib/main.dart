@@ -1,5 +1,5 @@
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
-import 'package:fistness_app_firebase/views/exercises/view/exercises_page.dart';
+import 'package:fistness_app_firebase/views/exercises/view/detailPages/exercises_page.dart';
 import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';

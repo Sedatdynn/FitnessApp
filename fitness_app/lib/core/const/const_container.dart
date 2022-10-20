@@ -15,7 +15,7 @@ Widget topBox(
       width: width,
       height: height,
       decoration: commonBoxDec(color1, color2, color3),
-      child: child,
       padding: padding,
       margin: margin,
+      child: child,
     );

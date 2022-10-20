@@ -3,14 +3,14 @@ import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
-import 'package:fistness_app_firebase/views/exercises/view/detail_exercises_page.dart';
+import 'package:fistness_app_firebase/views/exercises/view/detailPages/detail_exercises_page.dart';
 import 'package:fistness_app_firebase/views/exercises/viewModel/exercises_view_model.dart';
 import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/const/const_deco.dart';
-import '../../service/foods_exercises_service.dart';
+import '../../../../core/const/const_deco.dart';
+import '../../../service/foods_exercises_service.dart';
 
 class ExercisesPage extends StatefulWidget {
   const ExercisesPage({super.key});

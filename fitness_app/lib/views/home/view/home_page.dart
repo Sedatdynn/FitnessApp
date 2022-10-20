@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
 
   Container _allFoodsTitles(BuildContext context, List<Kategori> items) {
     return Container(
-      padding: context.minHorzPadding,
+      // padding: context.minHorzPadding,
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
@@ -127,10 +127,18 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
     );
   }
 
-  Text _totalPointText(BuildContext context) {
-    return Text(
-      context.watch<HomeViewModel>().totalPoint.toString(),
-      style: context.headline4(context),
+  _totalPointText(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      margin: context.minTopBtm,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14.0),
+        color: Colors.purple,
+      ),
+      child: Text(
+        "Total Point is:  ${context.watch<HomeViewModel>().totalPoint}",
+        style: context.headline6(context),
+      ),
     );
   }
 }

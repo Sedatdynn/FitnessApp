@@ -133,9 +133,9 @@ def scrapeVideoPage(sourceUrl):
         secondContent = html.find("div",class_ = "field field-name-body field-type-text-with-summary field-label-hidden").find_all("ol")[0].text
     else:
         secondContent = html.find("div",class_ = "field field-name-body field-type-text-with-summary field-label-hidden").find("ol").text
-    print("\n\n**********************************\n\n")
-    print(firstTitle)
-    print("\n\n**********************************\n\n")
+    # print("\n\n**********************************\n\n")
+    # print(firstTitle)
+    # print("\n\n**********************************\n\n")
 
     
 

@@ -8,8 +8,8 @@ class LogoBody extends StatelessWidget {
     double height = 200.0;
     return Container(
       height: height,
-      child: LogoPath.logo.toWidget(),
       alignment: Alignment.center,
+      child: LogoPath.logo.toWidget(),
     );
   }
 }
