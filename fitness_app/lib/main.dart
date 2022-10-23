@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: context.watch<ThemeNotifier>().currentTheme,
-      home: const ExercisesPage(),
+      home: const HomeView(),
       // home: MyText.currentUser.toString().length > 4
       // //     ? const HomePage()
       //     : const LaunchPage(),

@@ -1,4 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_init_to_null, use_build_context_synchronously
+
+import 'dart:ffi';
 
 import 'package:fistness_app_firebase/core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
@@ -7,6 +9,8 @@ import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart
 import 'package:fistness_app_firebase/views/home/viewModel/hp_view_mode.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../model/foods_model.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,9 +21,17 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> with ProjectDioMixin {
+  late SharedPreferences prefs;
+  late double lastSavedPoint = 0.0;
   @override
   void initState() {
     super.initState();
+    definePref();
+  }
+
+  Future<void> definePref() async {
+    prefs = await SharedPreferences.getInstance();
+    lastSavedPoint = prefs.getDouble("point") ?? 0.0;
   }
 
   @override
@@ -27,21 +39,91 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
     return ChangeNotifierProvider(
       create: (context) {
         String item = "foods";
-        return HomeViewModel(GeneralService(service, item));
+        return HomeViewModel(
+          GeneralService(service, item),
+        );
       },
       builder: (context, child) {
         return Scaffold(
-          appBar: CommonAppBar(),
-          body: Container(
-            decoration: commonBoxDec(context.scfBackColor, context.scfBackColor,
-                context.scfBackColor),
-            padding: context.midVerticalPadding,
-            child: ListView(
-              children: [
-                _allFoodsTitles(context, context.watch<HomeViewModel>().foods),
-                _totalPointText(context),
-              ],
-            ),
+          appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_outlined,
+                  color: context.mainColor,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              title: Text("Saved daily point is: $lastSavedPoint")),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: context.height * 0.75,
+                width: double.infinity,
+                decoration: commonBoxDec(context.scfBackColor,
+                    context.scfBackColor, context.scfBackColor),
+                padding: context.minVertPadding,
+                child: ListView(
+                  children: [
+                    _allFoodsTitles(
+                        context, context.watch<HomeViewModel>().foods),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: context.height * 0.06,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14.0),
+                      color: Colors.purple,
+                    ),
+                    child: TextButton.icon(
+                      onPressed: () async {
+                        var lastPoint = prefs.getDouble("point") ?? 0.0;
+                        await prefs.setDouble(
+                            "point",
+                            lastPoint +
+                                context.read<HomeViewModel>().totalPoint);
+
+                        var savedPoint = prefs.getDouble("point") ?? 0.0;
+                        setState(() {
+                          lastSavedPoint = savedPoint;
+                        });
+                      },
+                      icon: Icon(Icons.save_alt_outlined,
+                          color: context.textColor),
+                      label: Text("Save Daily Point",
+                          style: context.subtitle2(context)),
+                    ),
+                  ),
+                  Container(
+                    height: context.height * 0.06,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14.0),
+                      color: Colors.purple,
+                    ),
+                    child: TextButton.icon(
+                      onPressed: () async {
+                        await prefs.remove("point");
+
+                        setState(() {
+                          lastSavedPoint = 0.0;
+                        });
+                      },
+                      icon: Icon(Icons.remove_circle_outline,
+                          color: context.textColor),
+                      label: Text("Reset Daily Point",
+                          style: context.subtitle2(context)),
+                    ),
+                  ),
+                ],
+              ),
+              _totalPointText(context),
+            ],
           ),
         );
       },
@@ -50,7 +132,7 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
 
   Container _allFoodsTitles(BuildContext context, List<Kategori> items) {
     return Container(
-      // padding: context.minHorzPadding,
+      padding: context.zeroAllPadding,
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
@@ -129,14 +211,14 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
 
   _totalPointText(BuildContext context) {
     return Container(
+      height: context.height * 0.06,
       alignment: Alignment.center,
-      margin: context.minTopBtm,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.0),
         color: Colors.purple,
       ),
       child: Text(
-        "Total Point is:  ${context.watch<HomeViewModel>().totalPoint}",
+        "Current point is: ${context.watch<HomeViewModel>().totalPoint}",
         style: context.headline6(context),
       ),
     );
