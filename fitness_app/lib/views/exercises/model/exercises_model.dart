@@ -1,26 +1,22 @@
+import 'package:json_annotation/json_annotation.dart';
+part "exercises_model.g.dart";
+
+@JsonSerializable()
 class ExercisesModel {
   List<Exercise>? exercise;
 
   ExercisesModel({this.exercise});
 
-  ExercisesModel.fromJson(Map<String, dynamic> json) {
-    if (json['exercise'] != null) {
-      exercise = <Exercise>[];
-      json['exercise'].forEach((v) {
-        exercise!.add(Exercise.fromJson(v));
-      });
-    }
+  factory ExercisesModel.fromJson(Map<String, dynamic> json) {
+    return _$ExercisesModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (exercise != null) {
-      data['exercise'] = exercise!.map((v) => v.toJson()).toList();
-    }
-    return data;
+    return _$ExercisesModelToJson(this);
   }
 }
 
+@JsonSerializable()
 class Exercise {
   String? categoryName;
   String? imgUrl;
@@ -28,28 +24,16 @@ class Exercise {
 
   Exercise({this.categoryName, this.imgUrl, this.categoryData});
 
-  Exercise.fromJson(Map<String, dynamic> json) {
-    categoryName = json['categoryName'];
-    imgUrl = json['imgUrl'];
-    if (json['categoryData'] != null) {
-      categoryData = <CategoryData>[];
-      json['categoryData'].forEach((v) {
-        categoryData!.add(CategoryData.fromJson(v));
-      });
-    }
+  factory Exercise.fromJson(Map<String, dynamic> json) {
+    return _$ExerciseFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['categoryName'] = categoryName;
-    data['imgUrl'] = imgUrl;
-    if (categoryData != null) {
-      data['categoryData'] = categoryData!.map((v) => v.toJson()).toList();
-    }
-    return data;
+    return _$ExerciseToJson(this);
   }
 }
 
+@JsonSerializable()
 class CategoryData {
   String? contentImage;
   String? type;
@@ -68,33 +52,16 @@ class CategoryData {
       this.exerciseName,
       this.videoPageData});
 
-  CategoryData.fromJson(Map<String, dynamic> json) {
-    contentImage = json['contentImage'];
-    type = json['type'];
-    equipment = json['equipment'];
-    mechanic = json['mechanic'];
-    exerciseLevel = json['exerciseLevel'];
-    exerciseName = json['exerciseName'];
-    videoPageData = json['videoPageData'] != null
-        ? VideoPageData.fromJson(json['videoPageData'])
-        : null;
+  factory CategoryData.fromJson(Map<String, dynamic> json) {
+    return _$CategoryDataFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['contentImage'] = contentImage;
-    data['type'] = type;
-    data['equipment'] = equipment;
-    data['mechanic'] = mechanic;
-    data['exerciseLevel'] = exerciseLevel;
-    data['exerciseName'] = exerciseName;
-    if (videoPageData != null) {
-      data['videoPageData'] = videoPageData!.toJson();
-    }
-    return data;
+    return _$CategoryDataToJson(this);
   }
 }
 
+@JsonSerializable()
 class VideoPageData {
   String? videoUrl;
   String? fullBodyImage;
@@ -109,21 +76,11 @@ class VideoPageData {
       this.firstContent,
       this.secondTitle});
 
-  VideoPageData.fromJson(Map<String, dynamic> json) {
-    videoUrl = json['videoUrl'];
-    fullBodyImage = json['fullBodyImage'];
-    firstTitle = json['firstTitle'];
-    firstContent = json['firstContent'];
-    secondTitle = json['secondTitle'];
+  factory VideoPageData.fromJson(Map<String, dynamic> json) {
+    return _$VideoPageDataFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['videoUrl'] = videoUrl;
-    data['fullBodyImage'] = fullBodyImage;
-    data['firstTitle'] = firstTitle;
-    data['firstContent'] = firstContent;
-    data['secondTitle'] = secondTitle;
-    return data;
+    return _$VideoPageDataToJson(this);
   }
 }

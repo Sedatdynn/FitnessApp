@@ -45,15 +45,15 @@ class AuthService {
   Future<bool?> createPerson(
       String username,
       String email,
-      //String password,
+      String password,
       String uid,
       String name,
       String gender,
       String age,
       String length,
       String weight) async {
-    //var user = await _auth.createUserWithEmailAndPassword(
-    //    email: email, password: password);
+    var user = await auth.createUserWithEmailAndPassword(
+        email: email, password: password);
     final userInfo = <String, String>{
       "username": username,
       "email": email,
@@ -107,32 +107,50 @@ class AuthService {
   }
 
   Future<UserCredential> signInWithGoogle() async {
-    print("\n\n\n\n\n\n" + "signIn google a girdim");
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn(
-      scopes: ['email', "https://www.googleapis.com/auth/userinfo.profile"],
-    ).signIn();
-
-    print("\n\n\n\n\n\n" + "google user degiskeni" + googleUser.toString());
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
-    GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
-    print("\n\n\n\n\n\n" + "googleauth degiskenii" + googleAuth.toString());
-    MyText.currentUser = googleAuth;
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
 
-    print("\n\n\n\n\n\n" +
-        "googleauth credential bilgisii -->" +
-        credential.toString());
-
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+//   Future<UserCredential> signInWithGoogle() async {
+//     print("\n\n\n\n\n\n" + "signIn google a girdim");
+//     // Trigger the authentication flow
+//     final GoogleSignInAccount? googleUser = await GoogleSignIn(
+//       scopes: ['email', "https://www.googleapis.com/auth/userinfo.profile"],
+//     ).signIn();
+
+//     print("\n\n\n\n\n\n" + "google user degiskeni" + googleUser.toString());
+
+//     // Obtain the auth details from the request
+//     GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+//     print("\n\n\n\n\n\n" + "googleauth degiskenii" + googleAuth.toString());
+//     MyText.currentUser = googleAuth;
+//     // Create a new credential
+//     final credential = GoogleAuthProvider.credential(
+//       accessToken: googleAuth?.accessToken,
+//       idToken: googleAuth?.idToken,
+//     );
+
+//     print("\n\n\n\n\n\n" +
+//         "googleauth credential bilgisii -->" +
+//         credential.toString());
+
+//     // Once signed in, return the UserCredential
+//     return await FirebaseAuth.instance.signInWithCredential(credential);
+//   }
 }
 
 const String collectionName = "Users";

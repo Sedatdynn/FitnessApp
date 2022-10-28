@@ -58,9 +58,12 @@ class _WeightPageState extends State<WeightPage> {
               CommonButton(
                 text: MyText.nextText,
                 onPressed: () async {
-                  setState(() async {
+                  setState(() {
                     isLoading = true;
-                    await registerTheUser();
+                  });
+
+                  await registerTheUser();
+                  setState(() {
                     isLoading = false;
                   });
                 },

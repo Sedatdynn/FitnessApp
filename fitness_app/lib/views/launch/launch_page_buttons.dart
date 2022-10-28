@@ -34,8 +34,8 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                       onPressed: () async {
                         MyText.currentUser =
                             await MyText.authService.signInWithGoogle();
-                        bool isUidExist =
-                            true; //await MyText.authService.checkUid(User.user?.uid);
+                        bool isUidExist = await MyText.authService
+                            .checkUid(MyText.currentUser.user?.uid);
 
                         isUidExist
                             ? Navigator.pushAndRemoveUntil(
@@ -97,7 +97,8 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
 
   Future loginWithGoogle() async {
     await MyText.authService.signInWithGoogle();
-    bool isUidExist = true; //await MyText.authService.checkUid(User.user?.uid);
+    bool isUidExist =
+        await MyText.authService.checkUid(MyText.currentUser.user?.uid);
 
     isUidExist
         ? Navigator.pushAndRemoveUntil(

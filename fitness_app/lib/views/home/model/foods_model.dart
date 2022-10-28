@@ -1,73 +1,52 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part "foods_model.g.dart";
+
+@JsonSerializable()
 class FoodsModel {
   List<Kategori>? kategori;
 
   FoodsModel({this.kategori});
 
-  FoodsModel.fromJson(Map<String, dynamic> json) {
-    if (json['kategori'] != null) {
-      kategori = <Kategori>[];
-      json['kategori'].forEach((v) {
-        kategori!.add(Kategori.fromJson(v));
-      });
-    }
+  factory FoodsModel.fromJson(Map<String, dynamic> json) {
+    return _$FoodsModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (kategori != null) {
-      data['kategori'] = kategori!.map((v) => v.toJson()).toList();
-    }
-    return data;
+    return _$FoodsModelToJson(this);
   }
 }
 
+@JsonSerializable()
 class Kategori {
-  int? id;
-  String? name;
-  List<Icerik>? icerik;
+  final int? id;
+  final String? name;
+  final List<Icerik>? icerik;
 
   Kategori({this.id, this.name, this.icerik});
 
-  Kategori.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    if (json['icerik'] != null) {
-      icerik = <Icerik>[];
-      json['icerik'].forEach((v) {
-        icerik!.add(Icerik.fromJson(v));
-      });
-    }
+  factory Kategori.fromJson(Map<String, dynamic> json) {
+    return _$KategoriFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    if (icerik != null) {
-      data['icerik'] = icerik!.map((v) => v.toJson()).toList();
-    }
-    return data;
+    return _$KategoriToJson(this);
   }
 }
 
+@JsonSerializable()
 class Icerik {
-  String? isim;
-  dynamic? puan;
+  final String? isim;
+  final dynamic puan;
   bool? kontrol;
 
   Icerik({this.isim, this.puan, this.kontrol});
 
-  Icerik.fromJson(Map<String, dynamic> json) {
-    isim = json['isim'];
-    puan = json['puan'];
-    kontrol = json['kontrol'];
+  factory Icerik.fromJson(Map<String, dynamic> json) {
+    return _$IcerikFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['isim'] = isim;
-    data['puan'] = puan;
-    data['kontrol'] = kontrol;
-    return data;
+    return _$IcerikToJson(this);
   }
 }

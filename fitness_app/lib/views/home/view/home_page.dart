@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, use_build_context_synchronously
 
-import 'dart:ffi';
-
 import 'package:fistness_app_firebase/core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/service/dio_manager.dart';

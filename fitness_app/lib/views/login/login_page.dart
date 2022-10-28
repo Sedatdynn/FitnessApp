@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_shelf.dart';
@@ -78,7 +80,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
               CommonButton(
                   text: MyText.contiuneText,
-                  onPressed: () async => {await _logInWithEmail()}),
+                  onPressed: () async {
+                    await _logInWithEmail();
+                  }),
+              CommonButton(
+                  text: MyText.usernameText,
+                  onPressed: () async {
+                    await _saveData();
+                  }),
             ],
           ),
         ),
@@ -153,24 +162,31 @@ class _LoginPageState extends State<LoginPage> {
             .signInWithEmailAndPassword(
                 email: _emailController.text.trim(),
                 password: _passwordController.text.trim());
+        debugPrint("****** ilk try blogunu gectimmmmm*******");
 
         if (MyText.currentUser != null) {
           setState(() {
             isLoading = false;
           });
+          debugPrint("****** ikinci try blogunu gectimmmmm*******");
+
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
               (route) => false);
+          debugPrint("****** 3. try blogunu gectimmmmm*******");
         } else {
           setState(() {
             isLoading = false;
           });
+          debugPrint("****** 4. try blogunu gectimmmmm*******");
         }
       } catch (error) {
         setState(() {
           isLoading = false;
         });
+        debugPrint("****** 5. try blogunu gectimmmmm*******");
+
         if (error.toString().contains('invalid-email')) {
           await warningToast(context, WarningText.loginWrongEmailText);
         } else if (error.toString().contains('user-not-found')) {
@@ -185,6 +201,8 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         isLoading = false;
       });
+      debugPrint("****** warning test  gectimmmmm*******");
+
       warningToast(context, WarningText.errorText);
     }
   }
@@ -202,5 +220,16 @@ class _LoginPageState extends State<LoginPage> {
         style: context.subtitle2(context),
       ),
     );
+  }
+
+  Future _saveData() async {
+    final db = FirebaseFirestore.instance.collection("Users").doc("myID");
+    print("************************");
+    final user = {"name": "Ada", "age": 23, "born": false};
+
+    print("-----------------------------------");
+
+    await db.set(user);
+    print("+++++++++++++++++++");
   }
 }

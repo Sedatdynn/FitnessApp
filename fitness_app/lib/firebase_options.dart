@@ -47,31 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD_JWj5tiENOid4DRyXCYIcWdfLvRTeWUQ',
-    appId: '1:890034566376:web:1904748f54b078b144c55d',
-    messagingSenderId: '890034566376',
-    projectId: 'fitness-app-f4ef3',
-    authDomain: 'fitness-app-f4ef3.firebaseapp.com',
-    storageBucket: 'fitness-app-f4ef3.appspot.com',
-    measurementId: 'G-VMW3N3VE23',
+    apiKey: 'AIzaSyB94D4fBiPXtNNaK_F-fO_vz0Ez7LlYaLI',
+    appId: '1:441716782635:web:f9224e7fc765fb4a781c6e',
+    messagingSenderId: '441716782635',
+    projectId: 'fitness-app-3de03',
+    authDomain: 'fitness-app-3de03.firebaseapp.com',
+    storageBucket: 'fitness-app-3de03.appspot.com',
+    measurementId: 'G-4LJE2S93WE',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBNKP-BMy4PMWKhqlDfMN2bmajuYIdhZ6U',
-    appId: '1:890034566376:android:696482ff723fbe0144c55d',
-    messagingSenderId: '890034566376',
-    projectId: 'fitness-app-f4ef3',
-    storageBucket: 'fitness-app-f4ef3.appspot.com',
+    apiKey: 'AIzaSyBnRpVu_Kt8JYJZQiONJaou-B814OJcDm0',
+    appId: '1:441716782635:android:333160bcb76f4eed781c6e',
+    messagingSenderId: '441716782635',
+    projectId: 'fitness-app-3de03',
+    storageBucket: 'fitness-app-3de03.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBVFpe7XtMkX3omxyWYPGX9d1oeeWLm3z8',
-    appId: '1:890034566376:ios:73c70c9f0e51940944c55d',
-    messagingSenderId: '890034566376',
-    projectId: 'fitness-app-f4ef3',
-    storageBucket: 'fitness-app-f4ef3.appspot.com',
-    androidClientId: '890034566376-rfi7pvnh3q373sa413iqnm41q4bimjm9.apps.googleusercontent.com',
-    iosClientId: '890034566376-fg1h4hpud0tc6uo5gdi0grcmqk1pagoe.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCUVp0LMiYtE2r7OjCgy9oa9CqofhMGKKQ',
+    appId: '1:441716782635:ios:37b1bea649422c26781c6e',
+    messagingSenderId: '441716782635',
+    projectId: 'fitness-app-3de03',
+    storageBucket: 'fitness-app-3de03.appspot.com',
+    iosClientId: '441716782635-hhvsni4mgtq4a7kaougegqjpsu9jv1h5.apps.googleusercontent.com',
     iosBundleId: 'com.example.testProProject',
   );
 }
