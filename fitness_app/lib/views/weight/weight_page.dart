@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print, invalid_return_type_for_catch_error, use_build_context_synchronously
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/service/dio_manager.dart';
+import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
 import '../../core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -30,7 +32,7 @@ class WeightPage extends StatefulWidget {
   _WeightPageState createState() => _WeightPageState();
 }
 
-class _WeightPageState extends State<WeightPage> {
+class _WeightPageState extends State<WeightPage> with ProjectDioMixin {
   int _currentValue = 65;
 
   bool isLoading = false;
@@ -114,53 +116,30 @@ class _WeightPageState extends State<WeightPage> {
 
   Future registerTheUser() async {
     try {
-      MyText.currentUser = await MyText.authService.auth
-          .createUserWithEmailAndPassword(
-              email: widget.mail!.trim(), password: widget.password!.trim());
-    } catch (error) {
-      isLoading = false;
-      warningToast(context, error.toString());
-    }
-
-    try {
-      if (MyText.currentUser != null) {
-        await MyText.authService.firestore
-            .collection("Users")
-            .doc(widget.uid)
-            .set({
-          "username": widget.username!,
-          "email": widget.mail!,
-          "name": widget.name!,
-          "gender": widget.gender!,
-          "age": widget.age!,
-          "length": widget.height!,
-          "weight": _currentValue.toString(),
-        }).then((value) async {
-          await warningToast(context, RegisterText.registerSuccesfully,
-              color: context.greenColor);
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => const LoginPage()),
-              (route) => false);
-        }).catchError((error) async {
-          if (error.toString().contains("email-already-in-use")) {
-            setState(() {
-              isLoading = false;
-            });
-            setState(() {
-              isLoading = false;
-            });
-            await warningToast(context, WarningText.registerUniqueMail);
-          }
-        }).whenComplete(() {
-          setState(() {
-            isLoading = false;
-          });
-        });
+      bool? isSucces = await GeneralService(service, "/register").registerUser({
+        "username": widget.username!,
+        "email": widget.mail!,
+        "password": widget.password!,
+        "sex": widget.gender!,
+        "age": widget.age!,
+        "height": widget.height!,
+        "weight": _currentValue.toString(),
+      });
+      if (isSucces!) {
+        await warningToast(context, RegisterText.registerSuccesfully,
+            color: context.greenColor);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginPage()),
+            (route) => false);
       } else {
         setState(() {
           isLoading = false;
         });
+        setState(() {
+          isLoading = false;
+        });
+        await warningToast(context, WarningText.registerUniqueMail);
       }
     } catch (error) {
       setState(() {

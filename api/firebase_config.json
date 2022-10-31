@@ -1,0 +1,10 @@
+{
+    "apiKey": "AIzaSyB94D4fBiPXtNNaK_F-fO_vz0Ez7LlYaLI",
+    "authDomain": "fitness-app-3de03.firebaseapp.com",
+    "projectId": "fitness-app-3de03",
+    "storageBucket": "fitness-app-3de03.appspot.com",
+    "messagingSenderId": "441716782635",
+    "appId": "1:441716782635:web:f9224e7fc765fb4a781c6e",
+    "measurementId": "G-4LJE2S93WE",
+    "databaseURL" : "https://fitness-app-3de03-default-rtdb.firebaseio.com/"
+}

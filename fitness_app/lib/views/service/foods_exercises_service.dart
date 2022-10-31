@@ -1,7 +1,12 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/views/home/model/foods_model.dart';
+import 'package:fistness_app_firebase/views/login/token_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class IGeneralService {
   IGeneralService(
@@ -13,6 +18,7 @@ abstract class IGeneralService {
 
   Future<FoodsModel?> fetchFoodsItem();
   Future<ExercisesModel?> fetchExercisesItem();
+  Future registerUser(Map<String, dynamic> registerData);
 }
 
 class GeneralService extends IGeneralService {
@@ -32,6 +38,69 @@ class GeneralService extends IGeneralService {
       }
     }
     return null;
+  }
+
+  @override
+  Future<bool?> registerUser(Map<String, dynamic> registerData) async {
+    try {
+      final response = await dio.post("/register", data: {
+        "email": registerData["email"],
+        "username": registerData["username"],
+        "password": registerData["password"],
+        "sex": registerData["sex"],
+        "age": registerData["age"],
+        "weight": registerData["weight"],
+        "height": registerData["height"]
+      });
+
+      if (response.statusCode == HttpStatus.created) {
+        final jsonBody = response.data;
+        print(jsonBody);
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool?> loginUser(Map<String, dynamic> loginData) async {
+    try {
+      final response = await dio.post("/login", data: {
+        "email": loginData["email"],
+        "password": loginData["password"],
+      });
+
+      if (response.statusCode == HttpStatus.ok) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+
+        final jsonBody = response.data;
+        if (jsonBody is Map<String, dynamic>) {
+          final tok = TokenModel.fromJson(jsonBody);
+          prefs.setString("token", tok.token!);
+          return true;
+        }
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool?> checkToken(String? token) async {
+    try {
+      final response = await dio.post("/token", data: {
+        "token": token,
+      });
+      if (response.statusCode == HttpStatus.ok) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
   }
 
   @override

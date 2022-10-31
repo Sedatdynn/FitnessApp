@@ -3,6 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/service/dio_manager.dart';
+import 'package:fistness_app_firebase/views/home/view/home_page.dart';
+import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_shelf.dart';
 
@@ -15,7 +18,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with ProjectDioMixin {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -86,7 +89,20 @@ class _LoginPageState extends State<LoginPage> {
               CommonButton(
                   text: MyText.usernameText,
                   onPressed: () async {
-                    await _saveData();
+                    bool? isSucces = await GeneralService(service, "/login")
+                        .loginUser({
+                      "email": _emailController.text,
+                      "password": _passwordController.text
+                    });
+                    if (isSucces!) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeView(),
+                          ));
+                    } else {
+                      warningToast(context, "Wrong Pass or Email!");
+                    }
                   }),
             ],
           ),
@@ -222,14 +238,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future _saveData() async {
-    final db = FirebaseFirestore.instance.collection("Users").doc("myID");
-    print("************************");
-    final user = {"name": "Ada", "age": 23, "born": false};
-
-    print("-----------------------------------");
-
-    await db.set(user);
-    print("+++++++++++++++++++");
-  }
+  _saveData() {}
 }
