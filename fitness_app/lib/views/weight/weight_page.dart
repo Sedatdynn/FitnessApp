@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print, invalid_return_type_for_catch_error, use_build_context_synchronously
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
+import 'package:fistness_app_firebase/views/service/project_network.dart';
 import '../../core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
@@ -32,7 +32,7 @@ class WeightPage extends StatefulWidget {
   _WeightPageState createState() => _WeightPageState();
 }
 
-class _WeightPageState extends State<WeightPage> with ProjectDioMixin {
+class _WeightPageState extends State<WeightPage> {
   int _currentValue = 65;
 
   bool isLoading = false;
@@ -116,7 +116,9 @@ class _WeightPageState extends State<WeightPage> with ProjectDioMixin {
 
   Future registerTheUser() async {
     try {
-      bool? isSucces = await GeneralService(service, "/register").registerUser({
+      bool? isSucces = await GeneralService(
+              ProjectNetworkManager.instance.service, "/register")
+          .registerUser({
         "username": widget.username!,
         "email": widget.mail!,
         "password": widget.password!,

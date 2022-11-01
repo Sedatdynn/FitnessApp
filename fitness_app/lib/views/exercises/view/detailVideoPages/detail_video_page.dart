@@ -1,8 +1,8 @@
 import 'package:fistness_app_firebase/core/const/const_appbar.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/views/exercises/viewModel/exercises_view_model.dart';
+import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,8 +21,7 @@ class DetailVideoPage extends StatefulWidget {
   State<DetailVideoPage> createState() => _DetailVideoPageState();
 }
 
-class _DetailVideoPageState extends State<DetailVideoPage>
-    with ProjectDioMixin {
+class _DetailVideoPageState extends State<DetailVideoPage> {
   late YoutubePlayerController _controller;
   @override
   void initState() {
@@ -38,7 +37,8 @@ class _DetailVideoPageState extends State<DetailVideoPage>
     return ChangeNotifierProvider(
       create: (context) {
         String item = "exercises";
-        return ExercisesViewModel(GeneralService(service, item));
+        return ExercisesViewModel(
+            GeneralService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(

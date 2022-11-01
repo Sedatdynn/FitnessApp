@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
@@ -64,7 +63,6 @@ class GeneralService extends IGeneralService {
     }
   }
 
-  @override
   Future<bool?> loginUser(Map<String, dynamic> loginData) async {
     try {
       final response = await dio.post("/login", data: {
@@ -88,7 +86,6 @@ class GeneralService extends IGeneralService {
     }
   }
 
-  @override
   Future<bool?> checkToken(String? token) async {
     try {
       final response = await dio.post("/token", data: {

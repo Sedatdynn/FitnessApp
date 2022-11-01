@@ -1,11 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
+import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_shelf.dart';
 
@@ -18,7 +16,7 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> with ProjectDioMixin {
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -84,12 +82,8 @@ class _LoginPageState extends State<LoginPage> with ProjectDioMixin {
               CommonButton(
                   text: MyText.contiuneText,
                   onPressed: () async {
-                    await _logInWithEmail();
-                  }),
-              CommonButton(
-                  text: MyText.usernameText,
-                  onPressed: () async {
-                    bool? isSucces = await GeneralService(service, "/login")
+                    bool? isSucces = await GeneralService(
+                            ProjectNetworkManager.instance.service, "/login")
                         .loginUser({
                       "email": _emailController.text,
                       "password": _passwordController.text

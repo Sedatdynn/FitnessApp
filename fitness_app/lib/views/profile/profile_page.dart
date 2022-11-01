@@ -155,8 +155,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: Text("Logout"),
                             subtitle: Text("Have a good day"),
                           ),
-                          onTap: () async {
-                            await MyText.authService.signOut();
+                          onTap: () {
+                            MyText.authService.signOut();
                             Navigator.push(
                                 context,
                                 (MaterialPageRoute(

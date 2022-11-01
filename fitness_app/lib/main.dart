@@ -1,7 +1,7 @@
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
-import 'package:fistness_app_firebase/product/service/dio_manager.dart';
-import 'package:fistness_app_firebase/views/home/view/home_page.dart';
+import 'package:fistness_app_firebase/views/exercises/view/detailPages/exercises_page.dart';
 import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
+import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
@@ -43,18 +43,17 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with ProjectDioMixin {
-  @override
+class _MyHomePageState extends State<MyHomePage> {
   Future<bool?> initialization() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    bool? isSuccess = await GeneralService(service, "token")
-        .checkToken(prefs.getString("token"));
+    bool? isSuccess =
+        await GeneralService(ProjectNetworkManager.instance.service, "token")
+            .checkToken(prefs.getString("token"));
     if (isSuccess!) {
       FlutterNativeSplash.remove();
       return true;
     } else {
-      print("***********");
       FlutterNativeSplash.remove();
       return false;
     }
@@ -70,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> with ProjectDioMixin {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: context.watch<ThemeNotifier>().currentTheme,
-                home: const HomeView(),
+                home: const ExercisesPage(),
               );
             }
             return MaterialApp(

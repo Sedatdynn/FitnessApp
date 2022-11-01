@@ -2,9 +2,9 @@
 
 import 'package:fistness_app_firebase/core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
 import 'package:fistness_app_firebase/views/home/viewModel/hp_view_mode.dart';
+import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> with ProjectDioMixin {
+class _HomeViewState extends State<HomeView> {
   late SharedPreferences prefs;
   late double lastSavedPoint = 0.0;
   @override
@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> with ProjectDioMixin {
       create: (context) {
         String item = "foods";
         return HomeViewModel(
-          GeneralService(service, item),
+          GeneralService(ProjectNetworkManager.instance.service, item),
         );
       },
       builder: (context, child) {

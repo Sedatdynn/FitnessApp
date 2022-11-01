@@ -7,27 +7,14 @@ import '../../src/texts.dart';
 class AuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final GoogleSignIn _google = GoogleSignIn(
-    // Optional clientId
-    // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
-    scopes: <String>[
-      'email',
-      'https://www.googleapis.com/auth/user.profile',
-    ],
-  );
-
-  Future<Object?> signInWithEmail(String email, String password) async {
-    final user = await auth
-        .signInWithEmailAndPassword(
-            email: email.trim(), password: password.trim())
-        .catchError((onError) => print("SignIn with Email error $onError"));
-
-    if (user.user?.email != null) {
-      MyText.currentUser = user;
-      return user.user;
-    }
-    return false;
-  }
+  // final GoogleSignIn _google = GoogleSignIn(
+  //   // Optional clientId
+  //   // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
+  //   scopes: <String>[
+  //     'email',
+  //     'https://www.googleapis.com/auth/user.profile',
+  //   ],
+  // );
 
   Future signOut() async {
     MyText.currentUser = null;
@@ -123,15 +110,6 @@ class AuthService {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
-
-//   Future<UserCredential> signInWithGoogle() async {
-//     print("\n\n\n\n\n\n" + "signIn google a girdim");
-//     // Trigger the authentication flow
-//     final GoogleSignInAccount? googleUser = await GoogleSignIn(
-//       scopes: ['email', "https://www.googleapis.com/auth/userinfo.profile"],
-//     ).signIn();
-
-//     print("\n\n\n\n\n\n" + "google user degiskeni" + googleUser.toString());
 
 //     // Obtain the auth details from the request
 //     GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;

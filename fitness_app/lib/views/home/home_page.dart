@@ -367,8 +367,8 @@ class _HomePageState extends State<HomePage> {
                   return Column(
                     children: [
                       TextButton(
-                          onPressed: () async {
-                            await MyText.authService.signOut();
+                          onPressed: () {
+                            MyText.authService.signOut();
                             Navigator.push(
                                 context,
                                 (MaterialPageRoute(

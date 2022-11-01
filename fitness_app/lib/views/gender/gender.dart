@@ -71,6 +71,20 @@ class _GenderPageState extends State<GenderPage> {
   _toggleButton() {
     return ToggleButtons(
       borderRadius: BorderRadius.circular(16.0),
+      isSelected: isSelected,
+      onPressed: (index) {
+        setState(() {
+          for (var i = 0; i < isSelected.length; i++) {
+            if (i == index) {
+              isSelected[i] = true;
+              choiceControl();
+            } else {
+              isSelected[i] = false;
+            }
+          }
+        });
+      },
+      color: context.scndTxtColor,
       children: [
         Column(
           children: [
@@ -111,20 +125,6 @@ class _GenderPageState extends State<GenderPage> {
           ],
         )
       ],
-      isSelected: isSelected,
-      onPressed: (index) {
-        setState(() {
-          for (var i = 0; i < isSelected.length; i++) {
-            if (i == index) {
-              isSelected[i] = true;
-              choiceControl();
-            } else {
-              isSelected[i] = false;
-            }
-          }
-        });
-      },
-      color: context.scndTxtColor,
     );
   }
 

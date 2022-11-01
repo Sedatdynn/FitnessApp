@@ -1,11 +1,9 @@
 import 'package:fistness_app_firebase/core/const/const_appbar.dart';
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/views/exercises/view/detailPages/detail_exercises_page.dart';
 import 'package:fistness_app_firebase/views/exercises/viewModel/exercises_view_model.dart';
-import 'package:fistness_app_firebase/views/home/view/home_page.dart';
+import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +17,7 @@ class ExercisesPage extends StatefulWidget {
   State<ExercisesPage> createState() => _ExercisesPageState();
 }
 
-class _ExercisesPageState extends State<ExercisesPage> with ProjectDioMixin {
+class _ExercisesPageState extends State<ExercisesPage> {
   @override
   void initState() {
     super.initState();
@@ -30,7 +28,8 @@ class _ExercisesPageState extends State<ExercisesPage> with ProjectDioMixin {
     return ChangeNotifierProvider(
       create: (context) {
         String item = "exercises";
-        return ExercisesViewModel(GeneralService(service, item));
+        return ExercisesViewModel(
+            GeneralService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(

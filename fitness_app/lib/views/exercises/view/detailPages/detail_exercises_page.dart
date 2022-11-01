@@ -1,12 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:fistness_app_firebase/core/const/const_appbar.dart';
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/product/service/dio_manager.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/views/exercises/view/detailVideoPages/detail_video_page.dart';
 import 'package:fistness_app_firebase/views/exercises/viewModel/exercises_view_model.dart';
-import 'package:fistness_app_firebase/views/home/view/home_page.dart';
+import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,8 +22,7 @@ class DetailExercisesPage extends StatefulWidget {
   State<DetailExercisesPage> createState() => _DetailExercisesPageState();
 }
 
-class _DetailExercisesPageState extends State<DetailExercisesPage>
-    with ProjectDioMixin {
+class _DetailExercisesPageState extends State<DetailExercisesPage> {
   @override
   void initState() {
     super.initState();
@@ -36,7 +33,8 @@ class _DetailExercisesPageState extends State<DetailExercisesPage>
     return ChangeNotifierProvider(
       create: (context) {
         String item = "exercises";
-        return ExercisesViewModel(GeneralService(service, item));
+        return ExercisesViewModel(
+            GeneralService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(
