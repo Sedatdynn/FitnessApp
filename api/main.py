@@ -9,8 +9,8 @@ from firebase_admin import firestore
 import json, pyrebase, uvicorn
 
 class LoginModel(BaseModel):
-    email: str
-    password: str
+    email: str 
+    password: str = None
 
 class RegisterModel(BaseModel):
     email: str
@@ -116,6 +116,21 @@ async def validate(tokenModel : TokenModel):
         return JSONResponse(content={ "message" : user} , status_code=200)
     except Exception as e:
         return JSONResponse(content={"message" : "Token Error!"}, status_code=403)
+
+
+@app.post("/reset-password")
+async def validate(email : LoginModel):
+    
+    try:
+        firebase = firebase_admin.initialize_app(cred)
+    except:
+        pass
+    
+    try:
+        pass_link = pb.auth().send_password_reset_email(email.email)
+        return JSONResponse(content={ "message" : "Password verification has been sent"} , status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"message" : "Error: Email could'nt send!"}, status_code=403)
 
 if __name__ == "__main__":
    uvicorn.run("main:app")

@@ -7,18 +7,19 @@ import '../../src/texts.dart';
 class AuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  // final GoogleSignIn _google = GoogleSignIn(
-  //   // Optional clientId
-  //   // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
-  //   scopes: <String>[
-  //     'email',
-  //     'https://www.googleapis.com/auth/user.profile',
-  //   ],
-  // );
+  final GoogleSignIn _google = GoogleSignIn(
+    scopes: [
+      'https://www.googleapis.com/auth/userinfo.email',
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/openid',
+      'https://www.googleapis.com/auth/youtube.force-ssl'
+    ],
+  );
 
   Future signOut() async {
     MyText.currentUser = null;
-    await GoogleSignIn().signOut();
+    //await _google.disconnect();
+    await _google.signOut();
     await auth.signOut();
   }
 
@@ -94,12 +95,15 @@ class AuthService {
   }
 
   Future<UserCredential> signInWithGoogle() async {
+    print("object");
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final googleUser = await GoogleSignIn().signIn();
+    print(googleUser.toString() + " <--- googleUser");
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+    final googleAuth = await googleUser?.authentication;
+
+    print(googleAuth.toString() + " <--- googleAuth");
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -107,8 +111,13 @@ class AuthService {
       idToken: googleAuth?.idToken,
     );
 
+    print(credential.toString() + "0----- sdafkjasdkfsa");
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    final lastAuth =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+
+    print(lastAuth.toString() + "print oldu mu last auth");
+    return lastAuth;
   }
 
 //     // Obtain the auth details from the request

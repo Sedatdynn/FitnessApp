@@ -35,11 +35,11 @@ dependencies:
   font_awesome_flutter: ^10.1.0
 
 
-  firebase_storage: ^10.2.5
+  firebase_storage: ^11.0.3
   fluttertoast: ^8.0.8
   image_picker: ^0.8.4+4
-  firebase_crashlytics: ^2.4.5
-  firebase_messaging: ^13.0.2
+  firebase_crashlytics: ^3.0.3
+  firebase_messaging: ^14.0.3
   email_validator: ^2.0.1
   flutter_screenutil: ^5.3.1
   youtube_player_flutter: ^8.1.1
@@ -61,9 +61,9 @@ dependencies:
   dio: ^4.0.6
   json_serializable: ^6.5.4
   json_annotation: ^4.7.0
-  firebase_core: ^1.24.0
-  firebase_auth: ^3.11.2
-  cloud_firestore: ^3.1.5
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.0
+  cloud_firestore: ^4.0.3
 
 dev_dependencies:
   flutter_test:

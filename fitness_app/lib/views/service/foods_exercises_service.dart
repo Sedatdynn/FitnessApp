@@ -40,6 +40,21 @@ class GeneralService extends IGeneralService {
   }
 
   @override
+  Future<bool?> resetPasswordLink(String email) async {
+    try {
+      final response =
+          await dio.post("/reset-password", data: {"email": email});
+
+      if (response.statusCode == HttpStatus.ok) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
   Future<bool?> registerUser(Map<String, dynamic> registerData) async {
     try {
       final response = await dio.post("/register", data: {

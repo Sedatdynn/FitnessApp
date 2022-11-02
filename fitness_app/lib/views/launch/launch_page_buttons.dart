@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously, dead_code
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {
@@ -33,8 +34,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                       onPressed: () async {
                         MyText.currentUser =
                             await MyText.authService.signInWithGoogle();
-                        bool isUidExist = await MyText.authService
-                            .checkUid(MyText.currentUser.user?.uid);
+                        bool isUidExist = MyText.currentUser != null;
 
                         isUidExist
                             ? Navigator.pushAndRemoveUntil(
@@ -75,8 +75,10 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                     width: context.width * 0.4,
                     child: OutlinedButton.icon(
                       icon: ImagePaths.facebook.facetoWidget(),
-                      onPressed: () {},
-                      label: Text(RegisterText.faceText,
+                      onPressed: () {
+                        MyText.authService.signOut();
+                      },
+                      label: Text("SignOut",
                           style: context
                               .subtitle1(context)
                               ?.copyWith(fontWeight: FontWeight.bold)),

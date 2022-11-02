@@ -26,8 +26,8 @@ class RegisterText {
   static String faceText = "Facebook";
   static String emailAssociated =
       "Enter the Email address associated with your account";
-  static String womanText = "Woman";
-  static String manText = "Man";
+  static String womanText = "Female";
+  static String manText = "Male";
   static String cmText = "cm";
   static String kgText = "kg";
   static String orLogText = "Or log in with:";
@@ -39,7 +39,7 @@ class RegisterText {
 class QuestionsText {
   static String sexText = "What is your sex?";
   static String ageText = "How old are you?";
-  static String heightText = "How much is your length?";
+  static String heightText = "How much is your height?";
   static String accountText = "Don't you have an account?";
   static String forgotPassText = "Forgot password?";
   static String nameText = "Your Name?";
