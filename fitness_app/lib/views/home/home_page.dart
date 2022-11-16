@@ -385,31 +385,6 @@ class _HomePageState extends State<HomePage> {
               }
             }),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: context.textColor,
-        selectedItemColor: context.scndTxtColor,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: const Icon(
-              Icons.home,
-            ),
-            label: MyText.bnFirstText,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(
-              Icons.search,
-            ),
-            label: MyText.bnSecondText,
-            backgroundColor: context.mainColor,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(
-              Icons.account_circle,
-            ),
-            label: MyText.bnThirdText,
-          ),
-        ],
-      ),
     );
   }
 }

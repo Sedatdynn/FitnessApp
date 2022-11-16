@@ -42,86 +42,96 @@ class _HomeViewState extends State<HomeView> {
         );
       },
       builder: (context, child) {
-        return Scaffold(
-          appBar: AppBar(
-              leading: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_outlined,
-                  color: context.mainColor,
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_outlined,
+                    color: context.mainColor,
+                  ),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              title: Text("Saved daily point is: $lastSavedPoint")),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: context.height * 0.75,
-                width: double.infinity,
-                decoration: commonBoxDec(context.scfBackColor,
-                    context.scfBackColor, context.scfBackColor),
-                padding: context.minVertPadding,
-                child: ListView(
-                  children: [
-                    _allFoodsTitles(
-                        context, context.watch<HomeViewModel>().foods),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                title: Text("Saved daily point is: $lastSavedPoint")),
+            body: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    height: context.height * 0.06,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14.0),
-                      color: Colors.purple,
-                    ),
-                    child: TextButton.icon(
-                      onPressed: () async {
-                        var lastPoint = prefs.getDouble("point") ?? 0.0;
-                        await prefs.setDouble(
-                            "point",
-                            lastPoint +
-                                context.read<HomeViewModel>().totalPoint);
-
-                        var savedPoint = prefs.getDouble("point") ?? 0.0;
-                        setState(() {
-                          lastSavedPoint = savedPoint;
-                        });
-                      },
-                      icon: Icon(Icons.save_alt_outlined,
-                          color: context.textColor),
-                      label: Text("Save Daily Point",
-                          style: context.subtitle2(context)),
+                    height: context.height * 0.80,
+                    width: double.infinity,
+                    decoration: commonBoxDec(context.scfBackColor,
+                        context.scfBackColor, context.scfBackColor),
+                    padding: context.minVertPadding,
+                    child: ListView(
+                      children: [
+                        _allFoodsTitles(
+                            context, context.watch<HomeViewModel>().foods),
+                      ],
                     ),
                   ),
-                  Container(
-                    height: context.height * 0.06,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(14.0),
-                      color: Colors.purple,
-                    ),
-                    child: TextButton.icon(
-                      onPressed: () async {
-                        await prefs.remove("point");
-
-                        setState(() {
-                          lastSavedPoint = 0.0;
-                        });
-                      },
-                      icon: Icon(Icons.remove_circle_outline,
-                          color: context.textColor),
-                      label: Text("Reset Daily Point",
-                          style: context.subtitle2(context)),
-                    ),
+                  SizedBox(
+                    height: context.height * 0.01,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: context.height * 0.05,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14.0),
+                          color: Colors.purple,
+                        ),
+                        child: TextButton.icon(
+                          onPressed: () async {
+                            var lastPoint = prefs.getDouble("point") ?? 0.0;
+                            await prefs.setDouble(
+                                "point",
+                                lastPoint +
+                                    context.read<HomeViewModel>().totalPoint);
+
+                            var savedPoint = prefs.getDouble("point") ?? 0.0;
+                            setState(() {
+                              lastSavedPoint = savedPoint;
+                            });
+                          },
+                          icon: Icon(Icons.save_alt_outlined,
+                              color: context.textColor),
+                          label: Text("Save Daily Point",
+                              style: context.subtitle2(context)),
+                        ),
+                      ),
+                      Container(
+                        height: context.height * 0.05,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14.0),
+                          color: Colors.purple,
+                        ),
+                        child: TextButton.icon(
+                          onPressed: () async {
+                            await prefs.remove("point");
+
+                            setState(() {
+                              lastSavedPoint = 0.0;
+                            });
+                          },
+                          icon: Icon(Icons.remove_circle_outline,
+                              color: context.textColor),
+                          label: Text("Reset Daily Point",
+                              style: context.subtitle2(context)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  _totalPointText(context),
                 ],
               ),
-              _totalPointText(context),
-            ],
+            ),
           ),
         );
       },
@@ -209,7 +219,7 @@ class _HomeViewState extends State<HomeView> {
 
   _totalPointText(BuildContext context) {
     return Container(
-      height: context.height * 0.06,
+      height: context.height * 0.05,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(14.0),

@@ -1,5 +1,7 @@
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:fistness_app_firebase/views/exercises/view/detailPages/exercises_page.dart';
+import 'package:fistness_app_firebase/views/exercises/view/initial/initial_page.dart';
+import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
 import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
@@ -69,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 theme: context.watch<ThemeNotifier>().currentTheme,
-                home: const LaunchPage(),
+                home: const InitialPage(),
               );
             }
             return MaterialApp(

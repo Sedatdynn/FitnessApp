@@ -121,23 +121,7 @@ class AuthService {
   }
 
 //     // Obtain the auth details from the request
-//     GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-//     print("\n\n\n\n\n\n" + "googleauth degiskenii" + googleAuth.toString());
-//     MyText.currentUser = googleAuth;
-//     // Create a new credential
-//     final credential = GoogleAuthProvider.credential(
-//       accessToken: googleAuth?.accessToken,
-//       idToken: googleAuth?.idToken,
-//     );
-
-//     print("\n\n\n\n\n\n" +
-//         "googleauth credential bilgisii -->" +
-//         credential.toString());
-
-//     // Once signed in, return the UserCredential
-//     return await FirebaseAuth.instance.signInWithCredential(credential);
-//   }
 }
 
 const String collectionName = "Users";

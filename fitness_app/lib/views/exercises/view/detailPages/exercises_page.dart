@@ -49,7 +49,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   ),
                   child: Text(
                     "Exercises",
-                    style: context.headline6(context),
+                    style: context.headline4(context),
                   ),
                 ),
                 _exercisesImages(
