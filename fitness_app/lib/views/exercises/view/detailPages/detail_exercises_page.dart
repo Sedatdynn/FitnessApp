@@ -39,11 +39,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
       builder: (context, child) {
         return Scaffold(
           appBar: const CommonAppBar(),
-          body: Container(
-            decoration: commonBoxDec(context.scfBackColor, context.scfBackColor,
-                context.scfBackColor),
-            child: _listViewBody(context),
-          ),
+          body: _listViewBody(context),
         );
       },
     );
@@ -51,17 +47,13 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
 
   ListView _listViewBody(BuildContext context) {
     return ListView(children: [
-      Container(
-        decoration: commonBoxDec(
-            context.scfBackColor, context.scfBackColor, context.scfBackColor),
-        child: ListView.builder(
-          itemCount: widget.items.length,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext ctxt, int i) {
-            return _navigateToPage(context, i);
-          },
-        ),
+      ListView.builder(
+        itemCount: widget.items.length,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (BuildContext ctxt, int i) {
+          return _navigateToPage(context, i);
+        },
       )
     ]);
   }
@@ -89,21 +81,34 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
         child: Center(
           child: Column(
             children: [
-              _exercisesTitle(context, i),
-              _imageField(i),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _movementInfo(context, i, "Type", widget.items[i].type),
-                  _movementInfo(
-                      context, i, "Equipment", widget.items[i].equipment),
-                  _movementInfo(
-                      context, i, "Mechanics", widget.items[i].mechanic),
-                  _movementInfo(
-                      context, i, "Exp Level", widget.items[i].exerciseLevel),
-                ],
-              )
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.purple,
+                    borderRadius: BorderRadius.circular(12)),
+                child: ListTile(
+                  leading: _imageField(i),
+                  title: _exercisesTitle(context, i),
+                  subtitle: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(10),
+                            topLeft: Radius.circular(10))),
+                    child: Row(
+                      children: [
+                        _movementInfo(context, i, "Type", widget.items[i].type),
+                        _movementInfo(
+                            context, i, "Equipment", widget.items[i].equipment),
+                        _movementInfo(
+                            context, i, "Mechanics", widget.items[i].mechanic),
+                        _movementInfo(context, i, "Exp Level",
+                            widget.items[i].exerciseLevel),
+                      ],
+                    ),
+                  ),
+                  trailing: Icon(Icons.play_circle_fill_rounded),
+                ),
+              ),
             ],
           ),
         ),
@@ -111,44 +116,33 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
     );
   }
 
-  Image _imageField(int i) =>
-      Image.network(widget.items[i].contentImage.toString());
+  _imageField(int i) => ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
+      child: Image.network(widget.items[i].contentImage.toString()));
 
-  Container _exercisesTitle(BuildContext context, int i) {
-    return Container(
-      alignment: Alignment.center,
-      height: context.height * 0.05,
-      child: Text(
-        widget.items[i].exerciseName.toString(),
-        style: context.subtitle1(context),
-      ),
+  _exercisesTitle(BuildContext context, int i) {
+    return Text(
+      widget.items[i].exerciseName.toString(),
+      style: context.subtitle1(context),
     );
   }
 
   _movementInfo(BuildContext context, int i, String title, var info) {
     return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: context.greenColor,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(16.0),
+      child: Column(
+        children: [
+          Text(
+            title,
+            style: context.subtitle1(context)?.copyWith(
+                  fontSize: 8,
+                  color: context.scfBackColor,
+                ),
           ),
-        ),
-        // margin: EdgeInsets.symmetric(horizontal: 5),
-        child: Column(
-          children: [
-            Text(
-              title,
-              style: context.subtitle1(context)?.copyWith(
-                    color: context.scfBackColor,
-                  ),
-            ),
-            Text(
-              info.toString(),
-              style: context.subtitle1(context)?.copyWith(fontSize: 12.0),
-            ),
-          ],
-        ),
+          Text(
+            info.toString(),
+            style: context.subtitle1(context)?.copyWith(fontSize: 6.0),
+          ),
+        ],
       ),
     );
   }

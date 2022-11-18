@@ -2,6 +2,7 @@ import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/const/const_shelf.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -12,6 +13,11 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Future deleteToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove("token");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,8 +161,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: Text("Logout"),
                             subtitle: Text("Have a good day"),
                           ),
-                          onTap: () {
-                            MyText.authService.signOut();
+                          onTap: () async {
+                            await deleteToken();
                             Navigator.push(
                                 context,
                                 (MaterialPageRoute(

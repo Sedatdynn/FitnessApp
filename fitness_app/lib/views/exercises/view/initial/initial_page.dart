@@ -22,68 +22,68 @@ class _InitialPageState extends State<InitialPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-          appBar: AppBar(
-            title: Center(
-              child: Container(
-                  width: context.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: context.greenColor,
-                  ),
-                  child: const Text(
-                    "Welcome to\n Diet and Fitness App",
-                    textAlign: TextAlign.center,
-                  )),
+        child: Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Container(
+            width: context.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: context.greenColor,
+            ),
+            child: const Text(
+              "Welcome to\n Diet and Fitness App",
+              textAlign: TextAlign.center,
             ),
           ),
-          body: ListView(
-            children: [
-              bodyContainer(context, exrcTitle, exrcsImg.toString(),
-                  const ExercisesPage()),
-              bodyContainer(
-                  context, dietTitle, dietImg.toString(), const HomeView())
-            ],
-          )),
-    );
+        ),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.logout_outlined))
+        ],
+      ),
+      body: ListView(children: [
+        listTileContainer(context, exrcsImg, exrcTitle, "See all exercises",
+            const ExercisesPage()),
+        listTileContainer(context, dietImg, dietTitle,
+            "See diet list and create your point", const HomeView()),
+      ]),
+    ));
   }
 
-  InkWell bodyContainer(
-      BuildContext context, String title, String imgPath, page) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return page;
-          },
-        ));
-      },
-      child: Container(
-        margin: context.midAllPadding,
-        padding: context.largeAllPadding,
-        height: context.height * 0.4,
-        width: context.width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.purple,
+  Container listTileContainer(BuildContext context, String imgPath,
+      String title, String subTitle, dynamic navigatePage) {
+    return Container(
+      margin: context.minAllPadding,
+      decoration: BoxDecoration(
+          color: Colors.purple, borderRadius: BorderRadius.circular(12)),
+      child: ListTile(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return navigatePage;
+          }));
+        },
+        leading: Container(
+          width: 80,
+          decoration: BoxDecoration(
+            color: context.greenColor,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Image.asset(
+            "assets/$imgPath.png",
+          ),
         ),
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: context.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.green,
-              ),
-              child: Text(title, style: context.headline4(context)),
-            ),
-            Image.asset(
-              "assets/$imgPath.png",
-              height: context.height * 0.25,
-            )
-          ],
+        title: Text(
+          title,
+          style:
+              context.subtitle2(context)?.copyWith(fontWeight: FontWeight.bold),
         ),
+        subtitle: Text(
+          subTitle,
+          style: context
+              .bdSmall(context)
+              ?.copyWith(fontSize: 14, color: context.textColor),
+        ),
+        trailing: const Icon(Icons.arrow_right),
       ),
     );
   }

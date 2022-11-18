@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [InitialPage(), ProfilePage()];
+  List pages = [const InitialPage(), const ProfilePage()];
   int selectedIndex = 0;
   void changeIndex(int index) {
     setState(() {
