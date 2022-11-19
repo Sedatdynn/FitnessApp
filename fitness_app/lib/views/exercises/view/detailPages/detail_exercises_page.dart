@@ -13,9 +13,11 @@ import '../../../service/foods_exercises_service.dart';
 
 class DetailExercisesPage extends StatefulWidget {
   List<CategoryData> items;
+  Exercise images;
   DetailExercisesPage({
     Key? key,
     required this.items,
+    required this.images,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,6 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
       },
       builder: (context, child) {
         return Scaffold(
-          appBar: const CommonAppBar(),
           body: _listViewBody(context),
         );
       },
@@ -47,6 +48,36 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
 
   ListView _listViewBody(BuildContext context) {
     return ListView(children: [
+      Stack(
+        children: [
+          ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(
+                widget.images.imgUrl.toString(),
+              )),
+          Positioned(
+            left: 0,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.chevron_left_sharp,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: context.width * 0.03,
+            child: Text(
+              widget.images.categoryName.toString(),
+              style: context
+                  .headline4(context)
+                  ?.copyWith(color: context.mainColor),
+            ),
+          )
+        ],
+      ),
       ListView.builder(
         itemCount: widget.items.length,
         shrinkWrap: true,
@@ -69,7 +100,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
             ));
       },
       child: Container(
-        margin: context.midAllPadding,
+        margin: context.minAllPadding,
         decoration: const BoxDecoration(
           color: Colors.purple,
           borderRadius: BorderRadius.only(
@@ -89,7 +120,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
                   leading: _imageField(i),
                   title: _exercisesTitle(context, i),
                   subtitle: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(10),
@@ -106,7 +137,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
                       ],
                     ),
                   ),
-                  trailing: Icon(Icons.play_circle_fill_rounded),
+                  trailing: const Icon(Icons.play_circle_fill_rounded),
                 ),
               ),
             ],
@@ -129,20 +160,23 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
 
   _movementInfo(BuildContext context, int i, String title, var info) {
     return Expanded(
-      child: Column(
-        children: [
-          Text(
-            title,
-            style: context.subtitle1(context)?.copyWith(
-                  fontSize: 8,
-                  color: context.scfBackColor,
-                ),
-          ),
-          Text(
-            info.toString(),
-            style: context.subtitle1(context)?.copyWith(fontSize: 6.0),
-          ),
-        ],
+      child: Padding(
+        padding: context.minVertPadding,
+        child: Column(
+          children: [
+            Text(
+              title,
+              style: context.subtitle1(context)?.copyWith(
+                    fontSize: 8,
+                    color: context.scfBackColor,
+                  ),
+            ),
+            Text(
+              info.toString(),
+              style: context.subtitle1(context)?.copyWith(fontSize: 6.0),
+            ),
+          ],
+        ),
       ),
     );
   }

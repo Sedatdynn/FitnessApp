@@ -57,23 +57,10 @@ class _ExercisesPageState extends State<ExercisesPage> {
         ),
         Positioned(
             bottom: 10,
-            left: context.width * 0.13,
-            child: Container(
-              padding: context.midAllPadding,
-              decoration: BoxDecoration(
-                  color: Colors.purple.shade500,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(5, 5),
-                      blurRadius: 20,
-                      color: context.mainColor,
-                    )
-                  ]),
-              child: Text(
-                "Discover all body exercises",
-                style: context.headline6(context),
-              ),
+            left: context.width * 0.03,
+            child: Text(
+              "Exercises",
+              style: context.headline4(context),
             ))
       ],
     );
@@ -106,7 +93,9 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => DetailExercisesPage(
-                              items: items[i].categoryData!),
+                            items: items[i].categoryData!,
+                            images: items[i],
+                          ),
                         ));
                   },
                   leading: _listTileLeading(context, items, i),

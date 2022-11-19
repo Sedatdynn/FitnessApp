@@ -42,44 +42,52 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
       },
       builder: (context, child) {
         return Scaffold(
-          appBar: const CommonAppBar(),
-          body: Container(
-            decoration: commonBoxDec(context.scfBackColor, context.scfBackColor,
-                context.scfBackColor),
-            child: ListView(children: [
-              Container(
-                decoration: commonBoxDec(context.scfBackColor,
-                    context.scfBackColor, context.scfBackColor),
-                child: ListView.builder(
-                  itemCount: 1,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (BuildContext ctxt, int i) {
-                    return Container(
-                      margin: context.midAllPadding,
-                      decoration: const BoxDecoration(
-                        color: Colors.purple,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(24.0),
-                          topRight: Radius.circular(8.0),
-                          bottomLeft: Radius.circular(16.0),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          _titleText(context),
-                          _videoPlayer(),
-                          _overviewTextTitle(context),
-                          _overviewContent(context),
-                          _instrctTitle(context),
-                        ],
-                      ),
-                    );
-                  },
+          body: ListView(children: [
+            Stack(
+              children: [
+                _videoPlayer(),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.chevron_left_outlined)),
                 ),
-              )
-            ]),
-          ),
+              ],
+            ),
+            Container(
+              decoration: commonBoxDec(context.scfBackColor,
+                  context.scfBackColor, context.scfBackColor),
+              child: ListView.builder(
+                itemCount: 1,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (BuildContext ctxt, int i) {
+                  return Container(
+                    margin: context.minAllPadding,
+                    decoration: const BoxDecoration(
+                      color: Colors.cyan,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(24.0),
+                        topRight: Radius.circular(8.0),
+                        bottomLeft: Radius.circular(16.0),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        _titleText(context),
+                        _overviewTextTitle(context),
+                        _overviewContent(context),
+                        _instrctTitle(context),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
+          ]),
         );
       },
     );
@@ -145,11 +153,12 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
   Container _titleText(BuildContext context) {
     return Container(
       margin: context.minsymVertHorzPadding,
-      alignment: Alignment.center,
+      alignment: Alignment.centerLeft,
       height: context.height * 0.05,
       child: Text(
         "Video ilk baslik",
-        style: context.subtitle1(context),
+        style: context.subtitle1(context)?.copyWith(
+            fontWeight: FontWeight.bold, color: context.scfBackColor),
       ),
     );
   }
