@@ -2,7 +2,6 @@
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/home/bottomNavigateBar/navigare_bar.dart';
-import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
 import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
@@ -81,13 +80,13 @@ class _LoginPageState extends State<LoginPage> {
                 height: 40,
               ),
               CommonButton(
-                  text: MyText.contiuneText,
+                  text: MyText.continueText,
                   onPressed: () async {
                     bool? isSucces = await GeneralService(
                             ProjectNetworkManager.instance.service, "/login")
                         .loginUser({
-                      "email": _emailController.text,
-                      "password": _passwordController.text
+                      "email": _emailController.text.trim(),
+                      "password": _passwordController.text.trim()
                     });
                     if (isSucces!) {
                       Navigator.push(
@@ -173,30 +172,25 @@ class _LoginPageState extends State<LoginPage> {
             .signInWithEmailAndPassword(
                 email: _emailController.text.trim(),
                 password: _passwordController.text.trim());
-        debugPrint("****** ilk try blogunu gectimmmmm*******");
 
         if (MyText.currentUser != null) {
           setState(() {
             isLoading = false;
           });
-          debugPrint("****** ikinci try blogunu gectimmmmm*******");
 
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
               (route) => false);
-          debugPrint("****** 3. try blogunu gectimmmmm*******");
         } else {
           setState(() {
             isLoading = false;
           });
-          debugPrint("****** 4. try blogunu gectimmmmm*******");
         }
       } catch (error) {
         setState(() {
           isLoading = false;
         });
-        debugPrint("****** 5. try blogunu gectimmmmm*******");
 
         if (error.toString().contains('invalid-email')) {
           await warningToast(context, WarningText.loginWrongEmailText);
@@ -212,7 +206,6 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         isLoading = false;
       });
-      debugPrint("****** warning test  gectimmmmm*******");
 
       warningToast(context, WarningText.errorText);
     }
@@ -232,6 +225,4 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  _saveData() {}
 }

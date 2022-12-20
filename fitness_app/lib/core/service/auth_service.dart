@@ -26,7 +26,7 @@ class AuthService {
   Future<DocumentSnapshot> fetchCurrentUserDoc() async {
     return await firestore
         .collection('Users')
-        .doc(auth.currentUser!.uid.toString())
+        .doc(auth.currentUser!.email.toString())
         .get();
   }
 

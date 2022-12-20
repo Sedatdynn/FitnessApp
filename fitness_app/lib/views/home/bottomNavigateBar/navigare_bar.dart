@@ -1,6 +1,4 @@
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/views/home/view/home_page.dart';
-import 'package:flutter/material.dart';
 
 import '../../exercises/view/initial/initial_page.dart';
 import '../../views_shelf.dart';

@@ -67,7 +67,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
   }
 
   Image topImg() {
-    return Image.asset("assets/${topImgPath}.jpg");
+    return Image.asset("assets/$topImgPath.jpg");
   }
 
   Container listTileBody(BuildContext context, List<Exercise> items) {

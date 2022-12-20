@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:fistness_app_firebase/core/const/const_appbar.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/views/exercises/view/detailVideoPages/detail_video_page.dart';
@@ -8,7 +7,6 @@ import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/const/const_deco.dart';
 import '../../../service/foods_exercises_service.dart';
 
 class DetailExercisesPage extends StatefulWidget {

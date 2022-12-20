@@ -1,5 +1,6 @@
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
+import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -140,18 +141,26 @@ class _ProfilePageState extends State<ProfilePage> {
                               context.read<ThemeNotifier>().changeTheme(),
                           child: const ListTile(
                             leading: Icon(
-                              Icons.phone,
+                              Icons.light_mode_outlined,
                             ),
-                            title: Text("Phone"),
-                            subtitle: Text("533--*4*--4**9"),
+                            title: Text("Theme Light"),
+                            subtitle: Text("Change theme mode"),
                           ),
                         ),
-                        const ListTile(
-                          leading: Icon(
-                            Icons.update,
+                        InkWell(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BmiCalculator(
+                                    userHeight: "190", userWeight: "84"),
+                              )),
+                          child: const ListTile(
+                            leading: Icon(
+                              Icons.update,
+                            ),
+                            title: Text("BMI"),
+                            subtitle: Text("See bmi result"),
                           ),
-                          title: Text("Update"),
-                          subtitle: Text("Update my information"),
                         ),
                         GestureDetector(
                           child: const ListTile(

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously, dead_code
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {
@@ -23,73 +22,45 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
             child: SizedBox(
               height: context.height * 0.06,
               width: context.width * 0.82,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: context.height * 0.06,
-                    width: context.width * 0.4,
-                    child: OutlinedButton.icon(
-                      icon: ImagePaths.google.googletoWidget(),
-                      onPressed: () async {
-                        MyText.currentUser =
-                            await MyText.authService.signInWithGoogle();
-                        bool isUidExist = MyText.currentUser != null;
+              child: SizedBox(
+                height: context.height * 0.06,
+                width: context.width * 0.4,
+                child: OutlinedButton.icon(
+                  icon: ImagePaths.google.googletoWidget(),
+                  onPressed: () async {
+                    MyText.currentUser =
+                        await MyText.authService.signInWithGoogle();
+                    bool isUidExist = MyText.currentUser != null;
 
-                        isUidExist
-                            ? Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomePage()),
-                                (route) => false)
-                            : Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterNamePage(
-                                          mail: MyText.currentUser.user?.email,
-                                          uid: MyText.currentUser.user?.uid,
-                                          username: MyText
-                                              .currentUser.user?.displayName,
-                                        )),
-                                (route) => false);
-                        ;
-                      },
-                      label: Text(
-                        RegisterText.googleText,
-                        style: context.subtitle1(context)?.copyWith(
-                            color: context.scndTxtColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              context.shadeGreyColor),
-                          side: MaterialStateProperty.all<BorderSide>(
-                              BorderSide.none)),
-                    ),
+                    isUidExist
+                        ? Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()),
+                            (route) => false)
+                        : Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisterNamePage(
+                                      mail: MyText.currentUser.user?.email,
+                                      uid: MyText.currentUser.user?.uid,
+                                      username:
+                                          MyText.currentUser.user?.displayName,
+                                    )),
+                            (route) => false);
+                  },
+                  label: Text(
+                    RegisterText.googleText,
+                    style: context.subtitle1(context)?.copyWith(
+                        color: context.scndTxtColor,
+                        fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  SizedBox(
-                    height: context.height,
-                    width: context.width * 0.4,
-                    child: OutlinedButton.icon(
-                      icon: ImagePaths.facebook.facetoWidget(),
-                      onPressed: () {
-                        MyText.authService.signOut();
-                      },
-                      label: Text("SignOut",
-                          style: context
-                              .subtitle1(context)
-                              ?.copyWith(fontWeight: FontWeight.bold)),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              const Color(0xff4267B2)),
-                          side: MaterialStateProperty.all<BorderSide>(
-                              BorderSide.none)),
-                    ),
-                  ),
-                ],
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          context.shadeGreyColor),
+                      side: MaterialStateProperty.all<BorderSide>(
+                          BorderSide.none)),
+                ),
               ),
             ),
           )

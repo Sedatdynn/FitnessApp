@@ -57,7 +57,7 @@ class _GenderPageState extends State<GenderPage> {
                 _toggleButton(),
                 SizedBox(height: context.height * 0.05),
                 CommonButton(
-                  text: MyText.contiuneText,
+                  text: MyText.continueText,
                   onPressed: _registerOnTap,
                 ),
               ],

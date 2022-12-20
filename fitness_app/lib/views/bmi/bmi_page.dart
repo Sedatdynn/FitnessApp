@@ -6,21 +6,21 @@ import '../../core/const/const_deco.dart';
 import 'bmi_page_child.dart';
 import 'row_value.dart';
 
-class BmiCalculater extends StatefulWidget {
+class BmiCalculator extends StatefulWidget {
   final String userHeight;
   final String userWeight;
 
-  const BmiCalculater({
+  const BmiCalculator({
     Key? key,
     required this.userHeight,
     required this.userWeight,
   }) : super(key: key);
 
   @override
-  State<BmiCalculater> createState() => _BmiCalculaterState();
+  State<BmiCalculator> createState() => _BmiCalculatorState();
 }
 
-class _BmiCalculaterState extends State<BmiCalculater> {
+class _BmiCalculatorState extends State<BmiCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +55,7 @@ class _BmiCalculaterState extends State<BmiCalculater> {
                     150,
                     50,
                     Text(
-                      "BMI Calculater",
+                      "BMI Calculator",
                       style: context.subtitle1(context),
                       textAlign: TextAlign.center,
                     ),

@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 30,
               ),
               CommonButton(
-                  text: MyText.contiuneText, onPressed: _registerOnTap),
+                  text: MyText.continueText, onPressed: _registerOnTap),
             ],
           ),
         ),
@@ -194,9 +194,9 @@ class _RegisterPageState extends State<RegisterPage> {
     } else if (_emailController.text.toString().isEmpty) {
       warningToast(context, WarningText.registerEmptyEmail);
     } else if (_passwordController.text.toString().isEmpty) {
-      warningToast(context, WarningText.registerUnvalidPassword);
+      warningToast(context, WarningText.registerInvalidPassword);
     } else if (_passwordController.text.length < 6) {
-      warningToast(context, WarningText.registerUnvalidPassword);
+      warningToast(context, WarningText.registerInvalidPassword);
     } else {
       warningToast(context, WarningText.loginWrongEmailText);
     }

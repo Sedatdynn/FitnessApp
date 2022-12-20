@@ -85,7 +85,7 @@ class _AgePageState extends State<AgePage> {
                       )),
             );
           },
-          child: Text(MyText.contiuneText, style: context.headline6(context)),
+          child: Text(MyText.continueText, style: context.headline6(context)),
         ),
       ),
     );

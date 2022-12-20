@@ -4,11 +4,11 @@ import '../../service/foods_exercises_service.dart';
 
 class HomeViewModel extends ChangeNotifier {
   List<Kategori> foods = [];
-  final IGeneralService GeneralService;
+  final IGeneralService generalService;
   double totalPoint = 0.0;
   bool isLoading = false;
 
-  HomeViewModel(this.GeneralService) {
+  HomeViewModel(this.generalService) {
     fetch();
   }
 
@@ -19,7 +19,7 @@ class HomeViewModel extends ChangeNotifier {
 
   Future<void> fetch() async {
     changeLoading();
-    foods = (await GeneralService.fetchFoodsItem())?.kategori ?? [];
+    foods = (await generalService.fetchFoodsItem())?.kategori ?? [];
     changeLoading();
   }
 }

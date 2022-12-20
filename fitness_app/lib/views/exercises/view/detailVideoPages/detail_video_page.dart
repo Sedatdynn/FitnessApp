@@ -1,18 +1,17 @@
-import 'package:fistness_app_firebase/core/const/const_appbar.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/exercises/model/exercises_model.dart';
+import 'package:fistness_app_firebase/views/exercises/view/detailVideoPages/video_player_widget.dart';
 import 'package:fistness_app_firebase/views/exercises/viewModel/exercises_view_model.dart';
 import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../core/const/const_deco.dart';
+import 'package:video_player/video_player.dart';
 import '../../../service/foods_exercises_service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailVideoPage extends StatefulWidget {
-  VideoPageData items;
-  DetailVideoPage({
+  final VideoPageData items;
+  const DetailVideoPage({
     Key? key,
     required this.items,
   }) : super(key: key);
@@ -22,14 +21,25 @@ class DetailVideoPage extends StatefulWidget {
 }
 
 class _DetailVideoPageState extends State<DetailVideoPage> {
+  final String titleText = 'Video ilk baslik';
   late YoutubePlayerController _controller;
+  late VideoPlayerController videoController;
+  int currentIndex = 0;
+  String url = "";
+  late bool checkUrl;
+
   @override
   void initState() {
     super.initState();
-    _controller = YoutubePlayerController(
-        initialVideoId:
-            YoutubePlayer.convertUrlToId(widget.items.videoUrl.toString())!,
-        flags: const YoutubePlayerFlags(mute: true, autoPlay: false));
+    checkVideoType();
+    _playNormalVideo();
+    _playYoutubeVideo();
+  }
+
+  @override
+  void dispose() {
+    videoController.dispose();
+    super.dispose();
   }
 
   @override
@@ -45,7 +55,11 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
           body: ListView(children: [
             Stack(
               children: [
-                _videoPlayer(),
+                Column(children: [
+                  checkUrl
+                      ? _videoPlayer()
+                      : VideoPlayerWidget(controller: videoController)
+                ]),
                 Positioned(
                   top: 0,
                   left: 0,
@@ -57,40 +71,54 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
                 ),
               ],
             ),
-            Container(
-              decoration: commonBoxDec(context.scfBackColor,
-                  context.scfBackColor, context.scfBackColor),
-              child: ListView.builder(
-                itemCount: 1,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext ctxt, int i) {
-                  return Container(
-                    margin: context.minAllPadding,
-                    decoration: const BoxDecoration(
-                      color: Colors.cyan,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(24.0),
-                        topRight: Radius.circular(8.0),
-                        bottomLeft: Radius.circular(16.0),
-                      ),
+            ListView.builder(
+              itemCount: 1,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (BuildContext ctxt, int i) {
+                return Container(
+                  margin: context.minAllPadding,
+                  decoration: const BoxDecoration(
+                    color: Colors.cyan,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24.0),
+                      topRight: Radius.circular(8.0),
+                      bottomLeft: Radius.circular(16.0),
                     ),
-                    child: Column(
-                      children: [
-                        _titleText(context),
-                        _overviewTextTitle(context),
-                        _overviewContent(context),
-                        _instrctTitle(context),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                  ),
+                  child: Column(
+                    children: [
+                      _titleText(context),
+                      _overviewTextTitle(context),
+                      _overviewContent(context),
+                      _instrctTitle(context),
+                    ],
+                  ),
+                );
+              },
             )
           ]),
         );
       },
     );
+  }
+
+  void _playNormalVideo() {
+    videoController = VideoPlayerController.network(url)
+      ..addListener(() => setState(() {}))
+      ..setLooping(true)
+      ..initialize().then((_) => videoController.play());
+  }
+
+  void _playYoutubeVideo() {
+    _controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(url) ?? "",
+        flags: const YoutubePlayerFlags(mute: true, autoPlay: false));
+  }
+
+  void checkVideoType() {
+    url = widget.items.videoUrl.toString();
+    checkUrl = url.contains("youtube");
   }
 
   Container _instrctTitle(BuildContext context) {
@@ -156,7 +184,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
       alignment: Alignment.centerLeft,
       height: context.height * 0.05,
       child: Text(
-        "Video ilk baslik",
+        titleText,
         style: context.subtitle1(context)?.copyWith(
             fontWeight: FontWeight.bold, color: context.scfBackColor),
       ),

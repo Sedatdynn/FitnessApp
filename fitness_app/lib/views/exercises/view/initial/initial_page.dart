@@ -1,5 +1,3 @@
-import 'package:fistness_app_firebase/core/const/const_appbar.dart';
-import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/exercises/view/detailPages/exercises_page.dart';
 import 'package:flutter/material.dart';

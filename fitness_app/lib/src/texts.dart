@@ -8,7 +8,7 @@ class MyText {
   static String bnSecondText = "Search";
   static String bnThirdText = "Profile";
   static String homeWelcomeText = "Good Morning ";
-  static String contiuneText = "Contiune";
+  static String continueText = "continue";
   static String nextText = "Next";
   static String exerciseText = "Exercises";
   static String fitText = "Fitness Is The Key";
@@ -56,7 +56,7 @@ class WarningText {
   static String loginNoAccountText = "User not found!";
   static String loginWrongPasswordText = "Wrong password!";
   static String errorText = "An unexpected error has occurred...";
-  static String registerUnvalidPassword =
+  static String registerInvalidPassword =
       "Password must be at least 6 character";
   static String registerUniqueMail =
       "Mail is already in use! Please register with difference mail ";

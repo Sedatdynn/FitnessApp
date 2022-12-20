@@ -4,10 +4,10 @@ import '../../service/foods_exercises_service.dart';
 
 class ExercisesViewModel extends ChangeNotifier {
   List<Exercise> exercises = [];
-  final IGeneralService GeneralService;
+  final IGeneralService generalService;
   bool isLoading = false;
 
-  ExercisesViewModel(this.GeneralService) {
+  ExercisesViewModel(this.generalService) {
     fetchExercisesData();
   }
 
@@ -18,7 +18,7 @@ class ExercisesViewModel extends ChangeNotifier {
 
   Future<void> fetchExercisesData() async {
     changeLoading();
-    exercises = (await GeneralService.fetchExercisesItem())?.exercise ?? [];
+    exercises = (await generalService.fetchExercisesItem())?.exercise ?? [];
     changeLoading();
   }
 }

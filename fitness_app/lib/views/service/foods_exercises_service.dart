@@ -69,7 +69,6 @@ class GeneralService extends IGeneralService {
 
       if (response.statusCode == HttpStatus.created) {
         final jsonBody = response.data;
-        print(jsonBody);
         return true;
       }
       return false;
