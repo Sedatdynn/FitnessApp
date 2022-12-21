@@ -42,7 +42,7 @@ dependencies:
   fluttertoast: ^8.0.8
   font_awesome_flutter: ^10.1.0
   google_fonts: ^3.0.1
-  google_sign_in: ^5.4.2
+  google_sign_in: ^5.3.0
   image_picker: ^0.8.4+4
   json_annotation: ^4.7.0
   json_serializable: ^6.5.4

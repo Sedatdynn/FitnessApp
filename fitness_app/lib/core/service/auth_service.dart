@@ -1,24 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fistness_app_firebase/views/home/bottomNavigateBar/navigare_bar.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../src/texts.dart';
+import '../../views/home/view/home_page.dart';
+import '../../views/views_shelf.dart';
 
 class AuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final GoogleSignIn _google = GoogleSignIn(
-    scopes: [
-      'https://www.googleapis.com/auth/userinfo.email',
-      'https://www.googleapis.com/auth/userinfo.profile',
-      'https://www.googleapis.com/auth/openid',
-      'https://www.googleapis.com/auth/youtube.force-ssl'
-    ],
-  );
+  bool isLoading = false;
 
   Future signOut() async {
+    final _google = GoogleSignIn();
+
     MyText.currentUser = null;
-    //await _google.disconnect();
+    await _google.disconnect();
     await _google.signOut();
     await auth.signOut();
   }
@@ -94,34 +92,53 @@ class AuthService {
     }
   }
 
-  Future<UserCredential> signInWithGoogle() async {
-    print("object");
-    // Trigger the authentication flow
-    final googleUser = await GoogleSignIn().signIn();
-    print(googleUser.toString() + " <--- googleUser");
+  Future<void> signInWithGoogle(context) async {
+    final _google = GoogleSignIn();
 
-    // Obtain the auth details from the request
-    final googleAuth = await googleUser?.authentication;
-
-    print(googleAuth.toString() + " <--- googleAuth");
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    print(credential.toString() + "0----- sdafkjasdkfsa");
-    // Once signed in, return the UserCredential
-    final lastAuth =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-
-    print(lastAuth.toString() + "print oldu mu last auth");
-    return lastAuth;
+    final googleAccount = await _google.signIn();
+    if (googleAccount != null) {
+      final googleAuth = await googleAccount.authentication;
+      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
+        try {
+          await auth.signInWithCredential(GoogleAuthProvider.credential(
+              idToken: googleAuth.idToken,
+              accessToken: googleAuth.accessToken));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MainPage(),
+              ));
+        } on FirebaseException catch (e) {
+          print(e);
+        }
+      }
+    }
+//     // Obtain the auth details from the request
   }
 
-//     // Obtain the auth details from the request
-
+  String collectionName = "Users";
 }
+ //print("object");
+  //   // Trigger the authentication flow
+  //   final googleUser = await GoogleSignIn().signIn();
+  //   print(googleUser.toString() + " <--- googleUser");
 
-const String collectionName = "Users";
+  //   // Obtain the auth details from the request
+  //   final googleAuth = await googleUser?.authentication;
+
+  //   print(googleAuth.toString() + " <--- googleAuth");
+
+  //   // Create a new credential
+  //   final credential = GoogleAuthProvider.credential(
+  //     accessToken: googleAuth?.accessToken,
+  //     idToken: googleAuth?.idToken,
+  //   );
+
+  //   print(credential.toString() + "0----- sdafkjasdkfsa");
+  //   // Once signed in, return the UserCredential
+  //   final lastAuth =
+  //       await FirebaseAuth.instance.signInWithCredential(credential);
+
+  //   print(lastAuth.toString() + "print oldu mu last auth");
+  //   return lastAuth;
+  // }

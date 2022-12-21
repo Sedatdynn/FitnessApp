@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously, dead_code
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {
@@ -28,26 +29,27 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
                 child: OutlinedButton.icon(
                   icon: ImagePaths.google.googletoWidget(),
                   onPressed: () async {
-                    MyText.currentUser =
-                        await MyText.authService.signInWithGoogle();
-                    bool isUidExist = MyText.currentUser != null;
+                    // MyText.currentUser =
+                    await MyText.authService.signInWithGoogle(context);
 
-                    isUidExist
-                        ? Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()),
-                            (route) => false)
-                        : Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterNamePage(
-                                      mail: MyText.currentUser.user?.email,
-                                      uid: MyText.currentUser.user?.uid,
-                                      username:
-                                          MyText.currentUser.user?.displayName,
-                                    )),
-                            (route) => false);
+                    // bool isUidExist = MyText.currentUser != null;
+
+                    // isUidExist
+                    //     ? Navigator.pushAndRemoveUntil(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //             builder: (context) => const HomePage()),
+                    //         (route) => false)
+                    //     : Navigator.pushAndRemoveUntil(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //             builder: (context) => RegisterNamePage(
+                    //                   mail: MyText.currentUser.user?.email,
+                    //                   uid: MyText.currentUser.user?.uid,
+                    //                   username:
+                    //                       MyText.currentUser.user?.displayName,
+                    //                 )),
+                    //         (route) => false);
                   },
                   label: Text(
                     RegisterText.googleText,
@@ -67,26 +69,26 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
         : const CircularProgressIndicator();
   }
 
-  Future loginWithGoogle() async {
-    await MyText.authService.signInWithGoogle();
-    bool isUidExist =
-        await MyText.authService.checkUid(MyText.currentUser.user?.uid);
+  // Future loginWithGoogle() async {
+  //   await MyText.authService.signInWithGoogle(context);
+  //   bool isUidExist =
+  //       await MyText.authService.checkUid(MyText.currentUser.user?.uid);
 
-    isUidExist
-        ? Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => const HomePage()),
-            (route) => false)
-        : Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-                builder: (context) => RegisterNamePage(
-                      mail: MyText.currentUser.user?.email,
-                      uid: MyText.currentUser.user?.uid,
-                      username: MyText.currentUser.user?.displayName,
-                    )),
-            (route) => false);
-  }
+  //   isUidExist
+  //       ? Navigator.pushAndRemoveUntil(
+  //           context,
+  //           MaterialPageRoute(builder: (context) => const HomePage()),
+  //           (route) => false)
+  //       : Navigator.pushAndRemoveUntil(
+  //           context,
+  //           MaterialPageRoute(
+  //               builder: (context) => RegisterNamePage(
+  //                     mail: MyText.currentUser.user?.email,
+  //                     uid: MyText.currentUser.user?.uid,
+  //                     username: MyText.currentUser.user?.displayName,
+  //                   )),
+  //           (route) => false);
+  // }
 }
 
 enum ImagePaths { google, facebook }
