@@ -82,13 +82,18 @@ class _LoginPageState extends State<LoginPage> {
               CommonButton(
                   text: MyText.continueText,
                   onPressed: () async {
-                    bool? isSucces = await GeneralService(
-                            ProjectNetworkManager.instance.service, "/login")
-                        .loginUser({
-                      "email": _emailController.text.trim(),
-                      "password": _passwordController.text.trim()
-                    });
-                    if (isSucces!) {
+                    bool? isSucces = await MyText.authService
+                        .signInWithEmailandPassword(
+                            _emailController.text.trim().toString(),
+                            _passwordController.text.trim());
+                    // GeneralService(
+                    //         ProjectNetworkManager.instance.service, "/login")
+                    //     .loginUser({
+                    //   "email": _emailController.text.trim(),
+                    //   "password": _passwordController.text.trim()
+                    // });
+                    if (isSucces) {
+                      MyText.authService.checkUid();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -160,56 +165,56 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future _logInWithEmail() async {
-    if (_emailController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
-      setState(() {
-        isLoading = true;
-      });
+  // Future _logInWithEmail() async {
+  //   if (_emailController.text.isNotEmpty &&
+  //       _passwordController.text.isNotEmpty) {
+  //     setState(() {
+  //       isLoading = true;
+  //     });
 
-      try {
-        MyText.currentUser = await MyText.authService.auth
-            .signInWithEmailAndPassword(
-                email: _emailController.text.trim(),
-                password: _passwordController.text.trim());
+  //     try {
+  //       MyText.currentUser = await MyText.authService.auth
+  //           .signInWithEmailAndPassword(
+  //               email: _emailController.text.trim(),
+  //               password: _passwordController.text.trim());
 
-        if (MyText.currentUser != null) {
-          setState(() {
-            isLoading = false;
-          });
+  //       if (MyText.currentUser != null) {
+  //         setState(() {
+  //           isLoading = false;
+  //         });
 
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-              (route) => false);
-        } else {
-          setState(() {
-            isLoading = false;
-          });
-        }
-      } catch (error) {
-        setState(() {
-          isLoading = false;
-        });
+  //         Navigator.pushAndRemoveUntil(
+  //             context,
+  //             MaterialPageRoute(builder: (context) => const HomePage()),
+  //             (route) => false);
+  //       } else {
+  //         setState(() {
+  //           isLoading = false;
+  //         });
+  //       }
+  //     } catch (error) {
+  //       setState(() {
+  //         isLoading = false;
+  //       });
 
-        if (error.toString().contains('invalid-email')) {
-          await warningToast(context, WarningText.loginWrongEmailText);
-        } else if (error.toString().contains('user-not-found')) {
-          await warningToast(context, WarningText.loginNoAccountText);
-        } else if (error.toString().contains('wrong-password')) {
-          await warningToast(context, WarningText.loginWrongPasswordText);
-        } else {
-          await warningToast(context, WarningText.errorText);
-        }
-      }
-    } else {
-      setState(() {
-        isLoading = false;
-      });
+  //       if (error.toString().contains('invalid-email')) {
+  //         await warningToast(context, WarningText.loginWrongEmailText);
+  //       } else if (error.toString().contains('user-not-found')) {
+  //         await warningToast(context, WarningText.loginNoAccountText);
+  //       } else if (error.toString().contains('wrong-password')) {
+  //         await warningToast(context, WarningText.loginWrongPasswordText);
+  //       } else {
+  //         await warningToast(context, WarningText.errorText);
+  //       }
+  //     }
+  //   } else {
+  //     setState(() {
+  //       isLoading = false;
+  //     });
 
-      warningToast(context, WarningText.errorText);
-    }
-  }
+  //     warningToast(context, WarningText.errorText);
+  //   }
+  // }
 
   _forgotPassword() {
     return InkWell(

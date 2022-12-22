@@ -8,24 +8,41 @@ import '../../views/home/view/home_page.dart';
 import '../../views/views_shelf.dart';
 
 class AuthService {
-  FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  String collectionName = "users";
   bool isLoading = false;
 
   Future signOut() async {
     final _google = GoogleSignIn();
-
-    MyText.currentUser = null;
     await _google.disconnect();
     await _google.signOut();
     await auth.signOut();
   }
 
-  Future<DocumentSnapshot> fetchCurrentUserDoc() async {
-    return await firestore
-        .collection('Users')
-        .doc(auth.currentUser!.email.toString())
-        .get();
+  Future<void> SignOut() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    //MyText.currentUser = null;
+    if (googleSignIn.currentUser != null) {
+      await googleSignIn.disconnect();
+      await FirebaseAuth.instance.signOut();
+    } else {
+      await FirebaseAuth.instance.signOut();
+    }
+  }
+
+  Future<void> fetchCurrentUserDoc() async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        print(doc["age"]);
+      });
+    });
+    // .doc()
+    // .get()
+    // .then((DocumentSnapshot doc) => print("+++++++++++++ ${doc.data()}"));
   }
 
   Future<bool?> createPerson(
@@ -49,7 +66,7 @@ class AuthService {
       "length": length,
       "weight": weight,
     };
-    await firestore.collection(collectionName).doc(uid).set(userInfo);
+    await firestore.collection("users").doc(uid).set(userInfo);
     return true;
   }
 
@@ -78,18 +95,24 @@ class AuthService {
     return true;
   }
 
-  Future<bool> checkUid(String? uid) async {
-    try {
-      dynamic user =
-          await firestore.collection(collectionName).doc(uid.toString()).get();
-      if (user.exists) {
-        return true;
-      } else {
-        return false;
-      }
-    } catch (err) {
-      return false;
-    }
+  void checkUid() {
+    final User? userr = FirebaseAuth.instance.currentUser;
+    final uid = userr?.uid;
+    print(" -------------${userr}");
+
+    print("*********" + uid.toString());
+    // try {
+    //   dynamic user =
+    //       await firestore.collection(collectionName).doc(uid.toString()).get();
+    //   if (user.exists) {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // } catch (err) {
+    //   return false;
+    // }
+    return null;
   }
 
   Future<void> signInWithGoogle(context) async {
@@ -116,29 +139,22 @@ class AuthService {
 //     // Obtain the auth details from the request
   }
 
-  String collectionName = "Users";
+  Future<bool> signInWithEmailandPassword(String email, String password) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return true;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+    return false;
+  }
 }
- //print("object");
-  //   // Trigger the authentication flow
-  //   final googleUser = await GoogleSignIn().signIn();
-  //   print(googleUser.toString() + " <--- googleUser");
-
-  //   // Obtain the auth details from the request
-  //   final googleAuth = await googleUser?.authentication;
-
-  //   print(googleAuth.toString() + " <--- googleAuth");
-
-  //   // Create a new credential
-  //   final credential = GoogleAuthProvider.credential(
-  //     accessToken: googleAuth?.accessToken,
-  //     idToken: googleAuth?.idToken,
-  //   );
-
-  //   print(credential.toString() + "0----- sdafkjasdkfsa");
-  //   // Once signed in, return the UserCredential
-  //   final lastAuth =
-  //       await FirebaseAuth.instance.signInWithCredential(credential);
-
-  //   print(lastAuth.toString() + "print oldu mu last auth");
-  //   return lastAuth;
-  // }

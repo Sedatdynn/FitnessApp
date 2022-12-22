@@ -116,17 +116,27 @@ class _WeightPageState extends State<WeightPage> {
 
   Future registerTheUser() async {
     try {
-      bool? isSucces = await GeneralService(
-              ProjectNetworkManager.instance.service, "/register")
-          .registerUser({
-        "username": widget.username!,
-        "email": widget.mail!,
-        "password": widget.password!,
-        "sex": widget.gender!,
-        "age": widget.age!,
-        "height": widget.height!,
-        "weight": _currentValue.toString(),
-      });
+      bool? isSucces = await await MyText.authService.createPerson(
+          widget.username!,
+          widget.mail!,
+          widget.password!,
+          widget.uid,
+          widget.name!,
+          widget.gender!,
+          widget.age!,
+          widget.height!,
+          _currentValue.toString());
+      // bool? isSucces = await GeneralService(
+      //         ProjectNetworkManager.instance.service, "/register")
+      //     .registerUser({
+      //   "username": widget.username!,
+      //   "email": widget.mail!,
+      //   "password": widget.password!,
+      //   "sex": widget.gender!,
+      //   "age": widget.age!,
+      //   "height": widget.height!,
+      //   "weight": _currentValue.toString(),
+      // });
       if (isSucces!) {
         await warningToast(context, RegisterText.registerSuccesfully,
             color: context.greenColor);

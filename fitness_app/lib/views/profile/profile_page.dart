@@ -122,13 +122,20 @@ class _ProfilePageState extends State<ProfilePage> {
                     ...ListTile.divideTiles(
                       color: context.mainColor,
                       tiles: [
-                        ListTile(
-                          contentPadding: context.symVertPadding,
-                          leading: const Icon(
-                            Icons.my_location,
+                        InkWell(
+                          onTap: () {
+                            MyText.authService.checkUid();
+                            print("-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            MyText.authService.fetchCurrentUserDoc();
+                          },
+                          child: ListTile(
+                            contentPadding: context.symVertPadding,
+                            leading: const Icon(
+                              Icons.my_location,
+                            ),
+                            title: const Text("Location"),
+                            subtitle: const Text("TR"),
                           ),
-                          title: const Text("Location"),
-                          subtitle: const Text("TR"),
                         ),
                         const ListTile(
                           leading: Icon(
@@ -173,7 +180,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           onTap: () async {
                             await deleteToken();
-                            MyText.authService.signOut();
+                            MyText.authService.SignOut();
                             Navigator.push(
                                 context,
                                 (MaterialPageRoute(
