@@ -209,6 +209,7 @@ class _WeightPageState extends State<WeightPage> {
       if (isSucces!) {
         await warningToast(context, RegisterText.registerSuccesfully,
             color: context.greenColor);
+        await MyText.authService.sendEmailVerfied();
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const LoginPage()),

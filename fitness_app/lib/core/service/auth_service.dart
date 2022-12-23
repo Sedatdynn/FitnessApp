@@ -102,6 +102,11 @@ class AuthService {
     return true;
   }
 
+  Future sendEmailVerfied() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    await user.sendEmailVerification();
+  }
+
   void checkUid() {
     final User? userr = FirebaseAuth.instance.currentUser;
     final uid = userr?.uid;
@@ -152,16 +157,21 @@ class AuthService {
         email: email,
         password: password,
       );
-      return true;
+      if (credential.user!.emailVerified) {
+        return true;
+      } else {
+        return false;
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
       }
+      return false;
     } catch (e) {
       print(e);
+      return false;
     }
-    return false;
   }
 }

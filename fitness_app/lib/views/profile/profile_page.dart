@@ -3,6 +3,7 @@ import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/bmi/future_bmi.dart';
+import 'package:fistness_app_firebase/views/profile/edit_profile.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -175,11 +176,29 @@ class _ProfilePageState extends State<ProfilePage> {
                                             )),
                                         child: const ListTile(
                                           leading: Icon(
-                                            Icons.update,
+                                            Icons.leave_bags_at_home_outlined,
                                           ),
                                           title: Text("BMI"),
                                           subtitle: Text("See bmi result"),
                                         ),
+                                      ),
+                                      GestureDetector(
+                                        child: const ListTile(
+                                          leading: Icon(
+                                            Icons.update,
+                                          ),
+                                          title: Text("Update Profile"),
+                                          subtitle: Text(
+                                              "Update your weight, height..."),
+                                        ),
+                                        onTap: () async {
+                                          Navigator.push(
+                                              context,
+                                              (MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const UpdateInfosView(),
+                                              )));
+                                        },
                                       ),
                                       GestureDetector(
                                         child: const ListTile(

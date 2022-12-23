@@ -100,7 +100,8 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) => const MainPage(),
                           ));
                     } else {
-                      warningToast(context, "Wrong Pass or Email!");
+                      warningToast(
+                          context, "Wrong Pass/Email! or verify your email!");
                     }
                   }),
             ],
