@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../model/foods_model.dart';
 import '../../service/foods_exercises_service.dart';

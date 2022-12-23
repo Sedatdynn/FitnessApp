@@ -1,4 +1,5 @@
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/views/exerciseMobility/exercise_mobility.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_appbar.dart';
 import '../../core/const/const_logo_body.dart';
@@ -74,14 +75,14 @@ class _AgePageState extends State<AgePage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => HeightPage(
+                  builder: (context) => DailyMobilityView(
                         username: widget.username,
                         mail: widget.mail,
                         password: widget.password,
                         uid: widget.uid,
                         name: widget.name,
                         gender: widget.gender,
-                        age: _currentValue.toString(),
+                        age: _currentValue,
                       )),
             );
           },

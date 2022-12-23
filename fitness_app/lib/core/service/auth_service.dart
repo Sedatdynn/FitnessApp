@@ -22,7 +22,7 @@ class AuthService {
 
   Future<void> SignOut() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
-    //MyText.currentUser = null;
+    FirebaseAuth.instance.currentUser == null;
     if (googleSignIn.currentUser != null) {
       await googleSignIn.disconnect();
       await FirebaseAuth.instance.signOut();
@@ -31,19 +31,19 @@ class AuthService {
     }
   }
 
-  Future<void> fetchCurrentUserDoc() async {
+  Future<DocumentSnapshot<Map<String, dynamic>>> fetchCurrentUserDoc() async {
     return await FirebaseFirestore.instance
         .collection('users')
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        print(doc["age"]);
-      });
-    });
-    // .doc()
-    // .get()
-    // .then((DocumentSnapshot doc) => print("+++++++++++++ ${doc.data()}"));
+        .doc(auth.currentUser!.uid)
+        .get();
   }
+
+  // Future<DocumentSnapshot<Map<String, dynamic>>> checkUserPoint() async {
+  //   return await FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc(auth.currentUser!.uid)
+  //       .get();
+  // }
 
   Future<bool?> createPerson(
       String username,
@@ -52,9 +52,11 @@ class AuthService {
       String uid,
       String name,
       String gender,
-      String age,
-      String length,
-      String weight) async {
+      int age,
+      String mobility,
+      int length,
+      int weight,
+      int userRightPoint) async {
     var user = await auth.createUserWithEmailAndPassword(
         email: email, password: password);
     final userInfo = <String, String>{
@@ -62,11 +64,16 @@ class AuthService {
       "email": email,
       "name": name,
       "gender": gender,
-      "age": age,
-      "length": length,
-      "weight": weight,
+      "age": age.toString(),
+      "mobility": mobility,
+      "length": length.toString(),
+      "weight": weight.toString(),
+      "userRightPoint": userRightPoint.toString()
     };
-    await firestore.collection("users").doc(uid).set(userInfo);
+    await firestore
+        .collection("users")
+        .doc(auth.currentUser!.uid)
+        .set(userInfo);
     return true;
   }
 

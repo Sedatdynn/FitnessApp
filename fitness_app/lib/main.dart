@@ -73,10 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }
             return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: context.watch<ThemeNotifier>().currentTheme,
-              home: const LaunchPage(),
-            );
+                debugShowCheckedModeBanner: false,
+                theme: context.watch<ThemeNotifier>().currentTheme,
+                home: const MainPage() // LaunchPage(),
+                );
           } else {
             return const Center(child: CircularProgressIndicator());
           }

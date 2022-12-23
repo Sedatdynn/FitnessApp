@@ -12,21 +12,23 @@ class WeightPage extends StatefulWidget {
   final String? password;
   final String? name;
   final String? gender;
-  final String? age;
-  final String? height;
+  final int? age;
+  final String? mobility;
+  final int? height;
   final String uid;
 
-  const WeightPage({
-    Key? key,
-    this.username,
-    this.mail,
-    this.password,
-    required this.uid,
-    this.name,
-    this.gender,
-    this.age,
-    this.height,
-  }) : super(key: key);
+  const WeightPage(
+      {Key? key,
+      this.username,
+      this.mail,
+      this.password,
+      required this.uid,
+      this.name,
+      this.gender,
+      this.age,
+      this.height,
+      this.mobility})
+      : super(key: key);
 
   @override
   _WeightPageState createState() => _WeightPageState();
@@ -34,6 +36,7 @@ class WeightPage extends StatefulWidget {
 
 class _WeightPageState extends State<WeightPage> {
   int _currentValue = 65;
+  int totalPoint = 0;
 
   bool isLoading = false;
 
@@ -116,6 +119,69 @@ class _WeightPageState extends State<WeightPage> {
 
   Future registerTheUser() async {
     try {
+      if (widget.age! <= 20) {
+        totalPoint += 5;
+      } else if (widget.age! >= 21 && widget.age! <= 35) {
+        totalPoint += 4;
+      } else if (widget.age! >= 36 && widget.age! <= 50) {
+        totalPoint += 3;
+      } else if (widget.age! >= 51 && widget.age! <= 65) {
+        totalPoint += 2;
+      }
+
+      if (_currentValue >= 40 && _currentValue <= 49) {
+        totalPoint += 4;
+      } else if (_currentValue >= 50 && _currentValue <= 59) {
+        totalPoint += 5;
+      } else if (_currentValue >= 60 && _currentValue <= 69) {
+        totalPoint += 6;
+      } else if (_currentValue >= 70 && _currentValue <= 79) {
+        totalPoint += 7;
+      } else if (_currentValue >= 80 && _currentValue <= 89) {
+        totalPoint += 8;
+      } else if (_currentValue >= 90 && _currentValue <= 99) {
+        totalPoint += 9;
+      } else if (_currentValue >= 100 && _currentValue <= 109) {
+        totalPoint += 10;
+      } else if (_currentValue >= 110 && _currentValue <= 119) {
+        totalPoint += 11;
+      } else if (_currentValue >= 120 && _currentValue <= 129) {
+        totalPoint += 12;
+      } else if (_currentValue >= 130 && _currentValue <= 139) {
+        totalPoint += 13;
+      } else if (_currentValue >= 140 && _currentValue <= 149) {
+        totalPoint += 14;
+      }
+
+      if (widget.height! >= 160) {
+        totalPoint += 2;
+      } else {
+        totalPoint += 1;
+      }
+
+      bool? userGender = widget.gender!.contains("fe");
+      if (userGender) {
+        totalPoint += 7;
+      } else {
+        totalPoint += 15;
+      }
+
+      String mobilityControl = widget.mobility![0];
+      if (mobilityControl == "D") {
+        totalPoint += 0;
+      } else if (mobilityControl == "B") {
+        totalPoint += 2;
+      } else if (mobilityControl == "T") {
+        totalPoint += 4;
+      } else if (mobilityControl == "A") {
+        totalPoint += 6;
+      }
+      print("|||||||||||||||?????????||||||||$mobilityControl");
+
+      print("******????????????******$totalPoint");
+
+      Future.delayed(Duration(seconds: 2));
+
       bool? isSucces = await await MyText.authService.createPerson(
           widget.username!,
           widget.mail!,
@@ -124,8 +190,11 @@ class _WeightPageState extends State<WeightPage> {
           widget.name!,
           widget.gender!,
           widget.age!,
+          widget.mobility!,
           widget.height!,
-          _currentValue.toString());
+          _currentValue,
+          totalPoint);
+
       // bool? isSucces = await GeneralService(
       //         ProjectNetworkManager.instance.service, "/register")
       //     .registerUser({

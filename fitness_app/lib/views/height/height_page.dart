@@ -8,18 +8,20 @@ class HeightPage extends StatefulWidget {
   final String? password;
   final String? name;
   final String? gender;
-  final String? age;
+  final int? age;
   final String uid;
-  const HeightPage(
-      {Key? key,
-      this.username,
-      this.mail,
-      this.password,
-      required this.uid,
-      this.name,
-      this.gender,
-      this.age})
-      : super(key: key);
+  final String? mobility;
+  const HeightPage({
+    Key? key,
+    this.username,
+    this.mail,
+    this.password,
+    required this.uid,
+    this.name,
+    this.gender,
+    this.age,
+    this.mobility,
+  }) : super(key: key);
 
   @override
   _HeightPageState createState() => _HeightPageState();
@@ -72,7 +74,8 @@ class _HeightPageState extends State<HeightPage> {
                 name: widget.name,
                 gender: widget.gender,
                 age: widget.age,
-                height: _currentValue.toString(),
+                mobility: widget.mobility,
+                height: _currentValue,
               )),
     );
   }

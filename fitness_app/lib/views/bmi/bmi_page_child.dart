@@ -19,48 +19,51 @@ class BmiColumnBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: context.minAllPadding,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              topBox(
-                  context,
-                  width / 1.16,
-                  50,
-                  rowValues(context, "Height", userHeight),
-                  AllColors.gradColor1,
-                  AllColors.gradColor1,
-                  AllColors.gradColor4,
-                  context.midLargeLtrb,
-                  context.zeroAllPadding),
-            ],
+    return SizedBox(
+      height: context.height * 0.3,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: context.minAllPadding,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                topBox(
+                    context,
+                    width / 1.16,
+                    50,
+                    rowValues(context, "Height", userHeight),
+                    AllColors.gradColor1,
+                    AllColors.gradColor1,
+                    AllColors.gradColor4,
+                    context.midLargeLtrb,
+                    context.zeroAllPadding),
+              ],
+            ),
           ),
-        ),
-        Padding(
-          padding: context.minAllPadding,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              topBox(
-                  context,
-                  width / 1.16,
-                  50,
-                  rowValues(context, "Weight", userWeight),
-                  AllColors.gradColor1,
-                  AllColors.gradColor1,
-                  AllColors.gradColor4,
-                  context.midLargeLtrb,
-                  context.zeroAllPadding),
-            ],
+          Padding(
+            padding: context.minAllPadding,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                topBox(
+                    context,
+                    width / 1.16,
+                    50,
+                    rowValues(context, "Weight", userWeight),
+                    AllColors.gradColor1,
+                    AllColors.gradColor1,
+                    AllColors.gradColor4,
+                    context.midLargeLtrb,
+                    context.zeroAllPadding),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
