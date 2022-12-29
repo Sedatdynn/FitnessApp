@@ -53,9 +53,8 @@ async def food_data():
 
 @app.get("/exercises")
 async def training_data():
-    f = open("exercises.json")
-    data = json.load(f)
-    f.close()
+    with open('exercises.json', encoding='utf-8') as f:
+        data = json.load(f)
     return data
 
 

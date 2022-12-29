@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fistness_app_firebase/core/const/const_shelf.dart';
 import 'package:fistness_app_firebase/core/extensions/edge_insets.dart';
+import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class UpdateInfosView extends StatefulWidget {
   const UpdateInfosView({Key? key}) : super(key: key);
@@ -12,10 +15,8 @@ class UpdateInfosView extends StatefulWidget {
 }
 
 class _UpdateInfosViewState extends State<UpdateInfosView> {
-  TextEditingController usernameController = TextEditingController();
   TextEditingController weightController = TextEditingController();
   TextEditingController heightController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
   TextEditingController mobilityController = TextEditingController();
 
   @override
@@ -30,20 +31,8 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
               return Padding(
                 padding: context.minAllPadding,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    TextFormField(
-                      keyboardType: TextInputType.number,
-                      maxLength: 16,
-                      // validator: (value) =>
-                      //     (value ?? "").length > 10 ? null : "11'den kucuk",
-                      controller: usernameController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          labelText:
-                              "username -> ${snapshot.data?["username"]}"),
-                    ),
                     TextFormField(
                       keyboardType: TextInputType.number,
                       maxLength: 3,
@@ -62,32 +51,33 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(14),
                           ),
-                          labelText: "length -> ${snapshot.data?["length"]}"),
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.number,
-                      maxLength: 2,
-                      controller: ageController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          labelText: "age -> ${snapshot.data?["age"]}"),
+                          labelText: "height -> ${snapshot.data?["height"]}"),
                     ),
                     CommonButton(
                         text: "Update",
                         onPressed: () {
                           Map<String, String> dataToUpdate = {
-                            "username": usernameController.text,
-                            "weight": weightController.text,
-                            "length": heightController.text,
-                            "age": ageController.text,
+                            "weight": (weightController.text.isNotEmpty)
+                                ? weightController.text
+                                : snapshot.data?["weight"],
+                            "height": (heightController.text.isNotEmpty)
+                                ? heightController.text
+                                : snapshot.data?["height"],
                           };
                           CollectionReference collection =
                               FirebaseFirestore.instance.collection("users");
                           DocumentReference doc = collection
                               .doc(FirebaseAuth.instance.currentUser!.uid);
                           doc.update(dataToUpdate);
+                          warningToast(
+                              context, "Your update completed successfully",
+                              color: context.greenColor);
+                          Future.delayed(Duration(seconds: 2));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BmiCalculator(),
+                              ));
                         })
                   ],
                 ),

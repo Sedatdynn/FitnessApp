@@ -128,25 +128,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ...ListTile.divideTiles(
                                     color: context.mainColor,
                                     tiles: [
-                                      InkWell(
-                                        onTap: () {
-                                          MyText.authService.checkUid();
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => View(),
-                                              ));
-                                        },
-                                        child: ListTile(
-                                          contentPadding:
-                                              context.symVertPadding,
-                                          leading: const Icon(
-                                            Icons.my_location,
-                                          ),
-                                          title: const Text("Location"),
-                                          subtitle: const Text("TR"),
-                                        ),
-                                      ),
                                       ListTile(
                                         leading: Icon(
                                           Icons.email,

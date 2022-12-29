@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: context.watch<ThemeNotifier>().currentTheme,
-              home: const MainPage(),
+              home: const LaunchPage(),
             );
           } else {
             return const Center(child: CircularProgressIndicator());

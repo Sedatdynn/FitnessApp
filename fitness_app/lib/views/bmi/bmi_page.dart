@@ -56,20 +56,21 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                                   Navigator.pop(context);
                                 },
                               ),
-                              topBox(
-                                  context,
-                                  150,
-                                  50,
-                                  Text(
-                                    "BMI Calculator",
-                                    style: context.subtitle1(context),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  AllColors.gradColor1,
-                                  AllColors.gradColor1,
-                                  AllColors.gradColor4,
-                                  context.minMidAllPadding,
-                                  context.zeroAllPadding)
+                              //   topBox(
+                              //       context,
+                              //       150,
+                              //       50,
+                              //       Text(
+                              //         "BMI Calculator",
+                              //         style: context.subtitle1(context),
+                              //         textAlign: TextAlign.center,
+                              //       ),
+                              //       AllColors.gradColor1,
+                              //       AllColors.gradColor1,
+                              //       AllColors.gradColor4,
+                              //       context.minMidAllPadding,
+                              //       context.zeroAllPadding)
+                              //
                             ],
                           ),
                           const SizedBox(
@@ -81,7 +82,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                               150,
                               BmiColumnBody(
                                 width: context.width,
-                                userHeight: snapshot.data?["length"],
+                                userHeight: snapshot.data?["height"],
                                 userWeight: snapshot.data?["weight"],
                               ),
                               AllColors.gradColor1.withOpacity(0.5),
@@ -96,7 +97,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                               rowValues(
                                   context,
                                   "BMI Result : ",
-                                  bmiCalculate(snapshot.data?["length"],
+                                  bmiCalculate(snapshot.data?["height"],
                                       snapshot.data?["weight"])),
                               AllColors.gradColor1,
                               AllColors.gradColor1,
@@ -105,7 +106,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                               context.midAllPadding),
                           bmiGauge1(
                               context,
-                              bmiCalculate(snapshot.data?["length"],
+                              bmiCalculate(snapshot.data?["height"],
                                   snapshot.data?["weight"]))
                         ],
                       ),
@@ -123,9 +124,9 @@ class _BmiCalculatorState extends State<BmiCalculator> {
     );
   }
 
-  String bmiCalculate(dynamic length, dynamic weight) {
+  String bmiCalculate(dynamic height, dynamic weight) {
     double finalresult =
-        int.parse(weight) / (int.parse(length) * int.parse(length) / 10000);
+        int.parse(weight) / (int.parse(height) * int.parse(height) / 10000);
     String bmi = finalresult.toStringAsFixed(2);
     return bmi;
   }

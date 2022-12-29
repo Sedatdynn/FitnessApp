@@ -54,7 +54,7 @@ class AuthService {
       String gender,
       int age,
       String mobility,
-      int length,
+      int height,
       int weight,
       int userRightPoint) async {
     var user = await auth.createUserWithEmailAndPassword(
@@ -66,7 +66,7 @@ class AuthService {
       "gender": gender,
       "age": age.toString(),
       "mobility": mobility,
-      "length": length.toString(),
+      "height": height.toString(),
       "weight": weight.toString(),
       "userRightPoint": userRightPoint.toString()
     };
@@ -85,7 +85,7 @@ class AuthService {
       String name,
       String gender,
       String age,
-      String length,
+      String height,
       String weight) async {
     //dynamic user = await auth.createUserWithEmailAndPassword(
     //    email: email, password: password);
@@ -96,7 +96,7 @@ class AuthService {
       "name": name,
       "gender": gender,
       "age": age,
-      "length": length,
+      "height": height,
       "weight": weight,
     }).catchError((error) => print("Failed to set data: $error"));
     return true;

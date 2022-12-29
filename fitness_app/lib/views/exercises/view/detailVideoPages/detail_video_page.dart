@@ -21,7 +21,7 @@ class DetailVideoPage extends StatefulWidget {
 }
 
 class _DetailVideoPageState extends State<DetailVideoPage> {
-  final String titleText = 'Video ilk baslik';
+  final String titleText = 'Exercise Information';
   late YoutubePlayerController _controller;
   late VideoPlayerController videoController;
   int currentIndex = 0;

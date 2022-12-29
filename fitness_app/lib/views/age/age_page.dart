@@ -26,7 +26,7 @@ class AgePage extends StatefulWidget {
 }
 
 class _AgePageState extends State<AgePage> {
-  int _currentValue = 3;
+  int _currentValue = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +112,7 @@ class _AgePageState extends State<AgePage> {
         ),
       ),
       value: _currentValue,
-      minValue: 0,
+      minValue: 18,
       maxValue: 100,
       onChanged: (value) => setState(() => _currentValue = value),
     );
