@@ -38,7 +38,7 @@ class RegisterText {
 
 class QuestionsText {
   static String sexText = "What is your sex?";
-  static String ageText = "How old are you?";
+  static String ageText = "What is your birth of date?";
   static String heightText = "How much is your height?";
   static String accountText = "Don't you have an account?";
   static String forgotPassText = "Forgot password?";
