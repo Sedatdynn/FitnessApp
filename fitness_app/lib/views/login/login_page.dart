@@ -2,8 +2,6 @@
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/views/home/bottomNavigateBar/navigare_bar.dart';
-import 'package:fistness_app_firebase/views/service/foods_exercises_service.dart';
-import 'package:fistness_app_firebase/views/service/project_network.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import '../../core/const/const_shelf.dart';
 
@@ -86,12 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                         .signInWithEmailandPassword(
                             _emailController.text.trim().toString(),
                             _passwordController.text.trim());
-                    // GeneralService(
-                    //         ProjectNetworkManager.instance.service, "/login")
-                    //     .loginUser({
-                    //   "email": _emailController.text.trim(),
-                    //   "password": _passwordController.text.trim()
-                    // });
+
                     if (isSucces) {
                       MyText.authService.checkUid();
                       Navigator.push(

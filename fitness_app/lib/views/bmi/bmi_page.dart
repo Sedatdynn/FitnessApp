@@ -53,24 +53,14 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                                     context.zeroAllPadding,
                                     context.zeroAllPadding),
                                 onTap: () {
-                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ProfilePage(),
+                                      ));
                                 },
                               ),
-                              //   topBox(
-                              //       context,
-                              //       150,
-                              //       50,
-                              //       Text(
-                              //         "BMI Calculator",
-                              //         style: context.subtitle1(context),
-                              //         textAlign: TextAlign.center,
-                              //       ),
-                              //       AllColors.gradColor1,
-                              //       AllColors.gradColor1,
-                              //       AllColors.gradColor4,
-                              //       context.minMidAllPadding,
-                              //       context.zeroAllPadding)
-                              //
                             ],
                           ),
                           const SizedBox(

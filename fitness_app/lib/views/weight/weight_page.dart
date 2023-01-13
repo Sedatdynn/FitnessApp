@@ -195,19 +195,10 @@ class _WeightPageState extends State<WeightPage> {
           _currentValue,
           totalPoint);
 
-      // bool? isSucces = await GeneralService(
-      //         ProjectNetworkManager.instance.service, "/register")
-      //     .registerUser({
-      //   "username": widget.username!,
-      //   "email": widget.mail!,
-      //   "password": widget.password!,
-      //   "sex": widget.gender!,
-      //   "age": widget.age!,
-      //   "height": widget.height!,
-      //   "weight": _currentValue.toString(),
-      // });
       if (isSucces!) {
         await warningToast(context, RegisterText.registerSuccesfully,
+            color: context.greenColor);
+        await warningToast(context, RegisterText.verifyWarning,
             color: context.greenColor);
         await MyText.authService.sendEmailVerfied();
         Navigator.pushAndRemoveUntil(

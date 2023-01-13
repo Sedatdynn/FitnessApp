@@ -19,6 +19,8 @@ class MyText {
 class RegisterText {
   static String registerSuccesfully =
       "Your registration has been completed successfully.";
+  static String verifyWarning =
+      "We sent an email to verification. Please Verify your email.";
   static String signEmailText = 'Sign in with Email ';
   static String googleText = "Google";
   static String emailText = "Email";

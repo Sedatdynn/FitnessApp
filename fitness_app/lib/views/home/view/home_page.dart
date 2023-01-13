@@ -91,8 +91,8 @@ class _HomeViewState extends State<HomeView> {
                                           ),
                                           Expanded(
                                             child: Text(
-                                              snapshot.data?[
-                                                      "userRightPoint"] ??
+                                              snapshot.data?["userRightPoint"]
+                                                      .toString() ??
                                                   "no dataa",
                                               style: context.headline4(context),
                                             ),

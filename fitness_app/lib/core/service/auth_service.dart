@@ -22,13 +22,14 @@ class AuthService {
 
   Future<void> SignOut() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
-    FirebaseAuth.instance.currentUser == null;
     if (googleSignIn.currentUser != null) {
       await googleSignIn.disconnect();
       await FirebaseAuth.instance.signOut();
     } else {
       await FirebaseAuth.instance.signOut();
+      await googleSignIn.disconnect();
     }
+    FirebaseAuth.instance.currentUser == null;
   }
 
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchCurrentUserDoc() async {
@@ -37,13 +38,6 @@ class AuthService {
         .doc(auth.currentUser!.uid)
         .get();
   }
-
-  // Future<DocumentSnapshot<Map<String, dynamic>>> checkUserPoint() async {
-  //   return await FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(auth.currentUser!.uid)
-  //       .get();
-  // }
 
   Future<bool?> createPerson(
       String username,
@@ -87,9 +81,6 @@ class AuthService {
       String age,
       String height,
       String weight) async {
-    //dynamic user = await auth.createUserWithEmailAndPassword(
-    //    email: email, password: password);
-
     await firestore.collection(collectionName).doc(uid).set({
       "username": username,
       "email": email,
@@ -110,20 +101,6 @@ class AuthService {
   void checkUid() {
     final User? userr = FirebaseAuth.instance.currentUser;
     final uid = userr?.uid;
-    print(" -------------${userr}");
-
-    print("*********" + uid.toString());
-    // try {
-    //   dynamic user =
-    //       await firestore.collection(collectionName).doc(uid.toString()).get();
-    //   if (user.exists) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // } catch (err) {
-    //   return false;
-    // }
     return null;
   }
 
@@ -138,7 +115,7 @@ class AuthService {
           await auth.signInWithCredential(GoogleAuthProvider.credential(
               idToken: googleAuth.idToken,
               accessToken: googleAuth.accessToken));
-          Navigator.push(
+          await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => const MainPage(),

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously, dead_code
 
 import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
-import 'package:fistness_app_firebase/views/home/view/home_page.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 
 class LaunchPageButtons extends StatefulWidget {

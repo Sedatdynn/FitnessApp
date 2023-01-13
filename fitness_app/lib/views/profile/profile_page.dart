@@ -3,6 +3,7 @@ import 'package:fistness_app_firebase/core/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:fistness_app_firebase/views/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/views/bmi/future_bmi.dart';
+import 'package:fistness_app_firebase/views/home/bottomNavigateBar/navigare_bar.dart';
 import 'package:fistness_app_firebase/views/profile/edit_profile.dart';
 import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:provider/provider.dart';
@@ -72,36 +73,30 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                 ),
                                 onTap: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                              GestureDetector(
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: commonBoxDec(
-                                    context.watch<ThemeNotifier>().isLight
-                                        ? Colors.grey
-                                        : const Color(0xFF19282F),
-                                    context.watch<ThemeNotifier>().isLight
-                                        ? Colors.grey
-                                        : const Color(0xFF19282F),
-                                    context.watch<ThemeNotifier>().isLight
-                                        ? Colors.grey
-                                        : const Color(0xFF000000),
-                                  ),
-                                  child: const Icon(
-                                    Icons.receipt_outlined,
-                                  ),
-                                ),
-                                onTap: () {
                                   Navigator.push(
                                       context,
-                                      (MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LaunchPage(),
-                                      )));
+                                      MaterialPageRoute(
+                                        builder: (context) => const MainPage(),
+                                      ));
                                 },
+                              ),
+                              Container(
+                                height: 50,
+                                width: 50,
+                                decoration: commonBoxDec(
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF19282F),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF19282F),
+                                  context.watch<ThemeNotifier>().isLight
+                                      ? Colors.grey
+                                      : const Color(0xFF000000),
+                                ),
+                                child: const Icon(
+                                  Icons.person,
+                                ),
                               ),
                             ],
                           ),
@@ -131,10 +126,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                     color: context.mainColor,
                                     tiles: [
                                       ListTile(
-                                        leading: Icon(
+                                        leading: const Icon(
                                           Icons.email,
                                         ),
-                                        title: Text("Email"),
+                                        title: const Text("Email"),
                                         subtitle: Text(
                                             snapshot.data!["email"].toString()),
                                       ),
