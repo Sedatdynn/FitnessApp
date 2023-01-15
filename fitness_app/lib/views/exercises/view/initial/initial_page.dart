@@ -25,13 +25,29 @@ class _InitialPageState extends State<InitialPage> {
       children: [
         Stack(
           children: [
-            Image.asset("assets/diet_exrcs.png"),
+            Image.asset(
+              "assets/diet_exrcs.png",
+              height: context.height * 0.3,
+            ),
             Positioned(
                 bottom: 0,
                 left: context.width / 25,
                 child: Text(
                   "Welcome to\nDiet and Fitness App",
-                  style: context.headline4(context),
+                  style: context.headline4(context)?.copyWith(
+                    shadows: <Shadow>[
+                      const Shadow(
+                        offset: Offset(5.0, 5.0),
+                        blurRadius: 3.0,
+                        color: Color.fromARGB(255, 187, 175, 175),
+                      ),
+                      const Shadow(
+                        offset: Offset(5.0, 5.0),
+                        blurRadius: 8.0,
+                        color: Color.fromARGB(124, 190, 13, 134),
+                      ),
+                    ],
+                  ),
                 ))
           ],
         ),

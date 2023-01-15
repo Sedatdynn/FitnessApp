@@ -26,8 +26,9 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: changeIndex,
         currentIndex: selectedIndex,
-        unselectedItemColor: context.textColor,
-        selectedItemColor: context.scndTxtColor,
+        backgroundColor: context.scfBackColor.withGreen(25),
+        unselectedItemColor: context.scndTxtColor,
+        selectedItemColor: context.textColor,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(

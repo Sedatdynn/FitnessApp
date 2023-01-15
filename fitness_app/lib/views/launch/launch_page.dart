@@ -134,7 +134,20 @@ class _LaunchPageState extends State<LaunchPage> {
     return Center(
       child: Text(
         MyText.fitText,
-        style: context.headline4(context),
+        style: context.headline4(context)?.copyWith(
+          shadows: <Shadow>[
+            const Shadow(
+              offset: Offset(5.0, 5.0),
+              blurRadius: 3.0,
+              color: Color.fromARGB(255, 187, 175, 175),
+            ),
+            const Shadow(
+              offset: Offset(5.0, 5.0),
+              blurRadius: 8.0,
+              color: Color.fromARGB(124, 190, 13, 134),
+            ),
+          ],
+        ),
       ),
     );
   }

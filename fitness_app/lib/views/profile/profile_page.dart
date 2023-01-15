@@ -104,9 +104,20 @@ class _ProfilePageState extends State<ProfilePage> {
                               alignment: Alignment.center,
                               child: Text(
                                 snapshot.data!["name"].toString(),
-                                style: context
-                                    .headline6(context)
-                                    ?.copyWith(color: context.textColor),
+                                style: context.headline6(context)?.copyWith(
+                                  shadows: <Shadow>[
+                                    const Shadow(
+                                      offset: Offset(5.0, 5.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(255, 187, 175, 175),
+                                    ),
+                                    const Shadow(
+                                      offset: Offset(5.0, 5.0),
+                                      blurRadius: 8.0,
+                                      color: Color.fromARGB(124, 190, 13, 134),
+                                    ),
+                                  ],
+                                ),
                               )),
                           Container(
                             decoration: commonBoxDec(

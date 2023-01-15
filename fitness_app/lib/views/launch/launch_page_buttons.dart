@@ -21,7 +21,7 @@ class _LaunchPageButtonsState extends State<LaunchPageButtons> {
         ? Center(
             child: SizedBox(
               height: context.height * 0.06,
-              width: context.width * 0.82,
+              width: context.width * 0.8,
               child: SizedBox(
                 height: context.height * 0.06,
                 width: context.width * 0.4,

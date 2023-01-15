@@ -234,7 +234,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               Expanded(child: Container()),
               Text(
-                "${items[i].icerik![j].puan!.toDouble()} puan",
+                "${items[i].icerik![j].puan!.toDouble()} point",
                 style: context.subtitle2(context),
               ),
               _checkBox(items, i, j, context),
