@@ -1,5 +1,6 @@
-import 'package:fistness_app_firebase/views/views_shelf.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../feature/views_shelf.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   bool isLight = false;
