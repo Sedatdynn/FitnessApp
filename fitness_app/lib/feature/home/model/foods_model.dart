@@ -1,10 +1,11 @@
-import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../core/base/model/base_model.dart';
 
 part "foods_model.g.dart";
 
 @JsonSerializable(createToJson: false)
-class FoodsModel extends BaseModel {
+class FoodsModel extends BaseModel<FoodsModel> {
   final List<Kategori>? kategori;
 
   FoodsModel({this.kategori});
@@ -19,7 +20,7 @@ class FoodsModel extends BaseModel {
 }
 
 @JsonSerializable(createToJson: false)
-class Kategori extends BaseModel {
+class Kategori extends BaseModel<Kategori> {
   final int? id;
   final String? name;
   final List<Icerik>? icerik;
@@ -40,7 +41,7 @@ class Kategori extends BaseModel {
 }
 
 @JsonSerializable(createToJson: false)
-class Icerik extends BaseModel {
+class Icerik extends BaseModel<Icerik> {
   final String? isim;
   final dynamic puan;
   bool? kontrol;

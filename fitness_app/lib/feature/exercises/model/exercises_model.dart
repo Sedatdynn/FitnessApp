@@ -1,9 +1,11 @@
-import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../core/base/model/base_model.dart';
+
 part "exercises_model.g.dart";
 
 @JsonSerializable(createToJson: false)
-class ExercisesModel extends BaseModel {
+class ExercisesModel extends BaseModel<ExercisesModel> {
   final List<Exercise>? exercise;
 
   ExercisesModel({this.exercise});
@@ -22,7 +24,7 @@ class ExercisesModel extends BaseModel {
 }
 
 @JsonSerializable(createToJson: false)
-class Exercise extends BaseModel {
+class Exercise extends BaseModel<Exercise> {
   final String? categoryName;
   final String? imgUrl;
   final List<CategoryData>? categoryData;
@@ -43,7 +45,7 @@ class Exercise extends BaseModel {
 }
 
 @JsonSerializable(createToJson: false)
-class CategoryData extends BaseModel {
+class CategoryData extends BaseModel<CategoryData> {
   final String? contentImage;
   final String? type;
   final String? equipment;
@@ -83,7 +85,7 @@ class CategoryData extends BaseModel {
 }
 
 @JsonSerializable(createToJson: false)
-class VideoPageData extends BaseModel {
+class VideoPageData extends BaseModel<VideoPageData> {
   final String? videoUrl;
   final String? fullBodyImage;
   final String? firstTitle;
