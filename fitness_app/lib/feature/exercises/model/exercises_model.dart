@@ -1,9 +1,10 @@
+import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part "exercises_model.g.dart";
 
-@JsonSerializable()
-class ExercisesModel {
-  List<Exercise>? exercise;
+@JsonSerializable(createToJson: false)
+class ExercisesModel extends BaseModel {
+  final List<Exercise>? exercise;
 
   ExercisesModel({this.exercise});
 
@@ -11,16 +12,20 @@ class ExercisesModel {
     return _$ExercisesModelFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$ExercisesModelToJson(this);
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return fromJson(json);
   }
+
+  @override
+  List<Object?> get props => [];
 }
 
-@JsonSerializable()
-class Exercise {
-  String? categoryName;
-  String? imgUrl;
-  List<CategoryData>? categoryData;
+@JsonSerializable(createToJson: false)
+class Exercise extends BaseModel {
+  final String? categoryName;
+  final String? imgUrl;
+  final List<CategoryData>? categoryData;
 
   Exercise({this.categoryName, this.imgUrl, this.categoryData});
 
@@ -28,20 +33,24 @@ class Exercise {
     return _$ExerciseFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$ExerciseToJson(this);
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return fromJson(json);
   }
+
+  @override
+  List<Object?> get props => [categoryName, imgUrl, categoryData];
 }
 
-@JsonSerializable()
-class CategoryData {
-  String? contentImage;
-  String? type;
-  String? equipment;
-  String? mechanic;
-  String? exerciseLevel;
-  String? exerciseName;
-  VideoPageData? videoPageData;
+@JsonSerializable(createToJson: false)
+class CategoryData extends BaseModel {
+  final String? contentImage;
+  final String? type;
+  final String? equipment;
+  final String? mechanic;
+  final String? exerciseLevel;
+  final String? exerciseName;
+  final VideoPageData? videoPageData;
 
   CategoryData(
       {this.contentImage,
@@ -56,18 +65,30 @@ class CategoryData {
     return _$CategoryDataFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$CategoryDataToJson(this);
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return fromJson(json);
   }
+
+  @override
+  List<Object?> get props => [
+        contentImage,
+        type,
+        equipment,
+        mechanic,
+        exerciseLevel,
+        exerciseName,
+        videoPageData,
+      ];
 }
 
-@JsonSerializable()
-class VideoPageData {
-  String? videoUrl;
-  String? fullBodyImage;
-  String? firstTitle;
-  String? firstContent;
-  String? secondTitle;
+@JsonSerializable(createToJson: false)
+class VideoPageData extends BaseModel {
+  final String? videoUrl;
+  final String? fullBodyImage;
+  final String? firstTitle;
+  final String? firstContent;
+  final String? secondTitle;
 
   VideoPageData(
       {this.videoUrl,
@@ -80,7 +101,12 @@ class VideoPageData {
     return _$VideoPageDataFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$VideoPageDataToJson(this);
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return fromJson(json);
   }
+
+  @override
+  List<Object?> get props =>
+      [videoUrl, fullBodyImage, firstTitle, firstContent, secondTitle];
 }

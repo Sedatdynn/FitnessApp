@@ -1,8 +1,8 @@
-import 'package:fistness_app_firebase/product/const/warning_toast.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import '../../product/const/warning_toast.dart';
+import '../../product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_logo_body.dart';
-import '../service/foods_exercises_service.dart';
+import '../service/foods_service.dart';
 import '../../core/init/network/project_network.dart';
 import '../views_shelf.dart';
 
@@ -113,7 +113,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             backgroundColor: MaterialStateProperty.all(context.mainColor),
           ),
           onPressed: () async {
-            final response = await GeneralService(
+            final response = await FoodsService(
                     ProjectNetworkManager.instance.service, "reset password")
                 .resetPasswordLink(_emailController.text);
             if (response!) {

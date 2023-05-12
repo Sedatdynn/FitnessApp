@@ -1,13 +1,13 @@
-import '../../service/foods_exercises_service.dart';
+import '../../service/i_foods_service.dart';
 import '../../views_shelf.dart';
 import '../model/exercises_model.dart';
 
 class ExercisesViewModel extends ChangeNotifier {
   List<Exercise> exercises = [];
-  final IGeneralService generalService;
+  final IFoodsService foodService;
   bool isLoading = false;
 
-  ExercisesViewModel(this.generalService) {
+  ExercisesViewModel(this.foodService) {
     fetchExercisesData();
   }
 
@@ -18,7 +18,7 @@ class ExercisesViewModel extends ChangeNotifier {
 
   Future<void> fetchExercisesData() async {
     changeLoading();
-    exercises = (await generalService.fetchExercisesItem())?.exercise ?? [];
+    exercises = (await foodService.fetchExercisesItem())?.exercise ?? [];
     changeLoading();
   }
 }

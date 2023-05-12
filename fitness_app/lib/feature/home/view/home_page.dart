@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../service/foods_exercises_service.dart';
 import '../../../core/init/network/project_network.dart';
 import '../../views_shelf.dart';
 import '../model/foods_model.dart';
@@ -41,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
       create: (context) {
         String item = "foods";
         return HomeViewModel(
-          GeneralService(ProjectNetworkManager.instance.service, item),
+          FoodsService(ProjectNetworkManager.instance.service, item),
         );
       },
       builder: (context, child) {

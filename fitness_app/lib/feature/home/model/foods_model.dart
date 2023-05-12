@@ -1,24 +1,25 @@
+import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part "foods_model.g.dart";
 
-@JsonSerializable()
-class FoodsModel {
-  List<Kategori>? kategori;
+@JsonSerializable(createToJson: false)
+class FoodsModel extends BaseModel {
+  final List<Kategori>? kategori;
 
   FoodsModel({this.kategori});
 
-  factory FoodsModel.fromJson(Map<String, dynamic> json) {
+  @override
+  fromJson(Map<String, dynamic> json) {
     return _$FoodsModelFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$FoodsModelToJson(this);
-  }
+  @override
+  List<Object?> get props => [];
 }
 
-@JsonSerializable()
-class Kategori {
+@JsonSerializable(createToJson: false)
+class Kategori extends BaseModel {
   final int? id;
   final String? name;
   final List<Icerik>? icerik;
@@ -29,13 +30,17 @@ class Kategori {
     return _$KategoriFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$KategoriToJson(this);
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return fromJson(json);
   }
+
+  @override
+  List<Object?> get props => [id, name, icerik];
 }
 
-@JsonSerializable()
-class Icerik {
+@JsonSerializable(createToJson: false)
+class Icerik extends BaseModel {
   final String? isim;
   final dynamic puan;
   bool? kontrol;
@@ -46,7 +51,11 @@ class Icerik {
     return _$IcerikFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$IcerikToJson(this);
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return fromJson(json);
   }
+
+  @override
+  List<Object?> get props => [isim, puan, kontrol];
 }

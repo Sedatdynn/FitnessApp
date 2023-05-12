@@ -1,15 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../service/i_foods_service.dart';
 import '../../views_shelf.dart';
 import '../model/foods_model.dart';
-import '../../service/foods_exercises_service.dart';
 
 class HomeViewModel extends ChangeNotifier {
   List<Kategori> foods = [];
-  final IGeneralService generalService;
+  final IFoodsService foodService;
   double totalPoint = 0.0;
   bool isLoading = false;
 
-  HomeViewModel(this.generalService) {
+  HomeViewModel(this.foodService) {
     fetch();
   }
 
@@ -20,7 +19,7 @@ class HomeViewModel extends ChangeNotifier {
 
   Future<void> fetch() async {
     changeLoading();
-    foods = (await generalService.fetchFoodsItem())?.kategori ?? [];
+    foods = (await foodService.fetchFoodsItem())?.kategori ?? [];
     changeLoading();
   }
 }

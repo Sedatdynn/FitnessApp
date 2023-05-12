@@ -1,15 +1,14 @@
-import 'package:fistness_app_firebase/product/global/theme_control.dart';
-
+import 'feature/service/foods_service.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/init/network/project_network.dart';
 import 'feature/home/bottomNavigateBar/navigare_bar.dart';
 import 'feature/launch/launch_page.dart';
-import 'feature/service/foods_exercises_service.dart';
-import 'core/init/network/project_network.dart';
 import 'feature/views_shelf.dart';
 import 'firebase_options.dart';
+import 'product/global/theme_control.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     bool? isSuccess =
-        await GeneralService(ProjectNetworkManager.instance.service, "token")
+        await FoodsService(ProjectNetworkManager.instance.service, "token")
             .checkToken(prefs.getString("token"));
     if (isSuccess!) {
       FlutterNativeSplash.remove();

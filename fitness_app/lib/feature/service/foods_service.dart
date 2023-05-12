@@ -1,32 +1,16 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:io';
-import 'package:dio/dio.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../exercises/model/exercises_model.dart';
 import '../home/model/foods_model.dart';
 import '../login/token_model.dart';
+import 'i_foods_service.dart';
 
-abstract class IGeneralService {
-  IGeneralService(
-    this.dio,
-    this.item,
-  );
-  final Dio dio;
-  String item;
-
-  Future<FoodsModel?> fetchFoodsItem();
-  Future<ExercisesModel?> fetchExercisesItem();
-  Future registerUser(Map<String, dynamic> registerData);
-}
-
-class GeneralService extends IGeneralService {
-  GeneralService(
-    super.dio,
-    super.item,
-  );
+class FoodsService extends IFoodsService {
+  FoodsService(super.dio, super.item);
 
   @override
   Future<FoodsModel?> fetchFoodsItem() async {
@@ -35,7 +19,7 @@ class GeneralService extends IGeneralService {
     if (response.statusCode == HttpStatus.ok) {
       final jsonBody = response.data;
       if (jsonBody is Map<String, dynamic>) {
-        return FoodsModel.fromJson(jsonBody);
+        return FoodsModel().fromJson(jsonBody);
       }
     }
     return null;
@@ -91,7 +75,7 @@ class GeneralService extends IGeneralService {
 
         final jsonBody = response.data;
         if (jsonBody is Map<String, dynamic>) {
-          final tok = TokenModel.fromJson(jsonBody);
+          final tok = TokenModel().fromJson(jsonBody);
           prefs.setString("token", tok.token!);
           return true;
         }

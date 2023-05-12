@@ -1,10 +1,11 @@
-import 'package:fistness_app_firebase/feature/exercises/view/detailVideoPages/video_player_widget.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/feature/service/foods_service.dart';
+
+import 'video_player_widget.dart';
+import '../../../../product/extensions/extensions_shelf.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
-import '../../../service/foods_exercises_service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../core/init/network/project_network.dart';
@@ -50,7 +51,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
       create: (context) {
         String item = "exercises";
         return ExercisesViewModel(
-            GeneralService(ProjectNetworkManager.instance.service, item));
+            FoodsService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(

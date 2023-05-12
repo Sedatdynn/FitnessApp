@@ -13,11 +13,6 @@ ExercisesModel _$ExercisesModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$ExercisesModelToJson(ExercisesModel instance) =>
-    <String, dynamic>{
-      'exercise': instance.exercise,
-    };
-
 Exercise _$ExerciseFromJson(Map<String, dynamic> json) => Exercise(
       categoryName: json['categoryName'] as String?,
       imgUrl: json['imgUrl'] as String?,
@@ -25,12 +20,6 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) => Exercise(
           ?.map((e) => CategoryData.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
-
-Map<String, dynamic> _$ExerciseToJson(Exercise instance) => <String, dynamic>{
-      'categoryName': instance.categoryName,
-      'imgUrl': instance.imgUrl,
-      'categoryData': instance.categoryData,
-    };
 
 CategoryData _$CategoryDataFromJson(Map<String, dynamic> json) => CategoryData(
       contentImage: json['contentImage'] as String?,
@@ -45,17 +34,6 @@ CategoryData _$CategoryDataFromJson(Map<String, dynamic> json) => CategoryData(
               json['videoPageData'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CategoryDataToJson(CategoryData instance) =>
-    <String, dynamic>{
-      'contentImage': instance.contentImage,
-      'type': instance.type,
-      'equipment': instance.equipment,
-      'mechanic': instance.mechanic,
-      'exerciseLevel': instance.exerciseLevel,
-      'exerciseName': instance.exerciseName,
-      'videoPageData': instance.videoPageData,
-    };
-
 VideoPageData _$VideoPageDataFromJson(Map<String, dynamic> json) =>
     VideoPageData(
       videoUrl: json['videoUrl'] as String?,
@@ -64,12 +42,3 @@ VideoPageData _$VideoPageDataFromJson(Map<String, dynamic> json) =>
       firstContent: json['firstContent'] as String?,
       secondTitle: json['secondTitle'] as String?,
     );
-
-Map<String, dynamic> _$VideoPageDataToJson(VideoPageData instance) =>
-    <String, dynamic>{
-      'videoUrl': instance.videoUrl,
-      'fullBodyImage': instance.fullBodyImage,
-      'firstTitle': instance.firstTitle,
-      'firstContent': instance.firstContent,
-      'secondTitle': instance.secondTitle,
-    };

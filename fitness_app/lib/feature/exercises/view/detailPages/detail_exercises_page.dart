@@ -1,19 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../service/foods_exercises_service.dart';
 import '../../../../core/init/network/project_network.dart';
 import '../../model/exercises_model.dart';
 import '../../viewModel/exercises_view_model.dart';
 import '../detailVideoPages/detail_video_page.dart';
 
 class DetailExercisesPage extends StatefulWidget {
-  List<CategoryData> items;
-  Exercise images;
-  DetailExercisesPage({
+  final List<CategoryData> items;
+  final Exercise images;
+  const DetailExercisesPage({
     Key? key,
     required this.items,
     required this.images,
@@ -35,7 +34,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
       create: (context) {
         String item = "exercises";
         return ExercisesViewModel(
-            GeneralService(ProjectNetworkManager.instance.service, item));
+            FoodsService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(
