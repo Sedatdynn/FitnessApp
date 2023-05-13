@@ -1,5 +1,6 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
+import '../../product/widget/appBar/custom_app_bar.dart';
 import '../views_shelf.dart';
 import '../weight/weight_page.dart';
 

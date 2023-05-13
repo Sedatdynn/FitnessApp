@@ -39,6 +39,7 @@ dependencies:
   firebase_storage: ^11.0.3
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.2.12
   flutter_screenutil: ^5.3.1
   fluttertoast: ^8.0.8
   font_awesome_flutter: ^10.1.0
@@ -47,14 +48,13 @@ dependencies:
   image_picker: ^0.8.4+4
   json_annotation: ^4.7.0
   json_serializable: ^6.5.4
+  lottie: ^2.3.2
   numberpicker: ^2.1.1
   provider: ^6.0.3
   shared_preferences: ^2.0.15
   syncfusion_flutter_gauges: ^21.2.4
   video_player: ^2.4.10
   youtube_player_flutter: ^8.1.1
-  flutter_native_splash: ^2.2.12
-
 
 dev_dependencies:
   build_runner: ^2.3.2
@@ -80,6 +80,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/lottie/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

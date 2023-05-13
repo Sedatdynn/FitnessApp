@@ -2,12 +2,9 @@
 
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
-import '../../product/const/const_appbar.dart';
-import '../../product/const/const_button.dart';
-import '../../product/const/const_loading_page.dart';
-import '../../product/const/const_logo_body.dart';
-import '../../product/const/const_text.dart';
-import '../../product/const/warning_toast.dart';
+import '../../product/const/const_shelf.dart';
+import '../../product/widget/appBar/custom_app_bar.dart';
+import '../../product/widget/loading/app_loading.dart';
 import '../login/login_page.dart';
 import '../views_shelf.dart';
 

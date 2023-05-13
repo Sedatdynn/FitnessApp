@@ -1,7 +1,6 @@
-import '../../product/const/warning_toast.dart';
+import '../../product/const/const_shelf.dart';
 import '../../product/extensions/extensions_shelf.dart';
 
-import '../../product/const/const_logo_body.dart';
 import '../service/foods_service.dart';
 import '../../core/init/network/project_network.dart';
 import '../views_shelf.dart';

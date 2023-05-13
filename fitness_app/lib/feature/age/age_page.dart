@@ -1,7 +1,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
-import '../../product/const/const_appbar.dart';
-import '../../product/const/const_logo_body.dart';
+import '../../product/const/const_shelf.dart';
+import '../../product/widget/appBar/custom_app_bar.dart';
 import '../exerciseMobility/exercise_mobility.dart';
 import '../views_shelf.dart';
 

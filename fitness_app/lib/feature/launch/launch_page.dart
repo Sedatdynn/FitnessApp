@@ -12,7 +12,7 @@ class LaunchPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _LaunchPageState createState() => _LaunchPageState();
+  State<LaunchPage> createState() => _LaunchPageState();
 }
 
 class _LaunchPageState extends State<LaunchPage> {
