@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/init/network/project_network.dart';
+import '../../../../product/theme/colors.dart';
 import '../../model/exercises_model.dart';
 import '../../viewModel/exercises_view_model.dart';
 import '../detailVideoPages/detail_video_page.dart';
@@ -69,9 +70,10 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
             left: context.width * 0.03,
             child: Text(
               widget.images.categoryName.toString(),
-              style: context
-                  .headline4(context)
-                  ?.copyWith(color: context.mainColor),
+              style: Theme.of(context)
+                  .textTheme
+                  .displaySmall
+                  ?.copyWith(color: AppColors.mainPrimary),
             ),
           )
         ],
@@ -152,7 +154,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
   _exercisesTitle(BuildContext context, int i) {
     return Text(
       widget.items[i].exerciseName.toString(),
-      style: context.subtitle1(context),
+      style: Theme.of(context).textTheme.titleSmall,
     );
   }
 
@@ -164,14 +166,17 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
           children: [
             Text(
               title,
-              style: context.subtitle1(context)?.copyWith(
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     fontSize: 8,
-                    color: context.scfBackColor,
+                    color: AppColors.backgroundColor,
                   ),
             ),
             Text(
               info.toString(),
-              style: context.subtitle1(context)?.copyWith(fontSize: 6.0),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall
+                  ?.copyWith(fontSize: 6.0),
             ),
           ],
         ),

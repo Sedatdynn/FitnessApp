@@ -47,7 +47,7 @@ class LaunchPage extends StatelessWidget {
   Widget _pageCenterText(BuildContext context) {
     return Text(
       MyText.fitText,
-      style: context.headline4(context)?.copyWith(
+      style: Theme.of(context).textTheme.displaySmall?.copyWith(
         shadows: <Shadow>[
           const Shadow(
               offset: Offset(5.0, 5.0),
@@ -67,7 +67,7 @@ class LaunchPage extends StatelessWidget {
       buttonText: RegisterText.signEmailText,
       icon: Icon(
         Icons.email_outlined,
-        color: context.textColor,
+        color: AppColors.whiteText,
         size: context.dynamicHeight(0.04),
       ),
       onPressed: () {
@@ -81,8 +81,8 @@ class LaunchPage extends StatelessWidget {
 
   Widget _googleButton(BuildContext context) {
     return AuthButton(
-      color: context.shadeGreyColor,
-      textColor: context.scndTxtColor,
+      color: AppColors.shadeGreyColor,
+      textColor: AppColors.darkText,
       buttonText: RegisterText.googleText,
       icon: SizedBox(
           height: context.dynamicHeight(0.04),
@@ -97,7 +97,7 @@ class LaunchPage extends StatelessWidget {
     return [
       _accountText(context),
       SizedBox(
-        width: context.dynamicWidth(0.09),
+        width: context.dynamicWidth(0.03),
       ),
       InkWell(
         onTap: () {
@@ -114,14 +114,17 @@ class LaunchPage extends StatelessWidget {
   Widget _accountText(BuildContext context) {
     return Text(
       QuestionsText.accountText,
-      style: context.subtitle2(context),
+      style: Theme.of(context).textTheme.titleSmall,
     );
   }
 
   Widget _createAccountText(BuildContext context) {
     return Text(
       RegisterText.createText,
-      style: context.bdSmall(context)?.copyWith(color: context.mainColor),
+      style: Theme.of(context)
+          .textTheme
+          .bodyLarge
+          ?.copyWith(color: AppColors.mainPrimary),
     );
   }
 }

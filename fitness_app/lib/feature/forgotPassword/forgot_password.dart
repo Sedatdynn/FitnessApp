@@ -1,6 +1,7 @@
 import '../../product/const/const_shelf.dart';
 import '../../product/extensions/extensions_shelf.dart';
 
+import '../../product/theme/colors.dart';
 import '../service/foods_service.dart';
 import '../../core/init/network/project_network.dart';
 import '../views_shelf.dart';
@@ -86,15 +87,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   TextField _emailTextfield() {
     return TextField(
-      style: context.subtitle1(context),
+      style: Theme.of(context).textTheme.titleSmall,
       controller: _emailController,
-      cursorColor: context.textColor,
+      cursorColor: AppColors.whiteText,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.mail, color: context.mainColor),
-        hintText: RegisterText.emailText,
-        hintStyle: context.subtitle1(context),
-      ),
+          prefixIcon: const Icon(Icons.mail, color: AppColors.mainPrimary),
+          hintText: RegisterText.emailText,
+          hintStyle: Theme.of(context).textTheme.titleSmall),
     );
   }
 
@@ -108,8 +108,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0))),
             foregroundColor:
-                MaterialStateProperty.all<Color>(context.textColor),
-            backgroundColor: MaterialStateProperty.all(context.mainColor),
+                MaterialStateProperty.all<Color>(AppColors.whiteText),
+            backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: () async {
             final response = await FoodsService(
@@ -117,7 +117,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 .resetPasswordLink(_emailController.text);
             if (response!) {
               await warningToast(context, "Reset password email has been sent",
-                  color: context.greenColor);
+                  color: AppColors.green);
             } else {
               await warningToast(
                 context,
@@ -126,7 +126,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             }
           },
           child: Text(RegisterText.verifyEmailText,
-              style: context.headline6(context)),
+              style: Theme.of(context).textTheme.titleLarge),
         ),
       ),
     );
@@ -138,8 +138,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Center(
           child: Text(
             QuestionsText.forgotPassText,
-            style: context.headline4(context)?.copyWith(
-                fontWeight: FontWeight.bold, color: context.scndTxtColor),
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                fontWeight: FontWeight.bold, color: AppColors.darkText),
           ),
         ),
         const SizedBox(
@@ -148,7 +148,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Text(
           RegisterText.emailAssociated,
           textAlign: TextAlign.center,
-          style: context.subtitle2(context),
+          style: Theme.of(context).textTheme.titleSmall,
         )
       ],
     );

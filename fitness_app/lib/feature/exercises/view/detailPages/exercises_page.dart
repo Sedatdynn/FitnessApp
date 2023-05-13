@@ -1,4 +1,5 @@
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
+import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -61,7 +62,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
             left: context.width * 0.03,
             child: Text(
               "Exercises",
-              style: context.headline4(context),
+              style: Theme.of(context).textTheme.displaySmall,
             ))
       ],
     );
@@ -73,8 +74,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
 
   Container listTileBody(BuildContext context, List<Exercise> items) {
     return Container(
-      decoration: commonBoxDec(
-          context.scfBackColor, context.scfBackColor, context.scfBackColor),
+      decoration: commonBoxDec(AppColors.backgroundColor,
+          AppColors.backgroundColor, AppColors.backgroundColor),
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -115,16 +116,20 @@ class _ExercisesPageState extends State<ExercisesPage> {
   Text _listTileSubT(List<Exercise> items, int i, BuildContext context) {
     return Text(
       "See ${items[i].categoryName.toString()} workouts",
-      style: context
-          .bdSmall(context)
-          ?.copyWith(fontSize: 14, color: context.textColor),
+      style: Theme.of(context)
+          .textTheme
+          .bodyLarge
+          ?.copyWith(fontSize: 14, color: AppColors.whiteText),
     );
   }
 
   Text _listTileTitle(List<Exercise> items, int i, BuildContext context) {
     return Text(
       items[i].categoryName.toString(),
-      style: context.subtitle2(context)?.copyWith(fontWeight: FontWeight.bold),
+      style: Theme.of(context)
+          .textTheme
+          .titleSmall
+          ?.copyWith(fontWeight: FontWeight.bold),
     );
   }
 
@@ -132,7 +137,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
       BuildContext context, List<Exercise> items, int i) {
     return Container(
         decoration: BoxDecoration(
-          color: context.greenColor,
+          color: AppColors.green,
           borderRadius: BorderRadius.circular(40),
         ),
         child: _listTileImg(items, i));

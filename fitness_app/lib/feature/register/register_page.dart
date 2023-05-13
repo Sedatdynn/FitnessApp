@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
 import '../../core/service/auth_service.dart';
+import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../registerName/register_name.dart';
 import '../views_shelf.dart';
@@ -92,14 +93,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _usernameTextfield() {
     return TextField(
-      style: context.subtitle1(context),
+      style: Theme.of(context).textTheme.titleSmall,
       textInputAction: TextInputAction.next,
       controller: _usernameController,
-      cursorColor: context.textColor,
+      cursorColor: AppColors.whiteText,
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.account_circle,
-          color: context.mainColor,
+          color: AppColors.mainPrimary,
         ),
         hintText: MyText.usernameText,
       ),
@@ -109,14 +110,14 @@ class _RegisterPageState extends State<RegisterPage> {
   TextField _emailTextfield() {
     return TextField(
       textInputAction: TextInputAction.next,
-      style: context.subtitle1(context),
+      style: Theme.of(context).textTheme.titleSmall,
       controller: _emailController,
-      cursorColor: context.textColor,
+      cursorColor: AppColors.whiteText,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.mail,
-          color: context.mainColor,
+          color: AppColors.mainPrimary,
         ),
         hintText: RegisterText.emailText,
       ),
@@ -125,10 +126,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextField _passwordTextfield() {
     return TextField(
-      style: context.subtitle1(context),
+      style: Theme.of(context).textTheme.titleSmall,
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
-      cursorColor: context.textColor,
+      cursorColor: AppColors.whiteText,
       decoration: InputDecoration(
         suffixIcon: InkWell(
           onTap: () {
@@ -146,16 +147,16 @@ class _RegisterPageState extends State<RegisterPage> {
           child: _isVisible
               ? Icon(
                   Icons.remove_red_eye,
-                  color: context.mainColor,
+                  color: AppColors.mainPrimary,
                 )
               : Icon(
                   Icons.remove_red_eye_outlined,
-                  color: context.mainColor,
+                  color: AppColors.mainPrimary,
                 ),
         ),
         prefixIcon: Icon(
           Icons.vpn_key,
-          color: context.mainColor,
+          color: AppColors.mainPrimary,
         ),
         hintText: RegisterText.passwordText,
       ),
@@ -167,7 +168,10 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: context.minLeft,
       child: Text(
         RegisterText.orSignText,
-        style: context.bdSmall(context)?.copyWith(color: context.textColor),
+        style: Theme.of(context)
+            .textTheme
+            .bodyMedium
+            ?.copyWith(color: AppColors.whiteText),
       ),
     );
   }

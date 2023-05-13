@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../product/const/text/texts.dart';
+import '../../product/theme/colors.dart';
 import '../bmi/bmi_page.dart';
 
 class UpdateInfosView extends StatefulWidget {
@@ -138,7 +139,7 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
                           doc.update(userPointUpdate);
                           warningToast(
                               context, "Your update completed successfully",
-                              color: context.greenColor);
+                              color: AppColors.green);
                           Future.delayed(const Duration(seconds: 2));
                           Navigator.push(
                               context,

@@ -1,5 +1,6 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
+import '../../../product/theme/colors.dart';
 import '../../exercises/view/initial/initial_page.dart';
 import '../../profile/profile_page.dart';
 import '../../views_shelf.dart';
@@ -27,9 +28,9 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: changeIndex,
         currentIndex: selectedIndex,
-        backgroundColor: context.scfBackColor.withGreen(25),
-        unselectedItemColor: context.scndTxtColor,
-        selectedItemColor: context.textColor,
+        backgroundColor: AppColors.backgroundColor.withGreen(25),
+        unselectedItemColor: AppColors.darkText,
+        selectedItemColor: AppColors.whiteText,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(

@@ -3,6 +3,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
+import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../../product/widget/loading/app_loading.dart';
 import '../forgotPassword/forgot_password.dart';
@@ -110,14 +111,14 @@ class _LoginPageState extends State<LoginPage> {
 
   TextField _emailTextfield() {
     return TextField(
-        style: context.subtitle1(context),
+        style: Theme.of(context).textTheme.titleSmall,
         controller: _emailController,
         cursorColor: Colors.black,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.mail,
-            color: context.mainColor,
+            color: AppColors.mainPrimary,
           ),
           hintText: RegisterText.emailText,
         ));
@@ -125,10 +126,10 @@ class _LoginPageState extends State<LoginPage> {
 
   TextField _passwordTextfield() {
     return TextField(
-      style: context.subtitle1(context),
+      style: Theme.of(context).textTheme.titleSmall,
       controller: _passwordController,
       obscureText: _isVisible ? true : false,
-      cursorColor: context.textColor,
+      cursorColor: AppColors.whiteText,
       decoration: InputDecoration(
         suffixIcon: InkWell(
           onTap: () {
@@ -146,19 +147,19 @@ class _LoginPageState extends State<LoginPage> {
           child: _isVisible
               ? Icon(
                   Icons.remove_red_eye,
-                  color: context.mainColor,
+                  color: AppColors.mainPrimary,
                 )
               : Icon(
                   Icons.remove_red_eye_outlined,
-                  color: context.mainColor,
+                  color: AppColors.mainPrimary,
                 ),
         ),
         prefixIcon: Icon(
           Icons.vpn_key,
-          color: context.mainColor,
+          color: AppColors.mainPrimary,
         ),
         hintText: RegisterText.passwordText,
-        hintStyle: context.subtitle1(context),
+        hintStyle: Theme.of(context).textTheme.titleSmall,
       ),
     );
   }
@@ -224,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       child: Text(
         QuestionsText.forgotPassText,
-        style: context.subtitle2(context),
+        style: Theme.of(context).textTheme.titleSmall,
       ),
     );
   }

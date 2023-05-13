@@ -1,5 +1,6 @@
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 
+import '../../../../product/theme/colors.dart';
 import 'video_player_widget.dart';
 import '../../../../product/extensions/extensions_shelf.dart';
 
@@ -131,7 +132,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
       height: context.height * 0.05,
       child: Text(
         widget.items.secondTitle.toString(),
-        style: context.subtitle1(context),
+        style: Theme.of(context).textTheme.titleSmall,
       ),
     );
   }
@@ -142,7 +143,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
       alignment: Alignment.center,
       child: Text(
         widget.items.firstContent.toString(),
-        style: context.subtitle1(context),
+        style: Theme.of(context).textTheme.titleSmall,
       ),
     );
   }
@@ -154,7 +155,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
       height: context.height * 0.05,
       child: Text(
         widget.items.firstTitle.toString(),
-        style: context.subtitle1(context),
+        style: Theme.of(context).textTheme.titleSmall,
       ),
     );
   }
@@ -188,8 +189,8 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
       height: context.height * 0.05,
       child: Text(
         titleText,
-        style: context.subtitle1(context)?.copyWith(
-            fontWeight: FontWeight.bold, color: context.scfBackColor),
+        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+            fontWeight: FontWeight.bold, color: AppColors.backgroundColor),
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   ///main app primary Color
-  // static const Color mainPrimary = Color(0xffdabcf6);
+  static const Color mainPrimary = Color(0xffdabcf6);
   // static const int _primaryColor = 0xFFFDABCF6;
   // static const Map<int, Color> _swatch = <int, Color>{
   //   50: Color.fromRGBO(218, 188, 246, 1),
@@ -23,8 +23,18 @@ class AppColors {
   /// White color.
   static const Color white = Color.fromRGBO(255, 255, 255, 1);
 
-  /// Button color.
-  static const Color button = Color(0xffe45757);
+  ///white text color
+  static const Color whiteText = Color.fromRGBO(255, 255, 255, 1);
+
+  ///grey text color
+
+  static const Color darkText = Color(0xFF485458);
+
+  ///app's background color
+  static const Color backgroundColor = Color(0xFF19282F);
+
+  /// Shade grey color.
+  static const Color shadeGreyColor = Color(0xFFDDD2D2);
 
   ///App's key text colors
   static const Color keyTextShadowColor = Color.fromARGB(255, 187, 175, 175);
@@ -41,6 +51,7 @@ class AppColors {
 
   /// Light grey color.
   static const Color lightGrey = Color.fromRGBO(224, 224, 224, 1);
+  static const Color green = Color(0xFF20842A);
 
   /// Error color.
   static const Color error = Color(0xffff3333);

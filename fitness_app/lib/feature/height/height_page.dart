@@ -1,5 +1,6 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
+import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../views_shelf.dart';
 import '../weight/weight_page.dart';
@@ -88,9 +89,11 @@ class _HeightPageState extends State<HeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle:
-              context.headline6(context)?.copyWith(color: context.mainColor),
-          textStyle: context.subtitle2(context),
+          selectedTextStyle: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: AppColors.mainPrimary),
+          textStyle: Theme.of(context).textTheme.titleSmall,
           decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
@@ -112,7 +115,7 @@ class _HeightPageState extends State<HeightPage> {
           margin: context.midLeft,
           child: Text(
             RegisterText.cmText,
-            style: context.subtitle2(context),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
         )
       ],

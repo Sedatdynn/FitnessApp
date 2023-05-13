@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
+import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../gender/gender.dart';
 import '../views_shelf.dart';
@@ -58,13 +59,13 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
 
   _nameField() {
     return TextField(
-        style: context.subtitle1(context),
+        style: Theme.of(context).textTheme.titleLarge,
         controller: _nameController,
-        cursorColor: context.textColor,
+        cursorColor: AppColors.whiteText,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           hintText: QuestionsText.nameText,
-          hintStyle: context.headline6(context),
+          hintStyle: Theme.of(context).textTheme.titleLarge,
         ));
   }
 

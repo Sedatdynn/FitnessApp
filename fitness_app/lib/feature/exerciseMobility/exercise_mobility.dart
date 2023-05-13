@@ -50,15 +50,17 @@ class _DailyMobilityViewState extends State<DailyMobilityView> {
           children: [
             const LogoBody(),
             Text("Select your daily  Exercise and your Mobility",
-                textAlign: TextAlign.center, style: context.headline6(context)),
-            Text(selectedValue.toString(), style: context.headline4(context)),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge),
+            Text(selectedValue.toString(),
+                style: Theme.of(context).textTheme.displaySmall),
             DropdownButton<String>(
               dropdownColor: Colors.deepPurpleAccent,
               isExpanded: true,
               value: dropdownValue,
               icon: const Icon(Icons.arrow_downward),
               elevation: 5,
-              style: context.headline6(context),
+              style: Theme.of(context).textTheme.titleLarge,
               underline: Container(
                 width: context.width,
                 height: 5,

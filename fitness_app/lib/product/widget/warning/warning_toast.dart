@@ -1,6 +1,7 @@
-import 'package:fistness_app_firebase/product/extensions/theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../../theme/colors.dart';
 
 Future<bool?> warningToast(BuildContext context, String text,
     {Color? color = Colors.red}) {
@@ -10,6 +11,6 @@ Future<bool?> warningToast(BuildContext context, String text,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       backgroundColor: color,
-      textColor: context.textColor,
+      textColor: AppColors.whiteText,
       fontSize: 14);
 }

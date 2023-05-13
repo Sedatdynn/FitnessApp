@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../product/const/const_deco.dart';
+import '../../product/theme/colors.dart';
 import '../bmi/bmi_page.dart';
 import '../home/bottomNavigateBar/navigare_bar.dart';
 import '../launch/launch_page.dart';
@@ -105,7 +106,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               alignment: Alignment.center,
                               child: Text(
                                 snapshot.data!["name"].toString(),
-                                style: context.headline6(context)?.copyWith(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
                                   shadows: <Shadow>[
                                     const Shadow(
                                       offset: Offset(5.0, 5.0),
@@ -135,7 +139,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Column(
                                 children: <Widget>[
                                   ...ListTile.divideTiles(
-                                    color: context.mainColor,
+                                    color: AppColors.mainPrimary,
                                     tiles: [
                                       ListTile(
                                         leading: const Icon(

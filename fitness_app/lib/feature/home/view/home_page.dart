@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/init/network/project_network.dart';
+import '../../../product/theme/colors.dart';
 import '../../views_shelf.dart';
 import '../model/foods_model.dart';
 import '../viewModel/hp_view_mode.dart';
@@ -51,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
                 leading: IconButton(
                   icon: Icon(
                     Icons.arrow_back_outlined,
-                    color: context.mainColor,
+                    color: AppColors.mainPrimary,
                   ),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
@@ -86,16 +87,19 @@ class _HomeViewState extends State<HomeView> {
                                         children: [
                                           Expanded(
                                             child: Text(
-                                              "Initial point depends on your information: ",
-                                              style: context.subtitle1(context),
-                                            ),
+                                                "Initial point depends on your information: ",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall),
                                           ),
                                           Expanded(
                                             child: Text(
                                               snapshot.data?["userRightPoint"]
                                                       .toString() ??
                                                   "no dataa",
-                                              style: context.headline4(context),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium,
                                             ),
                                           ),
                                         ],
@@ -113,8 +117,8 @@ class _HomeViewState extends State<HomeView> {
                     Container(
                       height: context.height * 0.70,
                       width: double.infinity,
-                      decoration: commonBoxDec(context.scfBackColor,
-                          context.scfBackColor, context.scfBackColor),
+                      decoration: commonBoxDec(AppColors.backgroundColor,
+                          AppColors.backgroundColor, AppColors.backgroundColor),
                       child: ListView(
                         children: [
                           _allFoodsTitles(
@@ -146,9 +150,9 @@ class _HomeViewState extends State<HomeView> {
                               });
                             },
                             icon: Icon(Icons.save_alt_outlined,
-                                color: context.textColor),
+                                color: AppColors.whiteText),
                             label: Text("Save Daily Point",
-                                style: context.subtitle2(context)),
+                                style: Theme.of(context).textTheme.titleSmall),
                           ),
                         ),
                         Container(
@@ -167,9 +171,9 @@ class _HomeViewState extends State<HomeView> {
                               });
                             },
                             icon: Icon(Icons.remove_circle_outline,
-                                color: context.textColor),
+                                color: AppColors.whiteText),
                             label: Text("Reset Daily Point",
-                                style: context.subtitle2(context)),
+                                style: Theme.of(context).textTheme.titleSmall),
                           ),
                         ),
                       ],
@@ -207,7 +211,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 child: Text(
                   items[i].name.toString(),
-                  style: context.headline6(context),
+                  style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -227,16 +231,16 @@ class _HomeViewState extends State<HomeView> {
         itemCount: items[i].icerik!.length,
         itemBuilder: (BuildContext ctx, int j) {
           return Card(
-            color: context.scfBackColor,
+            color: AppColors.backgroundColor,
             child: Row(children: [
               Text(
                 items[i].icerik![j].isim.toString(),
-                style: context.subtitle2(context),
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               Expanded(child: Container()),
               Text(
                 "${items[i].icerik![j].puan!.toDouble()} point",
-                style: context.subtitle2(context),
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               _checkBox(items, i, j, context),
             ]),
@@ -249,8 +253,8 @@ class _HomeViewState extends State<HomeView> {
   Checkbox _checkBox(List<Kategori> items, int i, int j, BuildContext context) {
     return Checkbox(
       hoverColor: Colors.pink,
-      checkColor: context.textColor,
-      activeColor: context.mainColor,
+      checkColor: AppColors.whiteText,
+      activeColor: AppColors.mainPrimary,
       value: items[i].icerik![j].kontrol,
       onChanged: (value) {
         setState(() {
@@ -277,7 +281,7 @@ class _HomeViewState extends State<HomeView> {
       ),
       child: Text(
         "Current point is: ${context.watch<HomeViewModel>().totalPoint}",
-        style: context.headline6(context),
+        style: Theme.of(context).textTheme.titleLarge,
       ),
     );
   }

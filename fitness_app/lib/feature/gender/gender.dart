@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
 import '../../core/service/auth_service.dart';
+import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../age/age_page.dart';
 import '../views_shelf.dart';
@@ -86,23 +87,23 @@ class _GenderPageState extends State<GenderPage> {
           }
         });
       },
-      color: context.scndTxtColor,
+      color: AppColors.darkText,
       children: [
         Column(
           children: [
             Icon(Icons.male,
                 size: context.height / 6,
                 color: isSelected[0] == false
-                    ? context.textColor
-                    : context.mainColor),
+                    ? AppColors.whiteText
+                    : AppColors.mainPrimary),
             Padding(
               padding: context.midVerticalPadding,
               child: Text(
                 RegisterText.womanText,
-                style: context.subtitle1(context)?.copyWith(
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: isSelected[0] == false
-                        ? context.textColor
-                        : context.mainColor),
+                        ? AppColors.whiteText
+                        : AppColors.mainPrimary),
               ),
             )
           ],
@@ -112,15 +113,15 @@ class _GenderPageState extends State<GenderPage> {
             Icon(Icons.female,
                 size: context.height / 6,
                 color: isSelected[0] == true
-                    ? context.textColor
+                    ? AppColors.whiteText
                     : Colors.blue.shade900),
             Padding(
               padding: context.midVerticalPadding,
               child: Text(
                 RegisterText.manText,
-                style: context.subtitle1(context)?.copyWith(
+                style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: isSelected[0] == true
-                        ? context.textColor
+                        ? AppColors.whiteText
                         : Colors.blue),
               ),
             )

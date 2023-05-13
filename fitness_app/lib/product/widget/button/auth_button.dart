@@ -1,6 +1,7 @@
 import '../../../feature/views_shelf.dart';
 import '../../const/responsive/responsive.dart';
 import '../../extensions/extensions_shelf.dart';
+import '../../theme/colors.dart';
 
 class AuthButton extends StatelessWidget {
   final String buttonText;
@@ -28,14 +29,14 @@ class AuthButton extends StatelessWidget {
         label: Center(
           child: Text(
             buttonText,
-            style: context.subtitle1(context)?.copyWith(
-                color: textColor ?? context.textColor,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                color: textColor ?? AppColors.whiteText,
                 fontWeight: FontWeight.bold),
           ),
         ),
         style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all<Color>(color ?? context.mainColor),
+            backgroundColor: MaterialStateProperty.all<Color>(
+                color ?? AppColors.mainPrimary),
             side: MaterialStateProperty.all<BorderSide>(BorderSide.none)),
       ),
     );

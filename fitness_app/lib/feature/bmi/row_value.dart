@@ -1,4 +1,3 @@
-import 'package:fistness_app_firebase/product/extensions/theme_extension.dart';
 import 'package:flutter/material.dart';
 
 Widget rowValues(BuildContext context, String text1, String text2) {
@@ -6,7 +5,7 @@ Widget rowValues(BuildContext context, String text1, String text2) {
     children: [
       Text(
         text1,
-        style: context.subtitle1(context),
+        style: Theme.of(context).textTheme.titleSmall,
         textAlign: TextAlign.center,
       ),
       Expanded(
@@ -14,7 +13,7 @@ Widget rowValues(BuildContext context, String text1, String text2) {
       ),
       Text(
         text2,
-        style: context.subtitle1(context),
+        style: Theme.of(context).textTheme.titleSmall,
         textAlign: TextAlign.center,
       ),
     ],

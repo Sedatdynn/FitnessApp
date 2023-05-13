@@ -3,6 +3,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
+import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../../product/widget/loading/app_loading.dart';
 import '../login/login_page.dart';
@@ -88,9 +89,11 @@ class _WeightPageState extends State<WeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle:
-              context.headline6(context)?.copyWith(color: context.mainColor),
-          textStyle: context.subtitle2(context),
+          selectedTextStyle: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: AppColors.mainPrimary),
+          textStyle: Theme.of(context).textTheme.titleSmall,
           decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
@@ -110,10 +113,8 @@ class _WeightPageState extends State<WeightPage> {
         ),
         Container(
           margin: context.midLeft,
-          child: Text(
-            RegisterText.kgText,
-            style: context.subtitle2(context),
-          ),
+          child: Text(RegisterText.kgText,
+              style: Theme.of(context).textTheme.titleSmall),
         )
       ],
     );
@@ -199,9 +200,9 @@ class _WeightPageState extends State<WeightPage> {
 
       if (isSucces!) {
         await warningToast(context, RegisterText.registerSuccesfully,
-            color: context.greenColor);
+            color: AppColors.green);
         await warningToast(context, RegisterText.verifyWarning,
-            color: context.greenColor);
+            color: AppColors.green);
         await MyText.authService.sendEmailVerfied();
         Navigator.pushAndRemoveUntil(
             context,

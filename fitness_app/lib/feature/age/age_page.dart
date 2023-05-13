@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
+import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../exerciseMobility/exercise_mobility.dart';
 import '../views_shelf.dart';
@@ -44,7 +45,7 @@ class _AgePageState extends State<AgePage> {
               ),
               Text(
                 QuestionsText.ageText,
-                style: context.headline6(context),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               SizedBox(
                 height: context.height / 15,
@@ -69,8 +70,8 @@ class _AgePageState extends State<AgePage> {
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0))),
             foregroundColor:
-                MaterialStateProperty.all<Color>(context.textColor),
-            backgroundColor: MaterialStateProperty.all(context.mainColor),
+                MaterialStateProperty.all<Color>(AppColors.whiteText),
+            backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: () {
             Navigator.push(
@@ -87,7 +88,7 @@ class _AgePageState extends State<AgePage> {
                       )),
             );
           },
-          child: Text(MyText.continueText, style: context.headline6(context)),
+          child: Text(MyText.continueText, style: Theme.of(context).textTheme.titleLarge),
         ),
       ),
     );
@@ -96,8 +97,8 @@ class _AgePageState extends State<AgePage> {
   _pickerBody() {
     return NumberPicker(
       selectedTextStyle:
-          context.headline6(context)?.copyWith(color: context.mainColor),
-      textStyle: context.subtitle2(context),
+         Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
+      textStyle: Theme.of(context).textTheme.titleSmall,
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(

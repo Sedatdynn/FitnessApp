@@ -1,6 +1,8 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:flutter/material.dart';
 
+import '../../theme/colors.dart';
+
 class CommonButton extends StatelessWidget {
   final String text;
   final dynamic onPressed;
@@ -21,11 +23,11 @@ class CommonButton extends StatelessWidget {
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0))),
             foregroundColor:
-                MaterialStateProperty.all<Color>(context.textColor),
-            backgroundColor: MaterialStateProperty.all(context.mainColor),
+                MaterialStateProperty.all<Color>(AppColors.whiteText),
+            backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: onPressed,
-          child: Text(text, style: context.headline6(context)),
+          child: Text(text, style: Theme.of(context).textTheme.titleLarge),
         ),
       ),
     );
