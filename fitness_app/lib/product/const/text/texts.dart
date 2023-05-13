@@ -23,7 +23,7 @@ class RegisterText {
   static String verifyWarning =
       "We sent an email to verification. Please Verify your email.";
   static String signEmailText = 'Sign in with Email ';
-  static String googleText = "Google";
+  static String googleText = "Sign in with Google";
   static String emailText = "Email";
   static String verifyEmailText = "Verify Email";
   static String faceText = "Facebook";

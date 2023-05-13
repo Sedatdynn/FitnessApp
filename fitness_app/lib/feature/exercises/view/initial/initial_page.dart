@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../product/enum/image/png/image_path.dart';
 import '../../../home/view/home_page.dart';
 import '../../../views_shelf.dart';
 import '../detailPages/exercises_page.dart';
@@ -13,10 +14,6 @@ class InitialPage extends StatefulWidget {
 }
 
 class _InitialPageState extends State<InitialPage> {
-  String exrcTitle = "Exercises";
-  String exrcsImg = "main_exercises";
-  String dietTitle = "Diet List";
-  String dietImg = "diet_list";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,10 +22,7 @@ class _InitialPageState extends State<InitialPage> {
       children: [
         Stack(
           children: [
-            Image.asset(
-              "assets/diet_exrcs.png",
-              height: context.height * 0.3,
-            ),
+            ImagePath.diet_exrcs.toPng(context),
             Positioned(
                 bottom: 0,
                 left: context.width / 25,
@@ -55,8 +49,10 @@ class _InitialPageState extends State<InitialPage> {
           child: GridView.count(
             crossAxisCount: 2,
             children: [
-              cardBody(context, exrcsImg, exrcTitle, const ExercisesPage()),
-              cardBody(context, dietImg, dietTitle, const HomeView()),
+              cardBody(context, ImagePath.main_exercises.toPng(context),
+                  "Exercises", const ExercisesPage()),
+              cardBody(context, ImagePath.diet_list.toPng(context), "Diet List",
+                  const HomeView()),
             ],
           ),
         ),
@@ -64,7 +60,7 @@ class _InitialPageState extends State<InitialPage> {
     )));
   }
 
-  InkWell cardBody(BuildContext context, String imgPath, String cardTitle,
+  InkWell cardBody(BuildContext context, Widget child, String cardTitle,
       dynamic navigatePage) {
     return InkWell(
       onTap: () {
@@ -83,9 +79,7 @@ class _InitialPageState extends State<InitialPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
-                    child: Image.asset(
-                      "assets/$imgPath.png",
-                    ),
+                    child: child,
                   ),
                   Text(
                     cardTitle,

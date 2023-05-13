@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+
+import '../../enum/image/lottie/logo_path.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Lottie.asset("assets/lottie/lottie_loading.json"));
+    return Center(child: LottiePath.lottie_loading.toLottie(context));
   }
 }
