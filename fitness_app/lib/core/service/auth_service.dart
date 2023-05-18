@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../feature/home/bottomNavigateBar/navigare_bar.dart';
 import '../../feature/views_shelf.dart';
-import '../../product/const/text/texts.dart';
 
 class AuthService {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -110,10 +110,14 @@ class AuthService {
     if (googleAccount != null) {
       final googleAuth = await googleAccount.authentication;
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+
         try {
           await auth.signInWithCredential(GoogleAuthProvider.credential(
               idToken: googleAuth.idToken,
               accessToken: googleAuth.accessToken));
+          final token = googleAuth.accessToken;
+          prefs.setString("token", token!);
           await Navigator.push(
               context,
               MaterialPageRoute(
@@ -124,16 +128,20 @@ class AuthService {
         }
       }
     }
-//     // Obtain the auth details from the request
   }
 
   Future<bool> signInWithEmailandPassword(String email, String password) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+
       if (credential.user!.emailVerified) {
+        final idToken = await credential.user!.getIdToken();
+        prefs.setString("token", idToken);
         return true;
       } else {
         return false;

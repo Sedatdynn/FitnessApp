@@ -1,8 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
-
 import '../../product/const/const_shelf.dart';
+import '../../product/extensions/extensions_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../../product/widget/loading/app_loading.dart';
@@ -16,7 +13,7 @@ class LoginPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -92,14 +89,18 @@ class _LoginPageState extends State<LoginPage> {
 
                     if (isSucces) {
                       MyText.authService.checkUid();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MainPage(),
-                          ));
+                      if (context.mounted) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainPage(),
+                            ));
+                      }
                     } else {
-                      warningToast(
-                          context, "Wrong Pass/Email! or verify your email!");
+                      if (context.mounted) {
+                        warningToast(
+                            context, "Wrong Pass/Email! or verify your email!");
+                      }
                     }
                   }),
             ],
@@ -113,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
     return TextField(
         style: Theme.of(context).textTheme.titleSmall,
         controller: _emailController,
-        cursorColor: Colors.black,
+        cursorColor: AppColors.black,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           prefixIcon: const Icon(
@@ -145,16 +146,16 @@ class _LoginPageState extends State<LoginPage> {
             }
           },
           child: _isVisible
-              ? Icon(
+              ? const Icon(
                   Icons.remove_red_eye,
                   color: AppColors.mainPrimary,
                 )
-              : Icon(
+              : const Icon(
                   Icons.remove_red_eye_outlined,
                   color: AppColors.mainPrimary,
                 ),
         ),
-        prefixIcon: Icon(
+        prefixIcon: const Icon(
           Icons.vpn_key,
           color: AppColors.mainPrimary,
         ),

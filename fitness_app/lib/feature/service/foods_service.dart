@@ -86,20 +86,6 @@ class FoodsService extends IFoodsService {
     }
   }
 
-  Future<bool?> checkToken(String? token) async {
-    try {
-      final response = await dio.post("/token", data: {
-        "token": token,
-      });
-      if (response.statusCode == HttpStatus.ok) {
-        return true;
-      }
-      return false;
-    } catch (e) {
-      return false;
-    }
-  }
-
   @override
   Future<ExercisesModel?> fetchExercisesItem() async {
     final response = await dio.get("/$item");
