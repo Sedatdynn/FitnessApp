@@ -1,3 +1,5 @@
+import 'package:provider/provider.dart';
+
 import '../../product/const/const_shelf.dart';
 import '../../product/extensions/extensions_shelf.dart';
 import '../../product/theme/colors.dart';
@@ -6,29 +8,19 @@ import '../../product/widget/loading/app_loading.dart';
 import '../forgotPassword/forgot_password.dart';
 import '../home/bottomNavigateBar/navigare_bar.dart';
 import '../views_shelf.dart';
+import 'view_model/login_view_model.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({
-    Key? key,
-  }) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  bool _isVisible = true;
-  bool isLoading = false;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CommonAppBar(),
-      body: _body(context),
-    );
+    return Scaffold(appBar: const CommonAppBar(), body: _body(context));
   }
 
   Stack _body(BuildContext context) {
@@ -40,19 +32,19 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _bodyContainer(),
+              _bodyContainer(Provider.of<LoginViewModel>(context)),
               const SizedBox(
                 height: 10,
               ),
             ],
           ),
         ),
-        if (isLoading) const LoadingPage()
+        if (context.watch<LoginViewModel>().isLoading) const LoadingPage()
       ],
     );
   }
 
-  Flexible _bodyContainer() {
+  Flexible _bodyContainer(LoginViewModel viewModel) {
     return Flexible(
         child: Container(
       decoration: const BoxDecoration(
@@ -67,11 +59,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 50,
               ),
-              _emailTextfield(),
+              _emailTextfield(Provider.of<LoginViewModel>(context)),
               const SizedBox(
                 height: 20,
               ),
-              _passwordTextfield(),
+              _passwordTextfield(Provider.of<LoginViewModel>(context)),
               const SizedBox(
                 height: 5,
               ),
@@ -82,10 +74,11 @@ class _LoginPageState extends State<LoginPage> {
               CommonButton(
                   text: MyText.continueText,
                   onPressed: () async {
+                    context.read<LoginViewModel>().changeLoading();
                     bool? isSucces = await MyText.authService
                         .signInWithEmailandPassword(
-                            _emailController.text.trim().toString(),
-                            _passwordController.text.trim());
+                            viewModel.emailController.text.trim().toString(),
+                            viewModel.passwordController.text.trim());
 
                     if (isSucces) {
                       MyText.authService.checkUid();
@@ -95,11 +88,13 @@ class _LoginPageState extends State<LoginPage> {
                             MaterialPageRoute(
                               builder: (context) => const MainPage(),
                             ));
+                        context.read<LoginViewModel>().changeLoading();
                       }
                     } else {
                       if (context.mounted) {
                         warningToast(
                             context, "Wrong Pass/Email! or verify your email!");
+                        context.read<LoginViewModel>().changeLoading();
                       }
                     }
                   }),
@@ -110,10 +105,10 @@ class _LoginPageState extends State<LoginPage> {
     ));
   }
 
-  TextField _emailTextfield() {
+  TextField _emailTextfield(LoginViewModel viewModel) {
     return TextField(
         style: Theme.of(context).textTheme.titleSmall,
-        controller: _emailController,
+        controller: viewModel.emailController,
         cursorColor: AppColors.black,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
@@ -125,25 +120,17 @@ class _LoginPageState extends State<LoginPage> {
         ));
   }
 
-  TextField _passwordTextfield() {
+  TextField _passwordTextfield(LoginViewModel viewModel) {
+    bool _isVisible = context.watch<LoginViewModel>().isVisible;
     return TextField(
       style: Theme.of(context).textTheme.titleSmall,
-      controller: _passwordController,
+      controller: viewModel.passwordController,
       obscureText: _isVisible ? true : false,
       cursorColor: AppColors.whiteText,
       decoration: InputDecoration(
         suffixIcon: InkWell(
           onTap: () {
-            if (_isVisible) {
-              setState(() {
-                _isVisible = false;
-              });
-            } else {
-              setState(() {
-                _isVisible = false;
-              });
-              _isVisible = true;
-            }
+            context.read<LoginViewModel>().changeVisibility();
           },
           child: _isVisible
               ? const Icon(
@@ -164,57 +151,6 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  // Future _logInWithEmail() async {
-  //   if (_emailController.text.isNotEmpty &&
-  //       _passwordController.text.isNotEmpty) {
-  //     setState(() {
-  //       isLoading = true;
-  //     });
-
-  //     try {
-  //       MyText.currentUser = await MyText.authService.auth
-  //           .signInWithEmailAndPassword(
-  //               email: _emailController.text.trim(),
-  //               password: _passwordController.text.trim());
-
-  //       if (MyText.currentUser != null) {
-  //         setState(() {
-  //           isLoading = false;
-  //         });
-
-  //         Navigator.pushAndRemoveUntil(
-  //             context,
-  //             MaterialPageRoute(builder: (context) => const HomePage()),
-  //             (route) => false);
-  //       } else {
-  //         setState(() {
-  //           isLoading = false;
-  //         });
-  //       }
-  //     } catch (error) {
-  //       setState(() {
-  //         isLoading = false;
-  //       });
-
-  //       if (error.toString().contains('invalid-email')) {
-  //         await warningToast(context, WarningText.loginWrongEmailText);
-  //       } else if (error.toString().contains('user-not-found')) {
-  //         await warningToast(context, WarningText.loginNoAccountText);
-  //       } else if (error.toString().contains('wrong-password')) {
-  //         await warningToast(context, WarningText.loginWrongPasswordText);
-  //       } else {
-  //         await warningToast(context, WarningText.errorText);
-  //       }
-  //     }
-  //   } else {
-  //     setState(() {
-  //       isLoading = false;
-  //     });
-
-  //     warningToast(context, WarningText.errorText);
-  //   }
-  // }
 
   _forgotPassword() {
     return InkWell(

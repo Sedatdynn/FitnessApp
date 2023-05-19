@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/feature/login/view_model/login_view_model.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +21,9 @@ Future<void> main() async {
     providers: [
       ChangeNotifierProvider<ThemeNotifier>(
         create: (context) => ThemeNotifier(),
+      ),
+      ChangeNotifierProvider<LoginViewModel>(
+        create: (context) => LoginViewModel(),
       )
     ],
     builder: (context, child) => const MyApp(),

@@ -22,7 +22,7 @@ class GenderPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _GenderPageState createState() => _GenderPageState();
+  State<GenderPage> createState() => _GenderPageState();
 }
 
 class _GenderPageState extends State<GenderPage> {
@@ -114,7 +114,7 @@ class _GenderPageState extends State<GenderPage> {
                 size: context.height / 6,
                 color: isSelected[0] == true
                     ? AppColors.whiteText
-                    : Colors.blue.shade900),
+                    : AppColors.error),
             Padding(
               padding: context.midVerticalPadding,
               child: Text(
