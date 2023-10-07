@@ -32,26 +32,12 @@ class AuthService {
   }
 
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchCurrentUserDoc() async {
-    return await FirebaseFirestore.instance
-        .collection('users')
-        .doc(auth.currentUser!.uid)
-        .get();
+    return await FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).get();
   }
 
-  Future<bool?> createPerson(
-      String username,
-      String email,
-      String password,
-      String uid,
-      String name,
-      String gender,
-      int age,
-      String mobility,
-      int height,
-      int weight,
-      int userRightPoint) async {
-    var user = await auth.createUserWithEmailAndPassword(
-        email: email, password: password);
+  Future<bool?> createPerson(String username, String email, String password, String uid, String name, String gender,
+      int age, String mobility, int height, int weight, int userRightPoint) async {
+    var user = await auth.createUserWithEmailAndPassword(email: email, password: password);
     final userInfo = <String, String>{
       "username": username,
       "email": email,
@@ -63,23 +49,12 @@ class AuthService {
       "weight": weight.toString(),
       "userRightPoint": userRightPoint.toString()
     };
-    await firestore
-        .collection("users")
-        .doc(auth.currentUser!.uid)
-        .set(userInfo);
+    await firestore.collection("users").doc(auth.currentUser!.uid).set(userInfo);
     return true;
   }
 
-  Future<bool?> createPersonEmail(
-      String username,
-      String email,
-      String password,
-      String uid,
-      String name,
-      String gender,
-      String age,
-      String height,
-      String weight) async {
+  Future<bool?> createPersonEmail(String username, String email, String password, String uid, String name,
+      String gender, String age, String height, String weight) async {
     await firestore.collection(collectionName).doc(uid).set({
       "username": username,
       "email": email,
@@ -113,9 +88,8 @@ class AuthService {
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
         try {
-          await auth.signInWithCredential(GoogleAuthProvider.credential(
-              idToken: googleAuth.idToken,
-              accessToken: googleAuth.accessToken));
+          await auth.signInWithCredential(
+              GoogleAuthProvider.credential(idToken: googleAuth.idToken, accessToken: googleAuth.accessToken));
           final token = googleAuth.accessToken;
           prefs.setString("token", token!);
           await Navigator.push(
@@ -141,7 +115,9 @@ class AuthService {
 
       if (credential.user!.emailVerified) {
         final idToken = await credential.user!.getIdToken();
-        prefs.setString("token", idToken);
+        if (idToken != null) {
+          prefs.setString("token", idToken);
+        }
         return true;
       } else {
         return false;

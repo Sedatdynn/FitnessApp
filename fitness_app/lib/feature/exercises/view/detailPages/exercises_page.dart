@@ -30,16 +30,14 @@ class _ExercisesPageState extends State<ExercisesPage> {
     return ChangeNotifierProvider(
       create: (context) {
         String item = "exercises";
-        return ExercisesViewModel(
-            FoodsService(ProjectNetworkManager.instance.service, item));
+        return ExercisesViewModel(FoodsService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(
           body: ListView(
             children: [
               topImgField(context),
-              listTileBody(
-                  context, context.watch<ExercisesViewModel>().exercises),
+              listTileBody(context, context.watch<ExercisesViewModel>().exercises),
             ],
           ),
         );
@@ -74,8 +72,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
 
   Container listTileBody(BuildContext context, List<Exercise> items) {
     return Container(
-      decoration: commonBoxDec(AppColors.backgroundColor,
-          AppColors.backgroundColor, AppColors.backgroundColor),
+      decoration: commonBoxDec(AppColors.backgroundColor, AppColors.backgroundColor, AppColors.backgroundColor),
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -86,24 +83,25 @@ class _ExercisesPageState extends State<ExercisesPage> {
             children: [
               Container(
                 margin: context.minAllPadding,
-                decoration: BoxDecoration(
-                    color: Colors.purple,
-                    borderRadius: BorderRadius.circular(12)),
-                child: ListTile(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailExercisesPage(
-                            items: items[i].categoryData!,
-                            images: items[i],
-                          ),
-                        ));
-                  },
-                  leading: _listTileLeading(context, items, i),
-                  title: _listTileTitle(items, i, context),
-                  subtitle: _listTileSubT(items, i, context),
-                  trailing: const Icon(Icons.chevron_right_outlined),
+                decoration: BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(12)),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: ListTile(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailExercisesPage(
+                              items: items[i].categoryData!,
+                              images: items[i],
+                            ),
+                          ));
+                    },
+                    // leading: _listTileLeading(context, items, i),
+                    title: _listTileTitle(items, i, context),
+                    subtitle: _listTileSubT(items, i, context),
+                    trailing: const Icon(Icons.chevron_right_outlined),
+                  ),
                 ),
               ),
             ],
@@ -116,25 +114,21 @@ class _ExercisesPageState extends State<ExercisesPage> {
   Text _listTileSubT(List<Exercise> items, int i, BuildContext context) {
     return Text(
       "See ${items[i].categoryName.toString()} workouts",
-      style: Theme.of(context)
-          .textTheme
-          .bodyLarge
-          ?.copyWith(fontSize: 14, color: AppColors.whiteText),
+      style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 14, color: AppColors.whiteText),
     );
   }
 
   Text _listTileTitle(List<Exercise> items, int i, BuildContext context) {
+    print(
+      items[i].imgUrl.toString(),
+    );
     return Text(
       items[i].categoryName.toString(),
-      style: Theme.of(context)
-          .textTheme
-          .titleSmall
-          ?.copyWith(fontWeight: FontWeight.bold),
+      style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
     );
   }
 
-  Container _listTileLeading(
-      BuildContext context, List<Exercise> items, int i) {
+  Container _listTileLeading(BuildContext context, List<Exercise> items, int i) {
     return Container(
         decoration: BoxDecoration(
           color: AppColors.green,
@@ -148,6 +142,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
       borderRadius: BorderRadius.circular(8.0),
       child: Image.network(
         items[i].imgUrl.toString(),
+        height: 10,
+        width: 10,
       ),
     );
   }

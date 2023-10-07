@@ -34,8 +34,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
     return ChangeNotifierProvider(
       create: (context) {
         String item = "exercises";
-        return ExercisesViewModel(
-            FoodsService(ProjectNetworkManager.instance.service, item));
+        return ExercisesViewModel(FoodsService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(
@@ -70,10 +69,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
             left: context.width * 0.03,
             child: Text(
               widget.images.categoryName.toString(),
-              style: Theme.of(context)
-                  .textTheme
-                  .displaySmall
-                  ?.copyWith(color: AppColors.mainPrimary),
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
             ),
           )
         ],
@@ -90,13 +86,13 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
   }
 
   InkWell _navigateToPage(BuildContext context, int i) {
+    print(widget.items[i].videoPageData);
     return InkWell(
       onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  DetailVideoPage(items: widget.items[i].videoPageData!),
+              builder: (context) => DetailVideoPage(items: widget.items[i].videoPageData!),
             ));
       },
       child: Container(
@@ -113,27 +109,21 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
           child: Column(
             children: [
               Container(
-                decoration: BoxDecoration(
-                    color: Colors.purple,
-                    borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(12)),
                 child: ListTile(
                   leading: _imageField(i),
                   title: _exercisesTitle(context, i),
                   subtitle: Container(
                     decoration: const BoxDecoration(
                         color: Colors.green,
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(10),
-                            topLeft: Radius.circular(10))),
+                        borderRadius:
+                            BorderRadius.only(bottomRight: Radius.circular(10), topLeft: Radius.circular(10))),
                     child: Row(
                       children: [
                         _movementInfo(context, i, "Type", widget.items[i].type),
-                        _movementInfo(
-                            context, i, "Equipment", widget.items[i].equipment),
-                        _movementInfo(
-                            context, i, "Mechanics", widget.items[i].mechanic),
-                        _movementInfo(context, i, "Exp Level",
-                            widget.items[i].exerciseLevel),
+                        _movementInfo(context, i, "Equipment", widget.items[i].equipment),
+                        _movementInfo(context, i, "Mechanics", widget.items[i].mechanic),
+                        _movementInfo(context, i, "Exp Level", widget.items[i].exerciseLevel),
                       ],
                     ),
                   ),
@@ -148,8 +138,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
   }
 
   _imageField(int i) => ClipRRect(
-      borderRadius: BorderRadius.circular(8.0),
-      child: Image.network(widget.items[i].contentImage.toString()));
+      borderRadius: BorderRadius.circular(8.0), child: Image.network(widget.items[i].contentImage.toString()));
 
   _exercisesTitle(BuildContext context, int i) {
     return Text(
@@ -173,10 +162,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
             ),
             Text(
               info.toString(),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall
-                  ?.copyWith(fontSize: 6.0),
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 6.0),
             ),
           ],
         ),
