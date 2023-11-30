@@ -67,10 +67,8 @@ class _HomeViewState extends State<HomeView> {
                       height: context.height * 0.1,
                       child: FutureBuilder(
                           future: MyText.authService.fetchCurrentUserDoc(),
-                          builder: (context,
-                              AsyncSnapshot<DocumentSnapshot> snapshot) {
-                            if (snapshot.connectionState !=
-                                ConnectionState.waiting) {
+                          builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                            if (snapshot.connectionState != ConnectionState.waiting) {
                               if (snapshot.hasData) {
                                 return ListView.builder(
                                   itemCount: 1,
@@ -79,27 +77,20 @@ class _HomeViewState extends State<HomeView> {
                                       height: context.height * 0.1,
                                       decoration: BoxDecoration(
                                           color: Colors.purple,
-                                          borderRadius:
-                                              BorderRadius.circular(12)),
+                                          borderRadius: BorderRadius.circular(12)),
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
                                           Expanded(
                                             child: Text(
                                                 "Initial point depends on your information: ",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleSmall),
+                                                style: Theme.of(context).textTheme.titleSmall),
                                           ),
                                           Expanded(
                                             child: Text(
-                                              snapshot.data?["userRightPoint"]
-                                                      .toString() ??
+                                              snapshot.data?["userRightPoint"].toString() ??
                                                   "no dataa",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleMedium,
+                                              style: Theme.of(context).textTheme.titleMedium,
                                             ),
                                           ),
                                         ],
@@ -117,12 +108,11 @@ class _HomeViewState extends State<HomeView> {
                     Container(
                       height: context.height * 0.70,
                       width: double.infinity,
-                      decoration: commonBoxDec(AppColors.backgroundColor,
-                          AppColors.backgroundColor, AppColors.backgroundColor),
+                      decoration: commonBoxDec(AppColors.backgroundColor, AppColors.backgroundColor,
+                          AppColors.backgroundColor),
                       child: ListView(
                         children: [
-                          _allFoodsTitles(
-                              context, context.watch<HomeViewModel>().foods),
+                          _allFoodsTitles(context, context.watch<HomeViewModel>().foods),
                         ],
                       ),
                     ),
@@ -140,17 +130,14 @@ class _HomeViewState extends State<HomeView> {
                             onPressed: () async {
                               var lastPoint = prefs.getDouble("point") ?? 0.0;
                               await prefs.setDouble(
-                                  "point",
-                                  lastPoint +
-                                      context.read<HomeViewModel>().totalPoint);
+                                  "point", lastPoint + context.read<HomeViewModel>().totalPoint);
 
                               var savedPoint = prefs.getDouble("point") ?? 0.0;
                               setState(() {
                                 lastSavedPoint = savedPoint;
                               });
                             },
-                            icon: Icon(Icons.save_alt_outlined,
-                                color: AppColors.whiteText),
+                            icon: Icon(Icons.save_alt_outlined, color: AppColors.whiteText),
                             label: Text("Save Daily Point",
                                 style: Theme.of(context).textTheme.titleSmall),
                           ),
@@ -170,8 +157,7 @@ class _HomeViewState extends State<HomeView> {
                                 lastSavedPoint = 0.0;
                               });
                             },
-                            icon: Icon(Icons.remove_circle_outline,
-                                color: AppColors.whiteText),
+                            icon: Icon(Icons.remove_circle_outline, color: AppColors.whiteText),
                             label: Text("Reset Daily Point",
                                 style: Theme.of(context).textTheme.titleSmall),
                           ),
@@ -192,9 +178,8 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Container _allFoodsTitles(BuildContext context, List<Kategori> items) {
-    return Container(
-      padding: context.zeroAllPadding,
+  SizedBox _allFoodsTitles(BuildContext context, List<Kategori> items) {
+    return SizedBox(
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
@@ -260,11 +245,9 @@ class _HomeViewState extends State<HomeView> {
         setState(() {
           items[i].icerik![j].kontrol = value!;
           if (items[i].icerik![j].kontrol!) {
-            context.read<HomeViewModel>().totalPoint +=
-                items[i].icerik![j].puan!;
+            context.read<HomeViewModel>().totalPoint += items[i].icerik![j].puan!;
           } else {
-            context.read<HomeViewModel>().totalPoint -=
-                items[i].icerik![j].puan!;
+            context.read<HomeViewModel>().totalPoint -= items[i].icerik![j].puan!;
           }
         });
       },

@@ -8,6 +8,7 @@ import 'feature/launch/launch_page.dart';
 import 'feature/views_shelf.dart';
 import 'firebase_options.dart';
 import 'product/global/theme_control.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -67,17 +68,29 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, AsyncSnapshot<dynamic> data) {
           if (data.connectionState != ConnectionState.waiting) {
             if (data.data) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: context.watch<ThemeNotifier>().currentTheme,
-                home: const MainPage(),
-              );
+              return ScreenUtilInit(
+                  designSize: const Size(360, 690),
+                  minTextAdapt: true,
+                  splitScreenMode: true,
+                  builder: (_, child) {
+                    return MaterialApp(
+                      debugShowCheckedModeBanner: false,
+                      theme: context.watch<ThemeNotifier>().currentTheme,
+                      home: const MainPage(),
+                    );
+                  });
             }
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: context.watch<ThemeNotifier>().currentTheme,
-              home: const LaunchPage(),
-            );
+            return ScreenUtilInit(
+                designSize: const Size(360, 690),
+                minTextAdapt: true,
+                splitScreenMode: true,
+                builder: (_, child) {
+                  return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    theme: context.watch<ThemeNotifier>().currentTheme,
+                    home: const LaunchPage(),
+                  );
+                });
           } else {
             return const Center(child: CircularProgressIndicator());
           }

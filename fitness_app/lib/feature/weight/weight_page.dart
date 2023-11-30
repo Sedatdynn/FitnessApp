@@ -89,10 +89,8 @@ class _WeightPageState extends State<WeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(color: AppColors.mainPrimary),
+          selectedTextStyle:
+              Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
           textStyle: Theme.of(context).textTheme.titleSmall,
           decoration: const BoxDecoration(
             border: Border(
@@ -113,8 +111,7 @@ class _WeightPageState extends State<WeightPage> {
         ),
         Container(
           margin: context.midLeft,
-          child: Text(RegisterText.kgText,
-              style: Theme.of(context).textTheme.titleSmall),
+          child: Text(RegisterText.kgText, style: Theme.of(context).textTheme.titleSmall),
         )
       ],
     );
@@ -199,15 +196,11 @@ class _WeightPageState extends State<WeightPage> {
           totalPoint);
 
       if (isSucces!) {
-        await warningToast(context, RegisterText.registerSuccesfully,
-            color: AppColors.green);
-        await warningToast(context, RegisterText.verifyWarning,
-            color: AppColors.green);
+        await warningToast(context, RegisterText.registerSuccessfully, color: AppColors.green);
+        await warningToast(context, RegisterText.verifyWarning, color: AppColors.green);
         await MyText.authService.sendEmailVerfied();
         Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => const LoginPage()),
-            (route) => false);
+            context, MaterialPageRoute(builder: (context) => const LoginPage()), (route) => false);
       } else {
         setState(() {
           isLoading = false;

@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
@@ -67,10 +68,9 @@ class _AgePageState extends State<AgePage> {
         width: context.width * 0.81,
         child: OutlinedButton(
           style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor:
-                MaterialStateProperty.all<Color>(AppColors.whiteText),
+            shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+            foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
             backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: () {
@@ -97,7 +97,7 @@ class _AgePageState extends State<AgePage> {
   _pickerBody() {
     return NumberPicker(
       selectedTextStyle:
-         Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
+          Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
       textStyle: Theme.of(context).textTheme.titleSmall,
       decoration: const BoxDecoration(
         border: Border(
