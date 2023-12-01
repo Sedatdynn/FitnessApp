@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -69,7 +70,8 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
             left: context.width * 0.03,
             child: Text(
               widget.images.categoryName.toString(),
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
+              style:
+                  Theme.of(context).textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
             ),
           )
         ],
@@ -109,15 +111,16 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
           child: Column(
             children: [
               Container(
-                decoration: BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(12)),
+                decoration:
+                    BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(12)),
                 child: ListTile(
                   leading: _imageField(i),
                   title: _exercisesTitle(context, i),
                   subtitle: Container(
                     decoration: const BoxDecoration(
                         color: Colors.green,
-                        borderRadius:
-                            BorderRadius.only(bottomRight: Radius.circular(10), topLeft: Radius.circular(10))),
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(10), topLeft: Radius.circular(10))),
                     child: Row(
                       children: [
                         _movementInfo(context, i, "Type", widget.items[i].type),
@@ -138,7 +141,8 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
   }
 
   _imageField(int i) => ClipRRect(
-      borderRadius: BorderRadius.circular(8.0), child: Image.network(widget.items[i].contentImage.toString()));
+      borderRadius: BorderRadius.circular(8.0),
+      child: Image.network(widget.items[i].contentImage.toString()));
 
   _exercisesTitle(BuildContext context, int i) {
     return Text(
@@ -150,7 +154,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
   _movementInfo(BuildContext context, int i, String title, var info) {
     return Expanded(
       child: Padding(
-        padding: context.minVertPadding,
+        padding: const AppPadding.lowVertical(),
         child: Column(
           children: [
             Text(

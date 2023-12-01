@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
 import '../../core/service/auth_service.dart';
@@ -13,12 +14,7 @@ class GenderPage extends StatefulWidget {
   final String? password;
   final String uid;
   const GenderPage(
-      {Key? key,
-      this.username,
-      this.mail,
-      this.name,
-      this.password,
-      required this.uid})
+      {Key? key, this.username, this.mail, this.name, this.password, required this.uid})
       : super(key: key);
 
   @override
@@ -51,7 +47,7 @@ class _GenderPageState extends State<GenderPage> {
                 SizedBox(
                   height: context.height / 17,
                 ),
-                ConstText(
+                const ConstText(
                   text: QuestionsText.sexText,
                 ),
                 SizedBox(
@@ -93,17 +89,13 @@ class _GenderPageState extends State<GenderPage> {
           children: [
             Icon(Icons.male,
                 size: context.height / 6,
-                color: isSelected[0] == false
-                    ? AppColors.whiteText
-                    : AppColors.mainPrimary),
+                color: isSelected[0] == false ? AppColors.whiteText : AppColors.mainPrimary),
             Padding(
-              padding: context.midVerticalPadding,
+              padding: const AppPadding.normalVertical(),
               child: Text(
                 RegisterText.womanText,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: isSelected[0] == false
-                        ? AppColors.whiteText
-                        : AppColors.mainPrimary),
+                    color: isSelected[0] == false ? AppColors.whiteText : AppColors.mainPrimary),
               ),
             )
           ],
@@ -112,17 +104,15 @@ class _GenderPageState extends State<GenderPage> {
           children: [
             Icon(Icons.female,
                 size: context.height / 6,
-                color: isSelected[0] == true
-                    ? AppColors.whiteText
-                    : AppColors.error),
+                color: isSelected[0] == true ? AppColors.whiteText : AppColors.error),
             Padding(
-              padding: context.midVerticalPadding,
+              padding: const AppPadding.normalVertical(),
               child: Text(
                 RegisterText.manText,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: isSelected[0] == true
-                        ? AppColors.whiteText
-                        : Colors.blue),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall
+                    ?.copyWith(color: isSelected[0] == true ? AppColors.whiteText : Colors.blue),
               ),
             )
           ],

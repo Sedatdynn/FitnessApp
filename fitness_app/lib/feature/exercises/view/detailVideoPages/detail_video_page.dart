@@ -1,4 +1,5 @@
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 
 import '../../../../product/theme/colors.dart';
 import 'video_player_widget.dart';
@@ -51,8 +52,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
     return ChangeNotifierProvider(
       create: (context) {
         String item = "exercises";
-        return ExercisesViewModel(
-            FoodsService(ProjectNetworkManager.instance.service, item));
+        return ExercisesViewModel(FoodsService(ProjectNetworkManager.instance.service, item));
       },
       builder: (context, child) {
         return Scaffold(
@@ -60,9 +60,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
             Stack(
               children: [
                 Column(children: [
-                  checkUrl
-                      ? _videoPlayer()
-                      : VideoPlayerWidget(controller: videoController)
+                  checkUrl ? _videoPlayer() : VideoPlayerWidget(controller: videoController)
                 ]),
                 Positioned(
                   top: 0,
@@ -127,7 +125,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
 
   Container _instrctTitle(BuildContext context) {
     return Container(
-      margin: context.minsymVertHorzPadding,
+      margin: const AppPadding.lowSymmetricHorVer(),
       alignment: Alignment.center,
       height: context.height * 0.05,
       child: Text(
@@ -139,7 +137,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
 
   Container _overviewContent(BuildContext context) {
     return Container(
-      margin: context.minsymVertHorzPadding,
+      margin: const AppPadding.lowSymmetricHorVer(),
       alignment: Alignment.center,
       child: Text(
         widget.items.firstContent.toString(),
@@ -150,7 +148,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
 
   Container _overviewTextTitle(BuildContext context) {
     return Container(
-      margin: context.minsymVertHorzPadding,
+      margin: const AppPadding.lowSymmetricHorVer(),
       alignment: Alignment.center,
       height: context.height * 0.05,
       child: Text(
@@ -171,9 +169,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
         ProgressBar(
           isExpanded: true,
           colors: const ProgressBarColors(
-              bufferedColor: Colors.red,
-              playedColor: Colors.purple,
-              handleColor: Colors.green),
+              bufferedColor: Colors.red, playedColor: Colors.purple, handleColor: Colors.green),
         ),
         const PlaybackSpeedButton(),
         FullScreenButton(),
@@ -184,13 +180,15 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
 
   Container _titleText(BuildContext context) {
     return Container(
-      margin: context.minsymVertHorzPadding,
+      margin: const AppPadding.lowSymmetricHorVer(),
       alignment: Alignment.centerLeft,
       height: context.height * 0.05,
       child: Text(
         titleText,
-        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-            fontWeight: FontWeight.bold, color: AppColors.backgroundColor),
+        style: Theme.of(context)
+            .textTheme
+            .titleSmall
+            ?.copyWith(fontWeight: FontWeight.bold, color: AppColors.backgroundColor),
       ),
     );
   }

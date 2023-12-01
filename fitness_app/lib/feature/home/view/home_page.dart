@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import 'package:provider/provider.dart';
@@ -210,7 +211,7 @@ class _HomeViewState extends State<HomeView> {
 
   Container _allFoodsInfos(BuildContext context, List<Kategori> items, int i) {
     return Container(
-      padding: context.minHorzPadding,
+      padding: AppPadding.lowHorizontal(),
       child: ListView.builder(
         shrinkWrap: true,
         itemCount: items[i].icerik!.length,

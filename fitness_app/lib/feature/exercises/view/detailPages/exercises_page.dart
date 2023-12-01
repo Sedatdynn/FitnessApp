@@ -72,7 +72,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
 
   Container listTileBody(BuildContext context, List<Exercise> items) {
     return Container(
-      decoration: commonBoxDec(AppColors.backgroundColor, AppColors.backgroundColor, AppColors.backgroundColor),
+      decoration: commonBoxDec(
+          AppColors.backgroundColor, AppColors.backgroundColor, AppColors.backgroundColor),
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -83,7 +84,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
             children: [
               Container(
                 margin: context.minAllPadding,
-                decoration: BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(12)),
+                decoration:
+                    BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(12)),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: ListTile(
@@ -114,7 +116,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
   Text _listTileSubT(List<Exercise> items, int i, BuildContext context) {
     return Text(
       "See ${items[i].categoryName.toString()} workouts",
-      style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 14, color: AppColors.whiteText),
+      style:
+          Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 14, color: AppColors.whiteText),
     );
   }
 

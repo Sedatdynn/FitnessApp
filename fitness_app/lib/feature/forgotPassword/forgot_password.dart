@@ -54,8 +54,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Flexible _bodyContainer() {
     return Flexible(
         child: Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(16.0))),
+      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
         padding: context.largeAllPadding,
         child: SingleChildScrollView(
@@ -105,16 +104,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         width: context.width * 0.81,
         child: OutlinedButton(
           style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor:
-                MaterialStateProperty.all<Color>(AppColors.whiteText),
+            shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+            foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
             backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: () async {
-            final response = await FoodsService(
-                    ProjectNetworkManager.instance.service, "reset password")
-                .resetPasswordLink(_emailController.text);
+            final response =
+                await FoodsService(ProjectNetworkManager.instance.service, "reset password")
+                    .resetPasswordLink(_emailController.text);
             if (response!) {
               await warningToast(context, "Reset password email has been sent",
                   color: AppColors.green);
@@ -125,8 +123,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               );
             }
           },
-          child: Text(RegisterText.verifyEmailText,
-              style: Theme.of(context).textTheme.titleLarge),
+          child: Text(RegisterText.verifyEmailText, style: Theme.of(context).textTheme.titleLarge),
         ),
       ),
     );
@@ -138,8 +135,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Center(
           child: Text(
             QuestionsText.forgotPassText,
-            style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                fontWeight: FontWeight.bold, color: AppColors.darkText),
+            style: Theme.of(context)
+                .textTheme
+                .displaySmall
+                ?.copyWith(fontWeight: FontWeight.bold, color: AppColors.darkText),
           ),
         ),
         const SizedBox(

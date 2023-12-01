@@ -42,17 +42,17 @@ class _AgePageState extends State<AgePage> {
             children: [
               const LogoBody(),
               SizedBox(
-                height: context.height / 17,
+                height: context.dynamicHeight(0.17),
               ),
               Text(
                 QuestionsText.ageText,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               SizedBox(
-                height: context.height / 15,
+                height: context.dynamicHeight(0.15),
               ),
               _pickerBody(),
-              SizedBox(height: context.height * 0.1),
+              SizedBox(height: context.dynamicHeight(0.1)),
               myButton(),
             ],
           ),
@@ -64,8 +64,8 @@ class _AgePageState extends State<AgePage> {
   myButton() {
     return Center(
       child: SizedBox(
-        height: context.height * 0.06,
-        width: context.width * 0.81,
+        height: context.dynamicHeight(0.06),
+        width: context.dynamicWidth(0.81),
         child: OutlinedButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all(
