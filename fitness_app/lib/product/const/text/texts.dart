@@ -1,10 +1,8 @@
-import 'dart:ui';
-
-import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:flutter/material.dart';
 
 final class MyText {
   const MyText._();
-  static final AuthService authService = AuthService();
+
   static const String usernameText = "User name";
   static const String bnFirstText = "Home";
   static const String bnSecondText = "Search";

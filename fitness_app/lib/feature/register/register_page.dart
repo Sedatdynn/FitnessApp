@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   bool _isVisible = true;
   bool isLoading = false;
-  final AuthService authService = AuthService();
+  final AuthService authService = AuthService.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Flexible _bodyContainer() {
     return Flexible(
         child: Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(16.0))),
+      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
         padding: context.midLtrb,
         child: SingleChildScrollView(
@@ -82,8 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 30,
               ),
-              CommonButton(
-                  text: MyText.continueText, onPressed: _registerOnTap),
+              CommonButton(text: MyText.continueText, onPressed: _registerOnTap),
             ],
           ),
         ),
@@ -168,10 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: context.minLeft,
       child: Text(
         RegisterText.orSignText,
-        style: Theme.of(context)
-            .textTheme
-            .bodyMedium
-            ?.copyWith(color: AppColors.whiteText),
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.whiteText),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
@@ -24,7 +25,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: MyText.authService.fetchCurrentUserDoc(),
+        future: AuthService.instance.fetchCurrentUserDoc(),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.connectionState != ConnectionState.waiting) {
             if (snapshot.hasData) {

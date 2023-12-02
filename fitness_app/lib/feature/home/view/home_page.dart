@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
@@ -67,7 +68,7 @@ class _HomeViewState extends State<HomeView> {
                     SizedBox(
                       height: context.height * 0.1,
                       child: FutureBuilder(
-                          future: MyText.authService.fetchCurrentUserDoc(),
+                          future: AuthService.instance.fetchCurrentUserDoc(),
                           builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
                             if (snapshot.connectionState != ConnectionState.waiting) {
                               if (snapshot.hasData) {

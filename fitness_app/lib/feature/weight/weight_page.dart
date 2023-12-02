@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, invalid_return_type_for_catch_error, use_build_context_synchronously
 
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
 
@@ -183,9 +184,9 @@ class _WeightPageState extends State<WeightPage> {
 
       Future.delayed(Duration(seconds: 2));
 
-      bool? isSucces = await await MyText.authService.createPerson(
-          widget.uid,
-          UserModel(
+      bool? isSucces = await AuthService.instance.createPerson(
+          uid: widget.uid,
+          model: UserModel(
               username: widget.username!,
               email: widget.mail!,
               name: widget.name!,
@@ -200,7 +201,7 @@ class _WeightPageState extends State<WeightPage> {
       if (isSucces!) {
         await warningToast(context, RegisterText.registerSuccessfully, color: AppColors.green);
         await warningToast(context, RegisterText.verifyWarning, color: AppColors.green);
-        await MyText.authService.sendEmailVerfied();
+        await AuthService.instance.sendEmailVerified();
         Navigator.pushAndRemoveUntil(
             context, MaterialPageRoute(builder: (context) => const LoginPage()), (route) => false);
       } else {

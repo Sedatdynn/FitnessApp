@@ -1,3 +1,6 @@
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:fistness_app_firebase/feature/home/bottomNavigateBar/navigare_bar.dart';
+
 import '../../product/const/const_shelf.dart';
 import '../../product/const/responsive/responsive.dart';
 import '../../product/extensions/extensions_shelf.dart';
@@ -50,13 +53,9 @@ class LaunchPage extends StatelessWidget {
       style: Theme.of(context).textTheme.displaySmall?.copyWith(
         shadows: <Shadow>[
           const Shadow(
-              offset: Offset(5.0, 5.0),
-              blurRadius: 3.0,
-              color: AppColors.keyTextShadowColor),
+              offset: Offset(5.0, 5.0), blurRadius: 3.0, color: AppColors.keyTextShadowColor),
           const Shadow(
-              offset: Offset(5.0, 5.0),
-              blurRadius: 8.0,
-              color: AppColors.keyTextMainColor),
+              offset: Offset(5.0, 5.0), blurRadius: 8.0, color: AppColors.keyTextMainColor),
         ],
       ),
     );
@@ -84,11 +83,18 @@ class LaunchPage extends StatelessWidget {
       color: AppColors.shadeGreyColor,
       textColor: AppColors.darkText,
       buttonText: RegisterText.googleText,
-      icon: SizedBox(
-          height: context.dynamicHeight(0.04),
-          child: ImagePath.google.toPng(context)),
+      icon: SizedBox(height: context.dynamicHeight(0.04), child: ImagePath.google.toPng(context)),
       onPressed: () async {
-        await MyText.authService.signInWithGoogle(context);
+        bool? isSuccess = await AuthService.instance.signInWithGoogle();
+        if (isSuccess) {
+          if (context.mounted) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MainPage(),
+                ));
+          }
+        }
       },
     );
   }
@@ -121,10 +127,7 @@ class LaunchPage extends StatelessWidget {
   Widget _createAccountText(BuildContext context) {
     return Text(
       RegisterText.createText,
-      style: Theme.of(context)
-          .textTheme
-          .bodyLarge
-          ?.copyWith(color: AppColors.mainPrimary),
+      style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.mainPrimary),
     );
   }
 }

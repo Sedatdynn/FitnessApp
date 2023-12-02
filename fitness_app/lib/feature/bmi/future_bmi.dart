@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fistness_app_firebase/product/const/text/texts.dart';
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class View extends StatefulWidget {
@@ -14,7 +14,7 @@ class _ViewState extends State<View> {
     return Scaffold(
       appBar: AppBar(),
       body: FutureBuilder(
-          future: MyText.authService.fetchCurrentUserDoc(),
+          future: AuthService.instance.fetchCurrentUserDoc(),
           builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
             if (snapshot.connectionState != ConnectionState.waiting) {
               if (snapshot.hasData) {

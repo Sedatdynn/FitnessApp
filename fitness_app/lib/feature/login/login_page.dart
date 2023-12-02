@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../product/const/const_shelf.dart';
@@ -47,8 +48,7 @@ class _LoginPageState extends State<LoginPage> {
   Flexible _bodyContainer(LoginViewModel viewModel) {
     return Flexible(
         child: Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(16.0))),
+      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
         padding: context.largeAllPadding,
         child: SingleChildScrollView(
@@ -75,13 +75,11 @@ class _LoginPageState extends State<LoginPage> {
                   text: MyText.continueText,
                   onPressed: () async {
                     context.read<LoginViewModel>().changeLoading();
-                    bool? isSucces = await MyText.authService
-                        .signInWithEmailandPassword(
-                            viewModel.emailController.text.trim().toString(),
-                            viewModel.passwordController.text.trim());
+                    bool? isSucces = await AuthService.instance.signInWithEmailAndPassword(
+                        email: viewModel.emailController.text.trim().toString(),
+                        password: viewModel.passwordController.text.trim());
 
                     if (isSucces) {
-                      MyText.authService.checkUid();
                       if (context.mounted) {
                         Navigator.push(
                             context,
@@ -92,8 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     } else {
                       if (context.mounted) {
-                        warningToast(
-                            context, "Wrong Pass/Email! or verify your email!");
+                        warningToast(context, "Wrong Pass/Email! or verify your email!");
                         context.read<LoginViewModel>().changeLoading();
                       }
                     }
@@ -111,8 +108,8 @@ class _LoginPageState extends State<LoginPage> {
         controller: viewModel.emailController,
         cursorColor: AppColors.black,
         keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
+        decoration: const InputDecoration(
+          prefixIcon: Icon(
             Icons.mail,
             color: AppColors.mainPrimary,
           ),

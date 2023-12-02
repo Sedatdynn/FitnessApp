@@ -4,37 +4,33 @@ import 'package:fistness_app_firebase/product/models/user_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../feature/home/bottomNavigateBar/navigare_bar.dart';
-import '../../feature/views_shelf.dart';
-
 class AuthService {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  String collectionName = "users";
-  bool isLoading = false;
+  static AuthService? _instance;
+  static AuthService get instance {
+    _instance ??= AuthService._init();
+    return _instance!;
+  }
+
+  AuthService._init();
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final String userCollection = "users";
 
   Future<void> signOut() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-    print(googleSignIn.currentUser);
-    if (googleSignIn.currentUser != null) {
-      print(googleSignIn.currentUser);
-      await googleSignIn.disconnect();
-      await FirebaseAuth.instance.signOut();
-    } else {
-      print('ELSE NULLLLLLLLLLLL');
-
-      await FirebaseAuth.instance.signOut();
-      await googleSignIn.disconnect();
-    }
-    FirebaseAuth.instance.currentUser == null;
+    if (_googleSignIn.currentUser == null) return;
+    await _auth.signOut();
+    await _googleSignIn.disconnect();
+    _auth.currentUser == null;
   }
 
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchCurrentUserDoc() async {
-    return await FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).get();
+    return await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).get();
   }
 
-  Future<bool?> createPerson(String uid, UserModel model) async {
-    await auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
+  Future<bool?> createPerson({required String uid, required UserModel model}) async {
+    await _auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
     final userInfo = UserModel(
         username: model.username,
         email: model.email,
@@ -46,62 +42,48 @@ class AuthService {
         height: model.height,
         weight: model.weight,
         userRightPoint: model.userRightPoint);
-    await firestore.collection("users").doc(auth.currentUser!.uid).set(userInfo.toJson());
+    await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).set(userInfo.toJson());
     return true;
   }
 
-  Future sendEmailVerfied() async {
-    final user = FirebaseAuth.instance.currentUser!;
+  Future sendEmailVerified() async {
+    final user = _auth.currentUser!;
     await user.sendEmailVerification();
   }
 
-  void checkUid() {
-    final User? userr = FirebaseAuth.instance.currentUser;
-    final uid = userr?.uid;
-    return null;
-  }
+  // void checkUid() {
+  //   final User? userr = FirebaseAuth.instance.currentUser;
+  //   final uid = userr?.uid;
+  //   return null;
+  // }
 
-  Future<void> signInWithGoogle(context) async {
-    final _google = GoogleSignIn();
-
-    final googleAccount = await _google.signIn();
+  Future<bool> signInWithGoogle() async {
+    final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
     if (googleAccount != null) {
-      final googleAuth = await googleAccount.authentication;
+      final GoogleSignInAuthentication googleAuth = await googleAccount.authentication;
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-
         try {
-          await auth.signInWithCredential(GoogleAuthProvider.credential(
+          await _auth.signInWithCredential(GoogleAuthProvider.credential(
               idToken: googleAuth.idToken, accessToken: googleAuth.accessToken));
-          final token = googleAuth.accessToken;
+          final String? token = googleAuth.accessToken;
           prefs.setString("token", token!);
-          //TODO: check google currentUser when signout func called it comes null
-          print('********************************');
-          print(_google.currentUser);
-          print('********************************');
-          await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const MainPage(),
-              ));
-        } on FirebaseException catch (e) {
-          print(e);
+          return true;
+        } on FirebaseException catch (_) {
+          return false;
         }
       }
     }
+    return false;
   }
 
-  Future<bool> signInWithEmailandPassword(String email, String password) async {
+  Future<bool> signInWithEmailAndPassword({required String email, required String password}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
+      final UserCredential credential =
+          await _auth.signInWithEmailAndPassword(email: email, password: password);
       if (credential.user!.emailVerified) {
-        final idToken = await credential.user!.getIdToken();
+        final String? idToken = await credential.user!.getIdToken();
         if (idToken != null) {
           prefs.setString("token", idToken);
         }
@@ -109,15 +91,7 @@ class AuthService {
       } else {
         return false;
       }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-      return false;
-    } catch (e) {
-      print(e);
+    } on FirebaseAuthException catch (_) {
       return false;
     }
   }

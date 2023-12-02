@@ -24,7 +24,7 @@ class GenderPage extends StatefulWidget {
 class _GenderPageState extends State<GenderPage> {
   late List<bool> isSelected;
   bool isLoading = false;
-  final AuthService authService = AuthService();
+  final AuthService authService = AuthService.instance;
   var choice = "";
 
   @override

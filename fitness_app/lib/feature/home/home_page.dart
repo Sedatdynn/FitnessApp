@@ -36,7 +36,7 @@
 //               : const Color(0xFF2c2f37),
 //         ),
 //         child: FutureBuilder(
-//             future: MyText.authService.fetchCurrentUserDoc(""),
+//             future: AuthService.instance.fetchCurrentUserDoc(""),
 //             builder: (context, AsyncSnapshot<dynamic> snapshot) {
 //               if (snapshot.connectionState != ConnectionState.waiting) {
 //                 if (snapshot.hasData) {
@@ -368,7 +368,7 @@
 //                     children: [
 //                       TextButton(
 //                           onPressed: () {
-//                             MyText.authService.signOut();
+//                             AuthService.instance.signOut();
 //                             Navigator.push(
 //                                 context,
 //                                 (MaterialPageRoute(

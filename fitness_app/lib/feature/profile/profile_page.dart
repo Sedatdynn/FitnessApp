@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-          future: MyText.authService.fetchCurrentUserDoc(),
+          future: AuthService.instance.fetchCurrentUserDoc(),
           builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
             if (snapshot.connectionState != ConnectionState.waiting) {
               if (snapshot.hasData) {
@@ -195,12 +196,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         onTap: () async {
                                           await deleteToken();
-                                          MyText.authService.signOut();
-                                          Navigator.push(
-                                              context,
-                                              (MaterialPageRoute(
-                                                builder: (context) => const LaunchPage(),
-                                              )));
+                                          AuthService.instance.signOut();
+                                          if (context.mounted) {
+                                            Navigator.push(
+                                                context,
+                                                (MaterialPageRoute(
+                                                  builder: (context) => const LaunchPage(),
+                                                )));
+                                          }
                                         },
                                       ),
                                     ],

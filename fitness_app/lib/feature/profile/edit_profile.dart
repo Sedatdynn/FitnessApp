@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
-import '../../product/const/text/texts.dart';
 import '../../product/theme/colors.dart';
 import '../bmi/bmi_page.dart';
 
@@ -27,7 +25,7 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
     return Scaffold(
       appBar: AppBar(),
       body: FutureBuilder(
-        future: MyText.authService.fetchCurrentUserDoc(),
+        future: AuthService.instance.fetchCurrentUserDoc(),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.connectionState != ConnectionState.waiting) {
             if (snapshot.hasData) {
@@ -109,15 +107,13 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
                           } else {
                             totalPoint += 1;
                           }
-                          bool? userGender =
-                              snapshot.data?["gender"].contains("fe");
+                          bool? userGender = snapshot.data?["gender"].contains("fe");
                           if (userGender!) {
                             totalPoint += 7;
                           } else {
                             totalPoint += 15;
                           }
-                          String mobilityControl =
-                              snapshot.data?["mobility"][0];
+                          String mobilityControl = snapshot.data?["mobility"][0];
                           if (mobilityControl == "D") {
                             totalPoint += 0;
                           } else if (mobilityControl == "B") {
@@ -128,17 +124,14 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
                             totalPoint += 6;
                           }
 
-                          Map<String, dynamic> userPointUpdate = {
-                            "userRightPoint": totalPoint
-                          };
+                          Map<String, dynamic> userPointUpdate = {"userRightPoint": totalPoint};
                           CollectionReference collection =
                               FirebaseFirestore.instance.collection("users");
-                          DocumentReference doc = collection
-                              .doc(FirebaseAuth.instance.currentUser!.uid);
+                          DocumentReference doc =
+                              collection.doc(FirebaseAuth.instance.currentUser!.uid);
                           doc.update(dataToUpdate);
                           doc.update(userPointUpdate);
-                          warningToast(
-                              context, "Your update completed successfully",
+                          warningToast(context, "Your update completed successfully",
                               color: AppColors.green);
                           Future.delayed(const Duration(seconds: 2));
                           Navigator.push(
