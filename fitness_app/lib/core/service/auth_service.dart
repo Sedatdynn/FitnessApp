@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fistness_app_firebase/product/models/user_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,19 +13,16 @@ class AuthService {
   String collectionName = "users";
   bool isLoading = false;
 
-  Future signOut() async {
-    final _google = GoogleSignIn();
-    await _google.disconnect();
-    await _google.signOut();
-    await auth.signOut();
-  }
-
-  Future<void> SignOut() async {
+  Future<void> signOut() async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
+    print(googleSignIn.currentUser);
     if (googleSignIn.currentUser != null) {
+      print(googleSignIn.currentUser);
       await googleSignIn.disconnect();
       await FirebaseAuth.instance.signOut();
     } else {
+      print('ELSE NULLLLLLLLLLLL');
+
       await FirebaseAuth.instance.signOut();
       await googleSignIn.disconnect();
     }
@@ -35,35 +33,20 @@ class AuthService {
     return await FirebaseFirestore.instance.collection('users').doc(auth.currentUser!.uid).get();
   }
 
-  Future<bool?> createPerson(String username, String email, String password, String uid, String name, String gender,
-      int age, String mobility, int height, int weight, int userRightPoint) async {
-    var user = await auth.createUserWithEmailAndPassword(email: email, password: password);
-    final userInfo = <String, String>{
-      "username": username,
-      "email": email,
-      "name": name,
-      "gender": gender,
-      "age": age.toString(),
-      "mobility": mobility,
-      "height": height.toString(),
-      "weight": weight.toString(),
-      "userRightPoint": userRightPoint.toString()
-    };
-    await firestore.collection("users").doc(auth.currentUser!.uid).set(userInfo);
-    return true;
-  }
-
-  Future<bool?> createPersonEmail(String username, String email, String password, String uid, String name,
-      String gender, String age, String height, String weight) async {
-    await firestore.collection(collectionName).doc(uid).set({
-      "username": username,
-      "email": email,
-      "name": name,
-      "gender": gender,
-      "age": age,
-      "height": height,
-      "weight": weight,
-    }).catchError((error) => print("Failed to set data: $error"));
+  Future<bool?> createPerson(String uid, UserModel model) async {
+    await auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
+    final userInfo = UserModel(
+        username: model.username,
+        email: model.email,
+        name: model.name,
+        password: '',
+        gender: model.gender,
+        age: model.age,
+        mobility: model.mobility,
+        height: model.height,
+        weight: model.weight,
+        userRightPoint: model.userRightPoint);
+    await firestore.collection("users").doc(auth.currentUser!.uid).set(userInfo.toJson());
     return true;
   }
 
@@ -88,10 +71,14 @@ class AuthService {
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
         try {
-          await auth.signInWithCredential(
-              GoogleAuthProvider.credential(idToken: googleAuth.idToken, accessToken: googleAuth.accessToken));
+          await auth.signInWithCredential(GoogleAuthProvider.credential(
+              idToken: googleAuth.idToken, accessToken: googleAuth.accessToken));
           final token = googleAuth.accessToken;
           prefs.setString("token", token!);
+          //TODO: check google currentUser when signout func called it comes null
+          print('********************************');
+          print(_google.currentUser);
+          print('********************************');
           await Navigator.push(
               context,
               MaterialPageRoute(

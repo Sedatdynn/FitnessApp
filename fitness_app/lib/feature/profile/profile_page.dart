@@ -106,10 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               alignment: Alignment.center,
                               child: Text(
                                 snapshot.data!["name"].toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                   shadows: <Shadow>[
                                     const Shadow(
                                       offset: Offset(5.0, 5.0),
@@ -146,13 +143,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                           Icons.email,
                                         ),
                                         title: const Text("Email"),
-                                        subtitle: Text(
-                                            snapshot.data!["email"].toString()),
+                                        subtitle: Text(snapshot.data!["email"].toString()),
                                       ),
                                       GestureDetector(
-                                        onTap: () => context
-                                            .read<ThemeNotifier>()
-                                            .changeTheme(),
+                                        onTap: () => context.read<ThemeNotifier>().changeTheme(),
                                         child: const ListTile(
                                           leading: Icon(
                                             Icons.light_mode_outlined,
@@ -165,8 +159,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         onTap: () => Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) =>
-                                                  BmiCalculator(),
+                                              builder: (context) => BmiCalculator(),
                                             )),
                                         child: const ListTile(
                                           leading: Icon(
@@ -182,15 +175,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                             Icons.update,
                                           ),
                                           title: Text("Update Profile"),
-                                          subtitle: Text(
-                                              "Update your weight, height..."),
+                                          subtitle: Text("Update your weight, height..."),
                                         ),
                                         onTap: () async {
                                           Navigator.push(
                                               context,
                                               (MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const UpdateInfosView(),
+                                                builder: (context) => const UpdateInfosView(),
                                               )));
                                         },
                                       ),
@@ -204,12 +195,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         onTap: () async {
                                           await deleteToken();
-                                          MyText.authService.SignOut();
+                                          MyText.authService.signOut();
                                           Navigator.push(
                                               context,
                                               (MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const LaunchPage(),
+                                                builder: (context) => const LaunchPage(),
                                               )));
                                         },
                                       ),

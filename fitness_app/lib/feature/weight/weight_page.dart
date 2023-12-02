@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, invalid_return_type_for_catch_error, use_build_context_synchronously
 
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/models/user_model.dart';
 
 import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
@@ -183,17 +184,18 @@ class _WeightPageState extends State<WeightPage> {
       Future.delayed(Duration(seconds: 2));
 
       bool? isSucces = await await MyText.authService.createPerson(
-          widget.username!,
-          widget.mail!,
-          widget.password!,
           widget.uid,
-          widget.name!,
-          widget.gender!,
-          widget.age!,
-          widget.mobility!,
-          widget.height!,
-          _currentValue,
-          totalPoint);
+          UserModel(
+              username: widget.username!,
+              email: widget.mail!,
+              name: widget.name!,
+              password: widget.password!,
+              gender: widget.gender!,
+              age: widget.age!.toString(),
+              mobility: widget.mobility!,
+              height: widget.height!.toString(),
+              weight: _currentValue.toString(),
+              userRightPoint: totalPoint.toString()));
 
       if (isSucces!) {
         await warningToast(context, RegisterText.registerSuccessfully, color: AppColors.green);
