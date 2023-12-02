@@ -1,7 +1,8 @@
+import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/feature/login/view_model/login_view_model.dart';
+import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'feature/home/bottomNavigateBar/navigare_bar.dart';
 import 'feature/launch/launch_page.dart';
@@ -13,7 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
+  await CacheManager.preferencesInit();
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -49,8 +50,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Future<bool?> initialization() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String? myToken = prefs.getString("token");
+    final String? myToken = CacheManager.instance.getStringValue(CacheKeys.token.name);
     bool? isSuccess = ((myToken != null) && myToken.isNotEmpty) ? true : false;
     if (isSuccess) {
       FlutterNativeSplash.remove();

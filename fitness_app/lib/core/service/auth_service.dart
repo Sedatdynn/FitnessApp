@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   static AuthService? _instance;
@@ -62,12 +63,11 @@ class AuthService {
     if (googleAccount != null) {
       final GoogleSignInAuthentication googleAuth = await googleAccount.authentication;
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
         try {
           await _auth.signInWithCredential(GoogleAuthProvider.credential(
               idToken: googleAuth.idToken, accessToken: googleAuth.accessToken));
           final String? token = googleAuth.accessToken;
-          prefs.setString("token", token!);
+          await CacheManager.instance.setStringValue(CacheKeys.token, token!);
           return true;
         } on FirebaseException catch (_) {
           return false;
@@ -78,14 +78,13 @@ class AuthService {
   }
 
   Future<bool> signInWithEmailAndPassword({required String email, required String password}) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       final UserCredential credential =
           await _auth.signInWithEmailAndPassword(email: email, password: password);
       if (credential.user!.emailVerified) {
         final String? idToken = await credential.user!.getIdToken();
         if (idToken != null) {
-          prefs.setString("token", idToken);
+          await CacheManager.instance.setStringValue(CacheKeys.token, idToken);
         }
         return true;
       } else {

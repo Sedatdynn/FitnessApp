@@ -1,14 +1,15 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/init/network/project_network.dart';
 import '../../../product/theme/colors.dart';
@@ -24,7 +25,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late SharedPreferences prefs;
   late double lastSavedPoint = 0.0;
 
   @override
@@ -34,8 +34,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future<void> definePref() async {
-    prefs = await SharedPreferences.getInstance();
-    lastSavedPoint = prefs.getDouble("point") ?? 0.0;
+    lastSavedPoint = CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0;
   }
 
   @override
@@ -130,11 +129,13 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           child: TextButton.icon(
                             onPressed: () async {
-                              var lastPoint = prefs.getDouble("point") ?? 0.0;
-                              await prefs.setDouble(
-                                  "point", lastPoint + context.read<HomeViewModel>().totalPoint);
+                              var lastPoint =
+                                  CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0;
+                              await CacheManager.instance.setDoubleValue(CacheKeys.point,
+                                  lastPoint + context.read<HomeViewModel>().totalPoint);
 
-                              var savedPoint = prefs.getDouble("point") ?? 0.0;
+                              var savedPoint =
+                                  CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0;
                               setState(() {
                                 lastSavedPoint = savedPoint;
                               });
@@ -153,8 +154,7 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           child: TextButton.icon(
                             onPressed: () async {
-                              await prefs.remove("point");
-
+                              await CacheManager.instance.removeValue(CacheKeys.point);
                               setState(() {
                                 lastSavedPoint = 0.0;
                               });

@@ -1,9 +1,6 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'dart:io';
-
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import '../exercises/model/exercises_model.dart';
 import '../home/model/foods_model.dart';
 import '../login/token_model.dart';
@@ -28,8 +25,7 @@ class FoodsService extends IFoodsService {
   @override
   Future<bool?> resetPasswordLink(String email) async {
     try {
-      final response =
-          await dio.post("/reset-password", data: {"email": email});
+      final response = await dio.post("/reset-password", data: {"email": email});
 
       if (response.statusCode == HttpStatus.ok) {
         return true;
@@ -54,7 +50,6 @@ class FoodsService extends IFoodsService {
       });
 
       if (response.statusCode == HttpStatus.created) {
-        final jsonBody = response.data;
         return true;
       }
       return false;
@@ -71,12 +66,10 @@ class FoodsService extends IFoodsService {
       });
 
       if (response.statusCode == HttpStatus.ok) {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-
         final jsonBody = response.data;
         if (jsonBody is Map<String, dynamic>) {
           final tok = TokenModel().fromJson(jsonBody);
-          prefs.setString("token", tok.token!);
+          await CacheManager.instance.setStringValue(CacheKeys.token, tok.token!);
           return true;
         }
       }

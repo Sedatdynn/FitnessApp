@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../product/const/const_deco.dart';
 import '../../product/theme/colors.dart';
 import '../bmi/bmi_page.dart';
@@ -22,8 +22,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   Future deleteToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.remove("token");
+    await CacheManager.instance.removeValue(CacheKeys.token);
   }
 
   @override
