@@ -9,7 +9,7 @@ enum ImagePath {
   main_exercises;
 
   String get rawValue => "assets/png/$name.png";
-  Widget toPng(BuildContext context) {
+  Widget toPng() {
     return Image.asset(rawValue);
   }
 }

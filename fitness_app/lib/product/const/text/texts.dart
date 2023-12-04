@@ -59,7 +59,9 @@ class WarningText {
       "Mail is already in use! Please register with difference mail ";
 }
 
-class AllColors {
+@immutable
+final class AllColors {
+  const AllColors._();
   static const Color gradColor1 = Color(0xFF19282F);
   static const Color gradColor2 = Color(0xFF3d444e);
   static const Color gradColor3 = Color(0xFF2c2f37);

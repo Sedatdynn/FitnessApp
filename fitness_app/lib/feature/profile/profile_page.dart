@@ -9,7 +9,7 @@ import '../../product/const/const_deco.dart';
 import '../../product/theme/colors.dart';
 import '../bmi/bmi_page.dart';
 import '../home/bottomNavigateBar/navigare_bar.dart';
-import '../launch/launch_page.dart';
+import '../launch/view/launch_page.dart';
 import '../views_shelf.dart';
 import 'edit_profile.dart';
 

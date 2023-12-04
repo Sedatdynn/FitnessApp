@@ -5,7 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
 import 'feature/home/bottomNavigateBar/navigare_bar.dart';
-import 'feature/launch/launch_page.dart';
+import 'feature/launch/view/launch_page.dart';
 import 'feature/views_shelf.dart';
 import 'firebase_options.dart';
 import 'product/global/theme_control.dart';

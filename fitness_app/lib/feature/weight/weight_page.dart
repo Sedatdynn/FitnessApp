@@ -190,7 +190,7 @@ class _WeightPageState extends State<WeightPage> {
               username: widget.username!,
               email: widget.mail!,
               name: widget.name!,
-              password: widget.password!,
+              password: '',
               gender: widget.gender!,
               age: widget.age!.toString(),
               mobility: widget.mobility!,

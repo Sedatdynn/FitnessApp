@@ -22,7 +22,7 @@ class _InitialPageState extends State<InitialPage> {
       children: [
         Stack(
           children: [
-            ImagePath.diet_exrcs.toPng(context),
+            ImagePath.diet_exrcs.toPng(),
             Positioned(
                 bottom: 0,
                 left: context.width / 25,
@@ -49,10 +49,9 @@ class _InitialPageState extends State<InitialPage> {
           child: GridView.count(
             crossAxisCount: 2,
             children: [
-              cardBody(context, ImagePath.main_exercises.toPng(context),
-                  "Exercises", const ExercisesPage()),
-              cardBody(context, ImagePath.diet_list.toPng(context), "Diet List",
-                  const HomeView()),
+              cardBody(
+                  context, ImagePath.main_exercises.toPng(), "Exercises", const ExercisesPage()),
+              cardBody(context, ImagePath.diet_list.toPng(), "Diet List", const HomeView()),
             ],
           ),
         ),
@@ -60,8 +59,7 @@ class _InitialPageState extends State<InitialPage> {
     )));
   }
 
-  InkWell cardBody(BuildContext context, Widget child, String cardTitle,
-      dynamic navigatePage) {
+  InkWell cardBody(BuildContext context, Widget child, String cardTitle, dynamic navigatePage) {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -72,18 +70,14 @@ class _InitialPageState extends State<InitialPage> {
       },
       child: Container(
           margin: context.minAllPadding,
-          decoration: BoxDecoration(
-              color: Colors.orange, borderRadius: BorderRadius.circular(12)),
+          decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(12)),
           child: Center(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: child,
-                  ),
-                  Text(cardTitle,
-                      style: Theme.of(context).textTheme.titleLarge),
-                ]),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+              Expanded(
+                child: child,
+              ),
+              Text(cardTitle, style: Theme.of(context).textTheme.titleLarge),
+            ]),
           )),
     );
   }

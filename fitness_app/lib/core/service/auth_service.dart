@@ -32,18 +32,7 @@ class AuthService {
 
   Future<bool?> createPerson({required String uid, required UserModel model}) async {
     await _auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
-    final userInfo = UserModel(
-        username: model.username,
-        email: model.email,
-        name: model.name,
-        password: '',
-        gender: model.gender,
-        age: model.age,
-        mobility: model.mobility,
-        height: model.height,
-        weight: model.weight,
-        userRightPoint: model.userRightPoint);
-    await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).set(userInfo.toJson());
+    await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).set(model.toJson());
     return true;
   }
 
@@ -51,12 +40,6 @@ class AuthService {
     final user = _auth.currentUser!;
     await user.sendEmailVerification();
   }
-
-  // void checkUid() {
-  //   final User? userr = FirebaseAuth.instance.currentUser;
-  //   final uid = userr?.uid;
-  //   return null;
-  // }
 
   Future<bool> signInWithGoogle() async {
     final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
