@@ -1,9 +1,6 @@
 import 'dart:io';
-import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
-import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import '../exercises/model/exercises_model.dart';
 import '../home/model/foods_model.dart';
-import '../login/token_model.dart';
 import 'i_foods_service.dart';
 
 class FoodsService extends IFoodsService {
@@ -29,49 +26,6 @@ class FoodsService extends IFoodsService {
 
       if (response.statusCode == HttpStatus.ok) {
         return true;
-      }
-      return false;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  @override
-  Future<bool?> registerUser(Map<String, dynamic> registerData) async {
-    try {
-      final response = await dio.post("/register", data: {
-        "email": registerData["email"],
-        "username": registerData["username"],
-        "password": registerData["password"],
-        "sex": registerData["sex"],
-        "age": registerData["age"],
-        "weight": registerData["weight"],
-        "height": registerData["height"]
-      });
-
-      if (response.statusCode == HttpStatus.created) {
-        return true;
-      }
-      return false;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  Future<bool?> loginUser(Map<String, dynamic> loginData) async {
-    try {
-      final response = await dio.post("/login", data: {
-        "email": loginData["email"],
-        "password": loginData["password"],
-      });
-
-      if (response.statusCode == HttpStatus.ok) {
-        final jsonBody = response.data;
-        if (jsonBody is Map<String, dynamic>) {
-          final tok = TokenModel().fromJson(jsonBody);
-          await CacheManager.instance.setStringValue(CacheKeys.token, tok.token!);
-          return true;
-        }
       }
       return false;
     } catch (e) {

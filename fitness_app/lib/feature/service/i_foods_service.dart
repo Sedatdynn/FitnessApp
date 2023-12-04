@@ -7,5 +7,4 @@ abstract class IFoodsService extends BaseService {
   Future<bool?> resetPasswordLink(String email);
   Future<FoodsModel?> fetchFoodsItem();
   Future<ExercisesModel?> fetchExercisesItem();
-  Future<bool?> registerUser(Map<String, dynamic> registerData);
 }

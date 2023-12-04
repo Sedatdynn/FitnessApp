@@ -245,7 +245,7 @@ class _HomeViewState extends State<HomeView> {
       value: items[i].icerik![j].kontrol,
       onChanged: (value) {
         setState(() {
-          items[i].icerik![j].kontrol = value!;
+          items[i].icerik![j] = items[i].icerik![j].copyWith(kontrol: value!);
           if (items[i].icerik![j].kontrol!) {
             context.read<HomeViewModel>().totalPoint += items[i].icerik![j].puan!;
           } else {

@@ -1,17 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import '../../core/base/model/base_model.dart';
 
 part 'token_model.g.dart';
 
 @JsonSerializable(createToJson: false)
-class TokenModel extends BaseModel<TokenModel> {
+class TokenModel extends Equatable {
   final String? token;
 
-  TokenModel({this.token});
+  const TokenModel({this.token});
 
   @override
-  fromJson(Map<String, dynamic> json) {
+  factory TokenModel.fromJson(Map<String, dynamic> json) {
     return _$TokenModelFromJson(json);
   }
 
