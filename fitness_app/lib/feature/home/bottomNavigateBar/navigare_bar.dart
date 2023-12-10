@@ -1,10 +1,11 @@
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:auto_route/auto_route.dart';
 
 import '../../../product/theme/colors.dart';
 import '../../exercises/view/initial/initial_page.dart';
 import '../../profile/profile_page.dart';
 import '../../views_shelf.dart';
 
+@RoutePage()
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -31,15 +32,15 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: AppColors.backgroundColor.withGreen(25),
         unselectedItemColor: AppColors.darkText,
         selectedItemColor: AppColors.whiteText,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.home,
             ),
             label: MyText.bnFirstText,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.account_circle,
             ),
             label: MyText.bnThirdText,

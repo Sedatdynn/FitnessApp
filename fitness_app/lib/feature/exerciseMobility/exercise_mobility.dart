@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/const/text/texts.dart';
 import 'package:flutter/material.dart';
-
-import '../height/height_page.dart';
 
 List<String> list = <String>[
   'Desk job or sedentary',
@@ -13,7 +13,8 @@ List<String> list = <String>[
   'Active employees'
 ];
 
-class DailyMobilityView extends StatefulWidget {
+@RoutePage()
+class DailyMobilityPage extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
@@ -21,7 +22,7 @@ class DailyMobilityView extends StatefulWidget {
   final String? gender;
   final int? age;
   final String uid;
-  const DailyMobilityView(
+  const DailyMobilityPage(
       {Key? key,
       this.username,
       this.mail,
@@ -32,10 +33,10 @@ class DailyMobilityView extends StatefulWidget {
       this.age})
       : super(key: key);
   @override
-  State<DailyMobilityView> createState() => _DailyMobilityViewState();
+  State<DailyMobilityPage> createState() => _DailyMobilityViewState();
 }
 
-class _DailyMobilityViewState extends State<DailyMobilityView> {
+class _DailyMobilityViewState extends State<DailyMobilityPage> {
   String selectedValue = list.first;
   String dropdownValue = list.first;
 
@@ -50,10 +51,8 @@ class _DailyMobilityViewState extends State<DailyMobilityView> {
           children: [
             const LogoBody(),
             Text("Select your daily  Exercise and your Mobility",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge),
-            Text(selectedValue.toString(),
-                style: Theme.of(context).textTheme.displaySmall),
+                textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleLarge),
+            Text(selectedValue.toString(), style: Theme.of(context).textTheme.displaySmall),
             DropdownButton<String>(
               dropdownColor: Colors.deepPurpleAccent,
               isExpanded: true,
@@ -82,21 +81,16 @@ class _DailyMobilityViewState extends State<DailyMobilityView> {
             CommonButton(
                 text: MyText.nextText,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HeightPage(
-                        username: widget.username,
-                        mail: widget.mail,
-                        password: widget.password,
-                        uid: widget.uid,
-                        name: widget.name,
-                        gender: widget.gender,
-                        age: widget.age,
-                        mobility: selectedValue,
-                      ),
-                    ),
-                  );
+                  AutoRouter.of(context).push(HeightRoute(
+                    username: widget.username,
+                    mail: widget.mail,
+                    password: widget.password,
+                    uid: widget.uid,
+                    name: widget.name,
+                    gender: widget.gender,
+                    age: widget.age,
+                    mobility: selectedValue,
+                  ));
                 })
           ],
         ),

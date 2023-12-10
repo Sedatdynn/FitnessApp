@@ -32,6 +32,11 @@ class UserModel extends Equatable {
   }
 
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
+  Map<String, dynamic> toJsonWithoutPassword() {
+    final json = _$UserModelToJson(this);
+    json.remove('password');
+    return json;
+  }
 
   @override
   List<Object?> get props =>

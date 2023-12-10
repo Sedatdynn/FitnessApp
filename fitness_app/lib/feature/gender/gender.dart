@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
 import '../../core/service/auth_service.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
-import '../age/age_page.dart';
 import '../views_shelf.dart';
 
+@RoutePage()
 class GenderPage extends StatefulWidget {
   final String? username;
   final String? mail;
@@ -126,18 +128,14 @@ class _GenderPageState extends State<GenderPage> {
       setState(() {
         isLoading = true;
       });
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => AgePage(
-                    mail: widget.mail,
-                    username: widget.username,
-                    password: widget.password,
-                    uid: widget.uid,
-                    name: widget.name,
-                    gender: choiceControl().toString(),
-                  )));
+      AutoRouter.of(context).push(AgeRoute(
+        mail: widget.mail,
+        username: widget.username,
+        password: widget.password,
+        uid: widget.uid,
+        name: widget.name,
+        gender: choiceControl().toString(),
+      ));
     } else {
       warningToast(context, WarningText.sexWarningText);
     }

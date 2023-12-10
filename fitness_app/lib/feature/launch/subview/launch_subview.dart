@@ -34,10 +34,7 @@ class _EmailButton extends StatelessWidget {
         size: 32,
       ),
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const LoginPage()),
-        );
+        AutoRouter.of(context).pushNamed(RouteConstants.login);
       },
     );
   }
@@ -57,11 +54,7 @@ class _GoogleButton extends StatelessWidget {
         bool? isSuccess = await AuthService.instance.signInWithGoogle();
         if (isSuccess) {
           if (context.mounted) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MainPage(),
-                ));
+            AutoRouter.of(context).pushNamed(RouteConstants.main);
           }
         }
       },
@@ -84,10 +77,7 @@ class _AccountsInfoTextWidget extends StatelessWidget {
         SizedBox(width: 5.w),
         InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const RegisterPage()),
-            );
+            AutoRouter.of(context).pushNamed(RouteConstants.register);
           },
           child: Text(
             RegisterText.createText,

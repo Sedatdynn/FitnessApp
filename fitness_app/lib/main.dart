@@ -1,24 +1,17 @@
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/feature/login/view_model/login_view_model.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
-import 'feature/home/bottomNavigateBar/navigare_bar.dart';
-import 'feature/launch/view/launch_page.dart';
+import 'core/init/app/app_initial.dart';
 import 'feature/views_shelf.dart';
-import 'firebase_options.dart';
 import 'product/global/theme_control.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  await CacheManager.preferencesInit();
-  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await AppInitialize().init();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<ThemeNotifier>(
@@ -32,23 +25,14 @@ Future<void> main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const MyHomePage();
-  }
+  State<MyApp> createState() => _MyAppState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _MyAppState extends State<MyApp> {
   Future<bool?> initialization() async {
     final String? myToken = CacheManager.instance.getStringValue(CacheKeys.token.name);
     bool? isSuccess = ((myToken != null) && myToken.isNotEmpty) ? true : false;
@@ -61,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -73,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   minTextAdapt: true,
                   splitScreenMode: true,
                   builder: (_, child) {
-                    return MaterialApp(
+                    return MaterialApp.router(
                       debugShowCheckedModeBanner: false,
                       theme: context.watch<ThemeNotifier>().currentTheme,
-                      home: const MainPage(),
+                      routerConfig: _appRouter.config(),
                     );
                   });
             }
@@ -85,10 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 minTextAdapt: true,
                 splitScreenMode: true,
                 builder: (_, child) {
-                  return MaterialApp(
+                  return MaterialApp.router(
                     debugShowCheckedModeBanner: false,
                     theme: context.watch<ThemeNotifier>().currentTheme,
-                    home: const LaunchPage(),
+                    routerConfig: _appRouter.config(),
                   );
                 });
           } else {

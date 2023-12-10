@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
 import '../../core/service/auth_service.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
-import '../registerName/register_name.dart';
 import '../views_shelf.dart';
 
+@RoutePage()
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
@@ -95,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
       textInputAction: TextInputAction.next,
       controller: _usernameController,
       cursorColor: AppColors.whiteText,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         prefixIcon: Icon(
           Icons.account_circle,
           color: AppColors.mainPrimary,
@@ -112,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
       controller: _emailController,
       cursorColor: AppColors.whiteText,
       keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         prefixIcon: Icon(
           Icons.mail,
           color: AppColors.mainPrimary,
@@ -143,16 +145,16 @@ class _RegisterPageState extends State<RegisterPage> {
             }
           },
           child: _isVisible
-              ? Icon(
+              ? const Icon(
                   Icons.remove_red_eye,
                   color: AppColors.mainPrimary,
                 )
-              : Icon(
+              : const Icon(
                   Icons.remove_red_eye_outlined,
                   color: AppColors.mainPrimary,
                 ),
         ),
-        prefixIcon: Icon(
+        prefixIcon: const Icon(
           Icons.vpn_key,
           color: AppColors.mainPrimary,
         ),
@@ -181,15 +183,11 @@ class _RegisterPageState extends State<RegisterPage> {
       setState(() {
         isLoading = true;
       });
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => RegisterNamePage(
-                    username: _usernameController.text,
-                    mail: _emailController.text,
-                    password: _passwordController.text,
-                  )));
+      AutoRouter.of(context).push(RegisterNameRoute(
+        username: _usernameController.text,
+        mail: _emailController.text,
+        password: _passwordController.text,
+      ));
     } else if (_usernameController.text.isEmpty) {
       warningToast(context, WarningText.registerEmptyUsername);
     } else if (_emailController.text.toString().isEmpty) {

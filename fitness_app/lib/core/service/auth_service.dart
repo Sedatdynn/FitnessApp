@@ -30,9 +30,12 @@ class AuthService {
     return await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).get();
   }
 
-  Future<bool?> createPerson({required String uid, required UserModel model}) async {
+  Future<bool?> createPerson({required UserModel model}) async {
     await _auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
-    await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).set(model.toJson());
+    await _firestore
+        .collection(userCollection)
+        .doc(_auth.currentUser!.uid)
+        .set(model.toJsonWithoutPassword());
     return true;
   }
 

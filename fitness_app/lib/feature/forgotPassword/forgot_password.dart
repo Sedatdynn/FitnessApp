@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+
 import '../../product/const/const_shelf.dart';
 import '../../product/extensions/extensions_shelf.dart';
 
@@ -6,6 +8,7 @@ import '../service/foods_service.dart';
 import '../../core/init/network/project_network.dart';
 import '../views_shelf.dart';
 
+@RoutePage()
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
 
@@ -24,7 +27,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           icon: const Icon(
             Icons.arrow_back_ios,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => AutoRouter.of(context).pop(),
         ),
       ),
       body: _body(context),

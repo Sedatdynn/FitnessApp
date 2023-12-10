@@ -1,17 +1,17 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
-import 'package:fistness_app_firebase/feature/home/bottomNavigateBar/navigare_bar.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../product/const/const_shelf.dart';
 import '../../../product/enum/image/png/image_path.dart';
 import '../../../product/theme/colors.dart';
 import '../../../product/widget/button/auth_button.dart';
-import '../../login/login_page.dart';
-import '../../register/register_page.dart';
 import '../../views_shelf.dart';
 
 part '../subview/launch_subview.dart';
 
+@RoutePage()
 class LaunchPage extends StatelessWidget {
   const LaunchPage({Key? key}) : super(key: key);
 

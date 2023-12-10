@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../views_shelf.dart';
-import '../weight/weight_page.dart';
 
+@RoutePage()
 class HeightPage extends StatefulWidget {
   final String? username;
   final String? mail;
@@ -46,7 +48,7 @@ class _HeightPageState extends State<HeightPage> {
               SizedBox(
                 height: context.height / 17,
               ),
-              ConstText(
+              const ConstText(
                 text: QuestionsText.heightText,
               ),
               SizedBox(
@@ -66,21 +68,18 @@ class _HeightPageState extends State<HeightPage> {
   }
 
   void _onPressed() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => WeightPage(
-                username: widget.username,
-                mail: widget.mail,
-                password: widget.password,
-                uid: widget.uid,
-                name: widget.name,
-                gender: widget.gender,
-                age: widget.age,
-                mobility: widget.mobility,
-                height: _currentValue,
-              )),
-    );
+    print(widget.uid.toString());
+    AutoRouter.of(context).push(WeightRoute(
+      username: widget.username,
+      mail: widget.mail,
+      password: widget.password,
+      uid: widget.uid,
+      name: widget.name,
+      gender: widget.gender,
+      age: widget.age,
+      mobility: widget.mobility,
+      height: _currentValue,
+    ));
   }
 
   _pickerBody() {
@@ -89,10 +88,8 @@ class _HeightPageState extends State<HeightPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         NumberPicker(
-          selectedTextStyle: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(color: AppColors.mainPrimary),
+          selectedTextStyle:
+              Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
           textStyle: Theme.of(context).textTheme.titleSmall,
           decoration: const BoxDecoration(
             border: Border(

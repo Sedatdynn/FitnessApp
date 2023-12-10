@@ -1,5 +1,5 @@
-// ignore_for_file: avoid_print, invalid_return_type_for_catch_error, use_build_context_synchronously
-
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
@@ -8,9 +8,9 @@ import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../../product/widget/loading/app_loading.dart';
-import '../login/login_page.dart';
 import '../views_shelf.dart';
 
+@RoutePage()
 class WeightPage extends StatefulWidget {
   final String? username;
   final String? mail;
@@ -58,7 +58,7 @@ class _WeightPageState extends State<WeightPage> {
               SizedBox(
                 height: context.height / 17,
               ),
-              ConstText(text: QuestionsText.weightText),
+              const ConstText(text: QuestionsText.weightText),
               SizedBox(
                 height: context.height / 10,
               ),
@@ -178,19 +178,15 @@ class _WeightPageState extends State<WeightPage> {
       } else if (mobilityControl == "A") {
         totalPoint += 6;
       }
-      print("|||||||||||||||?????????||||||||$mobilityControl");
 
-      print("******????????????******$totalPoint");
-
-      Future.delayed(Duration(seconds: 2));
+      Future.delayed(const Duration(seconds: 2));
 
       bool? isSucces = await AuthService.instance.createPerson(
-          uid: widget.uid,
           model: UserModel(
               username: widget.username!,
               email: widget.mail!,
               name: widget.name!,
-              password: '',
+              password: widget.password,
               gender: widget.gender!,
               age: widget.age!.toString(),
               mobility: widget.mobility!,
@@ -202,8 +198,7 @@ class _WeightPageState extends State<WeightPage> {
         await warningToast(context, RegisterText.registerSuccessfully, color: AppColors.green);
         await warningToast(context, RegisterText.verifyWarning, color: AppColors.green);
         await AuthService.instance.sendEmailVerified();
-        Navigator.pushAndRemoveUntil(
-            context, MaterialPageRoute(builder: (context) => const LoginPage()), (route) => false);
+        AutoRouter.of(context).pushAndPopUntil(LoginRoute(canPop: false), predicate: (_) => false);
       } else {
         setState(() {
           isLoading = false;

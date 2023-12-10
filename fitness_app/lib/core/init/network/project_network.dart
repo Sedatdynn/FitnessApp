@@ -28,8 +28,8 @@ class ProjectNetworkManager extends IProjectNetwork {
 
   @override
   Future dioPost({required String path, required model, required responseModel}) async {
-    var json = model.toJson();
-    final response = await _dio.post(path, data: json);
+    // var json = model.toJson();
+    // final response = await _dio.post(path, data: json);
     throw UnimplementedError();
   }
 }

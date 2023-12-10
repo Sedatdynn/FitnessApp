@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
-import '../exerciseMobility/exercise_mobility.dart';
 import '../views_shelf.dart';
 
+@RoutePage()
 class AgePage extends StatefulWidget {
   final String? username;
   final String? mail;
@@ -74,19 +76,15 @@ class _AgePageState extends State<AgePage> {
             backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => DailyMobilityView(
-                        username: widget.username,
-                        mail: widget.mail,
-                        password: widget.password,
-                        uid: widget.uid,
-                        name: widget.name,
-                        gender: widget.gender,
-                        age: 2023 - _currentValue,
-                      )),
-            );
+            AutoRouter.of(context).push(DailyMobilityRoute(
+              username: widget.username,
+              mail: widget.mail,
+              password: widget.password,
+              uid: widget.uid,
+              name: widget.name,
+              gender: widget.gender,
+              age: 2023 - _currentValue,
+            ));
           },
           child: Text(MyText.continueText, style: Theme.of(context).textTheme.titleLarge),
         ),

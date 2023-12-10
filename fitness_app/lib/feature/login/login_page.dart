@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:provider/provider.dart';
 
@@ -6,14 +8,13 @@ import '../../product/extensions/extensions_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../../product/widget/loading/app_loading.dart';
-import '../forgotPassword/forgot_password.dart';
-import '../home/bottomNavigateBar/navigare_bar.dart';
 import '../views_shelf.dart';
 import 'view_model/login_view_model.dart';
 
+@RoutePage()
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
+  const LoginPage({Key? key, this.canPop = true}) : super(key: key);
+  final bool? canPop;
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -21,7 +22,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: const CommonAppBar(), body: _body(context));
+    return Scaffold(appBar: widget.canPop! ? const CommonAppBar() : null, body: _body(context));
   }
 
   Stack _body(BuildContext context) {
@@ -81,11 +82,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     if (isSucces) {
                       if (context.mounted) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const MainPage(),
-                            ));
+                        AutoRouter.of(context).pushNamed(RouteConstants.main);
                         context.read<LoginViewModel>().changeLoading();
                       }
                     } else {
@@ -152,10 +149,7 @@ class _LoginPageState extends State<LoginPage> {
   _forgotPassword() {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ForgotPasswordPage()),
-        );
+        AutoRouter.of(context).pushNamed(RouteConstants.forgotPassword);
       },
       child: Text(
         QuestionsText.forgotPassText,

@@ -1,20 +1,20 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
-import '../gender/gender.dart';
 import '../views_shelf.dart';
 
+@RoutePage()
 class RegisterNamePage extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
   final String? uid;
 
-  const RegisterNamePage(
-      {Key? key, this.username, this.mail, this.password, this.uid})
-      : super(key: key);
+  const RegisterNamePage({super.key, this.username, this.mail, this.password, this.uid});
 
   @override
   _RegisterNamePageState createState() => _RegisterNamePageState();
@@ -52,7 +52,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
     return SizedBox(
         height: context.height * 0.09,
         width: context.width * 0.87,
-        child: ConstText(
+        child: const ConstText(
           text: QuestionsText.nameText,
         ));
   }
@@ -74,17 +74,13 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
       setState(() {
         isLoading = true;
       });
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => GenderPage(
-                    username: widget.username,
-                    mail: widget.mail,
-                    uid: widget.uid.toString(),
-                    password: widget.password,
-                    name: _nameController.text,
-                  )));
+      AutoRouter.of(context).push(GenderRoute(
+        username: widget.username,
+        mail: widget.mail,
+        uid: widget.uid.toString(),
+        password: widget.password,
+        name: _nameController.text,
+      ));
     } else {
       warningToast(context, WarningText.nameWarningText);
     }
