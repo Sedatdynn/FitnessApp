@@ -18,7 +18,7 @@ class RegisterNameView extends StatefulWidget {
   const RegisterNameView({super.key, this.username, this.mail, this.password, this.uid});
 
   @override
-  _RegisterNameViewState createState() => _RegisterNameViewState();
+  State<RegisterNameView> createState() => _RegisterNameViewState();
 }
 
 class _RegisterNameViewState extends State<RegisterNameView> {

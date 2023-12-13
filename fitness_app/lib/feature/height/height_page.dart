@@ -30,7 +30,7 @@ class HeightView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _HeightViewState createState() => _HeightViewState();
+  State<HeightView> createState() => _HeightViewState();
 }
 
 class _HeightViewState extends State<HeightView> {

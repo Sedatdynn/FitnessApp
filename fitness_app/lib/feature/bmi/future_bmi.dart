@@ -22,7 +22,7 @@ class _ViewState extends State<View> {
                   itemCount: 1,
                   itemBuilder: (context, index) {
                     return Center(
-                      child: Text(snapshot.data?["email"] ?? "no dataa"),
+                      child: Text(snapshot.data?["email"] ?? "no data"),
                     );
                   },
                 );

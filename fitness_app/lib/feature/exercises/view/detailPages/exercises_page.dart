@@ -126,24 +126,4 @@ class _ExercisesViewState extends State<ExercisesView> {
       style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
     );
   }
-
-  Container _listTileLeading(BuildContext context, List<Exercise> items, int i) {
-    return Container(
-        decoration: BoxDecoration(
-          color: AppColors.green,
-          borderRadius: BorderRadius.circular(40),
-        ),
-        child: _listTileImg(items, i));
-  }
-
-  ClipRRect _listTileImg(List<Exercise> items, int i) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8.0),
-      child: Image.network(
-        items[i].imgUrl.toString(),
-        height: 10,
-        width: 10,
-      ),
-    );
-  }
 }

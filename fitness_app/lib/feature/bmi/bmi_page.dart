@@ -112,8 +112,8 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
   }
 
   String bmiCalculate(dynamic height, dynamic weight) {
-    double finalresult = int.parse(weight) / (int.parse(height) * int.parse(height) / 10000);
-    String bmi = finalresult.toStringAsFixed(2);
+    double result = int.parse(weight) / (int.parse(height) * int.parse(height) / 10000);
+    String bmi = result.toStringAsFixed(2);
     return bmi;
   }
 }

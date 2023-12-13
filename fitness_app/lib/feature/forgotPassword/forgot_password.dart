@@ -13,7 +13,7 @@ class ForgotPasswordView extends StatefulWidget {
   const ForgotPasswordView({Key? key}) : super(key: key);
 
   @override
-  _ForgotPasswordViewState createState() => _ForgotPasswordViewState();
+  State<ForgotPasswordView> createState() => _ForgotPasswordViewState();
 }
 
 class _ForgotPasswordViewState extends State<ForgotPasswordView> {
@@ -117,13 +117,17 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 await FoodsService(ProjectNetworkManager.instance.service, "reset password")
                     .resetPasswordLink(_emailController.text);
             if (response!) {
-              await warningToast(context, "Reset password email has been sent",
-                  color: AppColors.green);
+              if (context.mounted) {
+                await warningToast(context, "Reset password email has been sent",
+                    color: AppColors.green);
+              }
             } else {
-              await warningToast(
-                context,
-                "Reset password email couldnt sent please try again ",
-              );
+              if (context.mounted) {
+                await warningToast(
+                  context,
+                  "Reset password email couldnt sent please try again ",
+                );
+              }
             }
           },
           child: Text(RegisterText.verifyEmailText, style: Theme.of(context).textTheme.titleLarge),
