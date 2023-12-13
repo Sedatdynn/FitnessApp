@@ -1,6 +1,8 @@
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/login/view_model/login_view_model.dart';
+import 'package:fistness_app_firebase/product/const/app/app_constant.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +14,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   await AppInitialize().init();
+
+  RouteManager.instance.init(AppConstants.appRouter);
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<ThemeNotifier>(
@@ -21,12 +25,16 @@ Future<void> main() async {
         create: (context) => LoginViewModel(),
       )
     ],
-    builder: (context, child) => const MyApp(),
+    builder: (context, child) => MyApp(
+      appRouter: AppConstants.appRouter,
+    ),
   ));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final AppRouter appRouter;
+
+  const MyApp({Key? key, required this.appRouter}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -45,7 +53,6 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -59,10 +66,10 @@ class _MyAppState extends State<MyApp> {
                   splitScreenMode: true,
                   builder: (_, child) {
                     return MaterialApp.router(
-                      debugShowCheckedModeBanner: false,
-                      theme: context.watch<ThemeNotifier>().currentTheme,
-                      routerConfig: _appRouter.config(),
-                    );
+                        debugShowCheckedModeBanner: false,
+                        theme: context.watch<ThemeNotifier>().currentTheme,
+                        routerDelegate: widget.appRouter.delegate(),
+                        routeInformationParser: widget.appRouter.defaultRouteParser());
                   });
             }
             return ScreenUtilInit(
@@ -71,10 +78,10 @@ class _MyAppState extends State<MyApp> {
                 splitScreenMode: true,
                 builder: (_, child) {
                   return MaterialApp.router(
-                    debugShowCheckedModeBanner: false,
-                    theme: context.watch<ThemeNotifier>().currentTheme,
-                    routerConfig: _appRouter.config(),
-                  );
+                      debugShowCheckedModeBanner: false,
+                      theme: context.watch<ThemeNotifier>().currentTheme,
+                      routerDelegate: widget.appRouter.delegate(),
+                      routeInformationParser: widget.appRouter.defaultRouteParser());
                 });
           } else {
             return const Center(child: CircularProgressIndicator());

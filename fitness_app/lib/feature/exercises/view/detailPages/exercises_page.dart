@@ -1,3 +1,6 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -8,16 +11,16 @@ import '../../../../product/const/const_deco.dart';
 import '../../../../product/extensions/extensions_shelf.dart';
 import '../../model/exercises_model.dart';
 import '../../viewModel/exercises_view_model.dart';
-import 'detail_exercises_page.dart';
 
-class ExercisesPage extends StatefulWidget {
-  const ExercisesPage({super.key});
+@RoutePage()
+class ExercisesView extends StatefulWidget {
+  const ExercisesView({super.key});
 
   @override
-  State<ExercisesPage> createState() => _ExercisesPageState();
+  State<ExercisesView> createState() => _ExercisesViewState();
 }
 
-class _ExercisesPageState extends State<ExercisesPage> {
+class _ExercisesViewState extends State<ExercisesView> {
   String topImgPath = 'largeExrc';
 
   @override
@@ -51,7 +54,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
         topImg(),
         IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            RouteManager.instance.pop();
           },
           icon: const Icon(Icons.chevron_left_rounded),
         ),
@@ -90,14 +93,10 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   width: MediaQuery.of(context).size.width,
                   child: ListTile(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailExercisesPage(
-                              items: items[i].categoryData!,
-                              images: items[i],
-                            ),
-                          ));
+                      RouteManager.instance.push(DetailExercisesRoute(
+                        items: items[i].categoryData!,
+                        images: items[i],
+                      ));
                     },
                     // leading: _listTileLeading(context, items, i),
                     title: _listTileTitle(items, i, context),
@@ -122,9 +121,6 @@ class _ExercisesPageState extends State<ExercisesPage> {
   }
 
   Text _listTileTitle(List<Exercise> items, int i, BuildContext context) {
-    print(
-      items[i].imgUrl.toString(),
-    );
     return Text(
       items[i].categoryName.toString(),
       style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),

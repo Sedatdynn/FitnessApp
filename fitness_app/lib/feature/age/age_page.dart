@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
@@ -9,14 +10,14 @@ import '../../product/widget/appBar/custom_app_bar.dart';
 import '../views_shelf.dart';
 
 @RoutePage()
-class AgePage extends StatefulWidget {
+class AgeView extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
   final String uid;
   final String? name;
   final String? gender;
-  const AgePage(
+  const AgeView(
       {Key? key,
       this.username,
       this.mail,
@@ -27,10 +28,10 @@ class AgePage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _AgePageState createState() => _AgePageState();
+  _AgeViewState createState() => _AgeViewState();
 }
 
-class _AgePageState extends State<AgePage> {
+class _AgeViewState extends State<AgeView> {
   int _currentValue = 2004;
 
   @override
@@ -76,7 +77,7 @@ class _AgePageState extends State<AgePage> {
             backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: () {
-            AutoRouter.of(context).push(DailyMobilityRoute(
+            RouteManager.instance.push(DailyMobilityRoute(
               username: widget.username,
               mail: widget.mail,
               password: widget.password,

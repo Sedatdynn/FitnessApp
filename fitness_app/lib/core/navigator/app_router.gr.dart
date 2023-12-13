@@ -19,7 +19,7 @@ abstract class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<AgeRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: AgePage(
+        child: AgeView(
           key: args.key,
           username: args.username,
           mail: args.mail,
@@ -30,11 +30,17 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    BmiCalculatorRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BmiCalculatorView(),
+      );
+    },
     DailyMobilityRoute.name: (routeData) {
       final args = routeData.argsAs<DailyMobilityRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: DailyMobilityPage(
+        child: DailyMobilityView(
           key: args.key,
           username: args.username,
           mail: args.mail,
@@ -46,17 +52,44 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    DetailExercisesRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailExercisesRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DetailExercisesView(
+          key: args.key,
+          items: args.items,
+          images: args.images,
+        ),
+      );
+    },
+    DetailVideoRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailVideoRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DetailVideoView(
+          key: args.key,
+          items: args.items,
+        ),
+      );
+    },
+    ExercisesRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ExercisesView(),
+      );
+    },
     ForgotPasswordRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ForgotPasswordPage(),
+        child: const ForgotPasswordView(),
       );
     },
     GenderRoute.name: (routeData) {
       final args = routeData.argsAs<GenderRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: GenderPage(
+        child: GenderView(
           key: args.key,
           username: args.username,
           mail: args.mail,
@@ -70,7 +103,7 @@ abstract class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<HeightRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: HeightPage(
+        child: HeightView(
           key: args.key,
           username: args.username,
           mail: args.mail,
@@ -83,10 +116,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    HomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomeView(),
+      );
+    },
     LaunchRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const LaunchPage(),
+        child: const LaunchView(),
       );
     },
     LoginRoute.name: (routeData) {
@@ -94,7 +133,7 @@ abstract class _$AppRouter extends RootStackRouter {
           orElse: () => const LoginRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: LoginPage(
+        child: LoginView(
           key: args.key,
           canPop: args.canPop,
         ),
@@ -103,7 +142,13 @@ abstract class _$AppRouter extends RootStackRouter {
     MainRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MainPage(),
+        child: const MainView(),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileView(),
       );
     },
     RegisterNameRoute.name: (routeData) {
@@ -111,7 +156,7 @@ abstract class _$AppRouter extends RootStackRouter {
           orElse: () => const RegisterNameRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: RegisterNamePage(
+        child: RegisterNameView(
           key: args.key,
           username: args.username,
           mail: args.mail,
@@ -123,14 +168,20 @@ abstract class _$AppRouter extends RootStackRouter {
     RegisterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const RegisterPage(),
+        child: const RegisterView(),
+      );
+    },
+    UpdateInfosRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UpdateInfosView(),
       );
     },
     WeightRoute.name: (routeData) {
       final args = routeData.argsAs<WeightRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WeightPage(
+        child: WeightView(
           key: args.key,
           username: args.username,
           mail: args.mail,
@@ -148,7 +199,7 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [AgePage]
+/// [AgeView]
 class AgeRoute extends PageRouteInfo<AgeRouteArgs> {
   AgeRoute({
     Key? key,
@@ -210,7 +261,21 @@ class AgeRouteArgs {
 }
 
 /// generated route for
-/// [DailyMobilityPage]
+/// [BmiCalculatorView]
+class BmiCalculatorRoute extends PageRouteInfo<void> {
+  const BmiCalculatorRoute({List<PageRouteInfo>? children})
+      : super(
+          BmiCalculatorRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BmiCalculatorRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [DailyMobilityView]
 class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
   DailyMobilityRoute({
     Key? key,
@@ -278,7 +343,102 @@ class DailyMobilityRouteArgs {
 }
 
 /// generated route for
-/// [ForgotPasswordPage]
+/// [DetailExercisesView]
+class DetailExercisesRoute extends PageRouteInfo<DetailExercisesRouteArgs> {
+  DetailExercisesRoute({
+    Key? key,
+    required List<CategoryData> items,
+    required Exercise images,
+    List<PageRouteInfo>? children,
+  }) : super(
+          DetailExercisesRoute.name,
+          args: DetailExercisesRouteArgs(
+            key: key,
+            items: items,
+            images: images,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'DetailExercisesRoute';
+
+  static const PageInfo<DetailExercisesRouteArgs> page =
+      PageInfo<DetailExercisesRouteArgs>(name);
+}
+
+class DetailExercisesRouteArgs {
+  const DetailExercisesRouteArgs({
+    this.key,
+    required this.items,
+    required this.images,
+  });
+
+  final Key? key;
+
+  final List<CategoryData> items;
+
+  final Exercise images;
+
+  @override
+  String toString() {
+    return 'DetailExercisesRouteArgs{key: $key, items: $items, images: $images}';
+  }
+}
+
+/// generated route for
+/// [DetailVideoView]
+class DetailVideoRoute extends PageRouteInfo<DetailVideoRouteArgs> {
+  DetailVideoRoute({
+    Key? key,
+    required VideoPageData items,
+    List<PageRouteInfo>? children,
+  }) : super(
+          DetailVideoRoute.name,
+          args: DetailVideoRouteArgs(
+            key: key,
+            items: items,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'DetailVideoRoute';
+
+  static const PageInfo<DetailVideoRouteArgs> page =
+      PageInfo<DetailVideoRouteArgs>(name);
+}
+
+class DetailVideoRouteArgs {
+  const DetailVideoRouteArgs({
+    this.key,
+    required this.items,
+  });
+
+  final Key? key;
+
+  final VideoPageData items;
+
+  @override
+  String toString() {
+    return 'DetailVideoRouteArgs{key: $key, items: $items}';
+  }
+}
+
+/// generated route for
+/// [ExercisesView]
+class ExercisesRoute extends PageRouteInfo<void> {
+  const ExercisesRoute({List<PageRouteInfo>? children})
+      : super(
+          ExercisesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ExercisesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ForgotPasswordView]
 class ForgotPasswordRoute extends PageRouteInfo<void> {
   const ForgotPasswordRoute({List<PageRouteInfo>? children})
       : super(
@@ -292,7 +452,7 @@ class ForgotPasswordRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [GenderPage]
+/// [GenderView]
 class GenderRoute extends PageRouteInfo<GenderRouteArgs> {
   GenderRoute({
     Key? key,
@@ -349,7 +509,7 @@ class GenderRouteArgs {
 }
 
 /// generated route for
-/// [HeightPage]
+/// [HeightView]
 class HeightRoute extends PageRouteInfo<HeightRouteArgs> {
   HeightRoute({
     Key? key,
@@ -421,7 +581,21 @@ class HeightRouteArgs {
 }
 
 /// generated route for
-/// [LaunchPage]
+/// [HomeView]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [LaunchView]
 class LaunchRoute extends PageRouteInfo<void> {
   const LaunchRoute({List<PageRouteInfo>? children})
       : super(
@@ -435,7 +609,7 @@ class LaunchRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [LoginPage]
+/// [LoginView]
 class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
   LoginRoute({
     Key? key,
@@ -472,7 +646,7 @@ class LoginRouteArgs {
 }
 
 /// generated route for
-/// [MainPage]
+/// [MainView]
 class MainRoute extends PageRouteInfo<void> {
   const MainRoute({List<PageRouteInfo>? children})
       : super(
@@ -486,7 +660,21 @@ class MainRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [RegisterNamePage]
+/// [ProfileView]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RegisterNameView]
 class RegisterNameRoute extends PageRouteInfo<RegisterNameRouteArgs> {
   RegisterNameRoute({
     Key? key,
@@ -539,7 +727,7 @@ class RegisterNameRouteArgs {
 }
 
 /// generated route for
-/// [RegisterPage]
+/// [RegisterView]
 class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute({List<PageRouteInfo>? children})
       : super(
@@ -553,7 +741,21 @@ class RegisterRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [WeightPage]
+/// [UpdateInfosView]
+class UpdateInfosRoute extends PageRouteInfo<void> {
+  const UpdateInfosRoute({List<PageRouteInfo>? children})
+      : super(
+          UpdateInfosRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UpdateInfosRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WeightView]
 class WeightRoute extends PageRouteInfo<WeightRouteArgs> {
   WeightRoute({
     Key? key,

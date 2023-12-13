@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
@@ -11,7 +12,7 @@ import '../../product/widget/loading/app_loading.dart';
 import '../views_shelf.dart';
 
 @RoutePage()
-class WeightPage extends StatefulWidget {
+class WeightView extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
@@ -22,7 +23,7 @@ class WeightPage extends StatefulWidget {
   final int? height;
   final String uid;
 
-  const WeightPage(
+  const WeightView(
       {Key? key,
       this.username,
       this.mail,
@@ -36,10 +37,10 @@ class WeightPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _WeightPageState createState() => _WeightPageState();
+  _WeightViewState createState() => _WeightViewState();
 }
 
-class _WeightPageState extends State<WeightPage> {
+class _WeightViewState extends State<WeightView> {
   int _currentValue = 65;
   int totalPoint = 0;
 
@@ -198,7 +199,7 @@ class _WeightPageState extends State<WeightPage> {
         await warningToast(context, RegisterText.registerSuccessfully, color: AppColors.green);
         await warningToast(context, RegisterText.verifyWarning, color: AppColors.green);
         await AuthService.instance.sendEmailVerified();
-        AutoRouter.of(context).pushAndPopUntil(LoginRoute(canPop: false), predicate: (_) => false);
+        RouteManager.instance.pushAndPopUntil(LoginRoute(canPop: false));
       } else {
         setState(() {
           isLoading = false;

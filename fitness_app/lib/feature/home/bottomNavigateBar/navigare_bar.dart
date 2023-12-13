@@ -6,15 +6,15 @@ import '../../profile/profile_page.dart';
 import '../../views_shelf.dart';
 
 @RoutePage()
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class MainView extends StatefulWidget {
+  const MainView({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<MainView> createState() => _MainViewState();
 }
 
-class _MainPageState extends State<MainPage> {
-  List pages = [const InitialPage(), const ProfilePage()];
+class _MainViewState extends State<MainView> {
+  List pages = [const InitialPage(), const ProfileView()];
   int selectedIndex = 0;
   void changeIndex(int index) {
     setState(() {

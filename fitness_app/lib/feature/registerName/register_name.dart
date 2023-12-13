@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_shelf.dart';
@@ -8,19 +9,19 @@ import '../../product/widget/appBar/custom_app_bar.dart';
 import '../views_shelf.dart';
 
 @RoutePage()
-class RegisterNamePage extends StatefulWidget {
+class RegisterNameView extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
   final String? uid;
 
-  const RegisterNamePage({super.key, this.username, this.mail, this.password, this.uid});
+  const RegisterNameView({super.key, this.username, this.mail, this.password, this.uid});
 
   @override
-  _RegisterNamePageState createState() => _RegisterNamePageState();
+  _RegisterNameViewState createState() => _RegisterNameViewState();
 }
 
-class _RegisterNamePageState extends State<RegisterNamePage> {
+class _RegisterNameViewState extends State<RegisterNameView> {
   final TextEditingController _nameController = TextEditingController();
   bool isLoading = false;
   @override
@@ -74,7 +75,7 @@ class _RegisterNamePageState extends State<RegisterNamePage> {
       setState(() {
         isLoading = true;
       });
-      AutoRouter.of(context).push(GenderRoute(
+      RouteManager.instance.push(GenderRoute(
         username: widget.username,
         mail: widget.mail,
         uid: widget.uid.toString(),

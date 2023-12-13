@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import '../../product/const/const_shelf.dart';
@@ -9,21 +10,21 @@ import '../../product/widget/appBar/custom_app_bar.dart';
 import '../views_shelf.dart';
 
 @RoutePage()
-class GenderPage extends StatefulWidget {
+class GenderView extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? name;
   final String? password;
   final String uid;
-  const GenderPage(
+  const GenderView(
       {Key? key, this.username, this.mail, this.name, this.password, required this.uid})
       : super(key: key);
 
   @override
-  State<GenderPage> createState() => _GenderPageState();
+  State<GenderView> createState() => _GenderViewState();
 }
 
-class _GenderPageState extends State<GenderPage> {
+class _GenderViewState extends State<GenderView> {
   late List<bool> isSelected;
   bool isLoading = false;
   final AuthService authService = AuthService.instance;
@@ -128,7 +129,7 @@ class _GenderPageState extends State<GenderPage> {
       setState(() {
         isLoading = true;
       });
-      AutoRouter.of(context).push(AgeRoute(
+      RouteManager.instance.push(AgeRoute(
         mail: widget.mail,
         username: widget.username,
         password: widget.password,

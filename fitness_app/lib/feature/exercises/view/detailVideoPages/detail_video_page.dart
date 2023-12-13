@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 
@@ -14,18 +16,19 @@ import '../../../../core/init/network/project_network.dart';
 import '../../model/exercises_model.dart';
 import '../../viewModel/exercises_view_model.dart';
 
-class DetailVideoPage extends StatefulWidget {
+@RoutePage()
+class DetailVideoView extends StatefulWidget {
   final VideoPageData items;
-  const DetailVideoPage({
+  const DetailVideoView({
     Key? key,
     required this.items,
   }) : super(key: key);
 
   @override
-  State<DetailVideoPage> createState() => _DetailVideoPageState();
+  State<DetailVideoView> createState() => _DetailVideoViewState();
 }
 
-class _DetailVideoPageState extends State<DetailVideoPage> {
+class _DetailVideoViewState extends State<DetailVideoView> {
   final String titleText = 'Exercise Information';
   late YoutubePlayerController _controller;
   late VideoPlayerController videoController;
@@ -67,7 +70,7 @@ class _DetailVideoPageState extends State<DetailVideoPage> {
                   left: 0,
                   child: IconButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        RouteManager.instance.pop();
                       },
                       icon: const Icon(Icons.chevron_left_outlined)),
                 ),

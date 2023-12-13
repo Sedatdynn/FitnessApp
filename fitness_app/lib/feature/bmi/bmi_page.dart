@@ -1,26 +1,29 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import '../../product/const/const_container.dart';
 import '../../product/const/const_deco.dart';
-import '../profile/profile_page.dart';
 import '../views_shelf.dart';
 import 'bmi_gauge.dart';
 import 'bmi_page_child.dart';
 import 'row_value.dart';
 
-class BmiCalculator extends StatefulWidget {
-  const BmiCalculator({
+@RoutePage()
+class BmiCalculatorView extends StatefulWidget {
+  const BmiCalculatorView({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<BmiCalculator> createState() => _BmiCalculatorState();
+  State<BmiCalculatorView> createState() => _BmiCalculatorViewState();
 }
 
-class _BmiCalculatorState extends State<BmiCalculator> {
+class _BmiCalculatorViewState extends State<BmiCalculatorView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,11 +59,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                                     context.zeroAllPadding,
                                     context.zeroAllPadding),
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const ProfilePage(),
-                                      ));
+                                  RouteManager.instance.pushNamed(path: RouteConstants.profile);
                                 },
                               ),
                             ],
@@ -104,7 +103,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               );
             }
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },

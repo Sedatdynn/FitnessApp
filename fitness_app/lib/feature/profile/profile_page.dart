@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
@@ -7,20 +10,17 @@ import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:provider/provider.dart';
 import '../../product/const/const_deco.dart';
 import '../../product/theme/colors.dart';
-import '../bmi/bmi_page.dart';
-import '../home/bottomNavigateBar/navigare_bar.dart';
-import '../launch/view/launch_page.dart';
 import '../views_shelf.dart';
-import 'edit_profile.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+@RoutePage()
+class ProfileView extends StatefulWidget {
+  const ProfileView({Key? key}) : super(key: key);
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<ProfileView> createState() => _ProfileViewState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfileViewState extends State<ProfileView> {
   Future deleteToken() async {
     await CacheManager.instance.removeValue(CacheKeys.token);
   }
@@ -75,11 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                 ),
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const MainPage(),
-                                      ));
+                                  RouteManager.instance.pushNamed(path: RouteConstants.main);
                                 },
                               ),
                               Container(
@@ -156,11 +152,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                       ),
                                       InkWell(
-                                        onTap: () => Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => BmiCalculator(),
-                                            )),
+                                        onTap: () => RouteManager.instance
+                                            .pushNamed(path: RouteConstants.bmiCalculator),
                                         child: const ListTile(
                                           leading: Icon(
                                             Icons.leave_bags_at_home_outlined,
@@ -178,11 +171,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                           subtitle: Text("Update your weight, height..."),
                                         ),
                                         onTap: () async {
-                                          Navigator.push(
-                                              context,
-                                              (MaterialPageRoute(
-                                                builder: (context) => const UpdateInfosView(),
-                                              )));
+                                          RouteManager.instance
+                                              .pushNamed(path: RouteConstants.updateUserInfo);
                                         },
                                       ),
                                       GestureDetector(
@@ -196,13 +186,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                         onTap: () async {
                                           await deleteToken();
                                           AuthService.instance.signOut();
-                                          if (context.mounted) {
-                                            Navigator.push(
-                                                context,
-                                                (MaterialPageRoute(
-                                                  builder: (context) => const LaunchPage(),
-                                                )));
-                                          }
+                                          RouteManager.instance
+                                              .pushNamed(path: RouteConstants.initial);
                                         },
                                       ),
                                     ],

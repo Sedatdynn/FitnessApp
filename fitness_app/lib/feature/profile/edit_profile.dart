@@ -1,13 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:flutter/material.dart';
 import '../../product/theme/colors.dart';
-import '../bmi/bmi_page.dart';
 
+@RoutePage()
 class UpdateInfosView extends StatefulWidget {
   const UpdateInfosView({Key? key}) : super(key: key);
   @override
@@ -134,11 +137,7 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
                           warningToast(context, "Your update completed successfully",
                               color: AppColors.green);
                           Future.delayed(const Duration(seconds: 2));
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const BmiCalculator(),
-                              ));
+                          RouteManager.instance.pushNamed(path: RouteConstants.bmiCalculator);
                         })
                   ],
                 ),

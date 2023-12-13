@@ -1,4 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
@@ -9,22 +12,22 @@ import '../../../../core/init/network/project_network.dart';
 import '../../../../product/theme/colors.dart';
 import '../../model/exercises_model.dart';
 import '../../viewModel/exercises_view_model.dart';
-import '../detailVideoPages/detail_video_page.dart';
 
-class DetailExercisesPage extends StatefulWidget {
+@RoutePage()
+class DetailExercisesView extends StatefulWidget {
   final List<CategoryData> items;
   final Exercise images;
-  const DetailExercisesPage({
+  const DetailExercisesView({
     Key? key,
     required this.items,
     required this.images,
   }) : super(key: key);
 
   @override
-  State<DetailExercisesPage> createState() => _DetailExercisesPageState();
+  State<DetailExercisesView> createState() => _DetailExercisesViewState();
 }
 
-class _DetailExercisesPageState extends State<DetailExercisesPage> {
+class _DetailExercisesViewState extends State<DetailExercisesView> {
   @override
   void initState() {
     super.initState();
@@ -58,7 +61,7 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
             left: 0,
             child: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                RouteManager.instance.pop();
               },
               icon: const Icon(
                 Icons.chevron_left_sharp,
@@ -88,14 +91,9 @@ class _DetailExercisesPageState extends State<DetailExercisesPage> {
   }
 
   InkWell _navigateToPage(BuildContext context, int i) {
-    print(widget.items[i].videoPageData);
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DetailVideoPage(items: widget.items[i].videoPageData!),
-            ));
+        RouteManager.instance.push(DetailVideoRoute(items: widget.items[i].videoPageData!));
       },
       child: Container(
         margin: context.minAllPadding,

@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_init_to_null, use_build_context_synchronously
 
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
@@ -17,6 +19,7 @@ import '../../views_shelf.dart';
 import '../model/foods_model.dart';
 import '../viewModel/hp_view_mode.dart';
 
+@RoutePage()
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -55,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
                     Icons.arrow_back_outlined,
                     color: AppColors.mainPrimary,
                   ),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () => RouteManager.instance.pop(),
                 ),
                 title: Text("Saved daily point is: $lastSavedPoint")),
             body: SingleChildScrollView(

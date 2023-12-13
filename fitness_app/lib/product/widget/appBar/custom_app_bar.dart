@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/colors.dart';
@@ -16,7 +17,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
           Icons.arrow_back_outlined,
           color: AppColors.mainPrimary,
         ),
-        onPressed: () => Navigator.of(context).pop(),
+        onPressed: () => RouteManager.instance.pop(),
       ),
     );
   }

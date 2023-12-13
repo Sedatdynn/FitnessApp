@@ -13,7 +13,7 @@ class FoodsService extends IFoodsService {
     if (response.statusCode == HttpStatus.ok) {
       final jsonBody = response.data;
       if (jsonBody is Map<String, dynamic>) {
-        return FoodsModel().fromJson(jsonBody);
+        return const FoodsModel().fromJson(jsonBody);
       }
     }
     return null;

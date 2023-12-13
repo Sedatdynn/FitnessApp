@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
@@ -12,8 +13,8 @@ import '../../views_shelf.dart';
 part '../subview/launch_subview.dart';
 
 @RoutePage()
-class LaunchPage extends StatelessWidget {
-  const LaunchPage({Key? key}) : super(key: key);
+class LaunchView extends StatelessWidget {
+  const LaunchView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

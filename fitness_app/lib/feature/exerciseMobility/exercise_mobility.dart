@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/extensions/edge_insets.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
@@ -14,7 +15,7 @@ List<String> list = <String>[
 ];
 
 @RoutePage()
-class DailyMobilityPage extends StatefulWidget {
+class DailyMobilityView extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
@@ -22,7 +23,7 @@ class DailyMobilityPage extends StatefulWidget {
   final String? gender;
   final int? age;
   final String uid;
-  const DailyMobilityPage(
+  const DailyMobilityView(
       {Key? key,
       this.username,
       this.mail,
@@ -33,10 +34,10 @@ class DailyMobilityPage extends StatefulWidget {
       this.age})
       : super(key: key);
   @override
-  State<DailyMobilityPage> createState() => _DailyMobilityViewState();
+  State<DailyMobilityView> createState() => _DailyMobilityViewState();
 }
 
-class _DailyMobilityViewState extends State<DailyMobilityPage> {
+class _DailyMobilityViewState extends State<DailyMobilityView> {
   String selectedValue = list.first;
   String dropdownValue = list.first;
 
@@ -81,7 +82,7 @@ class _DailyMobilityViewState extends State<DailyMobilityPage> {
             CommonButton(
                 text: MyText.nextText,
                 onPressed: () {
-                  AutoRouter.of(context).push(HeightRoute(
+                  RouteManager.instance.push(HeightRoute(
                     username: widget.username,
                     mail: widget.mail,
                     password: widget.password,

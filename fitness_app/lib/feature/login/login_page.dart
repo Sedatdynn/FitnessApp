@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +13,14 @@ import '../views_shelf.dart';
 import 'view_model/login_view_model.dart';
 
 @RoutePage()
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, this.canPop = true}) : super(key: key);
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key, this.canPop = true}) : super(key: key);
   final bool? canPop;
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: widget.canPop! ? const CommonAppBar() : null, body: _body(context));
@@ -82,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     if (isSucces) {
                       if (context.mounted) {
-                        AutoRouter.of(context).pushNamed(RouteConstants.main);
+                        RouteManager.instance.pushNamed(path: RouteConstants.main);
                         context.read<LoginViewModel>().changeLoading();
                       }
                     } else {
@@ -149,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
   _forgotPassword() {
     return InkWell(
       onTap: () {
-        AutoRouter.of(context).pushNamed(RouteConstants.forgotPassword);
+        RouteManager.instance.pushNamed(path: RouteConstants.forgotPassword);
       },
       child: Text(
         QuestionsText.forgotPassText,

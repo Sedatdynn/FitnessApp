@@ -5,7 +5,6 @@ import 'package:fistness_app_firebase/core/init/network/i_project_network.dart';
 
 class ProjectNetworkManager extends IProjectNetwork {
   ProjectNetworkManager._() {
-    print('INNIT -');
     _dio = Dio(BaseOptions(baseUrl: "http://10.0.2.2:8000"));
   }
   late final Dio _dio;

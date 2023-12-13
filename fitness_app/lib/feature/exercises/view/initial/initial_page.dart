@@ -1,10 +1,10 @@
+import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../product/enum/image/png/image_path.dart';
-import '../../../home/view/home_page.dart';
 import '../../../views_shelf.dart';
-import '../detailPages/exercises_page.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({super.key});
@@ -50,8 +50,8 @@ class _InitialPageState extends State<InitialPage> {
             crossAxisCount: 2,
             children: [
               cardBody(
-                  context, ImagePath.main_exercises.toPng(), "Exercises", const ExercisesPage()),
-              cardBody(context, ImagePath.diet_list.toPng(), "Diet List", const HomeView()),
+                  context, ImagePath.main_exercises.toPng(), "Exercises", RouteConstants.exercise),
+              cardBody(context, ImagePath.diet_list.toPng(), "Diet List", RouteConstants.home),
             ],
           ),
         ),
@@ -59,14 +59,10 @@ class _InitialPageState extends State<InitialPage> {
     )));
   }
 
-  InkWell cardBody(BuildContext context, Widget child, String cardTitle, dynamic navigatePage) {
+  InkWell cardBody(BuildContext context, Widget child, String cardTitle, String navigatePage) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => navigatePage,
-            ));
+        RouteManager.instance.pushNamed(path: navigatePage);
       },
       child: Container(
           margin: context.minAllPadding,

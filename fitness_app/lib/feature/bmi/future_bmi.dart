@@ -28,7 +28,7 @@ class _ViewState extends State<View> {
                 );
               }
             }
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }),

@@ -34,7 +34,7 @@ class _EmailButton extends StatelessWidget {
         size: 32,
       ),
       onPressed: () {
-        AutoRouter.of(context).pushNamed(RouteConstants.login);
+        RouteManager.instance.pushNamed(path: RouteConstants.login);
       },
     );
   }
@@ -54,7 +54,7 @@ class _GoogleButton extends StatelessWidget {
         bool? isSuccess = await AuthService.instance.signInWithGoogle();
         if (isSuccess) {
           if (context.mounted) {
-            AutoRouter.of(context).pushNamed(RouteConstants.main);
+            RouteManager.instance.pushNamed(path: RouteConstants.main);
           }
         }
       },
@@ -77,7 +77,7 @@ class _AccountsInfoTextWidget extends StatelessWidget {
         SizedBox(width: 5.w),
         InkWell(
           onTap: () {
-            AutoRouter.of(context).pushNamed(RouteConstants.register);
+            RouteManager.instance.pushNamed(path: RouteConstants.register);
           },
           child: Text(
             RegisterText.createText,
