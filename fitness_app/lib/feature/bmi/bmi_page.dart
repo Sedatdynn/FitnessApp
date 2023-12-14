@@ -4,7 +4,7 @@ import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 
 import '../../product/const/const_container.dart';
 import '../../product/const/const_deco.dart';
@@ -38,7 +38,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                   itemCount: 1,
                   itemBuilder: (context, index) {
                     return Container(
-                      padding: context.midAllPadding,
+                      padding: const AppPadding.normalAll(),
                       decoration: commonBoxDec(
                           AllColors.gradColor1, AllColors.gradColor2, AllColors.gradColor3),
                       child: Column(
@@ -49,15 +49,16 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                             children: [
                               GestureDetector(
                                 child: topBox(
-                                    context,
-                                    50,
-                                    50,
-                                    const Icon(Icons.arrow_back_ios_new, color: Color(0xFFC4FB6D)),
-                                    AllColors.gradColor1,
-                                    AllColors.gradColor1,
-                                    AllColors.gradColor4,
-                                    context.zeroAllPadding,
-                                    context.zeroAllPadding),
+                                  context,
+                                  50,
+                                  50,
+                                  const Icon(Icons.arrow_back_ios_new, color: Color(0xFFC4FB6D)),
+                                  AllColors.gradColor1,
+                                  AllColors.gradColor1,
+                                  AllColors.gradColor4,
+                                  const AppPadding(),
+                                  const AppPadding(),
+                                ),
                                 onTap: () {
                                   RouteManager.instance.pushNamed(path: RouteConstants.profile);
                                 },
@@ -79,7 +80,7 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                             AllColors.gradColor1.withOpacity(0.5),
                             AllColors.gradColor5,
                             AllColors.gradColor6,
-                            context.zeroAllPadding,
+                            const AppPadding(),
                             const AppPadding.normalVertical(),
                           ),
                           topBox(
@@ -91,8 +92,8 @@ class _BmiCalculatorViewState extends State<BmiCalculatorView> {
                               AllColors.gradColor1,
                               AllColors.gradColor1,
                               AllColors.gradColor4,
-                              context.midLargeLtrb,
-                              context.midAllPadding),
+                              const AppPadding.normalAll(),
+                              const AppPadding.normalAll()),
                           bmiGauge1(context,
                               bmiCalculate(snapshot.data?["height"], snapshot.data?["weight"]))
                         ],

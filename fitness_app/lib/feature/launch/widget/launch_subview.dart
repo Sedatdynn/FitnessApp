@@ -54,7 +54,7 @@ class _GoogleButton extends StatelessWidget {
         bool? isSuccess = await AuthService.instance.signInWithGoogle();
         if (isSuccess) {
           if (context.mounted) {
-            RouteManager.instance.pushNamed(path: RouteConstants.main);
+            RouteManager.instance.pushAndPopUntil(const MainRoute());
           }
         }
       },

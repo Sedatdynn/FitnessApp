@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
-import 'package:fistness_app_firebase/product/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/text/texts.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +46,7 @@ class _DailyMobilityViewState extends State<DailyMobilityView> {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: context.minAllPadding,
+        padding: const AppPadding.largeAll(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/colors.dart';
@@ -20,10 +20,9 @@ class CommonButton extends StatelessWidget {
         width: context.width * 0.81,
         child: OutlinedButton(
           style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor:
-                MaterialStateProperty.all<Color>(AppColors.whiteText),
+            shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+            foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
             backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
           ),
           onPressed: onPressed,

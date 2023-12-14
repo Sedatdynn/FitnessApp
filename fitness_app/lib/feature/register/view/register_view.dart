@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import '../../../product/const/const_shelf.dart';
 import '../../../core/service/auth_service.dart';
 import '../../../product/theme/colors.dart';
@@ -29,27 +29,23 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(),
-      body: _body(context),
-    );
-  }
-
-  Stack _body(BuildContext context) {
-    return Stack(
-      children: [
-        Padding(
-          padding: context.minMidLtrb,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _bodyContainer(),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
-          ),
-        )
-      ],
+      body: Stack(
+        children: [
+          Padding(
+            padding: const AppPadding.lowHorizontal(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _bodyContainer(),
+                const SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -58,7 +54,7 @@ class _RegisterViewState extends State<RegisterView> {
         child: Container(
       decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
-        padding: context.midLtrb,
+        padding: const AppPadding.minAll(),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -165,12 +161,9 @@ class _RegisterViewState extends State<RegisterView> {
   }
 
   _orText() {
-    return Padding(
-      padding: context.minLeft,
-      child: Text(
-        RegisterText.orSignText,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.whiteText),
-      ),
+    return Text(
+      RegisterText.orSignText,
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.whiteText),
     );
   }
 

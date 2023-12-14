@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 
 import '../../product/const/const_shelf.dart';
-import '../../product/extensions/extensions_shelf.dart';
 
 import '../../product/theme/colors.dart';
 import '../service/foods_service.dart';
@@ -38,7 +39,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
     return Stack(
       children: [
         Padding(
-          padding: context.minLargeLtrb,
+          padding: const AppPadding.minAll(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +60,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
         child: Container(
       decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
-        padding: context.largeAllPadding,
+        padding: const AppPadding.minAll(),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,

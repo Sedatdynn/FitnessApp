@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
@@ -28,15 +30,13 @@ class _RegisterNameViewState extends State<RegisterNameView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(),
-      body: Padding(
-        padding: context.xLargeLtrb,
-        child: SingleChildScrollView(
-          child: Column(
+      body: Center(
+        child: Padding(
+          padding: const AppPadding.minAll(),
+          child: ListView(
             children: [
               myText(),
-              SizedBox(
-                height: context.height * 0.01,
-              ),
+              SizedBox(height: 20.h),
               _nameField(),
               SizedBox(
                 height: context.height * 0.3,

@@ -4,8 +4,8 @@ import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:provider/provider.dart';
 import '../../product/const/const_deco.dart';
@@ -37,7 +37,7 @@ class _ProfileViewState extends State<ProfileView> {
                   itemCount: 1,
                   itemBuilder: (context, index) {
                     return Container(
-                      padding: context.minMidAllPadding,
+                      padding: const AppPadding.minAll(),
                       decoration: commonBoxDec(
                         context.watch<ThemeNotifier>().isLight
                             ? Colors.grey

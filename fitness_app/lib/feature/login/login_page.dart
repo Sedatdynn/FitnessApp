@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:provider/provider.dart';
 
 import '../../product/const/const_shelf.dart';
-import '../../product/extensions/extensions_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
 import '../../product/widget/loading/app_loading.dart';
@@ -30,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
     return Stack(
       children: [
         Padding(
-          padding: context.minLargeLtrb,
+          padding: const AppPadding.lowHorizontal(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +52,7 @@ class _LoginViewState extends State<LoginView> {
         child: Container(
       decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16.0))),
       child: Padding(
-        padding: context.largeAllPadding,
+        padding: const AppPadding.minAll(),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,

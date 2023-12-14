@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 
 import '../../../../product/theme/colors.dart';
 import 'video_player_widget.dart';
-import '../../../../product/extensions/extensions_shelf.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -82,7 +82,7 @@ class _DetailVideoViewState extends State<DetailVideoView> {
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext ctxt, int i) {
                 return Container(
-                  margin: context.minAllPadding,
+                  margin: const AppPadding.minAll(),
                   decoration: const BoxDecoration(
                     color: Colors.cyan,
                     borderRadius: BorderRadius.only(

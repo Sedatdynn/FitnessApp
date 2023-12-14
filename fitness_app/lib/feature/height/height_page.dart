@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
@@ -41,7 +42,7 @@ class _HeightViewState extends State<HeightView> {
     return Scaffold(
       appBar: const CommonAppBar(),
       body: Padding(
-        padding: context.minLtrb,
+        padding: const AppPadding.minAll(),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -108,12 +109,9 @@ class _HeightViewState extends State<HeightView> {
           maxValue: 220,
           onChanged: (value) => setState(() => _currentValue = value),
         ),
-        Container(
-          margin: context.midLeft,
-          child: Text(
-            RegisterText.cmText,
-            style: Theme.of(context).textTheme.titleSmall,
-          ),
+        Text(
+          RegisterText.cmText,
+          style: Theme.of(context).textTheme.titleSmall,
         )
       ],
     );

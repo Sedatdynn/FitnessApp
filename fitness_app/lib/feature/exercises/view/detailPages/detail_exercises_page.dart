@@ -4,7 +4,7 @@ import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -96,7 +96,7 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
         RouteManager.instance.push(DetailVideoRoute(items: widget.items[i].videoPageData!));
       },
       child: Container(
-        margin: context.minAllPadding,
+        margin: const AppPadding.minAll(),
         decoration: const BoxDecoration(
           color: Colors.purple,
           borderRadius: BorderRadius.only(

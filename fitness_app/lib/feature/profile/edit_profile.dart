@@ -5,8 +5,7 @@ import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
-import 'package:fistness_app_firebase/product/extensions/edge_insets.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:flutter/material.dart';
 import '../../product/theme/colors.dart';
 
@@ -33,7 +32,7 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
           if (snapshot.connectionState != ConnectionState.waiting) {
             if (snapshot.hasData) {
               return Padding(
-                padding: context.minAllPadding,
+                padding: const AppPadding.minAll(),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

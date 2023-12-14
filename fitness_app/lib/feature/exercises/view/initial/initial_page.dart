@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../product/enum/image/png/image_path.dart';
@@ -65,7 +66,7 @@ class _InitialPageState extends State<InitialPage> {
         RouteManager.instance.pushNamed(path: navigatePage);
       },
       child: Container(
-          margin: context.minAllPadding,
+          margin: const AppPadding.minAll(),
           decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(12)),
           child: Center(
             child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[

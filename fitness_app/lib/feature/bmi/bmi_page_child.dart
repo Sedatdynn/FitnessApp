@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/feature/bmi/row_value.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 import 'package:fistness_app_firebase/product/const/text/texts.dart';
 import '../../product/const/const_container.dart';
 
@@ -9,10 +10,7 @@ class BmiColumnBody extends StatelessWidget {
   final String userHeight;
   final String userWeight;
   const BmiColumnBody(
-      {Key? key,
-      required this.width,
-      required this.userHeight,
-      required this.userWeight})
+      {Key? key, required this.width, required this.userHeight, required this.userWeight})
       : super(
           key: key,
         );
@@ -25,26 +23,27 @@ class BmiColumnBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: context.minAllPadding,
+            padding: const AppPadding.minAll(),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 topBox(
-                    context,
-                    width / 1.16,
-                    50,
-                    rowValues(context, "Height", userHeight),
-                    AllColors.gradColor1,
-                    AllColors.gradColor1,
-                    AllColors.gradColor4,
-                    context.midLargeLtrb,
-                    context.zeroAllPadding),
+                  context,
+                  width / 1.16,
+                  50,
+                  rowValues(context, "Height", userHeight),
+                  AllColors.gradColor1,
+                  AllColors.gradColor1,
+                  AllColors.gradColor4,
+                  const AppPadding.normalAll(),
+                  const AppPadding(),
+                ),
               ],
             ),
           ),
           Padding(
-            padding: context.minAllPadding,
+            padding: const AppPadding.minAll(),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -57,8 +56,8 @@ class BmiColumnBody extends StatelessWidget {
                     AllColors.gradColor1,
                     AllColors.gradColor1,
                     AllColors.gradColor4,
-                    context.midLargeLtrb,
-                    context.zeroAllPadding),
+                    const AppPadding.normalAll(),
+                    const AppPadding()),
               ],
             ),
           ),

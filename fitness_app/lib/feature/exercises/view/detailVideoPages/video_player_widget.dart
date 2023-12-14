@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -36,7 +36,7 @@ class VideoPlayerWidget extends StatelessWidget {
         child: VideoProgressIndicator(
           controller,
           allowScrubbing: true,
-          padding: context.minAllPadding,
+          padding: const AppPadding.minAll(),
         ),
       ),
     );
@@ -44,15 +44,12 @@ class VideoPlayerWidget extends StatelessWidget {
 
   IconButton buildPlayButton() {
     return IconButton(
-        onPressed: () =>
-            controller.value.isPlaying ? controller.pause() : controller.play(),
-        icon:
-            Icon(controller.value.isPlaying ? Icons.pause : Icons.play_arrow));
+        onPressed: () => controller.value.isPlaying ? controller.pause() : controller.play(),
+        icon: Icon(controller.value.isPlaying ? Icons.pause : Icons.play_arrow));
   }
 
   Widget buildVideo() => buildVideoPlayer();
 
-  Widget buildVideoPlayer() => AspectRatio(
-      aspectRatio: controller.value.aspectRatio,
-      child: VideoPlayer(controller));
+  Widget buildVideoPlayer() =>
+      AspectRatio(aspectRatio: controller.value.aspectRatio, child: VideoPlayer(controller));
 }

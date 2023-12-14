@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
-
 import '../../product/const/const_shelf.dart';
 import '../../product/theme/colors.dart';
 import '../../product/widget/appBar/custom_app_bar.dart';
@@ -39,7 +38,7 @@ class _AgeViewState extends State<AgeView> {
     return Scaffold(
       appBar: const CommonAppBar(),
       body: Padding(
-        padding: context.minLtrb,
+        padding: const AppPadding.lowHorizontal(),
         child: SingleChildScrollView(
           child: Column(
             children: [

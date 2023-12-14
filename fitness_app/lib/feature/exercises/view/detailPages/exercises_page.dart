@@ -2,13 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/init/network/project_network.dart';
 import '../../../../product/const/const_deco.dart';
-import '../../../../product/extensions/extensions_shelf.dart';
 import '../../model/exercises_model.dart';
 import '../../viewModel/exercises_view_model.dart';
 
@@ -86,7 +87,7 @@ class _ExercisesViewState extends State<ExercisesView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: context.minAllPadding,
+                margin: const AppPadding.minAll(),
                 decoration:
                     BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.circular(12)),
                 child: SizedBox(

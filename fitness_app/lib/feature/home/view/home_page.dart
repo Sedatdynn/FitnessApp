@@ -8,8 +8,8 @@ import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
-import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
 
 import 'package:provider/provider.dart';
 
@@ -63,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
                 title: Text("Saved daily point is: $lastSavedPoint")),
             body: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const AppPadding.minAll(),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -194,7 +194,6 @@ class _HomeViewState extends State<HomeView> {
             children: [
               Container(
                 width: double.infinity,
-                margin: context.minTopBtm,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14.0),
                   color: Colors.purple,
