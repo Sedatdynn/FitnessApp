@@ -134,7 +134,7 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
                               collection.doc(FirebaseAuth.instance.currentUser!.uid);
                           doc.update(dataToUpdate);
                           doc.update(userPointUpdate);
-                          warningToast(context, "Your update completed successfully",
+                          warningToast("Your update completed successfully",
                               color: AppColors.green);
                           Future.delayed(const Duration(seconds: 2));
                           RouteManager.instance.pushNamed(path: RouteConstants.bmiCalculator);

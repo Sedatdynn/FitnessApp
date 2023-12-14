@@ -3,8 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../theme/colors.dart';
 
-Future<bool?> warningToast(BuildContext context, String text,
-    {Color? color = Colors.red}) {
+Future<bool?> warningToast(String text, {Color? color = Colors.red}) {
   return Fluttertoast.showToast(
       msg: text,
       timeInSecForIosWeb: 2,

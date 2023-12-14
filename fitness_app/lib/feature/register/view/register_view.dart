@@ -2,11 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/extensions/extensions_shelf.dart';
-import '../../product/const/const_shelf.dart';
-import '../../core/service/auth_service.dart';
-import '../../product/theme/colors.dart';
-import '../../product/widget/appBar/custom_app_bar.dart';
-import '../views_shelf.dart';
+import '../../../product/const/const_shelf.dart';
+import '../../../core/service/auth_service.dart';
+import '../../../product/theme/colors.dart';
+import '../../../product/widget/appBar/custom_app_bar.dart';
+import '../../views_shelf.dart';
 
 @RoutePage()
 class RegisterView extends StatefulWidget {
@@ -190,15 +190,15 @@ class _RegisterViewState extends State<RegisterView> {
         password: _passwordController.text,
       ));
     } else if (_usernameController.text.isEmpty) {
-      warningToast(context, WarningText.registerEmptyUsername);
+      warningToast(WarningText.registerEmptyUsername);
     } else if (_emailController.text.toString().isEmpty) {
-      warningToast(context, WarningText.registerEmptyEmail);
+      warningToast(WarningText.registerEmptyEmail);
     } else if (_passwordController.text.toString().isEmpty) {
-      warningToast(context, WarningText.registerInvalidPassword);
+      warningToast(WarningText.registerInvalidPassword);
     } else if (_passwordController.text.length < 6) {
-      warningToast(context, WarningText.registerInvalidPassword);
+      warningToast(WarningText.registerInvalidPassword);
     } else {
-      warningToast(context, WarningText.loginWrongEmailText);
+      warningToast(WarningText.loginWrongEmailText);
     }
   }
 }

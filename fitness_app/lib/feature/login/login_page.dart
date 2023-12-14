@@ -87,10 +87,9 @@ class _LoginViewState extends State<LoginView> {
                         context.read<LoginViewModel>().changeLoading();
                       }
                     } else {
-                      if (context.mounted) {
-                        warningToast(context, "Wrong Pass/Email! or verify your email!");
-                        context.read<LoginViewModel>().changeLoading();
-                      }
+                      if (!context.mounted) return;
+                      warningToast("Wrong Pass/Email! or verify your email!");
+                      context.read<LoginViewModel>().changeLoading();
                     }
                   }),
             ],

@@ -83,7 +83,7 @@ class _RegisterNameViewState extends State<RegisterNameView> {
         name: _nameController.text,
       ));
     } else {
-      warningToast(context, WarningText.nameWarningText);
+      warningToast(WarningText.nameWarningText);
     }
   }
 }

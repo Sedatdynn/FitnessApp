@@ -10,7 +10,7 @@ import '../../../product/theme/colors.dart';
 import '../../../product/widget/button/auth_button.dart';
 import '../../views_shelf.dart';
 
-part '../subview/launch_subview.dart';
+part '../widget/launch_subview.dart';
 
 @RoutePage()
 class LaunchView extends StatelessWidget {

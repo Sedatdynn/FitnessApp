@@ -138,7 +138,7 @@ class _GenderViewState extends State<GenderView> {
         gender: choiceControl().toString(),
       ));
     } else {
-      warningToast(context, WarningText.sexWarningText);
+      warningToast(WarningText.sexWarningText);
     }
   }
 

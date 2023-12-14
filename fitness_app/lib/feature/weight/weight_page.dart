@@ -196,11 +196,8 @@ class _WeightViewState extends State<WeightView> {
               userRightPoint: totalPoint.toString()));
 
       if (isSucces!) {
-        if (!context.mounted) return;
-        await warningToast(context, RegisterText.registerSuccessfully, color: AppColors.green);
-        if (!context.mounted) return;
-        await warningToast(context, RegisterText.verifyWarning, color: AppColors.green);
-
+        await warningToast(RegisterText.registerSuccessfully, color: AppColors.green);
+        await warningToast(RegisterText.verifyWarning, color: AppColors.green);
         await AuthService.instance.sendEmailVerified();
         RouteManager.instance.pushAndPopUntil(LoginRoute(canPop: false));
       } else {
@@ -210,16 +207,13 @@ class _WeightViewState extends State<WeightView> {
         setState(() {
           isLoading = false;
         });
-        if (!context.mounted) return;
-
-        await warningToast(context, WarningText.registerUniqueMail);
+        await warningToast(WarningText.registerUniqueMail);
       }
     } catch (error) {
       setState(() {
         isLoading = false;
       });
-      if (!context.mounted) return;
-      await warningToast(context, error.toString());
+      await warningToast(error.toString());
     }
   }
 }

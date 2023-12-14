@@ -117,17 +117,11 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 await FoodsService(ProjectNetworkManager.instance.service, "reset password")
                     .resetPasswordLink(_emailController.text);
             if (response!) {
-              if (context.mounted) {
-                await warningToast(context, "Reset password email has been sent",
-                    color: AppColors.green);
-              }
+              await warningToast("Reset password email has been sent", color: AppColors.green);
             } else {
-              if (context.mounted) {
-                await warningToast(
-                  context,
-                  "Reset password email couldnt sent please try again ",
-                );
-              }
+              await warningToast(
+                "Reset password email couldnt sent please try again ",
+              );
             }
           },
           child: Text(RegisterText.verifyEmailText, style: Theme.of(context).textTheme.titleLarge),

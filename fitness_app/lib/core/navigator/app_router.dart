@@ -15,7 +15,7 @@ import 'package:fistness_app_firebase/feature/launch/view/launch_page.dart';
 import 'package:fistness_app_firebase/feature/login/login_page.dart';
 import 'package:fistness_app_firebase/feature/profile/edit_profile.dart';
 import 'package:fistness_app_firebase/feature/profile/profile_page.dart';
-import 'package:fistness_app_firebase/feature/register/register_page.dart';
+import 'package:fistness_app_firebase/feature/register/view/register_view.dart';
 import 'package:fistness_app_firebase/feature/registerName/register_name.dart';
 import 'package:fistness_app_firebase/feature/weight/weight_page.dart';
 import 'package:flutter/material.dart';
