@@ -1,197 +1,161 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/navigator/app_router.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:fistness_app_firebase/feature/register/cubit/register_cubit.dart';
+import 'package:fistness_app_firebase/feature/register/cubit/register_state.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/space.dart';
+import 'package:fistness_app_firebase/product/extensions/regex.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../product/const/const_shelf.dart';
-import '../../../core/service/auth_service.dart';
 import '../../../product/theme/colors.dart';
 import '../../../product/widget/appBar/custom_app_bar.dart';
 import '../../views_shelf.dart';
 
 @RoutePage()
-class RegisterView extends StatefulWidget {
+class RegisterView extends StatelessWidget {
   const RegisterView({Key? key}) : super(key: key);
-
-  @override
-  State<RegisterView> createState() => _RegisterViewState();
-}
-
-class _RegisterViewState extends State<RegisterView> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  bool _isVisible = true;
-  bool isLoading = false;
-  final AuthService authService = AuthService.instance;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CommonAppBar(),
-      body: Stack(
-        children: [
-          Padding(
-            padding: const AppPadding.lowHorizontal(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _bodyContainer(),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
+    final formKey = GlobalKey<FormState>();
+    return BlocProvider(
+      create: (context) => RegisterCubit(),
+      child: Scaffold(
+        appBar: const CommonAppBar(),
+        body: Padding(
+          padding: const AppPadding.lowHorizontal(),
+          child: SingleChildScrollView(
+            child: Form(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              key: formKey,
+              child: Column(
+                children: [
+                  const LogoBody(),
+                  SizedBox(height: 40.h),
+                  _usernameTextfield(),
+                  CustomSize.xLargeHeight(),
+                  _emailTextfield(),
+                  CustomSize.xLargeHeight(),
+                  _passwordTextfield(),
+                  CustomSize.minHeight(),
+                  _orText(context),
+                  SizedBox(height: 30.h),
+                  BlocBuilder<RegisterCubit, RegisterState>(
+                    builder: (context, state) {
+                      return CommonButton(
+                          text: MyText.continueText,
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              context.read<RegisterCubit>().registerUser();
+                            } else {
+                              warningToast('check warning messages');
+                            }
+                          });
+                    },
+                  ),
+                ],
+              ),
             ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Flexible _bodyContainer() {
-    return Flexible(
-        child: Container(
-      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(16.0))),
-      child: Padding(
-        padding: const AppPadding.minAll(),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const LogoBody(),
-              const SizedBox(
-                height: 40,
-              ),
-              _usernameTextfield(),
-              const SizedBox(
-                height: 20,
-              ),
-              _emailTextfield(),
-              const SizedBox(
-                height: 20,
-              ),
-              _passwordTextfield(),
-              const SizedBox(
-                height: 5,
-              ),
-              _orText(),
-              const SizedBox(
-                height: 30,
-              ),
-              CommonButton(text: MyText.continueText, onPressed: _registerOnTap),
-            ],
           ),
         ),
       ),
-    ));
-  }
-
-  TextField _usernameTextfield() {
-    return TextField(
-      style: Theme.of(context).textTheme.titleSmall,
-      textInputAction: TextInputAction.next,
-      controller: _usernameController,
-      cursorColor: AppColors.whiteText,
-      decoration: const InputDecoration(
-        prefixIcon: Icon(
-          Icons.account_circle,
-          color: AppColors.mainPrimary,
-        ),
-        hintText: MyText.usernameText,
-      ),
     );
   }
 
-  TextField _emailTextfield() {
-    return TextField(
-      textInputAction: TextInputAction.next,
-      style: Theme.of(context).textTheme.titleSmall,
-      controller: _emailController,
-      cursorColor: AppColors.whiteText,
-      keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(
-        prefixIcon: Icon(
-          Icons.mail,
-          color: AppColors.mainPrimary,
-        ),
-        hintText: RegisterText.emailText,
-      ),
-    );
-  }
-
-  TextField _passwordTextfield() {
-    return TextField(
-      style: Theme.of(context).textTheme.titleSmall,
-      controller: _passwordController,
-      obscureText: _isVisible ? true : false,
-      cursorColor: AppColors.whiteText,
-      decoration: InputDecoration(
-        suffixIcon: InkWell(
-          onTap: () {
-            if (_isVisible) {
-              setState(() {
-                _isVisible = false;
-              });
-            } else {
-              setState(() {
-                _isVisible = false;
-              });
-              _isVisible = true;
-            }
+  Widget _usernameTextfield() {
+    return BlocBuilder<RegisterCubit, RegisterState>(
+      builder: (context, state) {
+        return TextFormField(
+          style: Theme.of(context).textTheme.titleSmall,
+          textInputAction: TextInputAction.next,
+          cursorColor: AppColors.whiteText,
+          onChanged: (val) {
+            if (val.isEmpty) return;
+            context.read<RegisterCubit>().setUsername(val);
           },
-          child: _isVisible
-              ? const Icon(
-                  Icons.remove_red_eye,
-                  color: AppColors.mainPrimary,
-                )
-              : const Icon(
-                  Icons.remove_red_eye_outlined,
-                  color: AppColors.mainPrimary,
-                ),
-        ),
-        prefixIcon: const Icon(
-          Icons.vpn_key,
-          color: AppColors.mainPrimary,
-        ),
-        hintText: RegisterText.passwordText,
-      ),
+          validator: (value) =>
+              ValidateRegexExtension(value!).isName ? null : WarningText.registerEmptyUsername,
+          decoration: const InputDecoration(
+            prefixIcon: Icon(
+              Icons.account_circle,
+              color: AppColors.mainPrimary,
+            ),
+            hintText: MyText.usernameText,
+          ),
+        );
+      },
     );
   }
 
-  _orText() {
+  Widget _emailTextfield() {
+    return BlocBuilder<RegisterCubit, RegisterState>(
+      builder: (context, state) {
+        return TextFormField(
+          textInputAction: TextInputAction.next,
+          style: Theme.of(context).textTheme.titleSmall,
+          cursorColor: AppColors.whiteText,
+          keyboardType: TextInputType.emailAddress,
+          onChanged: (val) {
+            if (val.isEmpty) return;
+            context.read<RegisterCubit>().setEmail(val);
+          },
+          validator: (value) =>
+              ValidateRegexExtension(value!).isEmail ? null : WarningText.registerUniqueMail,
+          decoration: const InputDecoration(
+            prefixIcon: Icon(
+              Icons.mail,
+              color: AppColors.mainPrimary,
+            ),
+            hintText: RegisterText.emailText,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _passwordTextfield() {
+    return BlocBuilder<RegisterCubit, RegisterState>(
+      builder: (context, state) {
+        return TextFormField(
+          style: Theme.of(context).textTheme.titleSmall,
+          onChanged: (val) {
+            if (val.isEmpty) return;
+            context.read<RegisterCubit>().setPassword(val);
+          },
+          obscureText: state.isVisible,
+          cursorColor: AppColors.whiteText,
+          validator: (value) => ValidateRegexExtension(value!).isPassword
+              ? null
+              : WarningText.registerInvalidPassword,
+          decoration: InputDecoration(
+            suffixIcon: InkWell(
+              onTap: () {
+                context.read<RegisterCubit>().changeVisible();
+              },
+              child: state.isVisible
+                  ? const Icon(
+                      Icons.remove_red_eye,
+                      color: AppColors.mainPrimary,
+                    )
+                  : const Icon(
+                      Icons.remove_red_eye_outlined,
+                      color: AppColors.mainPrimary,
+                    ),
+            ),
+            prefixIcon: const Icon(
+              Icons.vpn_key,
+              color: AppColors.mainPrimary,
+            ),
+            hintText: RegisterText.passwordText,
+          ),
+        );
+      },
+    );
+  }
+
+  _orText(BuildContext context) {
     return Text(
       RegisterText.orSignText,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.whiteText),
     );
-  }
-
-  void _registerOnTap() {
-    if (_usernameController.text.isNotEmpty &&
-        _emailController.text.isNotEmpty &&
-        _emailController.text.contains("@") &&
-        _emailController.text.contains(".com") &&
-        _passwordController.text.isNotEmpty &&
-        _passwordController.text.length >= 6) {
-      setState(() {
-        isLoading = true;
-      });
-      RouteManager.instance.push(RegisterNameRoute(
-        username: _usernameController.text,
-        mail: _emailController.text,
-        password: _passwordController.text,
-      ));
-    } else if (_usernameController.text.isEmpty) {
-      warningToast(WarningText.registerEmptyUsername);
-    } else if (_emailController.text.toString().isEmpty) {
-      warningToast(WarningText.registerEmptyEmail);
-    } else if (_passwordController.text.toString().isEmpty) {
-      warningToast(WarningText.registerInvalidPassword);
-    } else if (_passwordController.text.length < 6) {
-      warningToast(WarningText.registerInvalidPassword);
-    } else {
-      warningToast(WarningText.loginWrongEmailText);
-    }
   }
 }

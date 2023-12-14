@@ -1,5 +1,5 @@
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/colors.dart';
 
@@ -16,8 +16,8 @@ class CommonButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: context.height * 0.06,
-        width: context.width * 0.81,
+        height: 48.h,
+        width: 284.w,
         child: OutlinedButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all(
