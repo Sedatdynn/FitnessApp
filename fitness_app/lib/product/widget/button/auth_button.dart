@@ -1,5 +1,6 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../feature/views_shelf.dart';
-import '../../const/responsive/responsive.dart';
 import '../../theme/colors.dart';
 
 class AuthButton extends StatelessWidget {
@@ -20,8 +21,8 @@ class AuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.dynamicHeight(0.06),
-      width: context.dynamicWidth(0.8),
+      height: 48.h,
+      width: 342.w,
       child: OutlinedButton.icon(
         icon: icon,
         onPressed: onPressed,

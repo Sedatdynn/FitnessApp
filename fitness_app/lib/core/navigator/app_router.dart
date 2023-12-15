@@ -16,7 +16,6 @@ import 'package:fistness_app_firebase/feature/login/login_page.dart';
 import 'package:fistness_app_firebase/feature/profile/edit_profile.dart';
 import 'package:fistness_app_firebase/feature/profile/profile_page.dart';
 import 'package:fistness_app_firebase/feature/register/view/register_view.dart';
-import 'package:fistness_app_firebase/feature/registerName/register_name.dart';
 import 'package:fistness_app_firebase/feature/weight/weight_page.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: RouteConstants.register, page: RegisterRoute.page),
         AutoRoute(path: RouteConstants.login, page: LoginRoute.page),
         AutoRoute(path: RouteConstants.forgotPassword, page: ForgotPasswordRoute.page),
-        AutoRoute(path: RouteConstants.registerName, page: RegisterNameRoute.page),
         AutoRoute(path: RouteConstants.gender, page: GenderRoute.page),
         AutoRoute(path: RouteConstants.age, page: AgeRoute.page),
         AutoRoute(path: RouteConstants.dailyMobility, page: DailyMobilityRoute.page),

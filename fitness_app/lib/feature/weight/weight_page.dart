@@ -22,14 +22,12 @@ class WeightView extends StatefulWidget {
   final int? age;
   final String? mobility;
   final int? height;
-  final String uid;
 
   const WeightView(
       {Key? key,
       this.username,
       this.mail,
       this.password,
-      required this.uid,
       this.name,
       this.gender,
       this.age,

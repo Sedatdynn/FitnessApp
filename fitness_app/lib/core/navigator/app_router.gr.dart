@@ -16,7 +16,8 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     AgeRoute.name: (routeData) {
-      final args = routeData.argsAs<AgeRouteArgs>();
+      final args =
+          routeData.argsAs<AgeRouteArgs>(orElse: () => const AgeRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AgeView(
@@ -24,7 +25,6 @@ abstract class _$AppRouter extends RootStackRouter {
           username: args.username,
           mail: args.mail,
           password: args.password,
-          uid: args.uid,
           name: args.name,
           gender: args.gender,
         ),
@@ -37,7 +37,8 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     DailyMobilityRoute.name: (routeData) {
-      final args = routeData.argsAs<DailyMobilityRouteArgs>();
+      final args = routeData.argsAs<DailyMobilityRouteArgs>(
+          orElse: () => const DailyMobilityRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: DailyMobilityView(
@@ -45,7 +46,6 @@ abstract class _$AppRouter extends RootStackRouter {
           username: args.username,
           mail: args.mail,
           password: args.password,
-          uid: args.uid,
           name: args.name,
           gender: args.gender,
           age: args.age,
@@ -86,7 +86,8 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     GenderRoute.name: (routeData) {
-      final args = routeData.argsAs<GenderRouteArgs>();
+      final args = routeData.argsAs<GenderRouteArgs>(
+          orElse: () => const GenderRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: GenderView(
@@ -95,12 +96,12 @@ abstract class _$AppRouter extends RootStackRouter {
           mail: args.mail,
           name: args.name,
           password: args.password,
-          uid: args.uid,
         ),
       );
     },
     HeightRoute.name: (routeData) {
-      final args = routeData.argsAs<HeightRouteArgs>();
+      final args = routeData.argsAs<HeightRouteArgs>(
+          orElse: () => const HeightRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: HeightView(
@@ -108,7 +109,6 @@ abstract class _$AppRouter extends RootStackRouter {
           username: args.username,
           mail: args.mail,
           password: args.password,
-          uid: args.uid,
           name: args.name,
           gender: args.gender,
           age: args.age,
@@ -151,20 +151,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileView(),
       );
     },
-    RegisterNameRoute.name: (routeData) {
-      final args = routeData.argsAs<RegisterNameRouteArgs>(
-          orElse: () => const RegisterNameRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: RegisterNameView(
-          key: args.key,
-          username: args.username,
-          mail: args.mail,
-          password: args.password,
-          uid: args.uid,
-        ),
-      );
-    },
     RegisterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -178,7 +164,8 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     WeightRoute.name: (routeData) {
-      final args = routeData.argsAs<WeightRouteArgs>();
+      final args = routeData.argsAs<WeightRouteArgs>(
+          orElse: () => const WeightRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: WeightView(
@@ -186,7 +173,6 @@ abstract class _$AppRouter extends RootStackRouter {
           username: args.username,
           mail: args.mail,
           password: args.password,
-          uid: args.uid,
           name: args.name,
           gender: args.gender,
           age: args.age,
@@ -206,7 +192,6 @@ class AgeRoute extends PageRouteInfo<AgeRouteArgs> {
     String? username,
     String? mail,
     String? password,
-    required String uid,
     String? name,
     String? gender,
     List<PageRouteInfo>? children,
@@ -217,7 +202,6 @@ class AgeRoute extends PageRouteInfo<AgeRouteArgs> {
             username: username,
             mail: mail,
             password: password,
-            uid: uid,
             name: name,
             gender: gender,
           ),
@@ -235,7 +219,6 @@ class AgeRouteArgs {
     this.username,
     this.mail,
     this.password,
-    required this.uid,
     this.name,
     this.gender,
   });
@@ -248,15 +231,13 @@ class AgeRouteArgs {
 
   final String? password;
 
-  final String uid;
-
   final String? name;
 
   final String? gender;
 
   @override
   String toString() {
-    return 'AgeRouteArgs{key: $key, username: $username, mail: $mail, password: $password, uid: $uid, name: $name, gender: $gender}';
+    return 'AgeRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender}';
   }
 }
 
@@ -282,7 +263,6 @@ class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
     String? username,
     String? mail,
     String? password,
-    required String uid,
     String? name,
     String? gender,
     int? age,
@@ -294,7 +274,6 @@ class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
             username: username,
             mail: mail,
             password: password,
-            uid: uid,
             name: name,
             gender: gender,
             age: age,
@@ -314,7 +293,6 @@ class DailyMobilityRouteArgs {
     this.username,
     this.mail,
     this.password,
-    required this.uid,
     this.name,
     this.gender,
     this.age,
@@ -328,8 +306,6 @@ class DailyMobilityRouteArgs {
 
   final String? password;
 
-  final String uid;
-
   final String? name;
 
   final String? gender;
@@ -338,7 +314,7 @@ class DailyMobilityRouteArgs {
 
   @override
   String toString() {
-    return 'DailyMobilityRouteArgs{key: $key, username: $username, mail: $mail, password: $password, uid: $uid, name: $name, gender: $gender, age: $age}';
+    return 'DailyMobilityRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, age: $age}';
   }
 }
 
@@ -460,7 +436,6 @@ class GenderRoute extends PageRouteInfo<GenderRouteArgs> {
     String? mail,
     String? name,
     String? password,
-    required String uid,
     List<PageRouteInfo>? children,
   }) : super(
           GenderRoute.name,
@@ -470,7 +445,6 @@ class GenderRoute extends PageRouteInfo<GenderRouteArgs> {
             mail: mail,
             name: name,
             password: password,
-            uid: uid,
           ),
           initialChildren: children,
         );
@@ -487,7 +461,6 @@ class GenderRouteArgs {
     this.mail,
     this.name,
     this.password,
-    required this.uid,
   });
 
   final Key? key;
@@ -500,11 +473,9 @@ class GenderRouteArgs {
 
   final String? password;
 
-  final String uid;
-
   @override
   String toString() {
-    return 'GenderRouteArgs{key: $key, username: $username, mail: $mail, name: $name, password: $password, uid: $uid}';
+    return 'GenderRouteArgs{key: $key, username: $username, mail: $mail, name: $name, password: $password}';
   }
 }
 
@@ -516,7 +487,6 @@ class HeightRoute extends PageRouteInfo<HeightRouteArgs> {
     String? username,
     String? mail,
     String? password,
-    required String uid,
     String? name,
     String? gender,
     int? age,
@@ -529,7 +499,6 @@ class HeightRoute extends PageRouteInfo<HeightRouteArgs> {
             username: username,
             mail: mail,
             password: password,
-            uid: uid,
             name: name,
             gender: gender,
             age: age,
@@ -549,7 +518,6 @@ class HeightRouteArgs {
     this.username,
     this.mail,
     this.password,
-    required this.uid,
     this.name,
     this.gender,
     this.age,
@@ -564,8 +532,6 @@ class HeightRouteArgs {
 
   final String? password;
 
-  final String uid;
-
   final String? name;
 
   final String? gender;
@@ -576,7 +542,7 @@ class HeightRouteArgs {
 
   @override
   String toString() {
-    return 'HeightRouteArgs{key: $key, username: $username, mail: $mail, password: $password, uid: $uid, name: $name, gender: $gender, age: $age, mobility: $mobility}';
+    return 'HeightRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, age: $age, mobility: $mobility}';
   }
 }
 
@@ -674,59 +640,6 @@ class ProfileRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [RegisterNameView]
-class RegisterNameRoute extends PageRouteInfo<RegisterNameRouteArgs> {
-  RegisterNameRoute({
-    Key? key,
-    String? username,
-    String? mail,
-    String? password,
-    String? uid,
-    List<PageRouteInfo>? children,
-  }) : super(
-          RegisterNameRoute.name,
-          args: RegisterNameRouteArgs(
-            key: key,
-            username: username,
-            mail: mail,
-            password: password,
-            uid: uid,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'RegisterNameRoute';
-
-  static const PageInfo<RegisterNameRouteArgs> page =
-      PageInfo<RegisterNameRouteArgs>(name);
-}
-
-class RegisterNameRouteArgs {
-  const RegisterNameRouteArgs({
-    this.key,
-    this.username,
-    this.mail,
-    this.password,
-    this.uid,
-  });
-
-  final Key? key;
-
-  final String? username;
-
-  final String? mail;
-
-  final String? password;
-
-  final String? uid;
-
-  @override
-  String toString() {
-    return 'RegisterNameRouteArgs{key: $key, username: $username, mail: $mail, password: $password, uid: $uid}';
-  }
-}
-
-/// generated route for
 /// [RegisterView]
 class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute({List<PageRouteInfo>? children})
@@ -762,7 +675,6 @@ class WeightRoute extends PageRouteInfo<WeightRouteArgs> {
     String? username,
     String? mail,
     String? password,
-    required String uid,
     String? name,
     String? gender,
     int? age,
@@ -776,7 +688,6 @@ class WeightRoute extends PageRouteInfo<WeightRouteArgs> {
             username: username,
             mail: mail,
             password: password,
-            uid: uid,
             name: name,
             gender: gender,
             age: age,
@@ -797,7 +708,6 @@ class WeightRouteArgs {
     this.username,
     this.mail,
     this.password,
-    required this.uid,
     this.name,
     this.gender,
     this.age,
@@ -813,8 +723,6 @@ class WeightRouteArgs {
 
   final String? password;
 
-  final String uid;
-
   final String? name;
 
   final String? gender;
@@ -827,6 +735,6 @@ class WeightRouteArgs {
 
   @override
   String toString() {
-    return 'WeightRouteArgs{key: $key, username: $username, mail: $mail, password: $password, uid: $uid, name: $name, gender: $gender, age: $age, height: $height, mobility: $mobility}';
+    return 'WeightRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, age: $age, height: $height, mobility: $mobility}';
   }
 }

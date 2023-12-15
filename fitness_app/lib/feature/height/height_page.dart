@@ -16,14 +16,12 @@ class HeightView extends StatefulWidget {
   final String? name;
   final String? gender;
   final int? age;
-  final String uid;
   final String? mobility;
   const HeightView({
     Key? key,
     this.username,
     this.mail,
     this.password,
-    required this.uid,
     this.name,
     this.gender,
     this.age,
@@ -74,7 +72,6 @@ class _HeightViewState extends State<HeightView> {
       username: widget.username,
       mail: widget.mail,
       password: widget.password,
-      uid: widget.uid,
       name: widget.name,
       gender: widget.gender,
       age: widget.age,

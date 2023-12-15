@@ -13,17 +13,9 @@ class AgeView extends StatefulWidget {
   final String? username;
   final String? mail;
   final String? password;
-  final String uid;
   final String? name;
   final String? gender;
-  const AgeView(
-      {Key? key,
-      this.username,
-      this.mail,
-      this.password,
-      required this.uid,
-      this.name,
-      this.gender})
+  const AgeView({Key? key, this.username, this.mail, this.password, this.name, this.gender})
       : super(key: key);
 
   @override
@@ -80,7 +72,6 @@ class _AgeViewState extends State<AgeView> {
               username: widget.username,
               mail: widget.mail,
               password: widget.password,
-              uid: widget.uid,
               name: widget.name,
               gender: widget.gender,
               age: 2023 - _currentValue,

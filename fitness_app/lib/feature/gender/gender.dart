@@ -15,9 +15,7 @@ class GenderView extends StatefulWidget {
   final String? mail;
   final String? name;
   final String? password;
-  final String uid;
-  const GenderView(
-      {Key? key, this.username, this.mail, this.name, this.password, required this.uid})
+  const GenderView({Key? key, this.username, this.mail, this.name, this.password})
       : super(key: key);
 
   @override
@@ -133,7 +131,6 @@ class _GenderViewState extends State<GenderView> {
         mail: widget.mail,
         username: widget.username,
         password: widget.password,
-        uid: widget.uid,
         name: widget.name,
         gender: choiceControl().toString(),
       ));

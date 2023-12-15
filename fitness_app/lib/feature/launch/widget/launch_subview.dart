@@ -8,14 +8,7 @@ class _TitleTextWidget extends StatelessWidget {
     return Center(
       child: Text(
         MyText.fitText,
-        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-          shadows: <Shadow>[
-            const Shadow(
-                offset: Offset(5.0, 5.0), blurRadius: 3.0, color: AppColors.keyTextShadowColor),
-            const Shadow(
-                offset: Offset(5.0, 5.0), blurRadius: 8.0, color: AppColors.keyTextMainColor),
-          ],
-        ),
+        style: Theme.of(context).textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
       ),
     );
   }
@@ -53,9 +46,7 @@ class _GoogleButton extends StatelessWidget {
       onPressed: () async {
         bool? isSuccess = await AuthService.instance.signInWithGoogle();
         if (isSuccess) {
-          if (context.mounted) {
-            RouteManager.instance.pushAndPopUntil(const MainRoute());
-          }
+          RouteManager.instance.pushAndPopUntil(const MainRoute());
         }
       },
     );

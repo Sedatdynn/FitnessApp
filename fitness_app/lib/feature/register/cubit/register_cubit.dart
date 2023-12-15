@@ -11,14 +11,16 @@ class RegisterCubit extends BaseCubit<RegisterState> {
 
   void changeVisible() => emit(state.copyWith(isVisible: !state.isVisible));
   void setUsername(String username) => emit(state.copyWith(username: username));
+  void setNameSurname(String nameSurname) => emit(state.copyWith(nameSurname: nameSurname));
   void setEmail(String email) => emit(state.copyWith(email: email));
   void setPassword(String password) => emit(state.copyWith(password: password));
 
   void registerUser() {
-    RouteManager.instance.push(RegisterNameRoute(
+    RouteManager.instance.push(GenderRoute(
       username: state.username,
       mail: state.email,
       password: state.password,
+      name: state.nameSurname,
     ));
   }
 }

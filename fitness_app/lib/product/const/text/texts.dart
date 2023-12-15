@@ -32,6 +32,7 @@ class RegisterText {
   static const String orSignText = "Or sign-up with:";
   static const String createText = "Create Account";
   static const String passwordText = "Password";
+  static const String fillErrorText = "Make sure the relevant fields are filled in correctly";
 }
 
 class QuestionsText {
@@ -40,7 +41,7 @@ class QuestionsText {
   static const String heightText = "How much is your height?";
   static const String accountText = "Don't you have an account?";
   static const String forgotPassText = "Forgot password?";
-  static const String nameText = "Your Name?";
+  static const String nameText = "Name surname?";
   static const String weightText = "How much is your weight?";
 }
 
