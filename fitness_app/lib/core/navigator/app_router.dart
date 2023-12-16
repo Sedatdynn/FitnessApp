@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/feature/age/age_page.dart';
+import 'package:fistness_app_firebase/feature/age/params/age_params.dart';
+import 'package:fistness_app_firebase/feature/age/view/age_view.dart';
 import 'package:fistness_app_firebase/feature/bmi/bmi_page.dart';
 import 'package:fistness_app_firebase/feature/exerciseMobility/exercise_mobility.dart';
 import 'package:fistness_app_firebase/feature/exercises/model/exercises_model.dart';

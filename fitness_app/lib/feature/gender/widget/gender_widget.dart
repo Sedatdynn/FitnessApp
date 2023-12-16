@@ -84,11 +84,13 @@ class _NextButton extends StatelessWidget {
         return CommonButton(
             text: MyText.continueText,
             onPressed: () => RouteManager.instance.push(AgeRoute(
-                  mail: params.mail,
-                  username: params.username,
-                  password: params.password,
-                  name: params.name,
-                  gender: state.selectedGender,
+                  params: AgeParams(
+                    mail: params.mail,
+                    username: params.username,
+                    password: params.password,
+                    name: params.name,
+                    gender: state.selectedGender,
+                  ),
                 )));
       },
     );

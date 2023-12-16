@@ -16,17 +16,12 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     AgeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<AgeRouteArgs>(orElse: () => const AgeRouteArgs());
+      final args = routeData.argsAs<AgeRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AgeView(
           key: args.key,
-          username: args.username,
-          mail: args.mail,
-          password: args.password,
-          name: args.name,
-          gender: args.gender,
+          params: args.params,
         ),
       );
     },
@@ -48,7 +43,7 @@ abstract class _$AppRouter extends RootStackRouter {
           password: args.password,
           name: args.name,
           gender: args.gender,
-          age: args.age,
+          birthYear: args.birthYear,
         ),
       );
     },
@@ -185,21 +180,13 @@ abstract class _$AppRouter extends RootStackRouter {
 class AgeRoute extends PageRouteInfo<AgeRouteArgs> {
   AgeRoute({
     Key? key,
-    String? username,
-    String? mail,
-    String? password,
-    String? name,
-    String? gender,
+    required AgeParams params,
     List<PageRouteInfo>? children,
   }) : super(
           AgeRoute.name,
           args: AgeRouteArgs(
             key: key,
-            username: username,
-            mail: mail,
-            password: password,
-            name: name,
-            gender: gender,
+            params: params,
           ),
           initialChildren: children,
         );
@@ -212,28 +199,16 @@ class AgeRoute extends PageRouteInfo<AgeRouteArgs> {
 class AgeRouteArgs {
   const AgeRouteArgs({
     this.key,
-    this.username,
-    this.mail,
-    this.password,
-    this.name,
-    this.gender,
+    required this.params,
   });
 
   final Key? key;
 
-  final String? username;
-
-  final String? mail;
-
-  final String? password;
-
-  final String? name;
-
-  final String? gender;
+  final AgeParams params;
 
   @override
   String toString() {
-    return 'AgeRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender}';
+    return 'AgeRouteArgs{key: $key, params: $params}';
   }
 }
 
@@ -261,7 +236,7 @@ class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
     String? password,
     String? name,
     String? gender,
-    int? age,
+    int? birthYear,
     List<PageRouteInfo>? children,
   }) : super(
           DailyMobilityRoute.name,
@@ -272,7 +247,7 @@ class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
             password: password,
             name: name,
             gender: gender,
-            age: age,
+            birthYear: birthYear,
           ),
           initialChildren: children,
         );
@@ -291,7 +266,7 @@ class DailyMobilityRouteArgs {
     this.password,
     this.name,
     this.gender,
-    this.age,
+    this.birthYear,
   });
 
   final Key? key;
@@ -306,11 +281,11 @@ class DailyMobilityRouteArgs {
 
   final String? gender;
 
-  final int? age;
+  final int? birthYear;
 
   @override
   String toString() {
-    return 'DailyMobilityRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, age: $age}';
+    return 'DailyMobilityRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, birthYear: $birthYear}';
   }
 }
 

@@ -21,9 +21,9 @@ class DailyMobilityView extends StatefulWidget {
   final String? password;
   final String? name;
   final String? gender;
-  final int? age;
+  final int? birthYear;
   const DailyMobilityView(
-      {Key? key, this.username, this.mail, this.password, this.name, this.gender, this.age})
+      {Key? key, this.username, this.mail, this.password, this.name, this.gender, this.birthYear})
       : super(key: key);
   @override
   State<DailyMobilityView> createState() => _DailyMobilityViewState();
@@ -80,7 +80,7 @@ class _DailyMobilityViewState extends State<DailyMobilityView> {
                     password: widget.password,
                     name: widget.name,
                     gender: widget.gender,
-                    age: widget.age,
+                    age: widget.birthYear,
                     mobility: selectedValue,
                   ));
                 })
