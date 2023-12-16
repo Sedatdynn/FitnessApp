@@ -86,16 +86,12 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     GenderRoute.name: (routeData) {
-      final args = routeData.argsAs<GenderRouteArgs>(
-          orElse: () => const GenderRouteArgs());
+      final args = routeData.argsAs<GenderRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: GenderView(
           key: args.key,
-          username: args.username,
-          mail: args.mail,
-          name: args.name,
-          password: args.password,
+          params: args.params,
         ),
       );
     },
@@ -432,19 +428,13 @@ class ForgotPasswordRoute extends PageRouteInfo<void> {
 class GenderRoute extends PageRouteInfo<GenderRouteArgs> {
   GenderRoute({
     Key? key,
-    String? username,
-    String? mail,
-    String? name,
-    String? password,
+    required GenderParams params,
     List<PageRouteInfo>? children,
   }) : super(
           GenderRoute.name,
           args: GenderRouteArgs(
             key: key,
-            username: username,
-            mail: mail,
-            name: name,
-            password: password,
+            params: params,
           ),
           initialChildren: children,
         );
@@ -457,25 +447,16 @@ class GenderRoute extends PageRouteInfo<GenderRouteArgs> {
 class GenderRouteArgs {
   const GenderRouteArgs({
     this.key,
-    this.username,
-    this.mail,
-    this.name,
-    this.password,
+    required this.params,
   });
 
   final Key? key;
 
-  final String? username;
-
-  final String? mail;
-
-  final String? name;
-
-  final String? password;
+  final GenderParams params;
 
   @override
   String toString() {
-    return 'GenderRouteArgs{key: $key, username: $username, mail: $mail, name: $name, password: $password}';
+    return 'GenderRouteArgs{key: $key, params: $params}';
   }
 }
 

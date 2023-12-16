@@ -18,6 +18,10 @@ final class CustomSize extends SizedBox {
 
   CustomSize.xLargeHeight({super.key}) : super(height: 20.h);
 
+  /// xLarge height size 30
+
+  CustomSize.xxLargeHeight({super.key}) : super(height: 30.h);
+
   /// min width size 5
 
   CustomSize.minWidth({super.key}) : super(width: 5.h);

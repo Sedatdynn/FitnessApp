@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:fistness_app_firebase/feature/gender/params/gender_params.dart';
 import 'package:fistness_app_firebase/feature/register/cubit/register_state.dart';
 
 class RegisterCubit extends BaseCubit<RegisterState> {
@@ -17,10 +18,11 @@ class RegisterCubit extends BaseCubit<RegisterState> {
 
   void registerUser() {
     RouteManager.instance.push(GenderRoute(
+        params: GenderParams(
       username: state.username,
       mail: state.email,
       password: state.password,
       name: state.nameSurname,
-    ));
+    )));
   }
 }

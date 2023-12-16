@@ -127,7 +127,7 @@ class _ButtonWidget extends StatelessWidget {
               // } else {
               //   warningToast(RegisterText.fillErrorText);
               // }
-              // context.read<RegisterCubit>().registerUser();
+              context.read<RegisterCubit>().registerUser();
             });
       },
     );

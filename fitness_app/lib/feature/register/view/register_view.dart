@@ -31,7 +31,7 @@ class RegisterView extends StatelessWidget {
               child: Column(
                 children: [
                   const LogoBody(),
-                  CustomSize.xLargeHeight(),
+                  CustomSize.largeHeight(),
                   const _UsernameTextfieldWidget(),
                   CustomSize.largeHeight(),
                   const _NameSurnameFieldWidget(),
@@ -39,8 +39,7 @@ class RegisterView extends StatelessWidget {
                   const _EmailTextFieldWidget(),
                   CustomSize.largeHeight(),
                   const _PasswordTextFieldWidget(),
-                  CustomSize.minHeight(),
-                  CustomSize.largeHeight(),
+                  CustomSize.xLargeHeight(),
                   _ButtonWidget(formKey: formKey),
                 ],
               ),

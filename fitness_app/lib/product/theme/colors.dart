@@ -58,4 +58,5 @@ class AppColors {
 
   /// Color for loading bubbles.
   static const Color loadingColor = Color(0xffdabcf6);
+  static const Color blue = Color.fromARGB(255, 11, 11, 235);
 }

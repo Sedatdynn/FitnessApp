@@ -7,7 +7,8 @@ import 'package:fistness_app_firebase/feature/exercises/view/detailPages/detail_
 import 'package:fistness_app_firebase/feature/exercises/view/detailPages/exercises_page.dart';
 import 'package:fistness_app_firebase/feature/exercises/view/detailVideoPages/detail_video_page.dart';
 import 'package:fistness_app_firebase/feature/forgotPassword/forgot_password.dart';
-import 'package:fistness_app_firebase/feature/gender/gender.dart';
+import 'package:fistness_app_firebase/feature/gender/params/gender_params.dart';
+import 'package:fistness_app_firebase/feature/gender/view/gender_view.dart';
 import 'package:fistness_app_firebase/feature/height/height_page.dart';
 import 'package:fistness_app_firebase/feature/home/bottomNavigateBar/navigare_bar.dart';
 import 'package:fistness_app_firebase/feature/home/view/home_page.dart';
