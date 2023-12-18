@@ -41,12 +41,14 @@ class _NextButton extends StatelessWidget {
             text: MyText.continueText,
             onPressed: () {
               RouteManager.instance.push(DailyMobilityRoute(
-                username: params.username,
-                mail: params.mail,
-                password: params.password,
-                name: params.name,
-                gender: params.gender,
-                birthYear: state.birthYear,
+                params: MobilityParams(
+                  username: params.username,
+                  mail: params.mail,
+                  password: params.password,
+                  name: params.name,
+                  gender: params.gender,
+                  birthYear: state.birthYear,
+                ),
               ));
             });
       },

@@ -32,18 +32,12 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     DailyMobilityRoute.name: (routeData) {
-      final args = routeData.argsAs<DailyMobilityRouteArgs>(
-          orElse: () => const DailyMobilityRouteArgs());
+      final args = routeData.argsAs<DailyMobilityRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: DailyMobilityView(
           key: args.key,
-          username: args.username,
-          mail: args.mail,
-          password: args.password,
-          name: args.name,
-          gender: args.gender,
-          birthYear: args.birthYear,
+          params: args.params,
         ),
       );
     },
@@ -231,23 +225,13 @@ class BmiCalculatorRoute extends PageRouteInfo<void> {
 class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
   DailyMobilityRoute({
     Key? key,
-    String? username,
-    String? mail,
-    String? password,
-    String? name,
-    String? gender,
-    int? birthYear,
+    required MobilityParams params,
     List<PageRouteInfo>? children,
   }) : super(
           DailyMobilityRoute.name,
           args: DailyMobilityRouteArgs(
             key: key,
-            username: username,
-            mail: mail,
-            password: password,
-            name: name,
-            gender: gender,
-            birthYear: birthYear,
+            params: params,
           ),
           initialChildren: children,
         );
@@ -261,31 +245,16 @@ class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
 class DailyMobilityRouteArgs {
   const DailyMobilityRouteArgs({
     this.key,
-    this.username,
-    this.mail,
-    this.password,
-    this.name,
-    this.gender,
-    this.birthYear,
+    required this.params,
   });
 
   final Key? key;
 
-  final String? username;
-
-  final String? mail;
-
-  final String? password;
-
-  final String? name;
-
-  final String? gender;
-
-  final int? birthYear;
+  final MobilityParams params;
 
   @override
   String toString() {
-    return 'DailyMobilityRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, birthYear: $birthYear}';
+    return 'DailyMobilityRouteArgs{key: $key, params: $params}';
   }
 }
 

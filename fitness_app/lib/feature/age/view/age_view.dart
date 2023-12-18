@@ -5,6 +5,7 @@ import 'package:fistness_app_firebase/feature/age/cubit/age_cubit.dart';
 import 'package:fistness_app_firebase/feature/age/cubit/age_state.dart';
 
 import 'package:fistness_app_firebase/feature/age/params/age_params.dart';
+import 'package:fistness_app_firebase/feature/mobility/params/mobility_params.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

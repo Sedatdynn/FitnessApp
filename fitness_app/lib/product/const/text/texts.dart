@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@immutable
 final class MyText {
   const MyText._();
 
@@ -15,7 +16,9 @@ final class MyText {
   static dynamic currentUser;
 }
 
-class RegisterText {
+@immutable
+final class RegisterText {
+  const RegisterText._();
   static const String registerSuccessfully = "Your registration has been completed successfully.";
   static const String verifyWarning = "We sent an email to verification. Please Verify your email.";
   static const String signEmailText = 'Sign in with Email ';
@@ -33,9 +36,12 @@ class RegisterText {
   static const String createText = "Create Account";
   static const String passwordText = "Password";
   static const String fillErrorText = "Make sure the relevant fields are filled in correctly";
+  static const String selectMobility = "Select your daily exercise and your mobility";
 }
 
-class QuestionsText {
+@immutable
+final class QuestionsText {
+  const QuestionsText._();
   static const String sexText = "What is your sex?";
   static const String ageText = "What is your birth of date?";
   static const String heightText = "How much is your height?";
@@ -45,7 +51,9 @@ class QuestionsText {
   static const String weightText = "How much is your weight?";
 }
 
+@immutable
 class WarningText {
+  const WarningText._();
   static const String registerEmptyUsername = "Username can't be empty";
   static const String registerEmptyEmail = "Mail can't be empty";
   static const String registerEmptyPassword = "Password can't be empty";
