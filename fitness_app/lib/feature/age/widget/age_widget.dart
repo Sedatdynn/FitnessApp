@@ -7,13 +7,7 @@ class _YearNumberPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AgeCubit, AgeState>(
       builder: (context, state) {
-        return NumberPicker(
-          selectedTextStyle:
-              Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
-          textStyle: Theme.of(context).textTheme.titleSmall,
-          decoration: BoxDecoration(
-            border: Border(top: customBorder, bottom: customBorder),
-          ),
+        return CustomNumberPicker(
           value: state.birthYear!,
           minValue: state.minValue!,
           maxValue: state.maxValue!,
@@ -22,11 +16,6 @@ class _YearNumberPicker extends StatelessWidget {
       },
     );
   }
-
-  BorderSide get customBorder => const BorderSide(
-        color: Color(0xFFC4FB6D),
-        width: 3.0,
-      );
 }
 
 class _NextButton extends StatelessWidget {

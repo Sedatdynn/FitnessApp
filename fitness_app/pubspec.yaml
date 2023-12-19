@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  auto_route: ^7.8.4
   cloud_firestore: ^4.0.3
   cupertino_icons: ^1.0.2
   dio: ^5.1.2
@@ -44,6 +45,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   fluttertoast: ^8.0.8
   font_awesome_flutter: ^10.1.0
+  fpdart: ^1.1.0
   google_fonts: ^4.0.4
   google_sign_in: ^6.1.0
   image_picker: ^0.8.4+4
@@ -56,7 +58,6 @@ dependencies:
   syncfusion_flutter_gauges: ^21.2.4
   video_player: ^2.4.10
   youtube_player_flutter: ^8.1.1
-  auto_route: ^7.8.4
 
 dev_dependencies:
   auto_route_generator: ^7.3.2

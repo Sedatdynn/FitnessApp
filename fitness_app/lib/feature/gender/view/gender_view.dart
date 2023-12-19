@@ -34,7 +34,7 @@ class GenderView extends StatelessWidget {
                 children: [
                   const LogoBody(),
                   CustomSize.minHeight(),
-                  const ConstText(text: QuestionsText.sexText),
+                  const RegisterInfoQuestionText(text: QuestionsText.sexText),
                   CustomSize.xLargeHeight(),
                   const _ToggleGenderButtons(),
                   CustomSize.xxLargeHeight(),

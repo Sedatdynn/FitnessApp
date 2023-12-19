@@ -43,13 +43,15 @@ class _NextButton extends StatelessWidget {
                 return;
               }
               RouteManager.instance.push(HeightRoute(
-                username: params.username,
-                mail: params.mail,
-                password: params.password,
-                name: params.name,
-                gender: params.gender,
-                age: params.birthYear,
-                mobility: state.selectedItem,
+                params: HeightParams(
+                  username: params.username,
+                  mail: params.mail,
+                  password: params.password,
+                  name: params.name,
+                  gender: params.gender,
+                  birthYear: params.birthYear,
+                  mobility: state.selectedItem,
+                ),
               ));
             });
       },

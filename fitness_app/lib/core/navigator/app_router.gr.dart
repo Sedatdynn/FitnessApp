@@ -85,19 +85,12 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     HeightRoute.name: (routeData) {
-      final args = routeData.argsAs<HeightRouteArgs>(
-          orElse: () => const HeightRouteArgs());
+      final args = routeData.argsAs<HeightRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: HeightView(
           key: args.key,
-          username: args.username,
-          mail: args.mail,
-          password: args.password,
-          name: args.name,
-          gender: args.gender,
-          age: args.age,
-          mobility: args.mobility,
+          params: args.params,
         ),
       );
     },
@@ -149,20 +142,12 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     WeightRoute.name: (routeData) {
-      final args = routeData.argsAs<WeightRouteArgs>(
-          orElse: () => const WeightRouteArgs());
+      final args = routeData.argsAs<WeightRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: WeightView(
           key: args.key,
-          username: args.username,
-          mail: args.mail,
-          password: args.password,
-          name: args.name,
-          gender: args.gender,
-          age: args.age,
-          height: args.height,
-          mobility: args.mobility,
+          params: args.params,
         ),
       );
     },
@@ -409,25 +394,13 @@ class GenderRouteArgs {
 class HeightRoute extends PageRouteInfo<HeightRouteArgs> {
   HeightRoute({
     Key? key,
-    String? username,
-    String? mail,
-    String? password,
-    String? name,
-    String? gender,
-    int? age,
-    String? mobility,
+    required HeightParams params,
     List<PageRouteInfo>? children,
   }) : super(
           HeightRoute.name,
           args: HeightRouteArgs(
             key: key,
-            username: username,
-            mail: mail,
-            password: password,
-            name: name,
-            gender: gender,
-            age: age,
-            mobility: mobility,
+            params: params,
           ),
           initialChildren: children,
         );
@@ -440,34 +413,16 @@ class HeightRoute extends PageRouteInfo<HeightRouteArgs> {
 class HeightRouteArgs {
   const HeightRouteArgs({
     this.key,
-    this.username,
-    this.mail,
-    this.password,
-    this.name,
-    this.gender,
-    this.age,
-    this.mobility,
+    required this.params,
   });
 
   final Key? key;
 
-  final String? username;
-
-  final String? mail;
-
-  final String? password;
-
-  final String? name;
-
-  final String? gender;
-
-  final int? age;
-
-  final String? mobility;
+  final HeightParams params;
 
   @override
   String toString() {
-    return 'HeightRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, age: $age, mobility: $mobility}';
+    return 'HeightRouteArgs{key: $key, params: $params}';
   }
 }
 
@@ -597,27 +552,13 @@ class UpdateInfosRoute extends PageRouteInfo<void> {
 class WeightRoute extends PageRouteInfo<WeightRouteArgs> {
   WeightRoute({
     Key? key,
-    String? username,
-    String? mail,
-    String? password,
-    String? name,
-    String? gender,
-    int? age,
-    int? height,
-    String? mobility,
+    required WeightParams params,
     List<PageRouteInfo>? children,
   }) : super(
           WeightRoute.name,
           args: WeightRouteArgs(
             key: key,
-            username: username,
-            mail: mail,
-            password: password,
-            name: name,
-            gender: gender,
-            age: age,
-            height: height,
-            mobility: mobility,
+            params: params,
           ),
           initialChildren: children,
         );
@@ -630,36 +571,15 @@ class WeightRoute extends PageRouteInfo<WeightRouteArgs> {
 class WeightRouteArgs {
   const WeightRouteArgs({
     this.key,
-    this.username,
-    this.mail,
-    this.password,
-    this.name,
-    this.gender,
-    this.age,
-    this.height,
-    this.mobility,
+    required this.params,
   });
 
   final Key? key;
 
-  final String? username;
-
-  final String? mail;
-
-  final String? password;
-
-  final String? name;
-
-  final String? gender;
-
-  final int? age;
-
-  final int? height;
-
-  final String? mobility;
+  final WeightParams params;
 
   @override
   String toString() {
-    return 'WeightRouteArgs{key: $key, username: $username, mail: $mail, password: $password, name: $name, gender: $gender, age: $age, height: $height, mobility: $mobility}';
+    return 'WeightRouteArgs{key: $key, params: $params}';
   }
 }

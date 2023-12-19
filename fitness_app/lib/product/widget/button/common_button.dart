@@ -19,16 +19,18 @@ class CommonButton extends StatelessWidget {
         height: 48.h,
         width: 284.w,
         child: OutlinedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
-            foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
-            backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
-          ),
+          style: customButtonStyle,
           onPressed: onPressed,
           child: Text(text, style: Theme.of(context).textTheme.titleLarge),
         ),
       ),
     );
   }
+
+  ButtonStyle get customButtonStyle => ButtonStyle(
+        shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+        foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
+        backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
+      );
 }

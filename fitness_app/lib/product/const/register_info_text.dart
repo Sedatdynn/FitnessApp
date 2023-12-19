@@ -1,8 +1,8 @@
 import '../../feature/views_shelf.dart';
 
-class ConstText extends StatelessWidget {
+class RegisterInfoQuestionText extends StatelessWidget {
   final String text;
-  const ConstText({
+  const RegisterInfoQuestionText({
     Key? key,
     required this.text,
   }) : super(key: key);
@@ -11,6 +11,7 @@ class ConstText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.titleLarge,
     );
   }

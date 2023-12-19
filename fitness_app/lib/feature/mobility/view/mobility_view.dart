@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:fistness_app_firebase/feature/height/params/height_params.dart';
 import 'package:fistness_app_firebase/feature/mobility/cubit/mobility_cubit.dart';
 import 'package:fistness_app_firebase/feature/mobility/cubit/mobility_state.dart';
 import 'package:fistness_app_firebase/feature/mobility/params/mobility_params.dart';
@@ -30,8 +31,7 @@ class DailyMobilityView extends StatelessWidget {
             child: Column(
               children: [
                 const LogoBody(),
-                Text(RegisterText.selectMobility,
-                    textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleLarge),
+                const RegisterInfoQuestionText(text: RegisterText.selectMobility),
                 CustomSize.xxLargeHeight(),
                 const _DropDownWidget(),
                 CustomSize.xxLargeHeight(),
