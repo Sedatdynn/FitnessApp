@@ -15,7 +15,7 @@ import 'package:fistness_app_firebase/feature/height/view/height_view.dart';
 import 'package:fistness_app_firebase/feature/home/bottomNavigateBar/navigare_bar.dart';
 import 'package:fistness_app_firebase/feature/home/view/home_page.dart';
 import 'package:fistness_app_firebase/feature/launch/view/launch_page.dart';
-import 'package:fistness_app_firebase/feature/login/login_page.dart';
+import 'package:fistness_app_firebase/feature/login/view/login_view.dart';
 import 'package:fistness_app_firebase/feature/mobility/params/mobility_params.dart';
 import 'package:fistness_app_firebase/feature/profile/edit_profile.dart';
 import 'package:fistness_app_firebase/feature/profile/profile_page.dart';

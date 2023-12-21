@@ -26,8 +26,8 @@ class RegisterView extends StatelessWidget {
           padding: const AppPadding.lowHorizontal(),
           child: SingleChildScrollView(
             child: Form(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
               key: formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 children: [
                   const LogoBody(),
