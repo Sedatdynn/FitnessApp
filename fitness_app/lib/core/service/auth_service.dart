@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fistness_app_firebase/core/base/exception/exception.dart';
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:fistness_app_firebase/feature/login/model/login_model.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
+import 'package:fistness_app_firebase/product/utils/typedef.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
@@ -30,13 +34,24 @@ class AuthService {
     return await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).get();
   }
 
-  Future<bool?> createPerson({required UserModel model}) async {
-    await _auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
-    await _firestore
+  Future<void> setUser({required UserModel model}) async {
+    return await _firestore
         .collection(userCollection)
         .doc(_auth.currentUser!.uid)
         .set(model.toJsonWithoutPassword());
-    return true;
+  }
+
+  BaseVoidData createPerson({required UserModel model}) async {
+    try {
+      await _auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
+      await setUser(model: model);
+      await sendEmailVerified();
+      return const Right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(ServerException(message: e.message!, statusCode: e.code));
+    } catch (e) {
+      return left(ServerException(message: e.toString(), statusCode: '505'));
+    }
   }
 
   Future sendEmailVerified() async {
@@ -63,21 +78,21 @@ class AuthService {
     return false;
   }
 
-  Future<bool> signInWithEmailAndPassword({required String email, required String password}) async {
+  BaseVoidData signInWithEmailAndPassword({required LoginModel model}) async {
     try {
       final UserCredential credential =
-          await _auth.signInWithEmailAndPassword(email: email, password: password);
+          await _auth.signInWithEmailAndPassword(email: model.email!, password: model.password!);
       if (credential.user!.emailVerified) {
         final String? idToken = await credential.user!.getIdToken();
-        if (idToken != null) {
-          await CacheManager.instance.setStringValue(CacheKeys.token, idToken);
-        }
-        return true;
+        if (idToken != null) await CacheManager.instance.setStringValue(CacheKeys.token, idToken);
+        return const Right(null);
       } else {
-        return false;
+        return const Left(ServerException(message: 'Verify your email!', statusCode: '505'));
       }
-    } on FirebaseAuthException catch (_) {
-      return false;
+    } on FirebaseAuthException catch (e) {
+      return Left(ServerException(message: e.message!, statusCode: e.code));
+    } catch (e) {
+      return Left(ServerException(message: e.toString(), statusCode: '505'));
     }
   }
 }

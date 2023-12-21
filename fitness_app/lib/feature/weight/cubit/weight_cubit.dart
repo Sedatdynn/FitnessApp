@@ -51,8 +51,8 @@ class WeightCubit extends IWeightCubit {
     setTotalPoint(updatedTotalPoint);
   }
 
-  Future createPerson({required WeightParams params}) async {
-    bool? isSucces = await AuthService.instance.createPerson(
+  Future<void> createPerson({required WeightParams params}) async {
+    final result = await AuthService.instance.createPerson(
         model: UserModel(
             username: params.username,
             email: params.mail,
@@ -65,14 +65,13 @@ class WeightCubit extends IWeightCubit {
             weight: state.selectedValue!.toString(),
             userRightPoint: state.totalPoint.toString()));
 
-    if (isSucces!) {
+    result.fold((failure) async {
+      emit(state.copyWith(errorMessage: failure.message));
+    }, (r) async {
       await warningToast(RegisterText.registerSuccessfully, color: AppColors.green);
       await warningToast(RegisterText.verifyWarning, color: AppColors.green);
-      await AuthService.instance.sendEmailVerified();
       RouteManager.instance.pushAndPopUntil(LoginRoute(canPop: false));
-    } else {
-      await warningToast(WarningText.registerUniqueMail);
-    }
+    });
   }
 
   @override

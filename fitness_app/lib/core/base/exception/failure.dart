@@ -10,12 +10,6 @@ abstract class Failure extends Equatable {
   List<dynamic> get props => [message, statusCode];
 }
 
-class FirebaseFailure extends Failure {
-  const FirebaseFailure({required super.message, required super.statusCode});
-  FirebaseFailure.fromException(FirebaseException exception)
-      : this(message: exception.message, statusCode: exception.statusCode);
-}
-
 class ServerFailure extends Failure {
   const ServerFailure({required super.message, required super.statusCode});
   ServerFailure.fromException(ServerException exception)

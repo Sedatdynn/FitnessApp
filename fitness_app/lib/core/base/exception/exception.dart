@@ -8,12 +8,6 @@ class AppException extends Equatable implements Exception {
   List<Object?> get props => [message, statusCode];
 }
 
-class FirebaseException extends AppException implements Equatable {
-  const FirebaseException({required super.message, required super.statusCode});
-  @override
-  List<Object?> get props => [message, statusCode];
-}
-
 class ServerException extends AppException implements Equatable {
   const ServerException({required super.message, required super.statusCode});
   @override

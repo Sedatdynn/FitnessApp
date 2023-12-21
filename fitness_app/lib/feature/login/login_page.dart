@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:fistness_app_firebase/feature/login/model/login_model.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:provider/provider.dart';
 
@@ -76,21 +77,17 @@ class _LoginViewState extends State<LoginView> {
               CommonButton(
                   text: MyText.continueText,
                   onPressed: () async {
-                    context.read<LoginViewModel>().changeLoading();
-                    bool? isSucces = await AuthService.instance.signInWithEmailAndPassword(
-                        email: viewModel.emailController.text.trim().toString(),
-                        password: viewModel.passwordController.text.trim());
+                    final result = await AuthService.instance.signInWithEmailAndPassword(
+                      model: LoginModel(
+                          email: viewModel.emailController.text.trim().toString(),
+                          password: viewModel.passwordController.text.trim()),
+                    );
 
-                    if (isSucces) {
-                      if (context.mounted) {
-                        RouteManager.instance.pushNamed(path: RouteConstants.main);
-                        context.read<LoginViewModel>().changeLoading();
-                      }
-                    } else {
-                      if (!context.mounted) return;
-                      warningToast("Wrong Pass/Email! or verify your email!");
-                      context.read<LoginViewModel>().changeLoading();
-                    }
+                    result.fold((l) async {
+                      await warningToast(l.message);
+                    }, (r) {
+                      RouteManager.instance.pushNamed(path: RouteConstants.main);
+                    });
                   }),
             ],
           ),
