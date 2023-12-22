@@ -6,9 +6,7 @@ import 'package:fistness_app_firebase/feature/login/cubit/login_state.dart';
 import 'package:fistness_app_firebase/feature/login/model/login_model.dart';
 
 class LoginCubit extends ILoginCubit {
-  LoginCubit() : super(LoginState.initial()) {
-    init();
-  }
+  LoginCubit() : super(LoginState.initial());
 
   @override
   void changeVisible() => emit(state.copyWith(isVisible: !state.isVisible));
@@ -18,6 +16,8 @@ class LoginCubit extends ILoginCubit {
   void setPassword(String password) => emit(state.copyWith(password: password));
   @override
   void setErrorMessage(String message) => emit(state.copyWith(errorMessage: message));
+  @override
+  void clearErrorMessage() => emit(state.copyWith(errorMessage: ''));
 
   @override
   void init() {}
@@ -27,9 +27,9 @@ class LoginCubit extends ILoginCubit {
     final result = await AuthService.instance.signInWithEmailAndPassword(
       model: LoginModel(email: state.email, password: state.password),
     );
-
-    result.fold((failure) => setErrorMessage(failure.message), (r) {
-      RouteManager.instance.pushNamed(path: RouteConstants.main);
-    });
+    result.fold(
+      (failure) => setErrorMessage(failure.message),
+      (success) => RouteManager.instance.pushNamed(path: RouteConstants.main),
+    );
   }
 }

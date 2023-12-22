@@ -7,5 +7,6 @@ abstract class ILoginCubit extends BaseCubit<LoginState> {
   void setEmail(String email);
   void setPassword(String password);
   void setErrorMessage(String message);
+  void clearErrorMessage();
   Future<void> signIn();
 }

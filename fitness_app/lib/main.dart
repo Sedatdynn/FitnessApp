@@ -1,7 +1,6 @@
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/feature/login/view_model/login_view_model.dart';
 import 'package:fistness_app_firebase/product/const/app/app_constant.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -21,9 +20,6 @@ Future<void> main() async {
       ChangeNotifierProvider<ThemeNotifier>(
         create: (context) => ThemeNotifier(),
       ),
-      ChangeNotifierProvider<LoginViewModel>(
-        create: (context) => LoginViewModel(),
-      )
     ],
     builder: (context, child) => MyApp(
       appRouter: AppConstants.appRouter,
