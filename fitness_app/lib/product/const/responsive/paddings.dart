@@ -29,7 +29,7 @@ final class AppPadding extends EdgeInsets {
 
   /// [ProjectPadding.normalVertical] is 16
 
-  const AppPadding.normalHorizontal() : super.symmetric(vertical: 16);
+  const AppPadding.normalHorizontal() : super.symmetric(horizontal: 16);
 
   /// [ProjectPadding.normalSymmetricHorVer] is 12
 

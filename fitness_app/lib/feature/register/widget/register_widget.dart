@@ -115,6 +115,7 @@ class _ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: delete this blocBuilder
     return BlocBuilder<RegisterCubit, RegisterState>(
       builder: (context, state) {
         return CommonButton(

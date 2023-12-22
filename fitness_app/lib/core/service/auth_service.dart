@@ -59,6 +59,17 @@ class AuthService {
     await user.sendEmailVerification();
   }
 
+  BaseVoidData resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email.trim());
+      return const Right(null);
+    } on FirebaseAuthException catch (e) {
+      return Left(ServerException(message: e.message!, statusCode: e.code));
+    } catch (e) {
+      return Left(ServerException(message: e.toString(), statusCode: '505'));
+    }
+  }
+
   Future<bool> signInWithGoogle() async {
     final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
     if (googleAccount != null) {

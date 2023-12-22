@@ -25,7 +25,7 @@ final class RegisterText {
   static const String signEmailText = 'Sign in with Email ';
   static const String googleText = "Sign in with Google";
   static const String emailText = "Email";
-  static const String verifyEmailText = "Verify Email";
+  static const String resetPasswordText = "Reset password";
   static const String faceText = "Facebook";
   static const String emailAssociated = "Enter the Email address associated with your account";
   static const String womanText = "Female";
