@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class AuthTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       textInputAction: TextInputAction.next,
-      style: Theme.of(context).textTheme.titleSmall,
+      style: context.textTheme.titleSmall,
       cursorColor: AppColors.whiteText,
       keyboardType: TextInputType.emailAddress,
       onChanged: onChanged,

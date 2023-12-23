@@ -132,7 +132,7 @@ class _DetailVideoViewState extends State<DetailVideoView> {
       height: context.height * 0.05,
       child: Text(
         widget.items.secondTitle.toString(),
-        style: Theme.of(context).textTheme.titleSmall,
+        style: context.textTheme.titleSmall,
       ),
     );
   }
@@ -143,7 +143,7 @@ class _DetailVideoViewState extends State<DetailVideoView> {
       alignment: Alignment.center,
       child: Text(
         widget.items.firstContent.toString(),
-        style: Theme.of(context).textTheme.titleSmall,
+        style: context.textTheme.titleSmall,
       ),
     );
   }
@@ -155,7 +155,7 @@ class _DetailVideoViewState extends State<DetailVideoView> {
       height: context.height * 0.05,
       child: Text(
         widget.items.firstTitle.toString(),
-        style: Theme.of(context).textTheme.titleSmall,
+        style: context.textTheme.titleSmall,
       ),
     );
   }

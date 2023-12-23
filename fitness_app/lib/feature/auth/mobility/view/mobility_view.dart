@@ -8,6 +8,7 @@ import 'package:fistness_app_firebase/feature/auth/mobility/params/mobility_para
 
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/const/text/texts.dart';
 import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';

@@ -5,6 +5,7 @@ import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/enum/image/png/image_path.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';

@@ -64,7 +64,7 @@ class _ExercisesViewState extends State<ExercisesView> {
             left: context.width * 0.03,
             child: Text(
               "Exercises",
-              style: Theme.of(context).textTheme.displaySmall,
+              style: context.textTheme.displaySmall,
             ))
       ],
     );
@@ -116,15 +116,14 @@ class _ExercisesViewState extends State<ExercisesView> {
   Text _listTileSubT(List<Exercise> items, int i, BuildContext context) {
     return Text(
       "See ${items[i].categoryName.toString()} workouts",
-      style:
-          Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 14, color: AppColors.whiteText),
+      style: context.textTheme.bodyLarge?.copyWith(fontSize: 14, color: AppColors.whiteText),
     );
   }
 
   Text _listTileTitle(List<Exercise> items, int i, BuildContext context) {
     return Text(
       items[i].categoryName.toString(),
-      style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
+      style: context.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
     );
   }
 }

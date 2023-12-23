@@ -1,5 +1,6 @@
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/app/app_constant.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 
 class CustomNumberPicker extends StatelessWidget {
@@ -17,9 +18,8 @@ class CustomNumberPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NumberPicker(
-      selectedTextStyle:
-          Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
-      textStyle: Theme.of(context).textTheme.titleSmall,
+      selectedTextStyle: context.textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
+      textStyle: context.textTheme.titleSmall,
       decoration: const BoxDecoration(border: ResponsiveConstants.customPickerBorder),
       value: value,
       minValue: minValue,

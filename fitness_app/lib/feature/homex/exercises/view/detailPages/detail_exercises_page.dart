@@ -73,8 +73,7 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
             left: context.width * 0.03,
             child: Text(
               widget.images.categoryName.toString(),
-              style:
-                  Theme.of(context).textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
+              style: context.textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
             ),
           )
         ],
@@ -145,7 +144,7 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
   _exercisesTitle(BuildContext context, int i) {
     return Text(
       widget.items[i].exerciseName.toString(),
-      style: Theme.of(context).textTheme.titleSmall,
+      style: context.textTheme.titleSmall,
     );
   }
 
@@ -157,14 +156,14 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontSize: 8,
-                    color: AppColors.backgroundColor,
-                  ),
+              style: context.textTheme.titleSmall?.copyWith(
+                fontSize: 8,
+                color: AppColors.backgroundColor,
+              ),
             ),
             Text(
               info.toString(),
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 6.0),
+              style: context.textTheme.titleSmall?.copyWith(fontSize: 6.0),
             ),
           ],
         ),

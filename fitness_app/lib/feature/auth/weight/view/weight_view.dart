@@ -7,6 +7,7 @@ import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/register_info_text.dart';
 
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';
 import 'package:fistness_app_firebase/product/widget/button/common_button.dart';

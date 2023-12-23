@@ -7,6 +7,7 @@ import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/const_deco.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:fistness_app_firebase/product/global/theme_control.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
@@ -102,7 +103,7 @@ class _ProfileViewState extends State<ProfileView> {
                               alignment: Alignment.center,
                               child: Text(
                                 snapshot.data!["name"].toString(),
-                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                style: context.textTheme.titleLarge?.copyWith(
                                   shadows: <Shadow>[
                                     const Shadow(
                                       offset: Offset(5.0, 5.0),

@@ -27,7 +27,7 @@ class _InitialPageState extends State<InitialPage> {
                 left: context.width / 25,
                 child: Text(
                   "Welcome to\nDiet and Fitness App",
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  style: context.textTheme.titleLarge?.copyWith(
                     shadows: <Shadow>[
                       const Shadow(
                         offset: Offset(5.0, 5.0),
@@ -71,7 +71,7 @@ class _InitialPageState extends State<InitialPage> {
               Expanded(
                 child: child,
               ),
-              Text(cardTitle, style: Theme.of(context).textTheme.titleLarge),
+              Text(cardTitle, style: context.textTheme.titleLarge),
             ]),
           )),
     );

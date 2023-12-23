@@ -3,6 +3,7 @@ import 'package:fistness_app_firebase/feature/auth/register/cubit/register_cubit
 import 'package:fistness_app_firebase/feature/auth/register/cubit/register_state.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/extensions/regex.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';

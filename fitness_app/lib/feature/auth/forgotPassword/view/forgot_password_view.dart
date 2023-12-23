@@ -4,6 +4,7 @@ import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';

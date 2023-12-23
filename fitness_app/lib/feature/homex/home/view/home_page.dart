@@ -88,13 +88,13 @@ class _HomeViewState extends State<HomeView> {
                                           Expanded(
                                             child: Text(
                                                 "Initial point depends on your information: ",
-                                                style: Theme.of(context).textTheme.titleSmall),
+                                                style: context.textTheme.titleSmall),
                                           ),
                                           Expanded(
                                             child: Text(
                                               snapshot.data?["userRightPoint"].toString() ??
                                                   "no dataa",
-                                              style: Theme.of(context).textTheme.titleMedium,
+                                              style: context.textTheme.titleMedium,
                                             ),
                                           ),
                                         ],
@@ -144,8 +144,7 @@ class _HomeViewState extends State<HomeView> {
                               });
                             },
                             icon: Icon(Icons.save_alt_outlined, color: AppColors.whiteText),
-                            label: Text("Save Daily Point",
-                                style: Theme.of(context).textTheme.titleSmall),
+                            label: Text("Save Daily Point", style: context.textTheme.titleSmall),
                           ),
                         ),
                         Container(
@@ -163,8 +162,7 @@ class _HomeViewState extends State<HomeView> {
                               });
                             },
                             icon: Icon(Icons.remove_circle_outline, color: AppColors.whiteText),
-                            label: Text("Reset Daily Point",
-                                style: Theme.of(context).textTheme.titleSmall),
+                            label: Text("Reset Daily Point", style: context.textTheme.titleSmall),
                           ),
                         ),
                       ],
@@ -200,7 +198,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 child: Text(
                   items[i].name.toString(),
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: context.textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -224,12 +222,12 @@ class _HomeViewState extends State<HomeView> {
             child: Row(children: [
               Text(
                 items[i].icerik![j].isim.toString(),
-                style: Theme.of(context).textTheme.titleSmall,
+                style: context.textTheme.titleSmall,
               ),
               Expanded(child: Container()),
               Text(
                 "${items[i].icerik![j].puan!.toDouble()} point",
-                style: Theme.of(context).textTheme.titleSmall,
+                style: context.textTheme.titleSmall,
               ),
               _checkBox(items, i, j, context),
             ]),
@@ -268,7 +266,7 @@ class _HomeViewState extends State<HomeView> {
       ),
       child: Text(
         "Current point is: ${context.watch<HomeViewModel>().totalPoint}",
-        style: Theme.of(context).textTheme.titleLarge,
+        style: context.textTheme.titleLarge,
       ),
     );
   }

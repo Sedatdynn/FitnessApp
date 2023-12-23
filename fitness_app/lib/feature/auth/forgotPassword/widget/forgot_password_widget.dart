@@ -21,7 +21,7 @@ class _InfoText extends StatelessWidget {
     return Text(
       RegisterText.emailAssociated,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.titleSmall,
+      style: context.textTheme.titleSmall,
     );
   }
 }

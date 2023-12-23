@@ -7,3 +7,7 @@ extension ResponsiveExtension on BuildContext {
   double dynamicHeight(double value) => height * value.h;
   double dynamicWidth(double value) => width * value.w;
 }
+
+extension CustomTheme on BuildContext {
+  TextTheme get textTheme => Theme.of(this).textTheme;
+}

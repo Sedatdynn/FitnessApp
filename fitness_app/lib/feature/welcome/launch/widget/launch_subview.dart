@@ -8,7 +8,7 @@ class _TitleTextWidget extends StatelessWidget {
     return Center(
       child: Text(
         MyText.fitText,
-        style: Theme.of(context).textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
+        style: context.textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
       ),
     );
   }
@@ -63,7 +63,7 @@ class _AccountsInfoTextWidget extends StatelessWidget {
       children: [
         Text(
           QuestionsText.accountText,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: context.textTheme.titleSmall,
         ),
         SizedBox(width: 5.w),
         InkWell(
@@ -72,7 +72,7 @@ class _AccountsInfoTextWidget extends StatelessWidget {
           },
           child: Text(
             RegisterText.createText,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.mainPrimary),
+            style: context.textTheme.bodyLarge?.copyWith(color: AppColors.mainPrimary),
           ),
         ),
       ],

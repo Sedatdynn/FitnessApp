@@ -1,5 +1,6 @@
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -19,7 +20,7 @@ Widget bmiGauge1(BuildContext context, String deger) {
           NeedlePointer(value: double.parse(deger))
         ], annotations: <GaugeAnnotation>[
           GaugeAnnotation(
-              widget: Text(deger, style: Theme.of(context).textTheme.displaySmall),
+              widget: Text(deger, style: context.textTheme.displaySmall),
               angle: 90,
               positionFactor: 0.5)
         ])

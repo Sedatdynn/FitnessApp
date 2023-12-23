@@ -1,3 +1,5 @@
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
+
 import '../../feature/views_shelf.dart';
 
 class RegisterInfoQuestionText extends StatelessWidget {
@@ -12,7 +14,7 @@ class RegisterInfoQuestionText extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.titleLarge,
+      style: context.textTheme.titleLarge,
     );
   }
 }

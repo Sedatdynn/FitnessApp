@@ -74,7 +74,7 @@ class _PasswordTextFieldWidget extends StatelessWidget {
     return BlocBuilder<RegisterCubit, RegisterState>(
       builder: (context, state) {
         return TextFormField(
-          style: Theme.of(context).textTheme.titleSmall,
+          style: context.textTheme.titleSmall,
           onChanged: (val) {
             if (val.isEmpty) return;
             context.read<RegisterCubit>().setPassword(val);

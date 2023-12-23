@@ -16,7 +16,7 @@ class _HeightNumberPickerWidget extends StatelessWidget {
               maxValue: maxValue,
               onChanged: (value) => context.read<HeightCubit>().setSelectedValue(value),
             ),
-            Text(RegisterText.cmText, style: Theme.of(context).textTheme.titleSmall),
+            Text(RegisterText.cmText, style: context.textTheme.titleSmall),
           ],
         );
       },

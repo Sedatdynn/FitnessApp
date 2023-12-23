@@ -12,7 +12,7 @@ class _DropDownWidget extends StatelessWidget {
             dropdownColor: Colors.deepPurpleAccent,
             isExpanded: true,
             value: state.selectedItem,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: context.textTheme.titleMedium,
             underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
             onChanged: (String? value) => context.read<MobilityCubit>().setSelectedItem(value!),
             items: context.read<MobilityCubit>().items.map((e) {

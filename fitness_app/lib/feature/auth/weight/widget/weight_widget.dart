@@ -17,7 +17,7 @@ class _WeightNumberPicker extends StatelessWidget {
               maxValue: 200,
               onChanged: (value) => context.read<WeightCubit>().setSelectedValue(value),
             ),
-            Text(RegisterText.kgText, style: Theme.of(context).textTheme.titleSmall)
+            Text(RegisterText.kgText, style: context.textTheme.titleSmall)
           ],
         );
       },
