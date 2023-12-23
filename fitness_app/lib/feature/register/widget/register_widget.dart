@@ -115,22 +115,14 @@ class _ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: delete this blocBuilder
-    return BlocBuilder<RegisterCubit, RegisterState>(
-      builder: (context, state) {
-        return CommonButton(
-            text: MyText.continueText,
-            onPressed: () {
-              //TODO: OPEN IT LATER!!!!!
-
-              // if (formKey.currentState!.validate()) {
-              //   context.read<RegisterCubit>().registerUser();
-              // } else {
-              //   warningToast(RegisterText.fillErrorText);
-              // }
-              context.read<RegisterCubit>().registerUser();
-            });
-      },
-    );
+    return CommonButton(
+        text: MyText.continueText,
+        onPressed: () {
+          if (formKey.currentState!.validate()) {
+            context.read<RegisterCubit>().registerUser();
+          } else {
+            warningToast(RegisterText.fillErrorText);
+          }
+        });
   }
 }
