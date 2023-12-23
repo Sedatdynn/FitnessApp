@@ -1,6 +1,7 @@
 import 'dart:io';
-import '../exercises/model/exercises_model.dart';
-import '../home/model/foods_model.dart';
+import 'package:fistness_app_firebase/feature/homex/exercises/model/exercises_model.dart';
+import 'package:fistness_app_firebase/feature/homex/home/model/foods_model.dart';
+
 import 'i_foods_service.dart';
 
 class FoodsService extends IFoodsService {

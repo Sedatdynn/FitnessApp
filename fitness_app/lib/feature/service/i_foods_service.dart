@@ -1,6 +1,7 @@
+import 'package:fistness_app_firebase/feature/homex/exercises/model/exercises_model.dart';
+import 'package:fistness_app_firebase/feature/homex/home/model/foods_model.dart';
+
 import '../../core/base/service/base_service.dart';
-import '../exercises/model/exercises_model.dart';
-import '../home/model/foods_model.dart';
 
 abstract class IFoodsService extends BaseService {
   IFoodsService(super.dio, super.item);
