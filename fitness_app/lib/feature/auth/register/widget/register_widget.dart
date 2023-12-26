@@ -85,12 +85,12 @@ class _PasswordTextFieldWidget extends StatelessWidget {
               ? null
               : WarningText.registerInvalidPassword,
           decoration: InputDecoration(
-            suffixIcon: InkWell(
-                onTap: () => context.read<RegisterCubit>().changeVisible(),
-                child: _CheckVisible(isVisible: state.isVisible)),
-            prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
-            hintText: RegisterText.passwordText,
-          ),
+              suffixIcon: InkWell(
+                  onTap: () => context.read<RegisterCubit>().changeVisible(),
+                  child: _CheckVisible(isVisible: state.isVisible)),
+              prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
+              hintText: RegisterText.passwordText,
+              hintStyle: context.textTheme.bodyLarge),
         );
       },
     );

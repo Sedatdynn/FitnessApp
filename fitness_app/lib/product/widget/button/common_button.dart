@@ -22,7 +22,7 @@ class CommonButton extends StatelessWidget {
         child: OutlinedButton(
           style: customButtonStyle,
           onPressed: onPressed,
-          child: Text(text, style: context.textTheme.titleLarge),
+          child: Text(text, style: context.textTheme.titleSmall),
         ),
       ),
     );

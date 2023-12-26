@@ -25,12 +25,12 @@ class AuthTextField extends StatelessWidget {
       onChanged: onChanged,
       validator: validator,
       decoration: InputDecoration(
-        prefixIcon: Icon(
-          icon,
-          color: AppColors.mainPrimary,
-        ),
-        hintText: hintText,
-      ),
+          prefixIcon: Icon(
+            icon,
+            color: AppColors.mainPrimary,
+          ),
+          hintText: hintText,
+          hintStyle: context.textTheme.bodyLarge),
     );
   }
 }

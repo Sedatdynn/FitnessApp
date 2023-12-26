@@ -13,17 +13,26 @@ class GlobalCubit extends IGlobalCubit {
     getCurrentTheme();
   }
 
-  ThemeData get currentTheme => state.currentTheme!;
-  void getCurrentTheme() {
-    CacheManager.instance.getStringValue(CacheKeys.theme.name) == ThemeConstants.light.name
-        ? emit(state.copyWith(currentTheme: CustomTheme().lightTheme))
-        : emit(state.copyWith(currentTheme: CustomTheme().darkTheme));
+  ThemeData get currentTheme => getCurrentTheme();
+  ThemeData getCurrentTheme() {
+    var value = CacheManager.instance.getStringValue(CacheKeys.theme.name);
+    value ??= ThemeConstants.dark.name;
+    if (value == ThemeConstants.light.name) {
+      emit(state.copyWith(currentTheme: CustomTheme().lightTheme));
+      return state.currentTheme!;
+    } else {
+      emit(state.copyWith(currentTheme: CustomTheme().darkTheme));
+      return state.currentTheme!;
+    }
   }
 
-  changeTheme() {
-    state.currentTheme == CustomTheme().lightTheme
-        ? CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.dark.name)
-        : CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.light.name);
+  changeTheme() async {
+    if (state.currentTheme == CustomTheme().lightTheme) {
+      await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.dark.name);
+    } else {
+      await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.light.name);
+    }
+
     getCurrentTheme();
     print('getCurrentTheme : $getCurrentTheme');
   }

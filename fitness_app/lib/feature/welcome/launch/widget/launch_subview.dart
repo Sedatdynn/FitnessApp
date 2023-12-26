@@ -63,7 +63,7 @@ class _AccountsInfoTextWidget extends StatelessWidget {
       children: [
         Text(
           QuestionsText.accountText,
-          style: context.textTheme.titleSmall,
+          style: context.textTheme.bodyLarge,
         ),
         SizedBox(width: 5.w),
         InkWell(

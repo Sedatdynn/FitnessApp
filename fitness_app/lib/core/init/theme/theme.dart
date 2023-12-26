@@ -1,94 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-// final ThemeData myTheme = ThemeData(
-//   //color
-//   brightness: Brightness.dark,
-//   scaffoldBackgroundColor: const Color(0xFF19282F),
-//   primaryColor: const Color.fromRGBO(183, 28, 28, 1),
-//   bottomAppBarColor: Colors.transparent,
-//   hintColor: const Color(0xffffffff),
-//   errorColor: const Color.fromRGBO(183, 28, 28, 1),
-//   secondaryHeaderColor: Colors.grey,
-
-//   //theme
-//   iconTheme: const IconThemeData(color: Color(0xFFC4FB6D)),
-//   appBarTheme: AppBarTheme(
-//       color: myTheme.bottomAppBarColor,
-//       elevation: 0,
-//       iconTheme: const IconThemeData(color: Color(0xFFC4FB6D))),
-//   textTheme: TextTheme(
-//     headline1: GoogleFonts.poppins(
-//       color: myTheme.hintColor,
-//       fontWeight: FontWeight.w400,
-//       fontStyle: FontStyle.normal,
-//     ),
-//     headline2: GoogleFonts.poppins(
-//       color: myTheme.hintColor,
-//       fontWeight: FontWeight.w400,
-//       fontStyle: FontStyle.normal,
-//     ),
-//     headline3: GoogleFonts.poppins(
-//       color: myTheme.hintColor,
-//       fontWeight: FontWeight.w600,
-//       fontStyle: FontStyle.normal,
-//     ),
-//     headline4: GoogleFonts.poppins(
-//       color: myTheme.hintColor,
-//       fontWeight: FontWeight.w400,
-//       fontStyle: FontStyle.normal,
-//     ),
-//     headline5: GoogleFonts.poppins(
-//       color: myTheme.hintColor,
-//       fontWeight: FontWeight.w400,
-//       fontStyle: FontStyle.normal,
-//     ),
-//     subtitle1: TextStyle(
-//       color: myTheme.hintColor,
-//       fontSize: null,
-//       fontWeight: FontWeight.w400,
-//       fontStyle: FontStyle.normal,
-//     ),
-//     subtitle2: TextStyle(
-//       color: myTheme.hintColor,
-//       fontSize: null,
-//       fontWeight: FontWeight.w400,
-//       fontStyle: FontStyle.normal,
-//     ),
-//     button: TextStyle(
-//       color: myTheme.hintColor,
-//       fontSize: null,
-//       fontWeight: FontWeight.w400,
-//       fontStyle: FontStyle.normal,
-//     ),
-//   ),
-// );
 
 final class CustomTheme {
   ThemeData get lightTheme => ThemeData.light().copyWith(
-        scaffoldBackgroundColor: const Color(
-          (0xFF19282F),
-        ),
+        scaffoldBackgroundColor: const Color((0xFF19282F)),
+
         //listTile theme
         listTileTheme: const ListTileThemeData(
           iconColor: Color.fromARGB(255, 96, 25, 211),
           textColor: Color.fromARGB(255, 16, 16, 16),
         ),
+        inputDecorationTheme: InputDecorationTheme(
+            hintStyle: const TextStyle(color: Colors.black),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(color: Color.fromARGB(255, 10, 10, 10)),
+            )),
+
         //textThee=me
         textTheme: TextTheme(
-          subtitle1: GoogleFonts.poppins(
-            color: const Color.fromARGB(255, 3, 2, 2),
+          bodyLarge: GoogleFonts.poppins(
+            color: const Color(0xffFFFFFF),
             fontWeight: FontWeight.w400,
+            fontSize: 14.sp,
             fontStyle: FontStyle.normal,
           ),
-          headline4: GoogleFonts.poppins(
-            color: const Color.fromARGB(255, 15, 11, 11),
-          ),
-          headline6: GoogleFonts.poppins(color: const Color.fromARGB(255, 19, 18, 18)),
-          subtitle2: GoogleFonts.poppins(
+          titleSmall: GoogleFonts.poppins(
             color: const Color(0xffFFFFFF),
             fontWeight: FontWeight.w500,
+            fontSize: 16.sp,
             fontStyle: FontStyle.normal,
+          ),
+          titleMedium: GoogleFonts.poppins(
+            color: const Color(0xffFFFFFF),
+            fontSize: 20.sp,
+          ),
+          titleLarge: GoogleFonts.poppins(
+            color: const Color(0xffFFFFFF),
+            fontSize: 24.sp,
           ),
         ),
         //iconTheme
@@ -103,9 +53,7 @@ final class CustomTheme {
         primaryColor: Colors.grey,
         shadowColor: Colors.grey.shade200,
         hintColor: Colors.white,
-        scaffoldBackgroundColor: const Color(
-          (0xFF19282F),
-        ),
+        scaffoldBackgroundColor: const Color(0xFFE7F3D9),
         //appbar theme
         appBarTheme: const AppBarTheme(
             color: Colors.transparent,
@@ -118,9 +66,10 @@ final class CustomTheme {
         ),
         //inputDecorationTheme
         inputDecorationTheme: InputDecorationTheme(
+          hintStyle: const TextStyle(color: Colors.white),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Colors.grey.shade200),
+            borderSide: const BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -135,19 +84,25 @@ final class CustomTheme {
 
         //textTheme
         textTheme: TextTheme(
-          subtitle1: GoogleFonts.poppins(
-            color: const Color(0xffFFFFFF),
+          bodyLarge: GoogleFonts.poppins(
+            color: Colors.black,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          headline4: GoogleFonts.poppins(
-            color: const Color(0xffFFFFFF),
-          ),
-          headline6: GoogleFonts.poppins(color: const Color(0xffFFFFFF)),
-          subtitle2: GoogleFonts.poppins(
-            color: const Color(0xffFFFFFF),
+          titleSmall: GoogleFonts.poppins(
+            color: Colors.black,
             fontWeight: FontWeight.w500,
+            fontSize: 16.sp,
             fontStyle: FontStyle.normal,
+          ),
+          titleMedium: GoogleFonts.poppins(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            fontSize: 20.sp,
+          ),
+          titleLarge: GoogleFonts.poppins(
+            color: const Color.fromARGB(255, 0, 0, 0),
+            fontSize: 24.sp,
           ),
         ),
       );
