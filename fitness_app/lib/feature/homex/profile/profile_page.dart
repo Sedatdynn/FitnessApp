@@ -9,7 +9,7 @@ import 'package:fistness_app_firebase/product/const/const_deco.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
-import 'package:fistness_app_firebase/product/global/theme_control.dart';
+import 'package:fistness_app_firebase/product/global/cubit/global_cubit.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -39,17 +39,7 @@ class _ProfileViewState extends State<ProfileView> {
                   itemBuilder: (context, index) {
                     return Container(
                       padding: const AppPadding.minAll(),
-                      decoration: commonBoxDec(
-                        context.watch<ThemeNotifier>().isLight
-                            ? Colors.grey
-                            : const Color(0xFF19282F),
-                        context.watch<ThemeNotifier>().isLight
-                            ? Colors.white
-                            : const Color(0xFF3d444e),
-                        context.watch<ThemeNotifier>().isLight
-                            ? Colors.white
-                            : const Color(0xFF2c2f37),
-                      ),
+                      decoration: commonBoxDec(Colors.grey, Colors.white, Colors.white),
                       child: Column(
                         children: [
                           Row(
@@ -60,17 +50,8 @@ class _ProfileViewState extends State<ProfileView> {
                                 child: Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: commonBoxDec(
-                                    context.watch<ThemeNotifier>().isLight
-                                        ? Colors.grey
-                                        : const Color(0xFF19282F),
-                                    context.watch<ThemeNotifier>().isLight
-                                        ? Colors.grey
-                                        : const Color(0xFF19282F),
-                                    context.watch<ThemeNotifier>().isLight
-                                        ? Colors.grey
-                                        : const Color(0xFF000000),
-                                  ),
+                                  decoration:
+                                      commonBoxDec(Colors.black, Colors.black, Colors.black),
                                   child: const Icon(
                                     Icons.arrow_back_ios,
                                   ),
@@ -82,17 +63,7 @@ class _ProfileViewState extends State<ProfileView> {
                               Container(
                                 height: 50,
                                 width: 50,
-                                decoration: commonBoxDec(
-                                  context.watch<ThemeNotifier>().isLight
-                                      ? Colors.grey
-                                      : const Color(0xFF19282F),
-                                  context.watch<ThemeNotifier>().isLight
-                                      ? Colors.grey
-                                      : const Color(0xFF19282F),
-                                  context.watch<ThemeNotifier>().isLight
-                                      ? Colors.grey
-                                      : const Color(0xFF000000),
-                                ),
+                                decoration: commonBoxDec(Colors.grey, Colors.grey, Colors.grey),
                                 child: const Icon(
                                   Icons.person,
                                 ),
@@ -143,7 +114,7 @@ class _ProfileViewState extends State<ProfileView> {
                                         subtitle: Text(snapshot.data!["email"].toString()),
                                       ),
                                       GestureDetector(
-                                        onTap: () => context.read<ThemeNotifier>().changeTheme(),
+                                        onTap: () => context.read<GlobalCubit>().changeTheme(),
                                         child: const ListTile(
                                           leading: Icon(
                                             Icons.light_mode_outlined,

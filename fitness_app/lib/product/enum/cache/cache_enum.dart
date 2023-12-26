@@ -1,1 +1,1 @@
-enum CacheKeys { token, point }
+enum CacheKeys { token, point, theme }

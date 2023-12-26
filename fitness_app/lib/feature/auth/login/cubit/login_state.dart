@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
 
 class LoginState extends BaseState {
