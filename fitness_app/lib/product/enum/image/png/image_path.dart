@@ -3,6 +3,7 @@ import '../../../../feature/views_shelf.dart';
 enum ImagePath {
   diet_exrcs,
   diet_list,
+  logo,
   exercise,
   facebook,
   google,

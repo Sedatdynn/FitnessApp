@@ -159,7 +159,7 @@ class _ProfileViewState extends State<ProfileView> {
                                           await deleteToken();
                                           AuthService.instance.signOut();
                                           RouteManager.instance
-                                              .pushNamed(path: RouteConstants.initial);
+                                              .pushNamed(path: RouteConstants.launch);
                                         },
                                       ),
                                     ],

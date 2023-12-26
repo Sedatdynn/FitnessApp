@@ -30,18 +30,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // Future<bool?> initialization() async {
-  //   final String? myToken = CacheManager.instance.getStringValue(CacheKeys.token.name);
-  //   bool? isSuccess = ((myToken != null) && myToken.isNotEmpty) ? true : false;
-  //   if (isSuccess) {
-  //     FlutterNativeSplash.remove();
-  //     return true;
-  //   } else {
-  //     FlutterNativeSplash.remove();
-  //     return false;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -49,7 +37,6 @@ class _MyAppState extends State<MyApp> {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          // FlutterNativeSplash.remove();
           return MaterialApp.router(
               debugShowCheckedModeBanner: false,
               theme: context.watch<GlobalCubit>().currentTheme,

@@ -13,6 +13,7 @@ final class MyText {
   static const String nextText = "Next";
   static const String exerciseText = "Exercises";
   static const String fitText = "Fitness Is The Key";
+  static const String appName = "Fitness and Diet App";
   static const String complete = "Complete";
   static dynamic currentUser;
 }

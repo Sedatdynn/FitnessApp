@@ -1,6 +1,6 @@
 final class RouteConstants {
   const RouteConstants._();
-  static const initial = '/';
+  static const splash = '/';
   static const launch = '/launch';
   static const main = '/main';
   static const login = '/login';

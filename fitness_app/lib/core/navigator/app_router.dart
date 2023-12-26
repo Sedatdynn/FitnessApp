@@ -21,6 +21,7 @@ import 'package:fistness_app_firebase/feature/homex/home/bottomNavigateBar/navig
 import 'package:fistness_app_firebase/feature/homex/home/view/home_page.dart';
 import 'package:fistness_app_firebase/feature/homex/profile/edit_profile.dart';
 import 'package:fistness_app_firebase/feature/homex/profile/profile_page.dart';
+import 'package:fistness_app_firebase/feature/splash/view/splash_view.dart';
 import 'package:fistness_app_firebase/feature/welcome/launch/view/launch_view.dart';
 
 import 'package:flutter/material.dart';
@@ -33,7 +34,8 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(path: RouteConstants.initial, page: LaunchRoute.page),
+        AutoRoute(path: RouteConstants.splash, page: SplashRoute.page),
+        AutoRoute(path: RouteConstants.launch, page: LaunchRoute.page),
         AutoRoute(path: RouteConstants.main, page: MainRoute.page),
         AutoRoute(path: RouteConstants.register, page: RegisterRoute.page),
         AutoRoute(path: RouteConstants.login, page: LoginRoute.page),
