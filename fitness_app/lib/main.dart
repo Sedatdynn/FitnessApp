@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
         builder: (_, child) {
           return MaterialApp.router(
               debugShowCheckedModeBanner: false,
-              theme: context.watch<GlobalCubit>().currentTheme,
+              theme: context.watch<GlobalCubit>().getCurrentTheme(),
               routerDelegate: widget.appRouter.delegate(),
               routeInformationParser: widget.appRouter.defaultRouteParser());
         });

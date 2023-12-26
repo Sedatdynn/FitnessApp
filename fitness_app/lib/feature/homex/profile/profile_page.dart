@@ -110,10 +110,9 @@ class _ProfileViewState extends State<ProfileView> {
                                         leading: const Icon(
                                           Icons.email,
                                         ),
-                                        title: Text("Email",
-                                            style: Theme.of(context).textTheme.titleSmall),
+                                        title: Text("Email", style: context.textTheme.titleSmall),
                                         subtitle: Text(snapshot.data!["email"].toString(),
-                                            style: Theme.of(context).textTheme.bodyLarge),
+                                            style: context.textTheme.bodyLarge),
                                       ),
                                       GestureDetector(
                                         onTap: () => context.read<GlobalCubit>().changeTheme(),
@@ -121,11 +120,11 @@ class _ProfileViewState extends State<ProfileView> {
                                           leading: const Icon(Icons.light_mode_outlined),
                                           title: Text(
                                             "Theme Light",
-                                            style: Theme.of(context).textTheme.titleSmall,
+                                            style: context.textTheme.titleSmall,
                                           ),
                                           subtitle: Text(
                                             "Change theme mode",
-                                            style: Theme.of(context).textTheme.bodyLarge,
+                                            style: context.textTheme.bodyLarge,
                                           ),
                                         ),
                                       ),
@@ -134,23 +133,24 @@ class _ProfileViewState extends State<ProfileView> {
                                             .pushNamed(path: RouteConstants.bmiCalculator),
                                         child: ListTile(
                                           leading: const Icon(Icons.leave_bags_at_home_outlined),
-                                          title: Text("BMI",
-                                              style: Theme.of(context).textTheme.titleSmall),
+                                          title: Text("BMI", style: context.textTheme.titleSmall),
                                           subtitle: Text("See bmi result",
-                                              style: Theme.of(context).textTheme.bodyLarge),
+                                              style: context.textTheme.bodyLarge),
                                         ),
                                       ),
                                       GestureDetector(
                                         child: ListTile(
                                           leading: const Icon(Icons.update),
                                           title: Text("Update Profile",
-                                              style: Theme.of(context).textTheme.titleSmall),
+                                              style: context.textTheme.titleSmall),
                                           subtitle: Text("Update your weight, height...",
-                                              style: Theme.of(context).textTheme.bodyLarge),
+                                              style: context.textTheme.bodyLarge),
                                         ),
                                         onTap: () async {
-                                          RouteManager.instance
-                                              .pushNamed(path: RouteConstants.updateUserInfo);
+                                          print(
+                                              'getCurrentTheme : ${CacheManager.instance.getStringValue(CacheKeys.theme.name)}');
+                                          // RouteManager.instance
+                                          //     .pushNamed(path: RouteConstants.updateUserInfo);
                                         },
                                       ),
                                       GestureDetector(
@@ -158,10 +158,10 @@ class _ProfileViewState extends State<ProfileView> {
                                           leading: const Icon(
                                             Icons.logout,
                                           ),
-                                          title: Text("Logout",
-                                              style: Theme.of(context).textTheme.titleSmall),
+                                          title:
+                                              Text("Logout", style: context.textTheme.titleSmall),
                                           subtitle: Text("Have a good day",
-                                              style: Theme.of(context).textTheme.titleSmall),
+                                              style: context.textTheme.titleSmall),
                                         ),
                                         onTap: () async {
                                           await deleteToken();

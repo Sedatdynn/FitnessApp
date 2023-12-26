@@ -13,7 +13,6 @@ class GlobalCubit extends IGlobalCubit {
     getCurrentTheme();
   }
 
-  ThemeData get currentTheme => getCurrentTheme();
   ThemeData getCurrentTheme() {
     var value = CacheManager.instance.getStringValue(CacheKeys.theme.name);
     value ??= ThemeConstants.dark.name;
@@ -27,14 +26,12 @@ class GlobalCubit extends IGlobalCubit {
   }
 
   changeTheme() async {
-    if (state.currentTheme == CustomTheme().lightTheme) {
-      await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.dark.name);
-    } else {
+    if (state.currentTheme != CustomTheme().lightTheme) {
       await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.light.name);
+    } else {
+      await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.dark.name);
     }
-
     getCurrentTheme();
-    print('getCurrentTheme : $getCurrentTheme');
   }
 }
 

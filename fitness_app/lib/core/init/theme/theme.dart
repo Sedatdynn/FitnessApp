@@ -4,6 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 final class CustomTheme {
   ThemeData get lightTheme => ThemeData.light().copyWith(
+        appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+            color: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Color(0xFFC4FB6D))),
         scaffoldBackgroundColor: const Color((0xFF19282F)),
 
         //listTile theme
@@ -57,6 +62,7 @@ final class CustomTheme {
         //appbar theme
         appBarTheme: const AppBarTheme(
             color: Colors.transparent,
+            titleTextStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
             elevation: 0,
             iconTheme: IconThemeData(color: Color(0xFFC4FB6D))),
         //listTile theme
@@ -85,13 +91,13 @@ final class CustomTheme {
         //textTheme
         textTheme: TextTheme(
           bodyLarge: GoogleFonts.poppins(
-            color: Colors.black,
+            color: const Color.fromARGB(255, 0, 0, 0),
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
           titleSmall: GoogleFonts.poppins(
-            color: Colors.black,
+            color: const Color.fromARGB(255, 0, 0, 0),
             fontWeight: FontWeight.w500,
             fontSize: 16.sp,
             fontStyle: FontStyle.normal,

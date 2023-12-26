@@ -60,7 +60,10 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   onPressed: () => RouteManager.instance.pop(),
                 ),
-                title: Text("Saved daily point is: $lastSavedPoint")),
+                title: Text(
+                  "Saved daily point is: $lastSavedPoint",
+                  style: context.textTheme.titleSmall,
+                )),
             body: SingleChildScrollView(
               child: Padding(
                 padding: const AppPadding.minAll(),
