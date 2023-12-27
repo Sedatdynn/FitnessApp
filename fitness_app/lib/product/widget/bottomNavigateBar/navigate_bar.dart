@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/initial/view/initial_view.dart';
+import 'package:fistness_app_firebase/feature/home/profile/profile_page.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
-
-import '../../exercises/view/initial/view/initial_view.dart';
-import '../../profile/profile_page.dart';
 
 @RoutePage()
 class MainView extends StatefulWidget {

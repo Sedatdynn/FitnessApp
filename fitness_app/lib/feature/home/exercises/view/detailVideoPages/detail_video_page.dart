@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/init/network/project_network.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/feature/homex/exercises/view/detailVideoPages/video_player_widget.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/video_player_widget.dart';
 import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';

@@ -62,6 +62,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    DietRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DietView(),
+      );
+    },
     ExercisesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -92,12 +98,6 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           params: args.params,
         ),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomeView(),
       );
     },
     LaunchRoute.name: (routeData) {
@@ -331,6 +331,20 @@ class DetailVideoRouteArgs {
 }
 
 /// generated route for
+/// [DietView]
+class DietRoute extends PageRouteInfo<void> {
+  const DietRoute({List<PageRouteInfo>? children})
+      : super(
+          DietRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DietRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ExercisesView]
 class ExercisesRoute extends PageRouteInfo<void> {
   const ExercisesRoute({List<PageRouteInfo>? children})
@@ -430,20 +444,6 @@ class HeightRouteArgs {
   String toString() {
     return 'HeightRouteArgs{key: $key, params: $params}';
   }
-}
-
-/// generated route for
-/// [HomeView]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

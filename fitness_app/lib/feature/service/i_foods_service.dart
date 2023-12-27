@@ -1,5 +1,5 @@
-import 'package:fistness_app_firebase/feature/homex/exercises/model/exercises_model.dart';
-import 'package:fistness_app_firebase/feature/homex/home/model/foods_model.dart';
+import 'package:fistness_app_firebase/feature/home/diet/model/foods_model.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 
 import '../../core/base/service/base_service.dart';
 

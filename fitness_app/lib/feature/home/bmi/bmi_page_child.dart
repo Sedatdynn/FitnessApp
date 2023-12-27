@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/feature/homex/bmi/row_value.dart';
+import 'package:fistness_app_firebase/feature/home/bmi/row_value.dart';
 import 'package:fistness_app_firebase/product/const/const_container.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';

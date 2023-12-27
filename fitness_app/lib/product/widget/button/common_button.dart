@@ -7,11 +7,10 @@ import '../../theme/colors.dart';
 class CommonButton extends StatelessWidget {
   final String text;
   final dynamic onPressed;
-  const CommonButton({
-    Key? key,
-    required this.text,
-    required this.onPressed,
-  }) : super(key: key);
+  final Color? color;
+  const CommonButton(
+      {Key? key, required this.text, required this.onPressed, this.color = AppColors.mainPrimary})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +31,6 @@ class CommonButton extends StatelessWidget {
         shape: MaterialStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
         foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
-        backgroundColor: MaterialStateProperty.all(AppColors.mainPrimary),
+        backgroundColor: MaterialStateProperty.all(color),
       );
 }

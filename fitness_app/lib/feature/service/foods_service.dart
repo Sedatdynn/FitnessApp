@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:fistness_app_firebase/feature/homex/exercises/model/exercises_model.dart';
-import 'package:fistness_app_firebase/feature/homex/home/model/foods_model.dart';
+import 'package:fistness_app_firebase/feature/home/diet/model/foods_model.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 
 import 'i_foods_service.dart';
 
@@ -10,6 +10,9 @@ class FoodsService extends IFoodsService {
   @override
   Future<FoodsModel?> fetchFoodsItem() async {
     final response = await dio.get("/$item");
+    print('****************************************************************');
+    print(item);
+    print('****************************************************************');
 
     if (response.statusCode == HttpStatus.ok) {
       final jsonBody = response.data;

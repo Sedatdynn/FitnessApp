@@ -13,7 +13,7 @@ class _GridBodyWidget extends StatelessWidget {
           child: _OptionWidgets(text: "Exercises", child: ImagePath.main_exercises.toPng()),
         ),
         InkWell(
-          onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.home),
+          onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.diet),
           child: _OptionWidgets(text: "Diet List", child: ImagePath.diet_list.toPng()),
         ),
       ],

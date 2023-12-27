@@ -13,7 +13,7 @@ final class RouteConstants {
   static const weight = '/weight';
   static const exercise = '/exercise';
   static const detailExercise = '/detail_exercise';
-  static const home = '/home';
+  static const diet = '/diet';
   static const detailVideo = '/detail_video';
   static const bmiCalculator = '/bmi_calculator';
   static const profile = '/profile';

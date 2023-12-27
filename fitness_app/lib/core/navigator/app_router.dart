@@ -12,15 +12,16 @@ import 'package:fistness_app_firebase/feature/auth/mobility/view/mobility_view.d
 import 'package:fistness_app_firebase/feature/auth/register/view/register_view.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/params/weight_params.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/view/weight_view.dart';
-import 'package:fistness_app_firebase/feature/homex/bmi/bmi_page.dart';
-import 'package:fistness_app_firebase/feature/homex/exercises/model/exercises_model.dart';
-import 'package:fistness_app_firebase/feature/homex/exercises/view/detailPages/detail_exercises_page.dart';
-import 'package:fistness_app_firebase/feature/homex/exercises/view/detailPages/exercises_page.dart';
-import 'package:fistness_app_firebase/feature/homex/exercises/view/detailVideoPages/detail_video_page.dart';
-import 'package:fistness_app_firebase/feature/homex/home/bottomNavigateBar/navigate_bar.dart';
-import 'package:fistness_app_firebase/feature/homex/home/view/home_view.dart';
-import 'package:fistness_app_firebase/feature/homex/profile/edit_profile.dart';
-import 'package:fistness_app_firebase/feature/homex/profile/profile_page.dart';
+import 'package:fistness_app_firebase/feature/home/bmi/bmi_page.dart';
+import 'package:fistness_app_firebase/feature/home/diet/view/diet_view.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/detailPages/detail_exercises_page.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/detailPages/exercises_page.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/detail_video_page.dart';
+import 'package:fistness_app_firebase/feature/home/profile/edit_profile.dart';
+import 'package:fistness_app_firebase/feature/home/profile/profile_page.dart';
+import 'package:fistness_app_firebase/product/widget/bottomNavigateBar/navigate_bar.dart';
+
 import 'package:fistness_app_firebase/feature/splash/view/splash_view.dart';
 import 'package:fistness_app_firebase/feature/welcome/launch/view/launch_view.dart';
 
@@ -45,7 +46,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: RouteConstants.dailyMobility, page: DailyMobilityRoute.page),
         AutoRoute(path: RouteConstants.height, page: HeightRoute.page),
         AutoRoute(path: RouteConstants.weight, page: WeightRoute.page),
-        AutoRoute(path: RouteConstants.home, page: HomeRoute.page),
+        AutoRoute(path: RouteConstants.diet, page: DietRoute.page),
         AutoRoute(path: RouteConstants.exercise, page: ExercisesRoute.page),
         AutoRoute(path: RouteConstants.detailExercise, page: DetailExercisesRoute.page),
         AutoRoute(path: RouteConstants.detailVideo, page: DetailVideoRoute.page),
