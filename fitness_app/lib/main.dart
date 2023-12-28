@@ -20,16 +20,11 @@ Future<void> main() async {
   ));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   final AppRouter appRouter;
 
   const MyApp({Key? key, required this.appRouter}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -40,8 +35,8 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp.router(
               debugShowCheckedModeBanner: false,
               theme: context.watch<GlobalCubit>().getCurrentTheme(),
-              routerDelegate: widget.appRouter.delegate(),
-              routeInformationParser: widget.appRouter.defaultRouteParser());
+              routerDelegate: appRouter.delegate(),
+              routeInformationParser: appRouter.defaultRouteParser());
         });
   }
 }

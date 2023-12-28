@@ -19,7 +19,7 @@ import 'package:fistness_app_firebase/feature/home/exercises/view/detailPages/de
 import 'package:fistness_app_firebase/feature/home/exercises/view/detailPages/exercises_page.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/detail_video_page.dart';
 import 'package:fistness_app_firebase/feature/home/profile/edit_profile.dart';
-import 'package:fistness_app_firebase/feature/home/profile/profile_page.dart';
+import 'package:fistness_app_firebase/feature/home/profile/profile_view.dart';
 import 'package:fistness_app_firebase/product/widget/bottomNavigateBar/navigate_bar.dart';
 
 import 'package:fistness_app_firebase/feature/splash/view/splash_view.dart';
