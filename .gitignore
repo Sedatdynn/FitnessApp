@@ -20,3 +20,15 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+# firebase
+/android/app/google-services.json
+/ios/Runner/GoogleService-Info.plist
+/android/app/src/debug/google-services.json
+/android/app/src/profile/google-services.json
+/android/app/src/release/google-services.json
+/ios/Runner/GoogleService-Info_Debug.plist
+/ios/Runner/GoogleService-Info_Profile.plist
+/ios/Runner/GoogleService-Info_Release.plist
+/lib/firebase_options.dart
+
+
