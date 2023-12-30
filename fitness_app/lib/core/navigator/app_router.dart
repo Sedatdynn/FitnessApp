@@ -12,7 +12,7 @@ import 'package:fistness_app_firebase/feature/auth/mobility/view/mobility_view.d
 import 'package:fistness_app_firebase/feature/auth/register/view/register_view.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/params/weight_params.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/view/weight_view.dart';
-import 'package:fistness_app_firebase/feature/home/bmi/bmi_page.dart';
+import 'package:fistness_app_firebase/feature/home/bmi/view/bmi_view.dart';
 import 'package:fistness_app_firebase/feature/home/diet/view/diet_view.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/detailPages/detail_exercises_page.dart';

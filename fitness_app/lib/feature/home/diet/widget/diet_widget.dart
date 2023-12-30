@@ -35,25 +35,14 @@ class _InitialPointField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: AuthService.instance.fetchCurrentUserDoc(),
-        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.connectionState != ConnectionState.waiting) {
-            if (snapshot.hasData) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("Initial point:", style: context.textTheme.titleSmall),
-                  Text("${snapshot.data?["userRightPoint"].toString() ?? 0} ",
-                      style: context.textTheme.titleSmall),
-                ],
-              );
-            }
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Text("Initial point:", style: context.textTheme.titleSmall),
+        Text("${context.watch<GlobalCubit>().user.userRightPoint ?? 0} ",
+            style: context.textTheme.titleSmall),
+      ],
+    );
   }
 }
 

@@ -38,12 +38,12 @@ class LoginView extends StatelessWidget {
           }
         },
         listenWhen: (previous, current) => previous.errorMessage != current.errorMessage,
-        child: _ScaffoldBody(formKey),
+        child: _scaffoldBody(formKey),
       ),
     );
   }
 
-  Scaffold _ScaffoldBody(GlobalKey<FormState> formKey) {
+  Scaffold _scaffoldBody(GlobalKey<FormState> formKey) {
     return Scaffold(
         appBar: canPop! ? const CommonAppBar() : null,
         body: SingleChildScrollView(

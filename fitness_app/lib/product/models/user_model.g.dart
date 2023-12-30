@@ -16,7 +16,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       mobility: json['mobility'] as String?,
       height: json['height'] as String?,
       weight: json['weight'] as String?,
-      userRightPoint: json['userRightPoint'] as String?,
+      userRightPoint: json['userRightPoint'] as int?,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{

@@ -76,7 +76,7 @@ class _ExercisesViewState extends State<ExercisesView> {
 
   Container listTileBody(BuildContext context, List<Exercise> items) {
     return Container(
-      decoration: commonBoxDec(
+      decoration: commonBoxDecoration(
           AppColors.backgroundColor, AppColors.backgroundColor, AppColors.backgroundColor),
       child: ListView.builder(
         shrinkWrap: true,

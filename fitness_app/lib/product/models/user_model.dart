@@ -15,18 +15,18 @@ class UserModel extends Equatable {
   final String? mobility;
   final String? height;
   final String? weight;
-  final String? userRightPoint;
+  final int? userRightPoint;
   const UserModel(
-      {required this.username,
-      required this.email,
-      required this.name,
-      required this.password,
-      required this.gender,
-      required this.age,
-      required this.mobility,
-      required this.height,
-      required this.weight,
-      required this.userRightPoint});
+      {this.username,
+      this.email,
+      this.name,
+      this.password,
+      this.gender,
+      this.age,
+      this.mobility,
+      this.height,
+      this.weight,
+      this.userRightPoint});
   UserModel fromJson(Map<String, dynamic> json) {
     return _$UserModelFromJson(json);
   }
@@ -52,7 +52,7 @@ class UserModel extends Equatable {
     String? mobility,
     String? height,
     String? weight,
-    String? userRightPoint,
+    int? userRightPoint,
   }) {
     return UserModel(
       username: username ?? this.username,

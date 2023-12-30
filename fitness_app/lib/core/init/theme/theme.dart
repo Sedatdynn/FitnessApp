@@ -22,6 +22,10 @@ final class CustomTheme {
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(color: Color.fromARGB(255, 10, 10, 10)),
             )),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: Colors.black,
+            selectedIconTheme: IconThemeData(color: Color(0xFFC4FB6D)),
+            unselectedIconTheme: IconThemeData(color: Colors.red)),
 
         //textThee=me
         textTheme: TextTheme(

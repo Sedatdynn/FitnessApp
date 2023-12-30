@@ -1,7 +1,7 @@
 import '../../feature/views_shelf.dart';
 
-BoxDecoration commonBoxDec(Color? color1, Color? color2, Color? color3) => BoxDecoration(
-      borderRadius: BorderRadius.circular(25.0),
+BoxDecoration commonBoxDecoration(Color? color1, Color? color2, Color? color3) => BoxDecoration(
+      borderRadius: BorderRadius.circular(24.0),
       boxShadow: [
         BoxShadow(
           offset: const Offset(5, 1),

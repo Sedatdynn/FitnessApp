@@ -63,7 +63,7 @@ class WeightCubit extends IWeightCubit {
             mobility: params.mobility,
             height: params.height.toString(),
             weight: state.selectedValue!.toString(),
-            userRightPoint: state.totalPoint.toString()));
+            userRightPoint: state.totalPoint));
 
     result.fold((failure) async {
       emit(state.copyWith(errorMessage: failure.message));

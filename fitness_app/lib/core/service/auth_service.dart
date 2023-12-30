@@ -30,8 +30,19 @@ class AuthService {
     _auth.currentUser == null;
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>> fetchCurrentUserDoc() async {
-    return await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).get();
+  BaseResponseData<dynamic> fetchCurrentUserDoc() async {
+    try {
+      final userInfo =
+          await _firestore.collection(userCollection).doc(_auth.currentUser!.uid).get();
+      if (userInfo.data() != null) {
+        final user = const UserModel().fromJson(userInfo.data()!);
+        return Right(user);
+      } else {
+        return const Right(null);
+      }
+    } on FirebaseException catch (e) {
+      return Left(ServerException(message: e.message.toString(), statusCode: e.code));
+    }
   }
 
   Future<void> setUser({required UserModel model}) async {
