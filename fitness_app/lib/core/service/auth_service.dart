@@ -52,6 +52,18 @@ class AuthService {
         .set(model.toJsonWithoutPassword());
   }
 
+  BaseVoidData updateData({required UserModel model}) async {
+    try {
+      await _firestore
+          .collection(userCollection)
+          .doc(_auth.currentUser!.uid)
+          .update(model.toJson());
+      return right(null);
+    } on FirebaseException catch (e) {
+      return left(ServerException(message: e.message!, statusCode: '505'));
+    }
+  }
+
   BaseVoidData createPerson({required UserModel model}) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);

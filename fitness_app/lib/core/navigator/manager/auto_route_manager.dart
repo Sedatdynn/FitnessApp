@@ -33,5 +33,10 @@ class RouteManager implements IRouteManager {
   }
 
   @override
+  void pushAndPopLast(PageRouteInfo path) {
+    _router.popAndPush(path);
+  }
+
+  @override
   void pop() => _router.pop();
 }

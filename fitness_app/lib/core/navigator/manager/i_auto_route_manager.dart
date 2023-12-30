@@ -6,5 +6,6 @@ abstract class IRouteManager {
   void push(PageRouteInfo path);
   void pushNamed({required String path});
   void pushAndPopUntil(PageRouteInfo path);
+  void pushAndPopLast(PageRouteInfo path);
   void pop();
 }

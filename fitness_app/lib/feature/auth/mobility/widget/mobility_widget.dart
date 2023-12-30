@@ -12,10 +12,10 @@ class _DropDownWidget extends StatelessWidget {
             dropdownColor: Colors.deepPurpleAccent,
             isExpanded: true,
             value: state.selectedItem,
-            style: context.textTheme.titleMedium,
+            style: context.textTheme.titleSmall,
             underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
             onChanged: (String? value) => context.read<MobilityCubit>().setSelectedItem(value!),
-            items: context.read<MobilityCubit>().items.map((e) {
+            items: GlobalService().items.map((e) {
               return _dropdownMenuItem(e);
             }).toList());
       },

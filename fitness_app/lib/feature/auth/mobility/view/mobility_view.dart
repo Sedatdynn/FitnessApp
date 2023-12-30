@@ -11,6 +11,7 @@ import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/const/text/texts.dart';
+import 'package:fistness_app_firebase/product/global/service/global_service.dart';
 import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

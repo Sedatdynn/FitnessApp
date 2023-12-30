@@ -1,3 +1,5 @@
+import 'package:fistness_app_firebase/product/global/service/global_service.dart';
+
 import '../../../core/cache/cache_manager.dart';
 import '../../../core/init/theme/theme.dart';
 import '../../../core/service/auth_service.dart';
@@ -47,17 +49,19 @@ class GlobalCubit extends IGlobalCubit {
     emit(state.copyWith(user: user));
   }
 
+  updateUserRightPoint() async {
+    int userRightPoint = await GlobalService().calculateTotalPoints(params: user);
+    final updatedUser = state.user?.copyWith(userRightPoint: userRightPoint);
+    emit(state.copyWith(user: updatedUser));
+  }
+
   void updateUserHeight(int height) {
-    print(height.toString().isEmpty);
     if (height.toString().isEmpty) return;
     final updatedUser = state.user?.copyWith(height: height);
     emit(state.copyWith(user: updatedUser));
-    print(state.user?.height);
   }
 
   void updateUserWeight(int weight) {
-    print(weight.toString().isEmpty);
-
     if (weight.toString().isEmpty) return;
     final updatedUser = state.user?.copyWith(weight: weight);
     emit(state.copyWith(user: updatedUser));

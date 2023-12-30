@@ -4,6 +4,12 @@ import 'i_global_service.dart';
 
 class GlobalService extends IGlobalService {
   int updatedTotalPoint = 0;
+  final List<String> items = <String>[
+    'Desk job or sedentary',
+    'Both at the table and standing',
+    'Those on the move during the day',
+    'Active employees'
+  ];
 
   @override
   calculateBmi({required int height, required int weight}) {
