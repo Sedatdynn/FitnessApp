@@ -12,10 +12,10 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       name: json['name'] as String?,
       password: json['password'] as String?,
       gender: json['gender'] as String?,
-      age: json['age'] as String?,
+      age: json['age'] as int?,
       mobility: json['mobility'] as String?,
-      height: json['height'] as String?,
-      weight: json['weight'] as String?,
+      height: json['height'] as int?,
+      weight: json['weight'] as int?,
       userRightPoint: json['userRightPoint'] as int?,
     );
 

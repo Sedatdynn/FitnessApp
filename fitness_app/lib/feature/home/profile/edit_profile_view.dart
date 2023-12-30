@@ -1,13 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/core/service/auth_service.dart';
-import 'package:fistness_app_firebase/product/const/const_shelf.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../product/const/responsive/paddings.dart';
+import '../../../product/const/responsive/space.dart';
+import '../../../product/global/cubit/global_cubit.dart';
+import '../../../product/widget/button/common_button.dart';
+import '../../../product/widget/textfield/auth_textfield.dart';
+import '../../views_shelf.dart';
 
 @RoutePage()
 class UpdateInfosView extends StatefulWidget {
@@ -27,10 +26,33 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
     return Scaffold(
         appBar: AppBar(),
         body: Padding(
-          padding: const AppPadding.minAll(),
+          padding: const AppPadding.normalHorizontal(),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AuthTextField(
+                onChanged: (val) {
+                  if (val.isEmpty) return;
+                  int newValue = int.parse(val);
+                  context.read<GlobalCubit>().updateUserHeight(newValue);
+                },
+                validator: (value) {},
+                hintText: 'Height ${context.read<GlobalCubit>().user.height}',
+                icon: Icons.height,
+              ),
+              CustomSize.normalHeight(),
+
+              AuthTextField(
+                onChanged: (val) {
+                  if (val.isEmpty) return;
+                  int newValue = int.parse(val);
+                  context.read<GlobalCubit>().updateUserWeight(newValue);
+                },
+                validator: (value) {},
+                hintText: 'Weight ${context.read<GlobalCubit>().user.weight}',
+                icon: Icons.line_weight,
+              ),
+              CustomSize.normalHeight(),
               TextFormField(
                 keyboardType: TextInputType.number,
                 maxLength: 3,
@@ -40,19 +62,11 @@ class _UpdateInfosViewState extends State<UpdateInfosView> {
                     borderRadius: BorderRadius.circular(14),
                   ),
                   // labelText: "weight -> ${snapshot.data?["weight"]}"
+                  labelText: "weight -> ${context.read<GlobalCubit>().user.weight}",
                 ),
               ),
-              TextFormField(
-                keyboardType: TextInputType.number,
-                maxLength: 3,
-                controller: heightController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  // labelText: "height -> ${snapshot.data?["height"]}"
-                ),
-              ),
+
+              CommonButton(text: 'Update', onPressed: () {})
               // CommonButton(
               //     text: "Update",
               //     onPressed: () {

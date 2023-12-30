@@ -1,15 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/feature/home/bmi/widget/bmi_gauge.dart';
-import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/product/const/const_deco.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/const/responsive/space.dart';
-import 'package:fistness_app_firebase/product/global/cubit/global_cubit.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
-import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../product/const/const_deco.dart';
+import '../../../../product/const/responsive/paddings.dart';
+import '../../../../product/const/responsive/responsive.dart';
+import '../../../../product/const/responsive/space.dart';
+import '../../../../product/global/cubit/global_cubit.dart';
+import '../../../../product/global/service/global_service.dart';
+import '../../../../product/theme/colors.dart';
+import '../../../../product/widget/appBar/custom_app_bar.dart';
+import '../../../views_shelf.dart';
+import '../widget/bmi_gauge.dart';
 
 part '../widget/bmi_widget.dart';
 
@@ -27,8 +29,8 @@ class BmiCalculatorView extends StatelessWidget {
             children: [
               BmiWidget(
                 width: context.width,
-                userHeight: context.watch<GlobalCubit>().user.height ?? '',
-                userWeight: context.watch<GlobalCubit>().user.weight ?? '',
+                userHeight: context.watch<GlobalCubit>().user.height ?? 0,
+                userWeight: context.watch<GlobalCubit>().user.weight ?? 0,
               ),
             ],
           ),

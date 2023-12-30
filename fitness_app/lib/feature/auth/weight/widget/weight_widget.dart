@@ -12,7 +12,7 @@ class _WeightNumberPicker extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomNumberPicker(
-              value: state.selectedValue!,
+              value: state.selectedValue! as int,
               minValue: 30,
               maxValue: 200,
               onChanged: (value) => context.read<WeightCubit>().setSelectedValue(value),
@@ -40,10 +40,11 @@ class _CompleteButton extends StatelessWidget {
             await context
                 .read<WeightCubit>()
                 .calculateTotalPoints(
-                  params: CalculateParams(
-                      birthYear: params.birthYear!,
+                  params: UserModel(
+                      age: params.birthYear!,
                       gender: params.gender!,
                       height: params.height!,
+                      weight: state.selectedValue,
                       mobility: params.mobility!),
                 )
                 .then((_) => {context.read<WeightCubit>().createPerson(params: params)});

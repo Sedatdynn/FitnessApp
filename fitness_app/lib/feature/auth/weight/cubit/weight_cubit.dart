@@ -1,21 +1,19 @@
-import 'package:fistness_app_firebase/core/navigator/app_router.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/core/service/auth_service.dart';
-import 'package:fistness_app_firebase/feature/auth/gender/cubit/gender_cubit.dart';
-import 'package:fistness_app_firebase/feature/auth/weight/cubit/i_weight_cubit.dart';
-import 'package:fistness_app_firebase/feature/auth/weight/cubit/weight_state.dart';
-import 'package:fistness_app_firebase/feature/auth/weight/params/calculate_func_params.dart';
-import 'package:fistness_app_firebase/feature/auth/weight/params/weight_params.dart';
-import 'package:fistness_app_firebase/product/const/text/texts.dart';
-import 'package:fistness_app_firebase/product/models/user_model.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
-import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
+import '../../../../core/navigator/app_router.dart';
+import '../../../../core/navigator/manager/auto_route_manager.dart';
+import '../../../../core/service/auth_service.dart';
+import '../../../../product/const/text/texts.dart';
+import '../../../../product/global/service/global_service.dart';
+import '../../../../product/models/user_model.dart';
+import '../../../../product/theme/colors.dart';
+import '../../../../product/widget/warning/warning_toast.dart';
+import '../params/weight_params.dart';
+import 'i_weight_cubit.dart';
+import 'weight_state.dart';
 
 class WeightCubit extends IWeightCubit {
   WeightCubit() : super(WeightState.initial()) {
     init();
   }
-  int updatedTotalPoint = 0;
 
   @override
   void init() => emit(state.copyWith(selectedValue: 65));
@@ -32,23 +30,12 @@ class WeightCubit extends IWeightCubit {
 
   @override
   int get selectedValue => state.selectedValue!;
-  int get getTotal => state.totalPoint!;
 
   @override
-  Future<void> calculateTotalPoints({required CalculateParams params}) async {
-    calculateAge(params.birthYear!);
+  Future<void> calculateTotalPoints({required UserModel params}) async {
+    int lastPoint = await GlobalService().calculateTotalPoints(params: params);
 
-    calculateWeight(state.selectedValue!);
-
-    params.height! >= 160 ? updatedTotalPoint += 2 : updatedTotalPoint += 1;
-
-    params.gender == GenderEnum.female.name ? updatedTotalPoint += 7 : updatedTotalPoint += 15;
-
-    calculateMobility(params.mobility!);
-
-    Future.delayed(const Duration(seconds: 2));
-
-    setTotalPoint(updatedTotalPoint);
+    setTotalPoint(lastPoint);
   }
 
   Future<void> createPerson({required WeightParams params}) async {
@@ -59,10 +46,10 @@ class WeightCubit extends IWeightCubit {
             name: params.name,
             password: params.password,
             gender: params.gender,
-            age: params.birthYear.toString(),
+            age: params.birthYear,
             mobility: params.mobility,
-            height: params.height.toString(),
-            weight: state.selectedValue!.toString(),
+            height: params.height,
+            weight: state.selectedValue!,
             userRightPoint: state.totalPoint));
 
     result.fold((failure) async {
@@ -73,62 +60,4 @@ class WeightCubit extends IWeightCubit {
       RouteManager.instance.pushAndPopUntil(LoginRoute(canPop: false));
     });
   }
-
-  @override
-  void calculateWeight(int weight) {
-    const WeightMapType pointsMap = {
-      40: 4,
-      50: 5,
-      60: 6,
-      70: 7,
-      80: 8,
-      90: 9,
-      100: 10,
-      110: 11,
-      120: 12,
-      130: 13,
-      140: 14,
-      150: 15,
-      160: 16,
-    };
-
-    pointsMap.forEach((rangeStart, points) {
-      if (weight >= rangeStart && weight <= rangeStart + 9) {
-        updatedTotalPoint += points;
-      }
-    });
-  }
-
-  @override
-  void calculateAge(int age) {
-    DateTime now = DateTime.now();
-    int currentYear = now.year;
-    age = currentYear - age;
-    if (age <= 20) {
-      updatedTotalPoint + 5;
-    } else if (age >= 21 && age <= 35) {
-      updatedTotalPoint += 4;
-    } else if (age >= 36 && age <= 50) {
-      updatedTotalPoint += 3;
-    } else if (age >= 51 && age <= 65) {
-      updatedTotalPoint += 2;
-    }
-  }
-
-  @override
-  void calculateMobility(String mobility) {
-    String mobilityControl = mobility.substring(0, 1);
-    switch (mobilityControl) {
-      case 'D':
-        updatedTotalPoint += 0;
-      case 'B':
-        updatedTotalPoint += 2;
-      case 'T':
-        updatedTotalPoint += 4;
-      case 'A':
-        updatedTotalPoint += 6;
-    }
-  }
 }
-
-typedef WeightMapType = Map<int, int>;

@@ -11,10 +11,10 @@ class UserModel extends Equatable {
   final String? password;
   final String? name;
   final String? gender;
-  final String? age;
+  final int? age;
   final String? mobility;
-  final String? height;
-  final String? weight;
+  final int? height;
+  final int? weight;
   final int? userRightPoint;
   const UserModel(
       {this.username,
@@ -48,10 +48,10 @@ class UserModel extends Equatable {
     String? name,
     String? password,
     String? gender,
-    String? age,
+    int? age,
     String? mobility,
-    String? height,
-    String? weight,
+    int? height,
+    int? weight,
     int? userRightPoint,
   }) {
     return UserModel(

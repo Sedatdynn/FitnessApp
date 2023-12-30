@@ -2,8 +2,8 @@ part of '../view/bmi_view.dart';
 
 class BmiWidget extends StatelessWidget {
   final double width;
-  final String userHeight;
-  final String userWeight;
+  final int userHeight;
+  final int userWeight;
   const BmiWidget(
       {Key? key, required this.width, required this.userHeight, required this.userWeight})
       : super(key: key);
@@ -14,26 +14,24 @@ class BmiWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         bmiGauge(
-            context,
-            bmiCalculate(context.watch<GlobalCubit>().user.height!,
-                context.watch<GlobalCubit>().user.weight!)),
+          context,
+          GlobalService().calculateBmi(
+              height: context.watch<GlobalCubit>().user.height ?? 0,
+              weight: context.watch<GlobalCubit>().user.weight ?? 0),
+        ),
         CustomSize.xLargeHeight(),
-        _BmiInfoField(title: "Height:", text: userHeight),
+        _BmiInfoField(title: "Height:", text: userHeight.toString()),
         CustomSize.largeHeight(),
-        _BmiInfoField(title: "Weight:", text: userWeight),
+        _BmiInfoField(title: "Weight:", text: userWeight.toString()),
         CustomSize.largeHeight(),
         _BmiInfoField(
-            title: "BMI Result:",
-            text: bmiCalculate(context.watch<GlobalCubit>().user.height!,
-                context.watch<GlobalCubit>().user.weight!)),
+          title: "BMI Result:",
+          text: GlobalService().calculateBmi(
+              height: context.watch<GlobalCubit>().user.height ?? 0,
+              weight: context.watch<GlobalCubit>().user.weight ?? 0),
+        ),
       ],
     );
-  }
-
-  String bmiCalculate(String height, String weight) {
-    double result = int.parse(weight) / (int.parse(height) * int.parse(height) / 10000);
-    String bmi = result.toStringAsFixed(2);
-    return bmi;
   }
 }
 
