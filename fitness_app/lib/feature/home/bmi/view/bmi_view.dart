@@ -23,16 +23,12 @@ class BmiCalculatorView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CommonAppBar(),
-        body: Container(
+        body: Padding(
           padding: const AppPadding.normalAll(),
-          child: Column(
-            children: [
-              BmiWidget(
-                width: context.width,
-                userHeight: context.watch<GlobalCubit>().user.height ?? 0,
-                userWeight: context.watch<GlobalCubit>().user.weight ?? 0,
-              ),
-            ],
+          child: BmiWidget(
+            width: context.width,
+            userHeight: context.watch<GlobalCubit>().user.height ?? 0,
+            userWeight: context.watch<GlobalCubit>().user.weight ?? 0,
           ),
         ));
   }

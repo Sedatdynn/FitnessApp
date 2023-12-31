@@ -68,10 +68,10 @@ final class CustomTheme {
             color: Colors.transparent,
             titleTextStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
             elevation: 0,
-            iconTheme: IconThemeData(color: Color(0xFFC4FB6D))),
+            iconTheme: IconThemeData(color: Color.fromARGB(255, 135, 109, 251))),
         //listTile theme
         listTileTheme: const ListTileThemeData(
-          iconColor: Color(0xFFC4FB6D),
+          iconColor: Color.fromARGB(255, 135, 109, 251),
           textColor: Colors.white,
         ),
         //inputDecorationTheme

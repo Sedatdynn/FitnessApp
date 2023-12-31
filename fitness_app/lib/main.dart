@@ -13,7 +13,7 @@ Future<void> main() async {
 
   RouteManager.instance.init(AppConstants.appRouter);
   runApp(BlocProvider(
-    create: (_) => GlobalCubit()..init(),
+    create: (_) => GlobalCubit(),
     child: MyApp(
       appRouter: AppConstants.appRouter,
     ),

@@ -1,7 +1,23 @@
 part of '../view/initial_view.dart';
 
-class _GridBodyWidget extends StatelessWidget {
+class _GridBodyWidget extends StatefulWidget {
   const _GridBodyWidget();
+
+  @override
+  State<_GridBodyWidget> createState() => _GridBodyWidgetState();
+}
+
+class _GridBodyWidgetState extends State<_GridBodyWidget> {
+  @override
+  void initState() {
+    super.initState();
+    checkUser();
+  }
+
+  void checkUser() {
+    final user = context.read<GlobalCubit>().user;
+    user.email == null ? context.read<GlobalCubit>().getUser() : null;
+  }
 
   @override
   Widget build(BuildContext context) {

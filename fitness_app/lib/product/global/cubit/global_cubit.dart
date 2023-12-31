@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/feature/home/profile/cubit/profile_cubit.dart';
 import 'package:fistness_app_firebase/product/global/service/global_service.dart';
 
 import '../../../core/cache/cache_manager.dart';
@@ -11,7 +12,9 @@ import 'global_state.dart';
 import 'i_global_cubit.dart';
 
 class GlobalCubit extends IGlobalCubit {
-  GlobalCubit() : super(GlobalState.initial());
+  GlobalCubit() : super(GlobalState.initial()) {
+    init();
+  }
 
   @override
   void init() {
@@ -19,6 +22,7 @@ class GlobalCubit extends IGlobalCubit {
     getUser();
   }
 
+  @override
   ThemeData getCurrentTheme() {
     var value = CacheManager.instance.getStringValue(CacheKeys.theme.name);
     value ??= ThemeConstants.dark.name;
@@ -31,7 +35,8 @@ class GlobalCubit extends IGlobalCubit {
     }
   }
 
-  changeTheme() async {
+  @override
+  Future<void> changeTheme() async {
     if (state.currentTheme != CustomTheme().lightTheme) {
       await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.light.name);
     } else {
@@ -40,40 +45,45 @@ class GlobalCubit extends IGlobalCubit {
     getCurrentTheme();
   }
 
+  @override
   Future<void> getUser() async {
     final userDoc = await AuthService.instance.fetchCurrentUserDoc();
     userDoc.fold((l) => warningToast(l.message), (r) => emit(state.copyWith(user: r)));
   }
 
-  void setUser(UserModel user) async {
+  @override
+  void setUser(UserModel user) {
     emit(state.copyWith(user: user));
   }
 
-  updateUserRightPoint() async {
+  @override
+  Future<void> updateUserRightPoint() async {
     int userRightPoint = await GlobalService().calculateTotalPoints(params: user);
     final updatedUser = state.user?.copyWith(userRightPoint: userRightPoint);
     emit(state.copyWith(user: updatedUser));
   }
 
+  @override
   void updateUserHeight(int height) {
     if (height.toString().isEmpty) return;
     final updatedUser = state.user?.copyWith(height: height);
     emit(state.copyWith(user: updatedUser));
   }
 
+  @override
   void updateUserWeight(int weight) {
     if (weight.toString().isEmpty) return;
     final updatedUser = state.user?.copyWith(weight: weight);
     emit(state.copyWith(user: updatedUser));
   }
 
+  @override
   void updateUserMobility(String mobility) {
     if (mobility.isEmpty) return;
     final updatedUser = state.user?.copyWith(mobility: mobility);
     emit(state.copyWith(user: updatedUser));
   }
 
+  @override
   UserModel get user => state.user ?? const UserModel();
 }
-
-enum ThemeConstants { light, dark }

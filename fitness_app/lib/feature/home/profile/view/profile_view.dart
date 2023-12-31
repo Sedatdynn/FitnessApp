@@ -26,7 +26,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () => RouteManager.instance.pushNamed(path: RouteConstants.main)),
         actions: const [
           Padding(

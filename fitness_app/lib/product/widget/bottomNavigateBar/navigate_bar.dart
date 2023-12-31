@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/initial/view/initial_view.dart';
-import 'package:fistness_app_firebase/feature/home/profile/profile_view.dart';
+import 'package:fistness_app_firebase/feature/home/profile/view/profile_view.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 

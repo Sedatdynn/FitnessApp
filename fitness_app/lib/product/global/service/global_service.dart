@@ -1,3 +1,5 @@
+import 'package:fistness_app_firebase/product/utils/typedef.dart';
+
 import '../../../feature/auth/gender/cubit/gender_cubit.dart';
 import '../../models/user_model.dart';
 import 'i_global_service.dart';
@@ -91,5 +93,3 @@ class GlobalService extends IGlobalService {
     }
   }
 }
-
-typedef WeightMapType = Map<int, int>;
