@@ -1,17 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/init/network/project_network.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/const_deco.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../model/exercises_model.dart';
-import '../../viewModel/exercises_view_model.dart';
 
 @RoutePage()
 class ExercisesView extends StatefulWidget {
@@ -31,21 +27,12 @@ class _ExercisesViewState extends State<ExercisesView> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) {
-        String item = "exercises";
-        return ExercisesViewModel(FoodsService(ProjectNetworkManager.instance.service, item));
-      },
-      builder: (context, child) {
-        return Scaffold(
-          body: ListView(
-            children: [
-              topImgField(context),
-              listTileBody(context, context.watch<ExercisesViewModel>().exercises),
-            ],
-          ),
-        );
-      },
+    return Scaffold(
+      body: ListView(
+        children: [
+          topImgField(context),
+        ],
+      ),
     );
   }
 

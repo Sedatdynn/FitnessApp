@@ -1,29 +1,36 @@
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/diet_state.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/i_diet_cubit.dart';
-import 'package:fistness_app_firebase/feature/service/i_foods_service.dart';
+import 'package:fistness_app_firebase/feature/home/diet/service/diet_service.dart';
+import 'package:fistness_app_firebase/feature/home/diet/service/i_diet_service.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
+import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
 
 class DietCubit extends IDietCubit {
-  final IFoodsService foodService;
+  late IDietService _dietService;
   double totalPoint = 0;
+  String item = "foods";
 
-  DietCubit(this.foodService) : super(DietState.initial()) {
+  DietCubit() : super(DietState.initial()) {
     init();
   }
 
   @override
-  void init() {
+  Future<void> init() async {
+    _dietService = DietService();
     emit(state.copyWith(
         lastSavedPoint: CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0));
-    fetch();
+    await fetch();
   }
 
   @override
   setTotalPoint(double point) {}
 
   Future<void> fetch() async {
-    emit(state.copyWith(foods: (await foodService.fetchFoodsItem())?.kategori ?? []));
+    final response = await _dietService.fetchDiets();
+    response.fold((l) => warningToast(l.message), (r) {
+      emit(state.copyWith(foods: r.kategori ?? []));
+    });
   }
 
   savePoint() async {

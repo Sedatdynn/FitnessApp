@@ -1,19 +1,15 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/init/network/project_network.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/video_player_widget.dart';
-import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../model/exercises_model.dart';
-import '../../viewModel/exercises_view_model.dart';
 
 @RoutePage()
 class DetailVideoView extends StatefulWidget {
@@ -51,59 +47,51 @@ class _DetailVideoViewState extends State<DetailVideoView> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) {
-        String item = "exercises";
-        return ExercisesViewModel(FoodsService(ProjectNetworkManager.instance.service, item));
-      },
-      builder: (context, child) {
-        return Scaffold(
-          body: ListView(children: [
-            Stack(
-              children: [
-                Column(children: [
-                  checkUrl ? _videoPlayer() : VideoPlayerWidget(controller: videoController)
-                ]),
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  child: IconButton(
-                      onPressed: () {
-                        RouteManager.instance.pop();
-                      },
-                      icon: const Icon(Icons.chevron_left_outlined)),
-                ),
-              ],
+    return Scaffold(
+      body: ListView(children: [
+        Stack(
+          children: [
+            Column(children: [
+              checkUrl ? _videoPlayer() : VideoPlayerWidget(controller: videoController)
+            ]),
+            Positioned(
+              top: 0,
+              left: 0,
+              child: IconButton(
+                  onPressed: () {
+                    RouteManager.instance.pop();
+                  },
+                  icon: const Icon(Icons.chevron_left_outlined)),
             ),
-            ListView.builder(
-              itemCount: 1,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (BuildContext ctxt, int i) {
-                return Container(
-                  margin: const AppPadding.minAll(),
-                  decoration: const BoxDecoration(
-                    color: Colors.cyan,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(24.0),
-                      topRight: Radius.circular(8.0),
-                      bottomLeft: Radius.circular(16.0),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      _titleText(context),
-                      _overviewTextTitle(context),
-                      _overviewContent(context),
-                      _instrctTitle(context),
-                    ],
-                  ),
-                );
-              },
-            )
-          ]),
-        );
-      },
+          ],
+        ),
+        ListView.builder(
+          itemCount: 1,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (BuildContext ctxt, int i) {
+            return Container(
+              margin: const AppPadding.minAll(),
+              decoration: const BoxDecoration(
+                color: Colors.cyan,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24.0),
+                  topRight: Radius.circular(8.0),
+                  bottomLeft: Radius.circular(16.0),
+                ),
+              ),
+              child: Column(
+                children: [
+                  _titleText(context),
+                  _overviewTextTitle(context),
+                  _overviewContent(context),
+                  _instrctTitle(context),
+                ],
+              ),
+            );
+          },
+        )
+      ]),
     );
   }
 

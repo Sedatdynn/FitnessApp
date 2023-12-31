@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/init/network/project_network.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/diet_cubit.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/diet_state.dart';
-import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
@@ -21,8 +19,7 @@ class DietView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(create: (context) {
-      String item = "foods";
-      return DietCubit(FoodsService(ProjectNetworkManager.instance.service, item));
+      return DietCubit();
     }, child: BlocBuilder<DietCubit, DietState>(
       builder: (context, state) {
         return SafeArea(

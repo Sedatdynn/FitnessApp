@@ -107,7 +107,8 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     LoginRoute.name: (routeData) {
-      final args = routeData.argsAs<LoginRouteArgs>(orElse: () => const LoginRouteArgs());
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: LoginView(
@@ -228,7 +229,8 @@ class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
 
   static const String name = 'DailyMobilityRoute';
 
-  static const PageInfo<DailyMobilityRouteArgs> page = PageInfo<DailyMobilityRouteArgs>(name);
+  static const PageInfo<DailyMobilityRouteArgs> page =
+      PageInfo<DailyMobilityRouteArgs>(name);
 }
 
 class DailyMobilityRouteArgs {
@@ -267,7 +269,8 @@ class DetailExercisesRoute extends PageRouteInfo<DetailExercisesRouteArgs> {
 
   static const String name = 'DetailExercisesRoute';
 
-  static const PageInfo<DetailExercisesRouteArgs> page = PageInfo<DetailExercisesRouteArgs>(name);
+  static const PageInfo<DetailExercisesRouteArgs> page =
+      PageInfo<DetailExercisesRouteArgs>(name);
 }
 
 class DetailExercisesRouteArgs {
@@ -307,7 +310,8 @@ class DetailVideoRoute extends PageRouteInfo<DetailVideoRouteArgs> {
 
   static const String name = 'DetailVideoRoute';
 
-  static const PageInfo<DetailVideoRouteArgs> page = PageInfo<DetailVideoRouteArgs>(name);
+  static const PageInfo<DetailVideoRouteArgs> page =
+      PageInfo<DetailVideoRouteArgs>(name);
 }
 
 class DetailVideoRouteArgs {

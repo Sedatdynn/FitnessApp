@@ -1,17 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/init/network/project_network.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/feature/service/foods_service.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../model/exercises_model.dart';
-import '../../viewModel/exercises_view_model.dart';
 
 @RoutePage()
 class DetailExercisesView extends StatefulWidget {
@@ -35,16 +31,8 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) {
-        String item = "exercises";
-        return ExercisesViewModel(FoodsService(ProjectNetworkManager.instance.service, item));
-      },
-      builder: (context, child) {
-        return Scaffold(
-          body: _listViewBody(context),
-        );
-      },
+    return Scaffold(
+      body: _listViewBody(context),
     );
   }
 

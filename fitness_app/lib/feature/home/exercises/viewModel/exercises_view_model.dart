@@ -1,14 +1,14 @@
-import 'package:fistness_app_firebase/feature/service/i_foods_service.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/service/i_exercise_service.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 
 import '../model/exercises_model.dart';
 
 class ExercisesViewModel extends ChangeNotifier {
   List<Exercise> exercises = [];
-  final IFoodsService foodService;
+  final IExerciseService exerciseService;
   bool isLoading = false;
 
-  ExercisesViewModel(this.foodService) {
+  ExercisesViewModel(this.exerciseService) {
     fetchExercisesData();
   }
 
@@ -19,7 +19,7 @@ class ExercisesViewModel extends ChangeNotifier {
 
   Future<void> fetchExercisesData() async {
     changeLoading();
-    exercises = (await foodService.fetchExercisesItem())?.exercise ?? [];
+    // exercises = (await exerciseService.fetchExercises())?.exercise ?? [];
     changeLoading();
   }
 }

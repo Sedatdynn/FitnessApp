@@ -11,6 +11,9 @@ final class AppConstants {
   const AppConstants._();
   static final appRouter = AppRouter();
   static const String baseUrl = 'http://10.0.2.2:8000';
+  static const sendTimeout = 60;
+  static const connectTimeout = 69;
+  static const receiveTimeout = 60;
 }
 
 const kZero = 0;
