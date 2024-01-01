@@ -7,6 +7,7 @@ enum ImagePath {
   exercise,
   facebook,
   google,
+  largeExrc,
   main_exercises;
 
   String get rawValue => "assets/png/$name.png";

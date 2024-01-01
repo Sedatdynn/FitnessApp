@@ -9,7 +9,7 @@ class ExercisesModel extends Equatable {
 
   const ExercisesModel({this.exercise});
 
-  factory ExercisesModel.fromJson(Map<String, dynamic> json) {
+  fromJson(Map<String, dynamic> json) {
     return _$ExercisesModelFromJson(json);
   }
 

@@ -11,12 +11,11 @@ import '../../model/exercises_model.dart';
 
 @RoutePage()
 class DetailExercisesView extends StatefulWidget {
-  final List<CategoryData> items;
-  final Exercise images;
+  final Exercise items;
+
   const DetailExercisesView({
     Key? key,
     required this.items,
-    required this.images,
   }) : super(key: key);
 
   @override
@@ -24,11 +23,6 @@ class DetailExercisesView extends StatefulWidget {
 }
 
 class _DetailExercisesViewState extends State<DetailExercisesView> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +37,7 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
           ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
-                widget.images.imgUrl.toString(),
+                widget.items.imgUrl.toString(),
               )),
           Positioned(
             left: 0,
@@ -60,14 +54,14 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
             bottom: 0,
             left: context.width * 0.03,
             child: Text(
-              widget.images.categoryName.toString(),
+              widget.items.categoryName.toString(),
               style: context.textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
             ),
           )
         ],
       ),
       ListView.builder(
-        itemCount: widget.items.length,
+        itemCount: widget.items.categoryData!.length,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext ctxt, int i) {
@@ -80,7 +74,8 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
   InkWell _navigateToPage(BuildContext context, int i) {
     return InkWell(
       onTap: () {
-        RouteManager.instance.push(DetailVideoRoute(items: widget.items[i].videoPageData!));
+        RouteManager.instance
+            .push(DetailVideoRoute(items: widget.items.categoryData![i].videoPageData!));
       },
       child: Container(
         margin: const AppPadding.minAll(),
@@ -108,10 +103,13 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
                             bottomRight: Radius.circular(10), topLeft: Radius.circular(10))),
                     child: Row(
                       children: [
-                        _movementInfo(context, i, "Type", widget.items[i].type),
-                        _movementInfo(context, i, "Equipment", widget.items[i].equipment),
-                        _movementInfo(context, i, "Mechanics", widget.items[i].mechanic),
-                        _movementInfo(context, i, "Exp Level", widget.items[i].exerciseLevel),
+                        _movementInfo(context, i, "Type", widget.items.categoryData![i].type),
+                        _movementInfo(
+                            context, i, "Equipment", widget.items.categoryData![i].equipment),
+                        _movementInfo(
+                            context, i, "Mechanics", widget.items.categoryData![i].mechanic),
+                        _movementInfo(
+                            context, i, "Exp Level", widget.items.categoryData![i].exerciseLevel),
                       ],
                     ),
                   ),
@@ -127,11 +125,11 @@ class _DetailExercisesViewState extends State<DetailExercisesView> {
 
   _imageField(int i) => ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
-      child: Image.network(widget.items[i].contentImage.toString()));
+      child: Image.network(widget.items.categoryData![i].contentImage.toString()));
 
   _exercisesTitle(BuildContext context, int i) {
     return Text(
-      widget.items[i].exerciseName.toString(),
+      widget.items.categoryData![i].exerciseName.toString(),
       style: context.textTheme.titleSmall,
     );
   }

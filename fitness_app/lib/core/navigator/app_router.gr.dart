@@ -48,7 +48,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: DetailExercisesView(
           key: args.key,
           items: args.items,
-          images: args.images,
         ),
       );
     },
@@ -98,6 +97,12 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           params: args.params,
         ),
+      );
+    },
+    InitialRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const InitialView(),
       );
     },
     LaunchRoute.name: (routeData) {
@@ -254,15 +259,13 @@ class DailyMobilityRouteArgs {
 class DetailExercisesRoute extends PageRouteInfo<DetailExercisesRouteArgs> {
   DetailExercisesRoute({
     Key? key,
-    required List<CategoryData> items,
-    required Exercise images,
+    required Exercise items,
     List<PageRouteInfo>? children,
   }) : super(
           DetailExercisesRoute.name,
           args: DetailExercisesRouteArgs(
             key: key,
             items: items,
-            images: images,
           ),
           initialChildren: children,
         );
@@ -277,18 +280,15 @@ class DetailExercisesRouteArgs {
   const DetailExercisesRouteArgs({
     this.key,
     required this.items,
-    required this.images,
   });
 
   final Key? key;
 
-  final List<CategoryData> items;
-
-  final Exercise images;
+  final Exercise items;
 
   @override
   String toString() {
-    return 'DetailExercisesRouteArgs{key: $key, items: $items, images: $images}';
+    return 'DetailExercisesRouteArgs{key: $key, items: $items}';
   }
 }
 
@@ -444,6 +444,20 @@ class HeightRouteArgs {
   String toString() {
     return 'HeightRouteArgs{key: $key, params: $params}';
   }
+}
+
+/// generated route for
+/// [InitialView]
+class InitialRoute extends PageRouteInfo<void> {
+  const InitialRoute({List<PageRouteInfo>? children})
+      : super(
+          InitialRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'InitialRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

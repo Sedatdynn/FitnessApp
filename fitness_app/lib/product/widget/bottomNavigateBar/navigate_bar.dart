@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/feature/home/exercises/view/initial/view/initial_view.dart';
+import 'package:fistness_app_firebase/feature/home/initial/view/initial_view.dart';
 import 'package:fistness_app_firebase/feature/home/profile/view/profile_view.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
@@ -13,7 +13,7 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  List pages = [const InitialPage(), const ProfileView()];
+  List pages = [const InitialView(), const ProfileView()];
   int selectedIndex = 0;
   void changeIndex(int index) {
     setState(() {
@@ -33,9 +33,7 @@ class _MainViewState extends State<MainView> {
         selectedItemColor: AppColors.whiteText,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
+            icon: Icon(Icons.home),
             label: MyText.bnFirstText,
           ),
           BottomNavigationBarItem(

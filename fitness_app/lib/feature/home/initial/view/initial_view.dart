@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
@@ -9,8 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part '../widget/initial_widget.dart';
 
-class InitialPage extends StatelessWidget {
-  const InitialPage({super.key});
+@RoutePage()
+class InitialView extends StatelessWidget {
+  const InitialView({super.key});
 
   @override
   Widget build(BuildContext context) {
