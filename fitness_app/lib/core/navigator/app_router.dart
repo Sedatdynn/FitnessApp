@@ -15,7 +15,7 @@ import 'package:fistness_app_firebase/feature/auth/weight/view/weight_view.dart'
 import 'package:fistness_app_firebase/feature/home/bmi/view/bmi_view.dart';
 import 'package:fistness_app_firebase/feature/home/diet/view/diet_view.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
-import 'package:fistness_app_firebase/feature/home/exercises/view/detailPages/detail_exercises_page.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/detail_exercises_view.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/exercise_view.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/detail_video_page.dart';
 import 'package:fistness_app_firebase/feature/home/initial/view/initial_view.dart';

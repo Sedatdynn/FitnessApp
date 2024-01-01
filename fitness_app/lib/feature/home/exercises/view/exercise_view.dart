@@ -54,7 +54,7 @@ class _TopImageInfoWidget extends StatelessWidget {
             left: 10.w,
             child: Text(
               "Exercises",
-              style: context.textTheme.displaySmall,
+              style: context.textTheme.titleLarge?.copyWith(color: AppColors.white),
             ))
       ],
     );
