@@ -6,6 +6,7 @@ import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_stat
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/enum/image/png/image_path.dart';
+import 'package:fistness_app_firebase/product/global/cachedManager/cached_network_manager.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +82,10 @@ class _ExercisesBodyWidget extends StatelessWidget {
                 items: state.exercises![index],
               ));
             },
-            leading: Image.network(state.exercises![index].imgUrl!),
+            leading: CachedNetworkManager.instance!.cachedNetworkImage(
+              imageUrl: state.exercises![index].imgUrl!,
+              width: 92.w,
+            ),
             title: Text(
               state.exercises![index].categoryName.toString(),
               textAlign: TextAlign.center,

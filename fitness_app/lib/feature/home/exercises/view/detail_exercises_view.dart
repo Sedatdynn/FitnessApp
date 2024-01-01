@@ -4,6 +4,7 @@ import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
+import 'package:fistness_app_firebase/product/global/cachedManager/cached_network_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -31,7 +32,9 @@ class DetailExercisesView extends StatelessWidget {
                     CustomSize.minWidth(),
                     Expanded(
                       flex: 2,
-                      child: Image.network(items.categoryData![index].contentImage.toString()),
+                      child: CachedNetworkManager.instance!.cachedNetworkImage(
+                        imageUrl: items.categoryData![index].contentImage.toString(),
+                      ),
                     ),
                     CustomSize.normalWidth(),
                     Expanded(flex: 4, child: _ExerciseInfoList(items: items, index: index)),
@@ -60,7 +63,9 @@ class _TopImageInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.network(items.imgUrl.toString()),
+        CachedNetworkManager.instance!.cachedNetworkImage(
+          imageUrl: items.imgUrl.toString(),
+        ),
         Positioned(
           left: 0,
           child: IconButton(
@@ -102,7 +107,7 @@ class _ExerciseInfoList extends StatelessWidget {
         CustomSize.minHeight(),
         _RowValues(title: "Equipment: ", subtitle: items.categoryData![index].equipment.toString()),
         _RowValues(
-            title: "Exp Level: ", subtitle: items.categoryData![index].exerciseLevel.toString())
+            title: "Exp Level: ", subtitle: items.categoryData![index].exerciseLevel.toString()),
       ],
     );
   }
