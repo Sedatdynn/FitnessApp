@@ -12,7 +12,7 @@ class _WeightNumberPicker extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomNumberPicker(
-              value: state.selectedValue! as int,
+              value: state.selectedValue!,
               minValue: 30,
               maxValue: 200,
               onChanged: (value) => context.read<WeightCubit>().setSelectedValue(value),

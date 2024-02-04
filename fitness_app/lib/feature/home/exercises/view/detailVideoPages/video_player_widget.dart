@@ -1,5 +1,7 @@
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/widget/circular_progress/circular_progress.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerWidget extends StatelessWidget {
@@ -8,48 +10,54 @@ class VideoPlayerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => controller.value.isInitialized
-      ? Column(
-          children: [
-            Container(
-              height: 200,
-              alignment: Alignment.topCenter,
-              child: buildVideo(),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [buildPlayButton(), buildVideoIndicator(context)],
-            )
-          ],
+      ? SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              AspectRatio(
+                aspectRatio: controller.value.aspectRatio,
+                child: VideoPlayer(controller),
+              ),
+              SizedBox(height: 10.h),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _PlayPauseButton(controller: controller),
+                  Expanded(
+                    child:
+                        SizedBox(height: 20.h, child: _VideoProgressWidget(controller: controller)),
+                  )
+                ],
+              )
+            ],
+          ),
         )
-      : const SizedBox(
-          height: 200,
-          child: Center(child: CircularProgressIndicator()),
-        );
+      : const LoadingCircularWidget();
+}
 
-  Expanded buildVideoIndicator(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: 20,
-        child: VideoProgressIndicator(
-          controller,
-          allowScrubbing: true,
-          padding: const AppPadding.minAll(),
-        ),
-      ),
-    );
-  }
+class _PlayPauseButton extends StatelessWidget {
+  const _PlayPauseButton({required this.controller});
 
-  IconButton buildPlayButton() {
+  final VideoPlayerController controller;
+
+  @override
+  Widget build(BuildContext context) {
     return IconButton(
         onPressed: () => controller.value.isPlaying ? controller.pause() : controller.play(),
         icon: Icon(controller.value.isPlaying ? Icons.pause : Icons.play_arrow));
   }
+}
 
-  Widget buildVideo() => buildVideoPlayer();
+class _VideoProgressWidget extends StatelessWidget {
+  const _VideoProgressWidget({required this.controller});
+  final VideoPlayerController controller;
 
-  Widget buildVideoPlayer() =>
-      AspectRatio(aspectRatio: controller.value.aspectRatio, child: VideoPlayer(controller));
+  @override
+  Widget build(BuildContext context) {
+    return VideoProgressIndicator(
+      controller,
+      allowScrubbing: true,
+      padding: const AppPadding.minAll(),
+    );
+  }
 }

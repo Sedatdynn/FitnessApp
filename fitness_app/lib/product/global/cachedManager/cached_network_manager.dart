@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fistness_app_firebase/product/enum/image/png/image_path.dart';
+import 'package:fistness_app_firebase/product/widget/circular_progress/circular_progress.dart';
 import 'package:flutter/material.dart';
 
 class CachedNetworkManager {
@@ -25,7 +26,7 @@ class CachedNetworkManager {
         fit: fit ?? BoxFit.contain,
         cacheKey: imageUrl,
         imageUrl: imageUrl,
-        placeholder: (context, url) => const Center(child: CircularProgressIndicator.adaptive()),
+        placeholder: (context, url) => const LoadingCircularWidget(),
         errorWidget: (context, url, error) => ImagePath.logo.toPng(),
       ),
     );

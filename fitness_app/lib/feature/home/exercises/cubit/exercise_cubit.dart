@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_state.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/i_exercise_cubit.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/service/exercise_service.dart';
@@ -23,7 +25,7 @@ class ExerciseCubit extends IExerciseCubit {
     final response = await _exerciseService.fetchExercises();
     response.fold((l) => warningToast(l.message), (r) {
       emit(state.copyWith(exercises: r.exercise));
-      print(state.exercises!.length);
+      log(state.exercises!.length.toString());
     });
   }
 }
