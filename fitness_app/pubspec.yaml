@@ -50,17 +50,18 @@ dependencies:
   google_sign_in: ^6.1.0
   image_picker: ^0.8.4+4
   json_annotation: ^4.7.0
-  json_serializable: ^6.5.4
   lottie: ^2.3.2
   numberpicker: ^2.1.1
   shared_preferences: ^2.0.15
   syncfusion_flutter_gauges: ^21.2.4
   video_player: ^2.4.10
   youtube_player_flutter: ^8.1.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   auto_route_generator: ^7.3.2
   build_runner: ^2.3.2
+  json_serializable: ^6.5.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
