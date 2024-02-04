@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
@@ -25,28 +26,32 @@ class DetailExercisesView extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
-            return Card(
-                color: AppColors.darkText,
-                child: Row(
-                  children: [
-                    CustomSize.minWidth(),
-                    Expanded(
-                      flex: 2,
-                      child: CachedNetworkManager.instance!.cachedNetworkImage(
-                        imageUrl: items.categoryData![index].contentImage.toString(),
+            return InkWell(
+              onTap: () => RouteManager.instance
+                  .push(DetailVideoRoute(items: items.categoryData![index].videoPageData!)),
+              child: Card(
+                  color: AppColors.darkText,
+                  child: Row(
+                    children: [
+                      CustomSize.minWidth(),
+                      Expanded(
+                        flex: 2,
+                        child: CachedNetworkManager.instance!.cachedNetworkImage(
+                          imageUrl: items.categoryData![index].contentImage.toString(),
+                        ),
                       ),
-                    ),
-                    CustomSize.normalWidth(),
-                    Expanded(flex: 4, child: _ExerciseInfoList(items: items, index: index)),
-                    const Expanded(
-                      flex: 1,
-                      child: Icon(
-                        Icons.play_circle_fill_rounded,
-                        color: AppColors.white,
-                      ),
-                    )
-                  ],
-                ));
+                      CustomSize.normalWidth(),
+                      Expanded(flex: 4, child: _ExerciseInfoList(items: items, index: index)),
+                      const Expanded(
+                        flex: 1,
+                        child: Icon(
+                          Icons.play_circle_fill_rounded,
+                          color: AppColors.white,
+                        ),
+                      )
+                    ],
+                  )),
+            );
           },
         )
       ]),

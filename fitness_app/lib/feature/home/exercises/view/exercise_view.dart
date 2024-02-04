@@ -77,11 +77,9 @@ class _ExercisesBodyWidget extends StatelessWidget {
           color: AppColors.darkText,
           child: ListTile(
             contentPadding: const AppPadding.minAll(),
-            onTap: () {
-              RouteManager.instance.push(DetailExercisesRoute(
-                items: state.exercises![index],
-              ));
-            },
+            onTap: () => RouteManager.instance.push(DetailExercisesRoute(
+              items: state.exercises![index],
+            )),
             leading: CachedNetworkManager.instance!.cachedNetworkImage(
               imageUrl: state.exercises![index].imgUrl!,
               width: 92.w,
