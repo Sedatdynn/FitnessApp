@@ -178,7 +178,7 @@ class _FoodOptionsBody extends StatelessWidget {
           itemCount: state.foods[index].icerik!.length,
           itemBuilder: (BuildContext ctx, int j) {
             return Card(
-              color: AppColors.backgroundColor,
+              color: context.theme.cardColor,
               child: Row(children: [
                 SizedBox(
                   width: 200.w,

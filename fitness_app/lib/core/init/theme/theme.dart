@@ -1,3 +1,4 @@
+import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +11,7 @@ final class CustomTheme {
             elevation: 0,
             iconTheme: IconThemeData(color: Color(0xFFC4FB6D))),
         scaffoldBackgroundColor: const Color((0xFF19282F)),
+        cardColor: AppColors.backgroundColor,
 
         //listTile theme
         listTileTheme: const ListTileThemeData(
@@ -58,7 +60,6 @@ final class CustomTheme {
   ThemeData get darkTheme => ThemeData(
         //colors
         canvasColor: Colors.green,
-        errorColor: const Color.fromRGBO(183, 28, 28, 1),
         primaryColor: Colors.grey,
         shadowColor: Colors.grey.shade200,
         hintColor: Colors.white,

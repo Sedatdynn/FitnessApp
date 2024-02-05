@@ -40,36 +40,26 @@ class _DetailVideoViewState extends State<DetailVideoView> with DetailVideoViewM
         ),
         Container(
           margin: const AppPadding.minAll(),
-          decoration: const BoxDecoration(
-            color: AppColors.mainPrimary,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24.0),
-              topRight: Radius.circular(8.0),
-              bottomLeft: Radius.circular(16.0),
-            ),
-          ),
+          decoration: _detailContainerDecoration(),
           child: Column(
             children: [
-              Container(
-                margin: const AppPadding.lowSymmetricHorVer(),
-                alignment: Alignment.center,
-                child: Text(
-                  widget.items.firstTitle.toString(),
-                  style: context.textTheme.titleSmall?.copyWith(color: AppColors.textColor),
-                ),
-              ),
-              Container(
-                margin: const AppPadding.lowSymmetricHorVer(),
-                alignment: Alignment.center,
-                child: Text(
-                  widget.items.firstContent.toString(),
-                  style: context.textTheme.titleSmall?.copyWith(color: AppColors.textColor),
-                ),
-              ),
+              _DetailInfoContainer(text: widget.items.firstTitle.toString()),
+              _DetailInfoContainer(text: widget.items.firstContent.toString()),
             ],
           ),
         )
       ]),
+    );
+  }
+
+  BoxDecoration _detailContainerDecoration() {
+    return const BoxDecoration(
+      color: AppColors.mainPrimary,
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(24.0),
+        topRight: Radius.circular(8.0),
+        bottomLeft: Radius.circular(16.0),
+      ),
     );
   }
 }
@@ -112,6 +102,23 @@ class _BackButton extends StatelessWidget {
       child: IconButton(
           onPressed: () => RouteManager.instance.pop(),
           icon: const Icon(Icons.chevron_left_outlined)),
+    );
+  }
+}
+
+class _DetailInfoContainer extends StatelessWidget {
+  const _DetailInfoContainer({required this.text, super.key});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const AppPadding.lowSymmetricHorVer(),
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        style: context.textTheme.titleSmall?.copyWith(color: AppColors.textColor),
+      ),
     );
   }
 }

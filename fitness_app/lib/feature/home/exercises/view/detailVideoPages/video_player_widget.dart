@@ -1,5 +1,5 @@
+import 'package:fistness_app_firebase/feature/home/exercises/shimmer/detail_video_shimmer.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/widget/circular_progress/circular_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
@@ -32,7 +32,7 @@ class VideoPlayerWidget extends StatelessWidget {
             ],
           ),
         )
-      : const LoadingCircularWidget();
+      : const DetailVideoShimmer();
 }
 
 class _PlayPauseButton extends StatelessWidget {
