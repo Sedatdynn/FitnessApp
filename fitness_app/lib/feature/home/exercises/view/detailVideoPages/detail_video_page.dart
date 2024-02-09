@@ -107,7 +107,7 @@ class _BackButton extends StatelessWidget {
 }
 
 class _DetailInfoContainer extends StatelessWidget {
-  const _DetailInfoContainer({required this.text, super.key});
+  const _DetailInfoContainer({required this.text});
   final String text;
 
   @override

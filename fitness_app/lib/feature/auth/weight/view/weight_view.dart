@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/product/theme/colors.dart';
+import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../product/const/register_info_text.dart';

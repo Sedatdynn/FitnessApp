@@ -1,11 +1,8 @@
 import '../../../../core/navigator/app_router.dart';
 import '../../../../core/navigator/manager/auto_route_manager.dart';
 import '../../../../core/service/auth_service.dart';
-import '../../../../product/const/text/texts.dart';
 import '../../../../product/global/service/global_service.dart';
 import '../../../../product/models/user_model.dart';
-import '../../../../product/theme/colors.dart';
-import '../../../../product/widget/warning/warning_toast.dart';
 import '../params/weight_params.dart';
 import 'i_weight_cubit.dart';
 import 'weight_state.dart';
@@ -38,7 +35,8 @@ class WeightCubit extends IWeightCubit {
     setTotalPoint(lastPoint);
   }
 
-  Future<void> createPerson({required WeightParams params}) async {
+  Future<void> createPerson(
+      {required WeightParams params, required Future<void> Function() function}) async {
     final result = await AuthService.instance.createPerson(
         model: UserModel(
             username: params.username,
@@ -55,8 +53,7 @@ class WeightCubit extends IWeightCubit {
     result.fold((failure) async {
       emit(state.copyWith(errorMessage: failure.message));
     }, (r) async {
-      await warningToast(RegisterText.registerSuccessfully, color: AppColors.green);
-      await warningToast(RegisterText.verifyWarning, color: AppColors.green);
+      await function();
       RouteManager.instance.pushAndPopUntil(LoginRoute(canPop: false));
     });
   }

@@ -47,7 +47,15 @@ class _CompleteButton extends StatelessWidget {
                       weight: state.selectedValue,
                       mobility: params.mobility!),
                 )
-                .then((_) => {context.read<WeightCubit>().createPerson(params: params)});
+                .then((_) => {
+                      context.read<WeightCubit>().createPerson(
+                          params: params,
+                          function: () async {
+                            await warningToast(RegisterText.registerSuccessfully,
+                                color: AppColors.green);
+                            await warningToast(RegisterText.verifyWarning, color: AppColors.green);
+                          })
+                    });
           },
         );
       },
