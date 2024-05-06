@@ -8,4 +8,5 @@ abstract class IWeightCubit extends BaseCubit<WeightState> {
   void setSelectedValue(int value);
   void setTotalPoint(int value);
   Future<void> calculateTotalPoints({required UserModel params});
+  void clearErrorMessage();
 }

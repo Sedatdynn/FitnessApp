@@ -2,16 +2,18 @@ import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/age/enum/age_states.dart';
 
 class AgeState extends BaseState {
-  const AgeState(
-      {required this.states,
-      required this.birthYear,
-      required this.maxValue,
-      required this.minValue});
+  const AgeState({
+    required this.states,
+    required this.birthYear,
+    required this.maxValue,
+    required this.minValue,
+  });
   final AgeStates states;
   final int? birthYear;
   final int? maxValue;
   final int? minValue;
 
+  //initial state
   factory AgeState.initial() {
     return const AgeState(
       states: AgeStates.initial,

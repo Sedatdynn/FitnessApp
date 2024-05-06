@@ -4,6 +4,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../theme/colors.dart';
 
+/// Toast messages for warnings and success operations
+
 Future<void> warningToast(String text, {Color? color = Colors.red}) {
   return Fluttertoast.showToast(
       msg: text,

@@ -32,21 +32,34 @@ class GenderView extends StatelessWidget {
         appBar: const CommonAppBar(),
         body: Padding(
           padding: const AppPadding.lowHorizontal(),
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  const LogoBody(),
-                  CustomSize.minHeight(),
-                  const RegisterInfoQuestionText(text: QuestionsText.sexText),
-                  CustomSize.xLargeHeight(),
-                  const _ToggleGenderButtons(),
-                  CustomSize.xxLargeHeight(),
-                  _NextButton(params: params)
-                ],
-              ),
-            ),
-          ),
+          child: _BodyScrollWidget(params: params),
+        ),
+      ),
+    );
+  }
+}
+
+class _BodyScrollWidget extends StatelessWidget {
+  const _BodyScrollWidget({
+    required this.params,
+  });
+
+  final GenderParams params;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            const LogoBody(),
+            CustomSize.minHeight(),
+            const RegisterInfoQuestionText(text: QuestionsText.sexText),
+            CustomSize.xLargeHeight(),
+            const _ToggleGenderButtons(),
+            CustomSize.xxLargeHeight(),
+            _NextButton(params: params)
+          ],
         ),
       ),
     );

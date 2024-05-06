@@ -8,7 +8,7 @@ class MobilityCubit extends IMobilityCubit {
 
   @override
   void init() {}
-  setSelectedItem(String item) {
-    emit(state.copyWith(selectedItem: item));
-  }
+  // setting selected dropdown item to state
+  @override
+  void setSelectedItem(String item) => emit(state.copyWith(selectedItem: item));
 }

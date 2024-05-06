@@ -5,13 +5,14 @@ class _DropDownWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MobilityCubit, MobilityState>(
-      builder: (context, state) {
+    return BlocSelector<MobilityCubit, MobilityState, String?>(
+      selector: (state) => state.selectedItem,
+      builder: (context, selectedValue) {
         return DropdownButton<String>(
             hint: const Center(child: Text('select')),
             dropdownColor: Colors.deepPurpleAccent,
             isExpanded: true,
-            value: state.selectedItem,
+            value: selectedValue,
             style: context.textTheme.titleSmall,
             underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
             onChanged: (String? value) => context.read<MobilityCubit>().setSelectedItem(value!),

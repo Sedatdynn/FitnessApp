@@ -38,9 +38,7 @@ class _PasswordField extends StatelessWidget {
                 : WarningText.registerInvalidPassword,
             decoration: InputDecoration(
               suffixIcon: InkWell(
-                onTap: () {
-                  context.read<LoginCubit>().changeVisible();
-                },
+                onTap: () => context.read<LoginCubit>().changeVisible(),
                 child: _CheckVisible(isVisible: state.isVisible),
               ),
               prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
@@ -71,9 +69,7 @@ class _ForgotPasswordText extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomRight,
       child: InkWell(
-        onTap: () {
-          RouteManager.instance.pushNamed(path: RouteConstants.forgotPassword);
-        },
+        onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.forgotPassword),
         child: const Text(
           QuestionsText.forgotPassText,
           style: TextStyle(color: Colors.white),

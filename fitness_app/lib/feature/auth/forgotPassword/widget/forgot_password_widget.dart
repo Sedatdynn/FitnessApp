@@ -59,9 +59,11 @@ class _ResetButton extends StatelessWidget {
   Future<void> resetPassword() async {
     final response = await AuthService.instance.resetPassword(email!);
     response.fold(
-        (l) => warningToast(l.message),
-        (r) =>
-            warningToast('Reset password email has been sent successfully', color: AppColors.green)
-                .then((value) => RouteManager.instance.pushNamed(path: RouteConstants.login)));
+      (l) => warningToast(l.message),
+      (r) => warningToast('Reset password email has been sent successfully', color: AppColors.green)
+          .then(
+        (value) => RouteManager.instance.pushNamed(path: RouteConstants.login),
+      ),
+    );
   }
 }

@@ -27,19 +27,20 @@ class _NextButton extends StatelessWidget {
     return BlocBuilder<AgeCubit, AgeState>(
       builder: (context, state) {
         return CommonButton(
-            text: MyText.continueText,
-            onPressed: () {
-              RouteManager.instance.push(DailyMobilityRoute(
-                params: MobilityParams(
-                  username: params.username,
-                  mail: params.mail,
-                  password: params.password,
-                  name: params.name,
-                  gender: params.gender,
-                  birthYear: state.birthYear,
-                ),
-              ));
-            });
+          text: MyText.continueText,
+          onPressed: () => RouteManager.instance.push(
+            DailyMobilityRoute(
+              params: MobilityParams(
+                username: params.username,
+                mail: params.mail,
+                password: params.password,
+                name: params.name,
+                gender: params.gender,
+                birthYear: state.birthYear,
+              ),
+            ),
+          ),
+        );
       },
     );
   }

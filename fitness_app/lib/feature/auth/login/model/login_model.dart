@@ -13,6 +13,7 @@ class LoginModel extends Equatable {
   factory LoginModel.fromJson(Map<String, dynamic> json) {
     return _$LoginModelFromJson(json);
   }
+
   Map<String, dynamic> toJson() => _$LoginModelToJson(this);
 
   @override

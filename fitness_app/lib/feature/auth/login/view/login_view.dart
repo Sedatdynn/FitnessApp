@@ -38,35 +38,45 @@ class LoginView extends StatelessWidget {
           }
         },
         listenWhen: (previous, current) => previous.errorMessage != current.errorMessage,
-        child: _scaffoldBody(formKey),
+        child: Scaffold(
+          appBar: canPop! ? const CommonAppBar() : null,
+          body: _BodyScrollWidget(formKey: formKey),
+        ),
       ),
     );
   }
+}
 
-  Scaffold _scaffoldBody(GlobalKey<FormState> formKey) {
-    return Scaffold(
-        appBar: canPop! ? const CommonAppBar() : null,
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const AppPadding.lowHorizontal(),
-            child: Form(
-              key: formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: Column(
-                children: [
-                  const LogoBody(),
-                  CustomSize.largeHeight(),
-                  const _EmailTextFieldWidget(),
-                  CustomSize.largeHeight(),
-                  const _PasswordField(),
-                  CustomSize.minHeight(),
-                  const _ForgotPasswordText(),
-                  CustomSize.xxLargeHeight(),
-                  _SignInButton(formKey: formKey)
-                ],
-              ),
-            ),
+class _BodyScrollWidget extends StatelessWidget {
+  const _BodyScrollWidget({
+    required this.formKey,
+  });
+
+  final GlobalKey<FormState> formKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const AppPadding.lowHorizontal(),
+        child: Form(
+          key: formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Column(
+            children: [
+              const LogoBody(),
+              CustomSize.largeHeight(),
+              const _EmailTextFieldWidget(),
+              CustomSize.largeHeight(),
+              const _PasswordField(),
+              CustomSize.minHeight(),
+              const _ForgotPasswordText(),
+              CustomSize.xxLargeHeight(),
+              _SignInButton(formKey: formKey)
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

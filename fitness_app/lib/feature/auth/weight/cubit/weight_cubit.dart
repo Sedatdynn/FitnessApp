@@ -16,14 +16,13 @@ class WeightCubit extends IWeightCubit {
   void init() => emit(state.copyWith(selectedValue: 65));
 
   @override
-  setSelectedValue(int value) {
-    emit(state.copyWith(selectedValue: value));
-  }
+  void setSelectedValue(int value) => emit(state.copyWith(selectedValue: value));
 
   @override
-  setTotalPoint(int value) {
-    emit(state.copyWith(totalPoint: value));
-  }
+  void setTotalPoint(int value) => emit(state.copyWith(totalPoint: value));
+
+  @override
+  void clearErrorMessage() => emit(state.copyWith(errorMessage: ''));
 
   @override
   int get selectedValue => state.selectedValue!;
@@ -31,10 +30,10 @@ class WeightCubit extends IWeightCubit {
   @override
   Future<void> calculateTotalPoints({required UserModel params}) async {
     int lastPoint = await GlobalService().calculateTotalPoints(user: params);
-
     setTotalPoint(lastPoint);
   }
 
+  // create person with firebase and save it to firestore db
   Future<void> createPerson(
       {required WeightParams params, required Future<void> Function() function}) async {
     final result = await AuthService.instance.createPerson(

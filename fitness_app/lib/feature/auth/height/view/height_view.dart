@@ -15,6 +15,7 @@ import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart'
 import 'package:fistness_app_firebase/product/widget/button/common_button.dart';
 import 'package:fistness_app_firebase/product/widget/logo/logo.dart';
 import 'package:fistness_app_firebase/product/widget/numberPicker/number_picker.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part '../widget/height_widget.dart';
@@ -50,6 +51,3 @@ class HeightView extends StatelessWidget {
     );
   }
 }
-
-const int minValue = 140;
-const int maxValue = 220;

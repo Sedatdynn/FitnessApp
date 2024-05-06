@@ -9,10 +9,9 @@ class HeightCubit extends IHeightCubit {
   @override
   void init() => emit(state.copyWith(selectedValue: 160));
 
+  //setting the selectedValue to state
   @override
-  setSelectedValue(int value) {
-    emit(state.copyWith(selectedValue: value));
-  }
+  void setSelectedValue(int value) => emit(state.copyWith(selectedValue: value));
 
   @override
   int get selectedValue => state.selectedValue!;

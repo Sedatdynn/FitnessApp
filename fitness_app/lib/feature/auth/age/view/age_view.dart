@@ -29,20 +29,33 @@ class AgeView extends StatelessWidget {
         appBar: const CommonAppBar(),
         body: Padding(
           padding: const AppPadding.lowHorizontal(),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const LogoBody(),
-                CustomSize.xxLargeHeight(),
-                const RegisterInfoQuestionText(text: QuestionsText.ageText),
-                CustomSize.xxLargeHeight(),
-                const _YearNumberPicker(),
-                CustomSize.xxLargeHeight(),
-                _NextButton(params: params),
-              ],
-            ),
-          ),
+          child: _ScrollBodyWidget(params: params),
         ),
+      ),
+    );
+  }
+}
+
+class _ScrollBodyWidget extends StatelessWidget {
+  const _ScrollBodyWidget({
+    required this.params,
+  });
+
+  final AgeParams params;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const LogoBody(),
+          CustomSize.xxLargeHeight(),
+          const RegisterInfoQuestionText(text: QuestionsText.ageText),
+          CustomSize.xxLargeHeight(),
+          const _YearNumberPicker(),
+          CustomSize.xxLargeHeight(),
+          _NextButton(params: params),
+        ],
       ),
     );
   }

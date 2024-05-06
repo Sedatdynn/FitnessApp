@@ -9,19 +9,29 @@ class LoginCubit extends ILoginCubit {
   LoginCubit() : super(LoginState.initial());
 
   @override
+  void init() {}
+
+  // for login password text field
+  @override
   void changeVisible() => emit(state.copyWith(isVisible: !state.isVisible));
+
+  // for login email text field
   @override
   void setEmail(String email) => emit(state.copyWith(email: email));
+
+  // setting password to state
   @override
   void setPassword(String password) => emit(state.copyWith(password: password));
+
+  // setting error message to state
   @override
   void setErrorMessage(String message) => emit(state.copyWith(errorMessage: message));
+
+  // to clear error message in state
   @override
   void clearErrorMessage() => emit(state.copyWith(errorMessage: ''));
 
-  @override
-  void init() {}
-
+  // Sign in method with firebase authentication
   @override
   Future<void> signIn() async {
     final result = await AuthService.instance.signInWithEmailAndPassword(

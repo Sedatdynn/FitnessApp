@@ -6,6 +6,7 @@ class AgeCubit extends IAgeCubit {
     init();
   }
 
+  /// init func to call when the [AgeCubit] is initialized
   @override
   void init() => calculateMaxValue();
 
@@ -14,6 +15,7 @@ class AgeCubit extends IAgeCubit {
   @override
   int get maxValue => state.maxValue!;
 
+  /// setting initial number picker's values to the state to show it in view
   @override
   void calculateMaxValue() {
     DateTime now = DateTime.now();
@@ -23,8 +25,7 @@ class AgeCubit extends IAgeCubit {
     emit(state.copyWith(maxValue: maxValue, birthYear: maxValue, minValue: minValue));
   }
 
+  /// Set func to setting the birthYear into the state
   @override
-  setBirthYear(int value) {
-    emit(state.copyWith(birthYear: value));
-  }
+  void setBirthYear(int value) => emit(state.copyWith(birthYear: value));
 }

@@ -29,20 +29,33 @@ class DailyMobilityView extends StatelessWidget {
       create: (context) => MobilityCubit(),
       child: Scaffold(
         appBar: const CommonAppBar(),
-        body: Padding(
-            padding: const AppPadding.lowHorizontal(),
-            child: Column(
-              children: [
-                const LogoBody(),
-                const RegisterInfoQuestionText(text: RegisterText.selectMobility),
-                CustomSize.xxLargeHeight(),
-                const _DropDownWidget(),
-                CustomSize.xxLargeHeight(),
-                CustomSize.xxLargeHeight(),
-                _NextButton(params: params),
-              ],
-            )),
+        body: _BodyWidget(params: params),
       ),
     );
+  }
+}
+
+class _BodyWidget extends StatelessWidget {
+  const _BodyWidget({
+    required this.params,
+  });
+
+  final MobilityParams params;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const AppPadding.lowHorizontal(),
+        child: Column(
+          children: [
+            const LogoBody(),
+            const RegisterInfoQuestionText(text: RegisterText.selectMobility),
+            CustomSize.xxLargeHeight(),
+            const _DropDownWidget(),
+            CustomSize.xxLargeHeight(),
+            CustomSize.xxLargeHeight(),
+            _NextButton(params: params),
+          ],
+        ));
   }
 }

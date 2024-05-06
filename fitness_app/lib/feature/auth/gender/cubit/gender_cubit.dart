@@ -14,6 +14,7 @@ class GenderCubit extends IGenderCubit {
   void setSelectedGender(String gender) => emit(state.copyWith(selectedGender: gender));
   String get selectedGender => state.selectedGender!;
 
+  // to handle 2 different option, when one of them is selected other option setting unselected
   @override
   void toggleOnPressed(int index) {
     if (index == kZero) {

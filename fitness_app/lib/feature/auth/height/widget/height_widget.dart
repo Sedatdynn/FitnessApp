@@ -5,13 +5,14 @@ class _HeightNumberPickerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HeightCubit, HeightState>(
-      builder: (context, state) {
+    return BlocSelector<HeightCubit, HeightState, int>(
+      selector: (state) => state.selectedValue!,
+      builder: (context, selectedValue) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomNumberPicker(
-              value: state.selectedValue!,
+              value: selectedValue,
               minValue: minValue,
               maxValue: maxValue,
               onChanged: (value) => context.read<HeightCubit>().setSelectedValue(value),
@@ -34,20 +35,25 @@ class _NextButton extends StatelessWidget {
       builder: (context, state) {
         return CommonButton(
           text: MyText.nextText,
-          onPressed: () => RouteManager.instance.push(WeightRoute(
-            params: WeightParams(
-              username: params.username,
-              mail: params.mail,
-              password: params.password,
-              name: params.name,
-              gender: params.gender,
-              birthYear: params.birthYear,
-              mobility: params.mobility,
-              height: state.selectedValue,
+          onPressed: () => RouteManager.instance.push(
+            WeightRoute(
+              params: WeightParams(
+                username: params.username,
+                mail: params.mail,
+                password: params.password,
+                name: params.name,
+                gender: params.gender,
+                birthYear: params.birthYear,
+                mobility: params.mobility,
+                height: state.selectedValue,
+              ),
             ),
-          )),
+          ),
         );
       },
     );
   }
 }
+
+const int minValue = 140;
+const int maxValue = 220;

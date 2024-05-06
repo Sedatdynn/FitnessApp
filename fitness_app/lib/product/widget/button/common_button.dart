@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/colors.dart';
 
+// Button for using all registration and home pages
 class CommonButton extends StatelessWidget {
   final String text;
   final dynamic onPressed;

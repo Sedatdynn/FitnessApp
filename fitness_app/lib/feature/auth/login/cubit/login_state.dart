@@ -1,12 +1,13 @@
 import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
 
 class LoginState extends BaseState {
-  const LoginState(
-      {required this.states,
-      required this.email,
-      required this.password,
-      required this.isVisible,
-      required this.errorMessage});
+  const LoginState({
+    required this.states,
+    required this.email,
+    required this.password,
+    required this.isVisible,
+    required this.errorMessage,
+  });
   final LoginStates states;
   final String? email;
   final String? password;

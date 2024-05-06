@@ -29,24 +29,47 @@ class WeightView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => WeightCubit(),
-      child: Scaffold(
-        appBar: const CommonAppBar(),
-        body: Padding(
-          padding: const AppPadding.minAll(),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const LogoBody(),
-                CustomSize.xxLargeHeight(),
-                const RegisterInfoQuestionText(text: QuestionsText.weightText),
-                CustomSize.xxLargeHeight(),
-                const _WeightNumberPicker(),
-                // if (isLoading) const LoadingPage(),
-                CustomSize.xxLargeHeight(),
-                CustomSize.xxLargeHeight(),
-                _CompleteButton(params: params)
-              ],
-            ),
+      child: BlocListener<WeightCubit, WeightState>(
+        listener: (context, state) {
+          // listen the error message which is inside the state and show toast message while getting the error
+          if (state.errorMessage != null && state.errorMessage!.isNotEmpty) {
+            warningToast(state.errorMessage!);
+            Future.delayed(const Duration(seconds: 1))
+                .then((value) => context.read<WeightCubit>().clearErrorMessage());
+          }
+        },
+        listenWhen: (previous, current) => previous.errorMessage != current.errorMessage,
+        child: _ScaffoldBodyWidget(params: params),
+      ),
+    );
+  }
+}
+
+class _ScaffoldBodyWidget extends StatelessWidget {
+  const _ScaffoldBodyWidget({
+    required this.params,
+  });
+
+  final WeightParams params;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const CommonAppBar(),
+      body: Padding(
+        padding: const AppPadding.minAll(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const LogoBody(),
+              CustomSize.xxLargeHeight(),
+              const RegisterInfoQuestionText(text: QuestionsText.weightText),
+              CustomSize.xxLargeHeight(),
+              const _WeightNumberPicker(),
+              CustomSize.xxLargeHeight(),
+              CustomSize.xxLargeHeight(),
+              _CompleteButton(params: params)
+            ],
           ),
         ),
       ),
