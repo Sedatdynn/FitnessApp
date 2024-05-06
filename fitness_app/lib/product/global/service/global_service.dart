@@ -14,8 +14,8 @@ class GlobalService extends IGlobalService {
 
   // find user's bmi result
   @override
-  String calculateBmi({required int height, required int weight}) {
-    double result = weight / (height * height / 10000);
+  String calculateBmi({required UserModel user}) {
+    double result = user.weight! / (user.height! * user.height! / 10000);
     return result.toStringAsFixed(2);
   }
 

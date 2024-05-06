@@ -13,13 +13,7 @@ class BmiWidget extends StatelessWidget {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            bmiGauge(
-              context: context,
-              result: GlobalService().calculateBmi(
-                height: height,
-                weight: weight,
-              ),
-            ),
+            const BmiGaugeWidget(),
             CustomSize.xLargeHeight(),
             _BmiInfoField(title: "Height:", text: height.toString()),
             CustomSize.largeHeight(),
@@ -27,10 +21,7 @@ class BmiWidget extends StatelessWidget {
             CustomSize.largeHeight(),
             _BmiInfoField(
               title: "BMI Result:",
-              text: GlobalService().calculateBmi(
-                height: height,
-                weight: weight,
-              ),
+              text: GlobalService().calculateBmi(user: user!),
             ),
           ],
         );
@@ -54,17 +45,23 @@ class _BmiInfoField extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              title,
-              style: context.textTheme.titleSmall,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              text,
-              style: context.textTheme.titleSmall,
-              textAlign: TextAlign.center,
-            ),
+            _BmiTextWidget(text: title),
+            _BmiTextWidget(text: text),
           ],
         ));
+  }
+}
+
+class _BmiTextWidget extends StatelessWidget {
+  const _BmiTextWidget({required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: context.textTheme.titleSmall,
+      textAlign: TextAlign.center,
+    );
   }
 }

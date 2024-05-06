@@ -19,8 +19,8 @@ Future<void> bootstrap(
 Future<void> _onInit(
   FutureOr<Widget> Function() builder,
 ) async {
-  runApp(await builder());
   await AppInitialize().init();
+  runApp(await builder());
 }
 
 ///Handles zone error

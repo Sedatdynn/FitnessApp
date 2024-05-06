@@ -6,6 +6,12 @@ import 'package:fistness_app_firebase/feature/welcome/splash/view/splash_view.da
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 
 mixin SplashMixin on State<SplashView> {
+  @override
+  void initState() {
+    super.initState();
+    initialization();
+  }
+
   Future<void> initialization() async {
     await Future.delayed(const Duration(seconds: 3));
     final String? myToken = CacheManager.instance.getStringValue(CacheKeys.token.name);

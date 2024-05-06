@@ -17,12 +17,6 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> with SplashMixin {
   @override
-  void initState() {
-    super.initState();
-    initialization();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
