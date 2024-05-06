@@ -1,36 +1,40 @@
 part of '../view/bmi_view.dart';
 
 class BmiWidget extends StatelessWidget {
-  final double width;
-  final int userHeight;
-  final int userWeight;
-  const BmiWidget(
-      {Key? key, required this.width, required this.userHeight, required this.userWeight})
-      : super(key: key);
+  const BmiWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        bmiGauge(
-          context,
-          GlobalService().calculateBmi(
-              height: context.watch<GlobalCubit>().user.height ?? 0,
-              weight: context.watch<GlobalCubit>().user.weight ?? 0),
-        ),
-        CustomSize.xLargeHeight(),
-        _BmiInfoField(title: "Height:", text: userHeight.toString()),
-        CustomSize.largeHeight(),
-        _BmiInfoField(title: "Weight:", text: userWeight.toString()),
-        CustomSize.largeHeight(),
-        _BmiInfoField(
-          title: "BMI Result:",
-          text: GlobalService().calculateBmi(
-              height: context.watch<GlobalCubit>().user.height ?? 0,
-              weight: context.watch<GlobalCubit>().user.weight ?? 0),
-        ),
-      ],
+    return BlocSelector<GlobalCubit, GlobalState, UserModel?>(
+      selector: (state) => state.user,
+      builder: (context, user) {
+        final int height = user?.height ?? 0;
+        final int weight = user?.weight ?? 0;
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            bmiGauge(
+              context: context,
+              result: GlobalService().calculateBmi(
+                height: height,
+                weight: weight,
+              ),
+            ),
+            CustomSize.xLargeHeight(),
+            _BmiInfoField(title: "Height:", text: height.toString()),
+            CustomSize.largeHeight(),
+            _BmiInfoField(title: "Weight:", text: weight.toString()),
+            CustomSize.largeHeight(),
+            _BmiInfoField(
+              title: "BMI Result:",
+              text: GlobalService().calculateBmi(
+                height: height,
+                weight: weight,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

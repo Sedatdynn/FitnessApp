@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/product/global/cubit/global_state.dart';
+import 'package:fistness_app_firebase/product/models/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,15 +23,11 @@ class BmiCalculatorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: const CommonAppBar(),
+    return const Scaffold(
+        appBar: CommonAppBar(),
         body: Padding(
-          padding: const AppPadding.normalAll(),
-          child: BmiWidget(
-            width: context.width,
-            userHeight: context.watch<GlobalCubit>().user.height ?? 0,
-            userWeight: context.watch<GlobalCubit>().user.weight ?? 0,
-          ),
+          padding: AppPadding.normalAll(),
+          child: BmiWidget(),
         ));
   }
 }

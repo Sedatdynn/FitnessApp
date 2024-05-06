@@ -15,7 +15,7 @@ class _DropDownWidget extends StatelessWidget {
             style: context.textTheme.titleSmall,
             underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
             onChanged: (String? value) => context.read<MobilityCubit>().setSelectedItem(value!),
-            items: GlobalService().items.map((e) {
+            items: GlobalService.items.map((e) {
               return _dropdownMenuItem(e);
             }).toList());
       },

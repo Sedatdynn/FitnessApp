@@ -5,17 +5,22 @@ class _DropDownWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-        hint: const Center(child: Text('select')),
-        dropdownColor: Colors.deepPurpleAccent,
-        isExpanded: true,
-        value: context.watch<GlobalCubit>().user.mobility,
-        style: context.textTheme.titleSmall,
-        underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
-        onChanged: (String? value) => context.read<GlobalCubit>().updateUserMobility(value!),
-        items: GlobalService().items.map((e) {
-          return _dropdownMenuItem(e);
-        }).toList());
+    return BlocSelector<GlobalCubit, GlobalState, UserModel?>(
+      selector: (state) => state.user,
+      builder: (context, user) {
+        return DropdownButton<String>(
+            hint: const Center(child: Text('select')),
+            dropdownColor: Colors.deepPurpleAccent,
+            isExpanded: true,
+            value: user?.mobility,
+            style: context.textTheme.titleSmall,
+            underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
+            onChanged: (String? value) => context.read<GlobalCubit>().updateUserMobility(value!),
+            items: GlobalService.items.map((e) {
+              return _dropdownMenuItem(e);
+            }).toList());
+      },
+    );
   }
 
   DropdownMenuItem<String> _dropdownMenuItem(String item) =>

@@ -43,8 +43,7 @@ class ProfileView extends StatelessWidget {
               children: [
                 Container(
                     alignment: Alignment.center,
-                    child: Text(context.watch<GlobalCubit>().user.name ?? '',
-                        style: context.textTheme.titleLarge)),
+                    child: Text(state.user?.name ?? '', style: context.textTheme.titleLarge)),
                 SizedBox(height: 60.h),
                 Column(
                   children: <Widget>[
@@ -54,7 +53,7 @@ class ProfileView extends StatelessWidget {
                         _ProfileSectionListTile(
                             icon: Icons.email,
                             title: "Email",
-                            subtitle: context.watch<GlobalCubit>().user.email ?? '',
+                            subtitle: state.user?.email ?? '',
                             onTap: () {}),
                         _ProfileSectionListTile(
                           icon: Icons.light_mode_outlined,

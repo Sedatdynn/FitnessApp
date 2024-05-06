@@ -39,8 +39,12 @@ class _InitialPointField extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Text("Initial point:", style: context.textTheme.titleSmall),
-        Text("${context.watch<GlobalCubit>().user.userRightPoint ?? 0} ",
-            style: context.textTheme.titleSmall),
+        BlocSelector<GlobalCubit, GlobalState, int?>(
+          selector: (state) => state.user?.userRightPoint,
+          builder: (context, userRightPoint) {
+            return Text("${userRightPoint ?? 0}", style: context.textTheme.titleSmall);
+          },
+        ),
       ],
     );
   }

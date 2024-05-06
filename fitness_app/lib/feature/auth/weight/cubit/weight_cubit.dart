@@ -30,7 +30,7 @@ class WeightCubit extends IWeightCubit {
 
   @override
   Future<void> calculateTotalPoints({required UserModel params}) async {
-    int lastPoint = await GlobalService().calculateTotalPoints(params: params);
+    int lastPoint = await GlobalService().calculateTotalPoints(user: params);
 
     setTotalPoint(lastPoint);
   }

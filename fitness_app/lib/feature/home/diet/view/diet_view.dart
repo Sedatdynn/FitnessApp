@@ -6,6 +6,7 @@ import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/global/cubit/global_cubit.dart';
+import 'package:fistness_app_firebase/product/global/cubit/global_state.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:fistness_app_firebase/product/widget/button/common_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

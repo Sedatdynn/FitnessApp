@@ -5,7 +5,7 @@ import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-Widget bmiGauge(BuildContext context, String deger) {
+Widget bmiGauge({required BuildContext context, required String result}) {
   return Padding(
     padding: const AppPadding.normalVertical(),
     child: Center(
@@ -25,13 +25,13 @@ Widget bmiGauge(BuildContext context, String deger) {
             ],
             pointers: <GaugePointer>[
               NeedlePointer(
-                value: double.parse(deger),
+                value: double.parse(result),
                 needleColor: AppColors.keyTextShadowColor,
               )
             ],
             annotations: <GaugeAnnotation>[
               GaugeAnnotation(
-                  widget: Text(deger, style: context.textTheme.displaySmall),
+                  widget: Text(result, style: context.textTheme.displaySmall),
                   angle: 90,
                   positionFactor: 0.5)
             ])

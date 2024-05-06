@@ -48,7 +48,7 @@ class GlobalCubit extends IGlobalCubit {
   @override
   Future<void> getUser() async {
     final userDoc = await AuthService.instance.fetchCurrentUserDoc();
-    userDoc.fold((l) => warningToast(l.message), (r) => emit(state.copyWith(user: r)));
+    userDoc.fold((l) => warningToast(l.message), (user) => emit(state.copyWith(user: user)));
   }
 
   @override
@@ -58,7 +58,7 @@ class GlobalCubit extends IGlobalCubit {
 
   @override
   Future<void> updateUserRightPoint() async {
-    int userRightPoint = await GlobalService().calculateTotalPoints(params: user);
+    int userRightPoint = await GlobalService().calculateTotalPoints(user: user);
     final updatedUser = state.user?.copyWith(userRightPoint: userRightPoint);
     emit(state.copyWith(user: updatedUser));
   }
