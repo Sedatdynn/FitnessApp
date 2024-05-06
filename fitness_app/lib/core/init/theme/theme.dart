@@ -25,9 +25,11 @@ final class CustomTheme {
               borderSide: const BorderSide(color: Color.fromARGB(255, 10, 10, 10)),
             )),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: Colors.black,
-            selectedIconTheme: IconThemeData(color: Color(0xFFC4FB6D)),
-            unselectedIconTheme: IconThemeData(color: Colors.red)),
+            backgroundColor: Color.fromARGB(255, 17, 26, 30),
+            selectedItemColor: AppColors.white,
+            unselectedItemColor: AppColors.lightGrey,
+            selectedIconTheme: IconThemeData(color: AppColors.blue),
+            unselectedIconTheme: IconThemeData(color: AppColors.white)),
 
         //textThee=me
         textTheme: TextTheme(
@@ -89,9 +91,10 @@ final class CustomTheme {
         //iconTheme
         iconTheme: const IconThemeData(color: Color(0xFFC4FB6D)),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: Colors.black,
-            selectedIconTheme: IconThemeData(color: Color(0xFFC4FB6D)),
-            unselectedIconTheme: IconThemeData(color: Colors.red)),
+            backgroundColor: AppColors.mainPrimary,
+            selectedItemColor: AppColors.darkText,
+            selectedIconTheme: IconThemeData(color: AppColors.blue),
+            unselectedIconTheme: IconThemeData(color: AppColors.lightGrey)),
 
         //textTheme
         textTheme: TextTheme(

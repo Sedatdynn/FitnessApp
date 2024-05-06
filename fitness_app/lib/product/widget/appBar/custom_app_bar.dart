@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:flutter/material.dart';
 
+/// App's App Bar With only back icon
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CommonAppBar({
     Key? key,
