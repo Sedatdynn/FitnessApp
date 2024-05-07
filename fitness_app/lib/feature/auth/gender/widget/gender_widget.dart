@@ -34,7 +34,7 @@ class _MaleField extends StatelessWidget {
           children: [
             Icon(Icons.male, size: 130.w, color: context.read<GenderCubit>().maleIconColor),
             Text(
-              RegisterText.manText,
+              LocaleKeys.Auth_manText.tr(),
               style: Theme.of(context)
                   .textTheme
                   .titleSmall
@@ -59,7 +59,7 @@ class _FemaleField extends StatelessWidget {
           children: [
             Icon(Icons.female, size: 130.w, color: context.read<GenderCubit>().femaleIconColor),
             Text(
-              RegisterText.womanText,
+              LocaleKeys.Auth_womanText.tr(),
               style: Theme.of(context)
                   .textTheme
                   .titleSmall
@@ -82,7 +82,7 @@ class _NextButton extends StatelessWidget {
     return BlocBuilder<GenderCubit, GenderState>(
       builder: (context, state) {
         return CommonButton(
-            text: MyText.continueText,
+            text: LocaleKeys.continueText.tr(),
             onPressed: () => RouteManager.instance.push(AgeRoute(
                   params: AgeParams(
                     mail: params.mail,

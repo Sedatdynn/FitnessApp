@@ -37,10 +37,10 @@ class _NextButton extends StatelessWidget {
     return BlocBuilder<MobilityCubit, MobilityState>(
       builder: (context, state) {
         return CommonButton(
-            text: MyText.nextText,
+            text: LocaleKeys.nextText.tr(),
             onPressed: () {
               if (state.selectedItem == null) {
-                warningToast(RegisterText.selectMobility);
+                warningToast(LocaleKeys.Auth_selectMobility.tr());
                 return;
               }
               RouteManager.instance.push(HeightRoute(

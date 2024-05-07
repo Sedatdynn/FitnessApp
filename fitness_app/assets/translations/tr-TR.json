@@ -1,0 +1,56 @@
+{
+    "usernameText": "Kullanıcı adı",
+    "bnFirstText": "Anasayfa",
+    "bnSecondText": "Ara",
+    "bnThirdText": "Profil",
+    "homeWelcomeText": "Günaydın",
+    "continueText": "Devam et",
+    "nextText": "İleri",
+    "exerciseText": "Egzersizler",
+    "fitText": "Fitness Anahtardır",
+    "appName": "Fitness ve Diyet Uygulaması",
+    "complete": "Tamamla",
+    "Auth": {
+      "registerSuccessfully": "Kaydınız başarıyla tamamlandı.",
+      "verifyWarning": "Doğrulama için bir e-posta gönderdik. Lütfen e-postanızı doğrulayın.",
+      "signEmailText": "E-posta ile Giriş Yap",
+      "googleText": "Google ile Giriş Yap",
+      "emailText": "E-posta",
+      "resetPasswordText": "Şifreyi Sıfırla",
+      "facebookText": "Facebook",
+      "emailAssociated": "Hesabınızla ilişkilendirilmiş e-posta adresini girin",
+      "womanText": "Kadın",
+      "manText": "Erkek",
+      "cmText": "cm",
+      "kgText": "kg",
+      "orLogText": "Veya şununla giriş yapın:",
+      "orSignText": "Veya şununla kaydolun:",
+      "createText": "Hesap Oluştur",
+      "passwordText": "Şifre",
+      "fillErrorText": "İlgili alanların doğru bir şekilde doldurulduğundan emin olun",
+      "selectMobility": "Günlük egzersiz ve hareketliliğinizi seçin"
+    },
+    "Question": {
+      "sexText": "Cinsiyetiniz nedir?",
+      "ageText": "Doğum tarihiniz nedir?",
+      "heightText": "Boyunuz kaç cm?",
+      "accountText": "Hesabınız yok mu?",
+      "forgotPassText": "Şifrenizi mi unuttunuz?",
+      "nameText": "Adınız ve soyadınız?",
+      "weightText": "Kilonuz kaç kg?"
+    },
+    "Warning": {
+      "registerEmptyUsername": "Kullanıcı adı boş olamaz!",
+      "registerEmptyEmail": "E-posta boş olamaz!",
+      "registerEmptyPassword": "Şifre boş olamaz!",
+      "sexWarningText": "Cinsiyetinizi seçmelisiniz!",
+      "nameWarningText": "Adınızı girmelisiniz!",
+      "loginWrongEmailText": "Geçersiz e-posta!",
+      "loginNoAccountText": "Kullanıcı bulunamadı!",
+      "loginWrongPasswordText": "Yanlış şifre!",
+      "errorText": "Beklenmeyen bir hata oluştu...",
+      "registerInvalidPassword": "Şifre en az 6 karakter olmalıdır!",
+      "registerUniqueMail": "Bu e-posta zaten kullanımda! Lütfen farklı bir e-posta ile kayıt olun!"
+    }
+  }
+  

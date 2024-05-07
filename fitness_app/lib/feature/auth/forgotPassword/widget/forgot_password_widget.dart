@@ -5,7 +5,7 @@ class _ForgotPasswordTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(QuestionsText.forgotPassText,
+    return Text(LocaleKeys.Question_forgotPassText.tr(),
         style: Theme.of(context)
             .textTheme
             .displaySmall
@@ -19,7 +19,7 @@ class _InfoText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      RegisterText.emailAssociated,
+      LocaleKeys.Auth_emailAssociated.tr(),
       textAlign: TextAlign.center,
       style: context.textTheme.titleSmall,
     );
@@ -35,9 +35,10 @@ class _EmailTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AuthTextField(
       onChanged: onChanged,
-      validator: (value) =>
-          ValidateRegexExtension(value!).isEmail ? null : WarningText.registerUniqueMail,
-      hintText: RegisterText.emailText,
+      validator: (value) => ValidateRegexExtension(value!).isEmail
+          ? null
+          : LocaleKeys.Warning_registerUniqueMail.tr(),
+      hintText: LocaleKeys.Auth_emailText.tr(),
       icon: Icons.mail,
     );
   }
@@ -50,7 +51,7 @@ class _ResetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonButton(
-        text: RegisterText.resetPasswordText,
+        text: LocaleKeys.Auth_resetPasswordText.tr(),
         onPressed: () async {
           if (email != null && email!.isNotEmpty) resetPassword();
         });

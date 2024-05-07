@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/core/init/network/network_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
@@ -11,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 final class AppInitialize {
   Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
-
+    await EasyLocalization.ensureInitialized();
     //initialize the firebase
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,

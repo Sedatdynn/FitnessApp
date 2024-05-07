@@ -17,7 +17,7 @@ class _WeightNumberPicker extends StatelessWidget {
               maxValue: 200,
               onChanged: (value) => context.read<WeightCubit>().setSelectedValue(value),
             ),
-            Text(RegisterText.kgText, style: context.textTheme.titleSmall)
+            Text(LocaleKeys.Auth_kgText.tr(), style: context.textTheme.titleSmall)
           ],
         );
       },
@@ -35,7 +35,7 @@ class _CompleteButton extends StatelessWidget {
     return BlocBuilder<WeightCubit, WeightState>(
       builder: (context, state) {
         return CommonButton(
-          text: MyText.complete,
+          text: LocaleKeys.complete.tr(),
           onPressed: () async {
             await context
                 .read<WeightCubit>()
@@ -51,9 +51,10 @@ class _CompleteButton extends StatelessWidget {
                       context.read<WeightCubit>().createPerson(
                           params: params,
                           function: () async {
-                            await warningToast(RegisterText.registerSuccessfully,
+                            await warningToast(LocaleKeys.Auth_registerSuccessfully.tr(),
                                 color: AppColors.green);
-                            await warningToast(RegisterText.verifyWarning, color: AppColors.green);
+                            await warningToast(LocaleKeys.Auth_verifyWarning.tr(),
+                                color: AppColors.green);
                           })
                     });
           },

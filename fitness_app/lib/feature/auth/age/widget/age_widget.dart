@@ -27,7 +27,7 @@ class _NextButton extends StatelessWidget {
     return BlocBuilder<AgeCubit, AgeState>(
       builder: (context, state) {
         return CommonButton(
-          text: MyText.continueText,
+          text: LocaleKeys.continueText.tr(),
           onPressed: () => RouteManager.instance.push(
             DailyMobilityRoute(
               params: MobilityParams(

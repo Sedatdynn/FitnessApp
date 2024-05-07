@@ -10,9 +10,10 @@ class _EmailTextFieldWidget extends StatelessWidget {
         if (val.isEmpty) return;
         context.read<LoginCubit>().setEmail(val);
       },
-      validator: (value) =>
-          ValidateRegexExtension(value!).isEmail ? null : WarningText.registerUniqueMail,
-      hintText: RegisterText.emailText,
+      validator: (value) => ValidateRegexExtension(value!).isEmail
+          ? null
+          : LocaleKeys.Warning_registerUniqueMail.tr(),
+      hintText: LocaleKeys.Auth_emailText.tr(),
       icon: Icons.mail,
     );
   }
@@ -35,14 +36,14 @@ class _PasswordField extends StatelessWidget {
             cursorColor: AppColors.whiteText,
             validator: (value) => ValidateRegexExtension(value!).isPassword
                 ? null
-                : WarningText.registerInvalidPassword,
+                : LocaleKeys.Warning_registerInvalidPassword.tr(),
             decoration: InputDecoration(
               suffixIcon: InkWell(
                 onTap: () => context.read<LoginCubit>().changeVisible(),
                 child: _CheckVisible(isVisible: state.isVisible),
               ),
               prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
-              hintText: RegisterText.passwordText,
+              hintText: LocaleKeys.Auth_passwordText.tr(),
             ));
       },
     );
@@ -70,9 +71,9 @@ class _ForgotPasswordText extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: InkWell(
         onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.forgotPassword),
-        child: const Text(
-          QuestionsText.forgotPassText,
-          style: TextStyle(color: Colors.white),
+        child: Text(
+          LocaleKeys.Question_forgotPassText.tr(),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
     );
@@ -87,12 +88,12 @@ class _SignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
       return CommonButton(
-          text: MyText.continueText,
+          text: LocaleKeys.continueText.tr(),
           onPressed: () async {
             if (formKey.currentState!.validate()) {
               await context.read<LoginCubit>().signIn();
             } else {
-              warningToast(RegisterText.fillErrorText);
+              warningToast(LocaleKeys.Auth_fillErrorText.tr());
             }
           });
     });

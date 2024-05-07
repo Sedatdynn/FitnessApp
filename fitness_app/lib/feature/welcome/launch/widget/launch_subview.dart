@@ -7,7 +7,7 @@ class _TitleTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        MyText.fitText,
+        LocaleKeys.fitText.tr(),
         style: context.textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
       ),
     );
@@ -20,7 +20,7 @@ class _EmailButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AuthButton(
-      buttonText: RegisterText.signEmailText,
+      buttonText: LocaleKeys.Auth_signEmailText.tr(),
       icon: const Icon(
         Icons.email_outlined,
         color: AppColors.whiteText,
@@ -41,7 +41,7 @@ class _GoogleButton extends StatelessWidget {
     return AuthButton(
       color: AppColors.shadeGreyColor,
       textColor: AppColors.darkText,
-      buttonText: RegisterText.googleText,
+      buttonText: LocaleKeys.Auth_googleText.tr(),
       icon: SizedBox(height: 32, child: ImagePath.google.toPng()),
       onPressed: () async {
         bool? isSuccess = await AuthService.instance.signInWithGoogle();
@@ -62,7 +62,7 @@ class _AccountsInfoTextWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          QuestionsText.accountText,
+          LocaleKeys.Question_accountText.tr(),
           style: context.textTheme.bodyLarge,
         ),
         SizedBox(width: 5.w),
@@ -71,7 +71,7 @@ class _AccountsInfoTextWidget extends StatelessWidget {
             RouteManager.instance.pushNamed(path: RouteConstants.register);
           },
           child: Text(
-            RegisterText.createText,
+            LocaleKeys.Auth_createText.tr(),
             style: context.textTheme.bodyLarge?.copyWith(color: AppColors.mainPrimary),
           ),
         ),

@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:fistness_app_firebase/language/locale_keys.g.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,7 +65,7 @@ class _ScaffoldBodyWidget extends StatelessWidget {
             children: [
               const LogoBody(),
               CustomSize.xxLargeHeight(),
-              const RegisterInfoQuestionText(text: QuestionsText.weightText),
+              RegisterInfoQuestionText(text: LocaleKeys.Question_weightText.tr()),
               CustomSize.xxLargeHeight(),
               const _WeightNumberPicker(),
               CustomSize.xxLargeHeight(),

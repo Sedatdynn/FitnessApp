@@ -1,4 +1,3 @@
-export 'package:fistness_app_firebase/product/const/text/texts.dart';
 export 'package:flutter/material.dart';
 export 'package:numberpicker/numberpicker.dart';
 export 'package:fluttertoast/fluttertoast.dart';

@@ -57,6 +57,7 @@ dependencies:
   video_player: ^2.4.10
   youtube_player_flutter: ^8.1.1
   shimmer: ^3.0.0
+  easy_localization: ^3.0.6
 
 dev_dependencies:
   auto_route_generator: ^7.3.2
@@ -80,6 +81,7 @@ flutter:
   assets:
     - assets/lottie/
     - assets/png/
+    - assets/translations/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
