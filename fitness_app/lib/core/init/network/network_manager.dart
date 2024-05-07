@@ -56,7 +56,7 @@ class NetworkManager extends INetworkManager {
       }
     } on DioException catch (e) {
       return ServerException(
-          message: e.message.toString(), statusCode: e.response!.statusCode.toString());
+          message: e.message.toString(), statusCode: e.response?.statusCode.toString() ?? "505");
     }
   }
 }

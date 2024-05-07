@@ -6,25 +6,22 @@ class _TopInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const AppPadding.minAll(),
       decoration: BoxDecoration(
         color: AppColors.keyTextMainColor,
-        borderRadius: BorderRadius.circular(24.w),
+        borderRadius: BorderRadius.circular(12.w),
       ),
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const _InitialPointField(),
-            CustomSize.minHeight(),
-            const _SavedPointField(),
-            CustomSize.minHeight(),
-            const _CurrentPointField(),
-            CustomSize.minHeight(),
-            const _SaveResetButtons(),
-            CustomSize.minHeight(),
-          ],
-        ),
+      child: Column(
+        children: [
+          const _InitialPointField(),
+          CustomSize.minHeight(),
+          const _SavedPointField(),
+          CustomSize.minHeight(),
+          const _CurrentPointField(),
+          CustomSize.minHeight(),
+          const _SaveResetButtons(),
+          CustomSize.minHeight(),
+        ],
       ),
     );
   }
@@ -35,17 +32,21 @@ class _InitialPointField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text("Initial point:", style: context.textTheme.titleSmall),
-        BlocSelector<GlobalCubit, GlobalState, int?>(
-          selector: (state) => state.user?.userRightPoint,
-          builder: (context, userRightPoint) {
-            return Text("${userRightPoint ?? 0}", style: context.textTheme.titleSmall);
-          },
-        ),
-      ],
+    return SizedBox(
+      width: context.dynamicWidth(0.7),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(LocaleKeys.Diet_InitialScore, style: context.textTheme.titleSmall).tr(),
+          const Spacer(),
+          BlocSelector<GlobalCubit, GlobalState, int?>(
+            selector: (state) => state.user?.userRightPoint,
+            builder: (context, userRightPoint) {
+              return Text("${userRightPoint ?? 0}", style: context.textTheme.titleSmall);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
@@ -57,18 +58,22 @@ class _SavedPointField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DietCubit, DietState>(
       builder: (context, state) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              "Saved daily point is:",
-              style: context.textTheme.titleSmall,
-            ),
-            Text(
-              "${state.lastSavedPoint}",
-              style: context.textTheme.titleSmall,
-            ),
-          ],
+        return SizedBox(
+          width: context.dynamicWidth(0.7),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                LocaleKeys.Diet_savedDailyScore,
+                style: context.textTheme.titleSmall,
+              ).tr(),
+              const Spacer(),
+              Text(
+                "${state.lastSavedPoint}",
+                style: context.textTheme.titleSmall,
+              ),
+            ],
+          ),
         );
       },
     );
@@ -82,18 +87,22 @@ class _CurrentPointField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DietCubit, DietState>(
       builder: (context, state) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              "Current point is:",
-              style: context.textTheme.titleSmall,
-            ),
-            Text(
-              "${state.currentTotalPoint}",
-              style: context.textTheme.titleSmall,
-            ),
-          ],
+        return SizedBox(
+          width: context.dynamicWidth(0.7),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                LocaleKeys.Diet_currentScore,
+                style: context.textTheme.titleSmall,
+              ).tr(),
+              const Spacer(),
+              Text(
+                "${state.currentTotalPoint}",
+                style: context.textTheme.titleSmall,
+              ),
+            ],
+          ),
         );
       },
     );
@@ -108,25 +117,21 @@ class _SaveResetButtons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        SizedBox(
-          height: 30.h,
-          width: 140.w,
+        Expanded(
           child: CommonButton(
             color: AppColors.green,
-            text: "Save Point",
+            text: LocaleKeys.Diet_saveScore,
             onPressed: () async => context.read<DietCubit>().savePoint(),
           ),
         ),
         CustomSize.minWidth(),
-        SizedBox(
-          height: 30.h,
-          width: 140.w,
+        Expanded(
           child: CommonButton(
             color: AppColors.error,
-            text: "Reset Point",
+            text: LocaleKeys.Diet_resetScore,
             onPressed: () async => context.read<DietCubit>().resetPoint(),
           ),
-        )
+        ),
       ],
     );
   }
@@ -194,7 +199,7 @@ class _FoodOptionsBody extends StatelessWidget {
                 ),
                 Expanded(child: Container()),
                 Text(
-                  "${state.foods[index].icerik![j].puan!.toDouble()} point",
+                  "${state.foods[index].icerik![j].puan!.toDouble()} ${LocaleKeys.Diet_score.tr()}",
                   style: context.textTheme.titleSmall,
                 ),
                 Checkbox(

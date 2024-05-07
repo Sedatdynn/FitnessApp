@@ -62,5 +62,12 @@ abstract class  LocaleKeys {
   static const Profile_logOut = 'Profile.logOut';
   static const Profile_logoutSubtitle = 'Profile.logoutSubtitle';
   static const Profile = 'Profile';
+  static const Diet_InitialScore = 'Diet.InitialScore';
+  static const Diet_savedDailyScore = 'Diet.savedDailyScore';
+  static const Diet_currentScore = 'Diet.currentScore';
+  static const Diet_saveScore = 'Diet.saveScore';
+  static const Diet_resetScore = 'Diet.resetScore';
+  static const Diet_score = 'Diet.score';
+  static const Diet = 'Diet';
 
 }

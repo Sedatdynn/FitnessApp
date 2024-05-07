@@ -9,7 +9,6 @@ import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart'
 class DietCubit extends IDietCubit {
   late IDietService _dietService;
   double totalPoint = 0;
-  String item = "foods";
 
   DietCubit() : super(DietState.initial()) {
     init();

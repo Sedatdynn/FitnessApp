@@ -63,5 +63,13 @@
     "changeLanguage": "Change language",
     "logOut": "Log out",
     "logoutSubtitle":"Have a good day..."
-  }
+  },
+   "Diet": {
+      "InitialScore": "Initial Score:",
+      "savedDailyScore": "Saved daily score:",
+      "currentScore": "Current score:",
+      "saveScore": "Save Score",
+      "resetScore": "Reset Score",
+      "score": "Score"
+    }
 }

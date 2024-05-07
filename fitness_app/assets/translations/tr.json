@@ -63,6 +63,14 @@
       "changeLanguage": "Dili değiştir",
       "logOut": "Çıkış Yap",
       "logoutSubtitle":"İyi günler..."
+    },
+    "Diet": {
+      "InitialScore": "Başlangıç Puanı:",
+      "savedDailyScore": "Günlük kayıtlı puan:",
+      "currentScore": "Anlık puan:",
+      "saveScore": "Puanı kaydet",
+      "resetScore": "Puanı sıfırla",
+      "score": "Puan"
     }
   }
   
