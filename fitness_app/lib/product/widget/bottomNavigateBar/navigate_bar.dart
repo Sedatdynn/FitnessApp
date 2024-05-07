@@ -18,10 +18,27 @@ class _MainViewState extends State<MainView> with BottomNavigateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: changeIndex,
-        currentIndex: selectedIndex,
-        items: bottomNavigationItems,
+      //Localizations.override for updating the language bottom navigation wasn't working
+      bottomNavigationBar: Localizations.override(
+        locale: context.locale,
+        context: context,
+        child: BottomNavigationBar(
+          onTap: changeIndex,
+          currentIndex: selectedIndex,
+          // 2 Bottom navigation bar item
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.home),
+              label: LocaleKeys.bnFirstText.tr(),
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(
+                Icons.account_circle,
+              ),
+              label: LocaleKeys.bnThirdText.tr(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -37,18 +54,4 @@ mixin BottomNavigateMixin on State<MainView> {
       selectedIndex = index;
     });
   }
-
-// 2 Bottom navigation bar item
-  List<BottomNavigationBarItem> bottomNavigationItems = [
-    BottomNavigationBarItem(
-      icon: const Icon(Icons.home),
-      label: LocaleKeys.bnFirstText.tr(),
-    ),
-    BottomNavigationBarItem(
-      icon: const Icon(
-        Icons.account_circle,
-      ),
-      label: LocaleKeys.bnThirdText.tr(),
-    ),
-  ];
 }

@@ -20,9 +20,9 @@ class LocalizationWidget extends StatelessWidget {
     return BlocProvider(
       create: (_) => GlobalCubit(),
       child: EasyLocalization(
-        supportedLocales: LanguageManager.instance.supportedLocales,
-        fallbackLocale: LanguageManager.instance.trLocale,
+        supportedLocales: LanguageManager.supportedLocales,
         path: LanguageManager.instance.localizationPath,
+        useOnlyLangCode: true,
         child: const App(),
       ),
     );

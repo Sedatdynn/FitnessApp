@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,7 @@ class CommonButton extends StatelessWidget {
         child: OutlinedButton(
           style: customButtonStyle,
           onPressed: onPressed,
-          child: Text(text, style: context.textTheme.titleSmall),
+          child: Text(text, style: context.textTheme.titleSmall).tr(),
         ),
       ),
     );

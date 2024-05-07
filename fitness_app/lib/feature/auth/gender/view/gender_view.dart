@@ -11,6 +11,7 @@ import 'package:fistness_app_firebase/language/locale_keys.g.dart';
 import 'package:fistness_app_firebase/product/const/register_info_text.dart';
 
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
+import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';
@@ -56,7 +57,7 @@ class _BodyScrollWidget extends StatelessWidget {
           children: [
             const LogoBody(),
             CustomSize.minHeight(),
-            RegisterInfoQuestionText(text: LocaleKeys.Question_sexText.tr()),
+            const RegisterInfoQuestionText(text: LocaleKeys.Question_sexText),
             CustomSize.xLargeHeight(),
             const _ToggleGenderButtons(),
             CustomSize.xxLargeHeight(),

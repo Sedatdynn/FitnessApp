@@ -5,11 +5,12 @@ class _ForgotPasswordTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(LocaleKeys.Question_forgotPassText.tr(),
-        style: Theme.of(context)
-            .textTheme
-            .displaySmall
-            ?.copyWith(fontWeight: FontWeight.bold, color: AppColors.mainPrimary));
+    return Text(LocaleKeys.Question_forgotPassText,
+            style: Theme.of(context)
+                .textTheme
+                .displaySmall
+                ?.copyWith(fontWeight: FontWeight.bold, color: AppColors.mainPrimary))
+        .tr();
   }
 }
 
@@ -19,10 +20,10 @@ class _InfoText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      LocaleKeys.Auth_emailAssociated.tr(),
+      LocaleKeys.Auth_emailAssociated,
       textAlign: TextAlign.center,
       style: context.textTheme.titleSmall,
-    );
+    ).tr();
   }
 }
 
@@ -51,7 +52,7 @@ class _ResetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonButton(
-        text: LocaleKeys.Auth_resetPasswordText.tr(),
+        text: LocaleKeys.Auth_resetPasswordText,
         onPressed: () async {
           if (email != null && email!.isNotEmpty) resetPassword();
         });

@@ -7,9 +7,9 @@ class _TitleTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        LocaleKeys.fitText.tr(),
+        LocaleKeys.fitText,
         style: context.textTheme.displaySmall?.copyWith(color: AppColors.mainPrimary),
-      ),
+      ).tr(),
     );
   }
 }
@@ -62,18 +62,18 @@ class _AccountsInfoTextWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          LocaleKeys.Question_accountText.tr(),
+          LocaleKeys.Question_accountText,
           style: context.textTheme.bodyLarge,
-        ),
+        ).tr(),
         SizedBox(width: 5.w),
         InkWell(
           onTap: () {
             RouteManager.instance.pushNamed(path: RouteConstants.register);
           },
           child: Text(
-            LocaleKeys.Auth_createText.tr(),
+            LocaleKeys.Auth_createText,
             style: context.textTheme.bodyLarge?.copyWith(color: AppColors.mainPrimary),
-          ),
+          ).tr(),
         ),
       ],
     );

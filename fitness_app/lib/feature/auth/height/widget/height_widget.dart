@@ -17,7 +17,7 @@ class _HeightNumberPickerWidget extends StatelessWidget {
               maxValue: maxValue,
               onChanged: (value) => context.read<HeightCubit>().setSelectedValue(value),
             ),
-            Text(LocaleKeys.Auth_cmText.tr(), style: context.textTheme.titleSmall),
+            Text(LocaleKeys.Auth_cmText, style: context.textTheme.titleSmall).tr(),
           ],
         );
       },
@@ -34,7 +34,7 @@ class _NextButton extends StatelessWidget {
     return BlocBuilder<HeightCubit, HeightState>(
       builder: (context, state) {
         return CommonButton(
-          text: LocaleKeys.nextText.tr(),
+          text: LocaleKeys.nextText,
           onPressed: () => RouteManager.instance.push(
             WeightRoute(
               params: WeightParams(

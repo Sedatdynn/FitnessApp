@@ -65,7 +65,7 @@ class _ScaffoldBodyWidget extends StatelessWidget {
             children: [
               const LogoBody(),
               CustomSize.xxLargeHeight(),
-              RegisterInfoQuestionText(text: LocaleKeys.Question_weightText.tr()),
+              const RegisterInfoQuestionText(text: LocaleKeys.Question_weightText),
               CustomSize.xxLargeHeight(),
               const _WeightNumberPicker(),
               CustomSize.xxLargeHeight(),

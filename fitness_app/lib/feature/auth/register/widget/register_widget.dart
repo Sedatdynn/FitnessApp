@@ -119,7 +119,7 @@ class _ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonButton(
-        text: LocaleKeys.continueText.tr(),
+        text: LocaleKeys.continueText,
         onPressed: () {
           if (formKey.currentState!.validate()) {
             context.read<RegisterCubit>().registerUser();

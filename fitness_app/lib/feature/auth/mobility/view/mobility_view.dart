@@ -50,7 +50,7 @@ class _BodyWidget extends StatelessWidget {
         child: Column(
           children: [
             const LogoBody(),
-            RegisterInfoQuestionText(text: LocaleKeys.Auth_selectMobility.tr()),
+            const RegisterInfoQuestionText(text: LocaleKeys.Auth_selectMobility),
             CustomSize.xxLargeHeight(),
             const _DropDownWidget(),
             CustomSize.xxLargeHeight(),

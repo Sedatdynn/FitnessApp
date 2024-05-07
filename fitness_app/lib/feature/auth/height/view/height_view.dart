@@ -38,7 +38,7 @@ class HeightView extends StatelessWidget {
             child: Column(
               children: [
                 const LogoBody(),
-                RegisterInfoQuestionText(text: LocaleKeys.Question_heightText.tr()),
+                const RegisterInfoQuestionText(text: LocaleKeys.Question_heightText),
                 CustomSize.xxLargeHeight(),
                 const _HeightNumberPickerWidget(),
                 CustomSize.xxLargeHeight(),

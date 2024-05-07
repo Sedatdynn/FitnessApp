@@ -1,13 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 
 import '../../feature/views_shelf.dart';
 
 class RegisterInfoQuestionText extends StatelessWidget {
-  final String text;
   const RegisterInfoQuestionText({
-    Key? key,
+    super.key,
     required this.text,
-  }) : super(key: key);
+  });
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +17,6 @@ class RegisterInfoQuestionText extends StatelessWidget {
       text,
       textAlign: TextAlign.center,
       style: context.textTheme.titleLarge,
-    );
+    ).tr();
   }
 }

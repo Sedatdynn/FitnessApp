@@ -6,7 +6,8 @@
     "homeWelcomeText": "Günaydın",
     "continueText": "Devam et",
     "nextText": "İleri",
-    "exerciseText": "Egzersizler",
+    "exercises": "Egzersizler",
+    "diet":"Diyet Listesi",
     "fitText": "Fitness Anahtardır",
     "appName": "Fitness ve Diyet Uygulaması",
     "complete": "Tamamla",
@@ -51,6 +52,17 @@
       "errorText": "Beklenmeyen bir hata oluştu...",
       "registerInvalidPassword": "Şifre en az 6 karakter olmalıdır!",
       "registerUniqueMail": "Bu e-posta zaten kullanımda! Lütfen farklı bir e-posta ile kayıt olun!"
+    },
+    "Profile": {
+      "theme": "Tema Işığı",
+      "changeTheme": "Tema modunu değiştir",
+      "bmiResult": "BMI sonucunu görün",
+      "updateProfileTitle": "Profili Güncelle",
+      "updateProfileSubtitle": "Kilonuzu, boyunuzu güncelleyin...",
+      "language": "Dil",
+      "changeLanguage": "Dili değiştir",
+      "logOut": "Çıkış Yap",
+      "logoutSubtitle":"İyi günler..."
     }
   }
   

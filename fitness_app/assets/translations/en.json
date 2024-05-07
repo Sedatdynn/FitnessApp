@@ -6,7 +6,8 @@
 "homeWelcomeText" :"Good Morning ",
 "continueText" : "continue",
 "nextText" : "Next",
-"exerciseText" : "Exercises",
+"exercises" : "Exercises",
+"diet":"Diet List",
 "fitText" : "Fitness Is The Key",
 "appName" : "Fitness and Diet App" ,
 "complete" : "Complete",
@@ -51,5 +52,16 @@
     "errorText":"An unexpected error has occurred...",
     "registerInvalidPassword": "Password must be at least 6 character!",
     "registerUniqueMail": "Mail is already in use! Please register with difference mail!"
+  }, 
+  "Profile": {
+    "theme": "Theme Light",
+    "changeTheme": "Change theme mode",
+    "bmiResult": "See BMI result",
+    "updateProfileTitle": "Update Profile",
+    "updateProfileSubtitle": "Update your weight, height...",
+    "language": "Language",
+    "changeLanguage": "Change language",
+    "logOut": "Log out",
+    "logoutSubtitle":"Have a good day..."
   }
 }

@@ -28,10 +28,10 @@ class _SplashViewState extends State<SplashView> with SplashMixin {
             children: [
               LottiePath.lottie_loading.toLottie(context),
               Text(
-                LocaleKeys.appName.tr(),
+                LocaleKeys.appName,
                 textAlign: TextAlign.center,
                 style: context.textTheme.displaySmall?.copyWith(color: AppColors.loadingColor),
-              ),
+              ).tr(),
             ],
           ),
         ),

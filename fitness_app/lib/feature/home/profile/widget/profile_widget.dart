@@ -51,3 +51,23 @@ class _HeightWeightTextField extends StatelessWidget {
     );
   }
 }
+
+class _ProfileSectionListTile extends StatelessWidget {
+  const _ProfileSectionListTile(
+      {required this.icon, required this.title, required this.subtitle, required this.onTap});
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final void Function() onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: onTap,
+      leading: Icon(icon),
+      title: Text(title, style: context.textTheme.titleSmall),
+      subtitle: Text(subtitle, style: context.textTheme.bodyLarge),
+    );
+  }
+}

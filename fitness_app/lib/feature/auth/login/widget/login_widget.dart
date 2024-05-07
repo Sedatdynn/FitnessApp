@@ -71,10 +71,10 @@ class _ForgotPasswordText extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: InkWell(
         onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.forgotPassword),
-        child: Text(
-          LocaleKeys.Question_forgotPassText.tr(),
-          style: const TextStyle(color: Colors.white),
-        ),
+        child: const Text(
+          LocaleKeys.Question_forgotPassText,
+          style: TextStyle(color: Colors.white),
+        ).tr(),
       ),
     );
   }
@@ -88,7 +88,7 @@ class _SignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
       return CommonButton(
-          text: LocaleKeys.continueText.tr(),
+          text: LocaleKeys.continueText,
           onPressed: () async {
             if (formKey.currentState!.validate()) {
               await context.read<LoginCubit>().signIn();

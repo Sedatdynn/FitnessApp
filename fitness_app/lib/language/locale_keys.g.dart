@@ -8,7 +8,8 @@ abstract class  LocaleKeys {
   static const homeWelcomeText = 'homeWelcomeText';
   static const continueText = 'continueText';
   static const nextText = 'nextText';
-  static const exerciseText = 'exerciseText';
+  static const exercises = 'exercises';
+  static const diet = 'diet';
   static const fitText = 'fitText';
   static const appName = 'appName';
   static const complete = 'complete';
@@ -51,5 +52,15 @@ abstract class  LocaleKeys {
   static const Warning_registerInvalidPassword = 'Warning.registerInvalidPassword';
   static const Warning_registerUniqueMail = 'Warning.registerUniqueMail';
   static const Warning = 'Warning';
+  static const Profile_theme = 'Profile.theme';
+  static const Profile_changeTheme = 'Profile.changeTheme';
+  static const Profile_bmiResult = 'Profile.bmiResult';
+  static const Profile_updateProfileTitle = 'Profile.updateProfileTitle';
+  static const Profile_updateProfileSubtitle = 'Profile.updateProfileSubtitle';
+  static const Profile_language = 'Profile.language';
+  static const Profile_changeLanguage = 'Profile.changeLanguage';
+  static const Profile_logOut = 'Profile.logOut';
+  static const Profile_logoutSubtitle = 'Profile.logoutSubtitle';
+  static const Profile = 'Profile';
 
 }
