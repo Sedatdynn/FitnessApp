@@ -5,14 +5,15 @@ class _WeightNumberPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WeightCubit, WeightState>(
-      builder: (context, state) {
+    return BlocSelector<WeightCubit, WeightState, int?>(
+      selector: (state) => state.selectedValue,
+      builder: (context, number) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomNumberPicker(
-              value: state.selectedValue!,
+              value: number!,
               minValue: 30,
               maxValue: 200,
               onChanged: (value) => context.read<WeightCubit>().setSelectedValue(value),
@@ -32,8 +33,9 @@ class _CompleteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WeightCubit, WeightState>(
-      builder: (context, state) {
+    return BlocSelector<WeightCubit, WeightState, int?>(
+      selector: (state) => state.selectedValue,
+      builder: (context, number) {
         return CommonButton(
           text: LocaleKeys.complete,
           onPressed: () async {
@@ -44,7 +46,7 @@ class _CompleteButton extends StatelessWidget {
                       age: params.birthYear!,
                       gender: params.gender!,
                       height: params.height!,
-                      weight: state.selectedValue,
+                      weight: number,
                       mobility: params.mobility!),
                 )
                 .then((_) => {

@@ -3,6 +3,7 @@ import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_cubit.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_state.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/shimmer/exercise_shimmer.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
@@ -26,11 +27,11 @@ class ExercisesView extends StatelessWidget {
         body: ListView(
           children: [
             const _TopImageInfoWidget(),
-            BlocBuilder<ExerciseCubit, ExerciseState>(
+            BlocSelector<ExerciseCubit, ExerciseState, bool>(
+              selector: (state) => state.exercises != null ? true : false,
               builder: (context, state) {
-                return state.exercises == null
-                    ? const ExerciseViewShimmer()
-                    : _ExercisesBodyWidget(state);
+                debugPrint(state.toString());
+                return state ? const _ExercisesBodyWidget() : const ExerciseViewShimmer();
               },
             )
           ],

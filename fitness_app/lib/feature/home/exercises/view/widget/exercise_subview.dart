@@ -25,38 +25,42 @@ class _TopImageInfoWidget extends StatelessWidget {
 }
 
 class _ExercisesBodyWidget extends StatelessWidget {
-  final ExerciseState state;
-  const _ExercisesBodyWidget(this.state);
+  const _ExercisesBodyWidget();
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: state.exercises?.length ?? 0,
-      itemBuilder: (BuildContext context, int index) {
-        return Card(
-          color: AppColors.darkText,
-          child: ListTile(
-            contentPadding: const AppPadding.minAll(),
-            onTap: () => RouteManager.instance.push(DetailExercisesRoute(
-              items: state.exercises![index],
-            )),
-            leading: CachedNetworkManager.instance!.cachedNetworkImage(
-              imageUrl: state.exercises![index].imgUrl!,
-              width: 92.w,
-            ),
-            title: Text(
-              state.exercises![index].categoryName.toString(),
-              textAlign: TextAlign.center,
-              style: context.textTheme.titleSmall
-                  ?.copyWith(fontWeight: FontWeight.bold, color: AppColors.mainPrimary),
-            ),
-            trailing: const Icon(
-              Icons.chevron_right_outlined,
-              color: AppColors.mainPrimary,
-            ),
-          ),
+    return BlocSelector<ExerciseCubit, ExerciseState, List<Exercise>?>(
+      selector: (state) => state.exercises,
+      builder: (context, exercises) {
+        return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: exercises?.length ?? 0,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              color: AppColors.darkText,
+              child: ListTile(
+                contentPadding: const AppPadding.minAll(),
+                onTap: () => RouteManager.instance.push(DetailExercisesRoute(
+                  items: exercises[index],
+                )),
+                leading: CachedNetworkManager.instance!.cachedNetworkImage(
+                  imageUrl: exercises![index].imgUrl!,
+                  width: 92.w,
+                ),
+                title: Text(
+                  exercises[index].categoryName.toString(),
+                  textAlign: TextAlign.center,
+                  style: context.textTheme.titleSmall
+                      ?.copyWith(fontWeight: FontWeight.bold, color: AppColors.mainPrimary),
+                ),
+                trailing: const Icon(
+                  Icons.chevron_right_outlined,
+                  color: AppColors.mainPrimary,
+                ),
+              ),
+            );
+          },
         );
       },
     );

@@ -56,8 +56,9 @@ class _SavedPointField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DietCubit, DietState>(
-      builder: (context, state) {
+    return BlocSelector<DietCubit, DietState, double?>(
+      selector: (state) => state.lastSavedPoint,
+      builder: (context, lastSavedPoint) {
         return SizedBox(
           width: context.dynamicWidth(0.7),
           child: Row(
@@ -69,7 +70,7 @@ class _SavedPointField extends StatelessWidget {
               ).tr(),
               const Spacer(),
               Text(
-                "${state.lastSavedPoint}",
+                "$lastSavedPoint",
                 style: context.textTheme.titleSmall,
               ),
             ],
@@ -85,8 +86,9 @@ class _CurrentPointField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DietCubit, DietState>(
-      builder: (context, state) {
+    return BlocSelector<DietCubit, DietState, double?>(
+      selector: (state) => state.currentTotalPoint,
+      builder: (context, currentTotalPoint) {
         return SizedBox(
           width: context.dynamicWidth(0.7),
           child: Row(
@@ -98,7 +100,7 @@ class _CurrentPointField extends StatelessWidget {
               ).tr(),
               const Spacer(),
               Text(
-                "${state.currentTotalPoint}",
+                "$currentTotalPoint",
                 style: context.textTheme.titleSmall,
               ),
             ],
@@ -179,12 +181,13 @@ class _FoodOptionsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DietCubit, DietState>(
-      builder: (context, state) {
+    return BlocSelector<DietCubit, DietState, List<Kategori>>(
+      selector: (state) => state.foods,
+      builder: (context, foods) {
         return ListView.builder(
           shrinkWrap: true,
           primary: false,
-          itemCount: state.foods[index].icerik!.length,
+          itemCount: foods[index].icerik!.length,
           itemBuilder: (BuildContext ctx, int j) {
             return Card(
               color: context.theme.cardColor,
@@ -192,19 +195,19 @@ class _FoodOptionsBody extends StatelessWidget {
                 SizedBox(
                   width: 200.w,
                   child: Text(
-                    state.foods[index].icerik![j].isim.toString(),
+                    foods[index].icerik![j].isim.toString(),
                     style: context.textTheme.titleSmall,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Expanded(child: Container()),
                 Text(
-                  "${state.foods[index].icerik![j].puan!.toDouble()} ${LocaleKeys.Diet_score.tr()}",
+                  "${foods[index].icerik![j].puan!.toDouble()} ${LocaleKeys.Diet_score.tr()}",
                   style: context.textTheme.titleSmall,
                 ),
                 Checkbox(
                     activeColor: AppColors.mainPrimary,
-                    value: state.foods[index].icerik![j].kontrol,
+                    value: foods[index].icerik![j].kontrol,
                     onChanged: (value) =>
                         context.read<DietCubit>().checkBoxActivity(index, j, value!)),
               ]),

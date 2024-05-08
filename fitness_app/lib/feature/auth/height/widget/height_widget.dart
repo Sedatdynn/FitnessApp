@@ -31,8 +31,9 @@ class _NextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HeightCubit, HeightState>(
-      builder: (context, state) {
+    return BlocSelector<HeightCubit, HeightState, int?>(
+      selector: (state) => state.selectedValue,
+      builder: (context, selectedValue) {
         return CommonButton(
           text: LocaleKeys.nextText,
           onPressed: () => RouteManager.instance.push(
@@ -45,7 +46,7 @@ class _NextButton extends StatelessWidget {
                 gender: params.gender,
                 birthYear: params.birthYear,
                 mobility: params.mobility,
-                height: state.selectedValue,
+                height: selectedValue,
               ),
             ),
           ),

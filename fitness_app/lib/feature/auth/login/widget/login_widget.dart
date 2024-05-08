@@ -24,15 +24,16 @@ class _PasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
-      builder: (context, state) {
+    return BlocSelector<LoginCubit, LoginState, bool>(
+      selector: (state) => state.isVisible,
+      builder: (context, isVisible) {
         return TextFormField(
             style: context.textTheme.titleSmall,
             onChanged: (val) {
               if (val.isEmpty) return;
               context.read<LoginCubit>().setPassword(val);
             },
-            obscureText: state.isVisible,
+            obscureText: isVisible,
             cursorColor: AppColors.whiteText,
             validator: (value) => ValidateRegexExtension(value!).isPassword
                 ? null
@@ -40,7 +41,7 @@ class _PasswordField extends StatelessWidget {
             decoration: InputDecoration(
               suffixIcon: InkWell(
                 onTap: () => context.read<LoginCubit>().changeVisible(),
-                child: _CheckVisible(isVisible: state.isVisible),
+                child: _CheckVisible(isVisible: isVisible),
               ),
               prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
               hintText: LocaleKeys.Auth_passwordText.tr(),
@@ -86,16 +87,14 @@ class _SignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
-      return CommonButton(
-          text: LocaleKeys.continueText,
-          onPressed: () async {
-            if (formKey.currentState!.validate()) {
-              await context.read<LoginCubit>().signIn();
-            } else {
-              warningToast(LocaleKeys.Auth_fillErrorText.tr());
-            }
-          });
-    });
+    return CommonButton(
+        text: LocaleKeys.continueText,
+        onPressed: () async {
+          if (formKey.currentState!.validate()) {
+            await context.read<LoginCubit>().signIn();
+          } else {
+            warningToast(LocaleKeys.Auth_fillErrorText.tr());
+          }
+        });
   }
 }

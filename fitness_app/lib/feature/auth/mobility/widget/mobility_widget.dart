@@ -34,12 +34,13 @@ class _NextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MobilityCubit, MobilityState>(
-      builder: (context, state) {
+    return BlocSelector<MobilityCubit, MobilityState, String?>(
+      selector: (state) => state.selectedItem,
+      builder: (context, mobility) {
         return CommonButton(
             text: LocaleKeys.nextText,
             onPressed: () {
-              if (state.selectedItem == null) {
+              if (mobility == null) {
                 warningToast(LocaleKeys.Auth_selectMobility.tr());
                 return;
               }
@@ -51,7 +52,7 @@ class _NextButton extends StatelessWidget {
                   name: params.name,
                   gender: params.gender,
                   birthYear: params.birthYear,
-                  mobility: state.selectedItem,
+                  mobility: mobility,
                 ),
               ));
             });
