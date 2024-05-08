@@ -8,6 +8,9 @@ build/
 pubspec.lock
 .vscode
 .idea
+# dont commit generated files
+*.g.dart
+
 
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
@@ -22,8 +25,6 @@ doc/api/
 *.js.deps
 *.js.map
 
-# dont commit generated files
-*.g.dart
 
 # firebase
 /android/app/google-services.json
