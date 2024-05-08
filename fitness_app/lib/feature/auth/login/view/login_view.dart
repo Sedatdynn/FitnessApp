@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/auth/login/cubit/login_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/login/cubit/login_state.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/language/locale_keys.g.dart';
+import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
 import 'package:fistness_app_firebase/product/extensions/regex.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';
 import 'package:fistness_app_firebase/product/widget/button/common_button.dart';
@@ -23,7 +23,7 @@ part '../widget/login_widget.dart';
 
 @RoutePage()
 class LoginView extends StatelessWidget {
-  const LoginView({Key? key, this.canPop = true}) : super(key: key);
+  const LoginView({super.key, this.canPop = true});
   final bool? canPop;
   @override
   Widget build(BuildContext context) {
@@ -32,10 +32,10 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocListener<LoginCubit, LoginState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.errorMessage != null && state.errorMessage!.isNotEmpty) {
-            warningToast(state.errorMessage!);
-            Future.delayed(const Duration(seconds: 1))
+            await warningToast(state.errorMessage!);
+            await Future<void>.delayed(const Duration(seconds: 1))
                 .then((value) => context.read<LoginCubit>().clearErrorMessage());
           }
         },
@@ -75,7 +75,7 @@ class _BodyScrollWidget extends StatelessWidget {
               CustomSize.minHeight(),
               const _ForgotPasswordText(),
               CustomSize.xxLargeHeight(),
-              _SignInButton(formKey: formKey)
+              _SignInButton(formKey: formKey),
             ],
           ),
         ),

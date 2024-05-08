@@ -18,10 +18,10 @@ class AgeCubit extends IAgeCubit {
   /// setting initial number picker's values to the state to show it in view
   @override
   void calculateMaxValue() {
-    DateTime now = DateTime.now();
-    int currentYear = now.year;
-    int maxValue = currentYear - 18;
-    int minValue = currentYear - 60;
+    final now = DateTime.now();
+    final currentYear = now.year;
+    final maxValue = currentYear - 18;
+    final minValue = currentYear - 60;
     emit(state.copyWith(maxValue: maxValue, birthYear: maxValue, minValue: minValue));
   }
 

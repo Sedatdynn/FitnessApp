@@ -19,14 +19,16 @@ class InitialView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            body: Column(
-      children: [
-        Assets.png.dietExrcs.image(),
-        const Expanded(
-          child: _GridBodyWidget(),
+      child: Scaffold(
+        body: Column(
+          children: [
+            Assets.png.dietExrcs.image(),
+            const Expanded(
+              child: _GridBodyWidget(),
+            ),
+          ],
         ),
-      ],
-    )));
+      ),
+    );
   }
 }

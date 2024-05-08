@@ -2,19 +2,14 @@ import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/register/enum/register_states.dart';
 
 class RegisterState extends BaseState {
-  const RegisterState(
-      {required this.username,
-      required this.nameSurname,
-      required this.email,
-      required this.password,
-      required this.isVisible,
-      required this.states});
-  final RegisterStates states;
-  final String? username;
-  final String? nameSurname;
-  final String? email;
-  final String? password;
-  final bool isVisible;
+  const RegisterState({
+    required this.username,
+    required this.nameSurname,
+    required this.email,
+    required this.password,
+    required this.isVisible,
+    required this.states,
+  });
 
   factory RegisterState.initial() {
     return const RegisterState(
@@ -26,6 +21,12 @@ class RegisterState extends BaseState {
       isVisible: true,
     );
   }
+  final RegisterStates states;
+  final String? username;
+  final String? nameSurname;
+  final String? email;
+  final String? password;
+  final bool isVisible;
 
   @override
   List<Object?> get props => [states, nameSurname, username, email, password, isVisible];

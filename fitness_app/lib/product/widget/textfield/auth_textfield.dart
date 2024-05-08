@@ -4,18 +4,17 @@ import 'package:flutter/material.dart';
 
 /// TextFormField widget for using in different screens
 class AuthTextField extends StatelessWidget {
-  final void Function(String)? onChanged;
-  final String? Function(String?)? validator;
-  final String hintText;
-  final IconData icon;
-
   const AuthTextField({
-    super.key,
     required this.onChanged,
     required this.validator,
     required this.hintText,
     required this.icon,
+    super.key,
   });
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
+  final String hintText;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {

@@ -2,15 +2,12 @@ import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/home/diet/model/foods_model.dart';
 
 class DietState extends BaseState {
-  const DietState(
-      {required this.states,
-      required this.lastSavedPoint,
-      required this.currentTotalPoint,
-      required this.foods});
-  final DietStates states;
-  final double? lastSavedPoint;
-  final double? currentTotalPoint;
-  final List<Kategori> foods;
+  const DietState({
+    required this.states,
+    required this.lastSavedPoint,
+    required this.currentTotalPoint,
+    required this.foods,
+  });
 
   factory DietState.initial() {
     return const DietState(
@@ -20,6 +17,10 @@ class DietState extends BaseState {
       foods: [],
     );
   }
+  final DietStates states;
+  final double? lastSavedPoint;
+  final double? currentTotalPoint;
+  final List<Kategori> foods;
 
   @override
   List<Object?> get props => [states, lastSavedPoint, currentTotalPoint, foods];

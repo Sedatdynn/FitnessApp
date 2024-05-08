@@ -24,8 +24,8 @@ part '../widget/gender_widget.dart';
 
 @RoutePage()
 class GenderView extends StatelessWidget {
+  const GenderView({required this.params, super.key});
   final GenderParams params;
-  const GenderView({Key? key, required this.params}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _BodyScrollWidget extends StatelessWidget {
             CustomSize.xLargeHeight(),
             const _ToggleGenderButtons(),
             CustomSize.xxLargeHeight(),
-            _NextButton(params: params)
+            _NextButton(params: params),
           ],
         ),
       ),

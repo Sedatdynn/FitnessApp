@@ -6,7 +6,7 @@
             "icerik": [
                 {
                     "isim": "1 slice of Baguette bread",
-                    "puan": 4,
+                    "puan": 4.0,
                     "kontrol" :false
                 },
                 {
@@ -16,12 +16,12 @@
                 },
                 {
                     "isim": "1 slice of Bread",
-                    "puan": 2,
+                    "puan": 2.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "1 Toast bread",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol":false
                 }
             ]
@@ -37,12 +37,12 @@
                 },
                 {
                     "isim": "2 tbsps of Cream ",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "1 teaspoon Peanut Butter",
-                    "puan": 2,
+                    "puan": 2.0,
                     "kontrol" :false
                 },
                 {
@@ -58,7 +58,7 @@
             "icerik": [
                 {
                     "isim": "Butter",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol" :false
                 },
                 {
@@ -68,7 +68,7 @@
                 },
                 {
                     "isim": "Herbal Liquid Oil ",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol" :false
                 },
                 {
@@ -94,12 +94,12 @@
                 },
                 {
                     "isim": "300 gr Trout ",
-                    "puan": 6,
+                    "puan": 6.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "1 Mussel",
-                    "puan": 5,
+                    "puan": 5.0,
                     "kontrol":false
                 }
             ]
@@ -110,22 +110,22 @@
             "icerik": [
                 {
                     "isim": "100 gr Meatballs",
-                    "puan": 6,
+                    "puan": 6.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "1 slice of Sausage",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "1 Chicken wing",
-                    "puan": 4,
+                    "puan": 4.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "120 gr Turkey meat",
-                    "puan": 2,
+                    "puan": 2.0,
                     "kontrol":false
                 }
             ]
@@ -136,12 +136,12 @@
             "icerik": [
                 {
                     "isim": "200 ml Cola ",
-                    "puan": 2,
+                    "puan": 2.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "Cola light",
-                    "puan": 0,
+                    "puan": 0.0,
                     "kontrol" :false
                 },
                 {
@@ -151,7 +151,7 @@
                 },
                 {
                     "isim": "1 glass of Chocolate Drink",
-                    "puan": 5,
+                    "puan": 5.0,
                     "kontrol":false
                 }
             ]
@@ -162,7 +162,7 @@
             "icerik": [
                 {
                     "isim": "40 gr Popcorn ",
-                    "puan": 2,
+                    "puan": 2.0,
                     "kontrol" :false
                 },
                 {
@@ -177,7 +177,7 @@
                 },
                 {
                     "isim": "1 tbsp Rice",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol":false
                 }
             ]
@@ -188,7 +188,7 @@
             "icerik": [
                 {
                     "isim": "0.5% fat 150 gr Yogurt",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol" :false
                 },
                 {
@@ -198,7 +198,7 @@
                 },
                 {
                     "isim": "250 ml Milk with 1.5% fat",
-                    "puan": 2,
+                    "puan": 2.0,
                     "kontrol" :false
                 },
                 {
@@ -214,17 +214,17 @@
             "icerik": [
                 {
                     "isim": "1  Lahmacun",
-                    "puan": 7,
+                    "puan": 7.0,
                     "kontrol" :false
                 },
                 {
                     "isim": " 1  Doner",
-                    "puan": 14,
+                    "puan": 14.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "1 Hamburger",
-                    "puan": 5,
+                    "puan": 5.0,
                     "kontrol" :false
                 },
                 {
@@ -240,22 +240,22 @@
             "icerik": [
                 {
                     "isim": "Tomato",
-                    "puan": 0,
+                    "puan": 0.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "Potato",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "Eggplant",
-                    "puan": 0,
+                    "puan": 0.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "Courgette",
-                    "puan": 0,
+                    "puan": 0.0,
                     "kontrol":false
                 }
             ]
@@ -266,17 +266,17 @@
             "icerik": [
                 {
                     "isim": "Apple",
-                    "puan": 0,
+                    "puan": 0.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "Strawberry",
-                    "puan": 0,
+                    "puan": 0.0,
                     "kontrol" :false
                 },
                 {
                     "isim": "1 Banana",
-                    "puan": 1,
+                    "puan": 1.0,
                     "kontrol" :false
                 },
                 {
@@ -292,25 +292,25 @@
             "icerik": [
                 {
                     "isim": "Kunefe",
-                    "puan": 5,
+                    "puan": 5.0,
                     "kontrol" : false
                     
                 },
                 {
                     "isim": "125 gr Chocolate Pudding",
-                    "puan": 3,
+                    "puan": 3.0,
                     "kontrol" : false
                     
                 },
                 {
                     "isim": "150 gr Semolina Dessert",
-                    "puan": 4,
+                    "puan": 4.0,
                     "kontrol" : false
                     
                 },
                 {
                     "isim": "Baklava",
-                    "puan": 7,
+                    "puan": 7.0,
                     "kontrol" : false
 
                 }

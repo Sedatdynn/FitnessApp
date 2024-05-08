@@ -1,10 +1,9 @@
 import 'package:fistness_app_firebase/core/base/exception/exception.dart';
 import 'package:fistness_app_firebase/core/init/network/network_manager.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/service/i_exercise_service.dart';
 import 'package:fistness_app_firebase/product/utils/typedef.dart';
 import 'package:fpdart/fpdart.dart';
-
-import 'i_exercise_service.dart';
 
 class ExerciseService extends IExerciseService {
   ExerciseService();
@@ -16,7 +15,7 @@ class ExerciseService extends IExerciseService {
     if (response is ServerException) {
       return Left(ServerException(message: response.message, statusCode: response.statusCode));
     } else {
-      return Right(response);
+      return Right(response as ExercisesModel);
     }
   }
 }

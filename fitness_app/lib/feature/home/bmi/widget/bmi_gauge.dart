@@ -15,7 +15,7 @@ class BmiGaugeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<GaugeRange> gaugeRanges = [
+    final gaugeRanges = <GaugeRange>[
       GaugeRange(startValue: 0, endValue: 15, color: AppColors.error),
       GaugeRange(startValue: 15, endValue: 18, color: Colors.yellow),
       GaugeRange(startValue: 18, endValue: 25, color: AppColors.green),
@@ -30,9 +30,10 @@ class BmiGaugeWidget extends StatelessWidget {
         return Padding(
           padding: const AppPadding.normalVertical(),
           child: Center(
-            child: SfRadialGauge(animationDuration: 1, axes: <RadialAxis>[
-              RadialAxis(
-                  minimum: 0,
+            child: SfRadialGauge(
+              animationDuration: 1,
+              axes: <RadialAxis>[
+                RadialAxis(
                   maximum: 40,
                   axisLabelStyle: GaugeTextStyle(color: AppColors.mainPrimary, fontSize: 16.sp),
                   majorTickStyle: const MajorTickStyle(thickness: 12, color: AppColors.white),
@@ -41,15 +42,18 @@ class BmiGaugeWidget extends StatelessWidget {
                     NeedlePointer(
                       value: double.parse(result),
                       needleColor: AppColors.keyTextShadowColor,
-                    )
+                    ),
                   ],
                   annotations: <GaugeAnnotation>[
                     GaugeAnnotation(
-                        widget: Text(result, style: context.textTheme.displaySmall),
-                        angle: 90,
-                        positionFactor: 0.5)
-                  ])
-            ]),
+                      widget: Text(result, style: context.textTheme.displaySmall),
+                      angle: 90,
+                      positionFactor: 0.5,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },

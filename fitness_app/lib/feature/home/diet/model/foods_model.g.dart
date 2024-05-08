@@ -22,6 +22,6 @@ Kategori _$KategoriFromJson(Map<String, dynamic> json) => Kategori(
 
 Icerik _$IcerikFromJson(Map<String, dynamic> json) => Icerik(
       isim: json['isim'] as String?,
-      puan: json['puan'],
+      puan: json['puan'] as double,
       kontrol: json['kontrol'] as bool?,
     );

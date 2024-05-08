@@ -3,8 +3,8 @@ import 'package:fistness_app_firebase/app.dart';
 import 'package:fistness_app_firebase/bootstrap.dart';
 import 'package:fistness_app_firebase/core/language/language_manager.dart';
 import 'package:fistness_app_firebase/product/global/cubit/global_cubit.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'feature/views_shelf.dart';
 
 Future<void> main() async {
   await bootstrap(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Logo Widget to show in the different screens
 class LogoBody extends StatelessWidget {
-  const LogoBody({Key? key}) : super(key: key);
+  const LogoBody({super.key});
 
   @override
   Widget build(BuildContext context) {

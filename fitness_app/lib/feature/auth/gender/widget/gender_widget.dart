@@ -9,7 +9,7 @@ class _ToggleGenderButtons extends StatelessWidget {
       selector: (state) => state.isSelectedList,
       builder: (context, isSelectedList) {
         return ToggleButtons(
-          borderRadius: BorderRadius.circular(16.0),
+          borderRadius: BorderRadius.circular(16),
           isSelected: isSelectedList,
           onPressed: (index) => context.read<GenderCubit>().toggleOnPressed(index),
           color: AppColors.darkText,
@@ -36,7 +36,7 @@ class _MaleField extends StatelessWidget {
           LocaleKeys.Auth_manText,
           style: context.textTheme.titleSmall
               ?.copyWith(color: context.read<GenderCubit>().maleTextColor),
-        ).tr()
+        ).tr(),
       ],
     );
   }
@@ -55,16 +55,15 @@ class _FemaleField extends StatelessWidget {
           LocaleKeys.Auth_womanText,
           style: context.textTheme.titleSmall
               ?.copyWith(color: context.read<GenderCubit>().femaleTextColor),
-        ).tr()
+        ).tr(),
       ],
     );
   }
 }
 
 class _NextButton extends StatelessWidget {
-  final GenderParams params;
-
   const _NextButton({required this.params});
+  final GenderParams params;
 
   @override
   Widget build(BuildContext context) {

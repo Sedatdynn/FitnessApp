@@ -3,9 +3,6 @@ import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_mod
 
 class ExerciseState extends BaseState {
   const ExerciseState({required this.states, required this.exercises});
-  final ExerciseStates states;
-
-  final List<Exercise>? exercises;
 
   factory ExerciseState.initial() {
     return const ExerciseState(
@@ -13,6 +10,9 @@ class ExerciseState extends BaseState {
       exercises: null,
     );
   }
+  final ExerciseStates states;
+
+  final List<Exercise>? exercises;
 
   @override
   List<Object?> get props => [states, exercises];

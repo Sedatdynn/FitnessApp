@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/feature/auth/age/params/age_params.dart';
 import 'package:fistness_app_firebase/feature/auth/age/view/age_view.dart';
 import 'package:fistness_app_firebase/feature/auth/forgotPassword/view/forgot_password_view.dart';
@@ -15,20 +16,17 @@ import 'package:fistness_app_firebase/feature/auth/weight/view/weight_view.dart'
 import 'package:fistness_app_firebase/feature/home/bmi/view/bmi_view.dart';
 import 'package:fistness_app_firebase/feature/home/diet/view/diet_view.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/detail_video_page.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/detail_exercises_view.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/exercise_view.dart';
-import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/detail_video_page.dart';
 import 'package:fistness_app_firebase/feature/home/initial/view/initial_view.dart';
 import 'package:fistness_app_firebase/feature/home/profile/view/edit_profile_view.dart';
 import 'package:fistness_app_firebase/feature/home/profile/view/profile_view.dart';
+import 'package:fistness_app_firebase/feature/welcome/launch/view/launch_view.dart';
+import 'package:fistness_app_firebase/feature/welcome/splash/view/splash_view.dart';
 import 'package:fistness_app_firebase/product/widget/bottomNavigateBar/navigate_bar.dart';
 
-import 'package:fistness_app_firebase/feature/welcome/splash/view/splash_view.dart';
-import 'package:fistness_app_firebase/feature/welcome/launch/view/launch_view.dart';
-
 import 'package:flutter/material.dart';
-
-import 'auto_route_path.dart';
 
 part 'app_router.gr.dart';
 

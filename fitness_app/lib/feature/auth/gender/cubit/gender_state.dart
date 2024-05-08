@@ -2,11 +2,11 @@ import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/gender/enum/gender_states.dart';
 
 class GenderState extends BaseState {
-  const GenderState(
-      {required this.states, required this.selectedGender, required this.isSelectedList});
-  final GenderStates states;
-  final String? selectedGender;
-  final List<bool> isSelectedList;
+  const GenderState({
+    required this.states,
+    required this.selectedGender,
+    required this.isSelectedList,
+  });
 
   factory GenderState.initial() {
     return const GenderState(
@@ -15,6 +15,9 @@ class GenderState extends BaseState {
       isSelectedList: [true, false],
     );
   }
+  final GenderStates states;
+  final String? selectedGender;
+  final List<bool> isSelectedList;
 
   @override
   List<Object?> get props => [states, selectedGender, isSelectedList];

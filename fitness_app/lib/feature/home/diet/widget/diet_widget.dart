@@ -42,7 +42,7 @@ class _InitialPointField extends StatelessWidget {
           BlocSelector<GlobalCubit, GlobalState, int?>(
             selector: (state) => state.user?.userRightPoint,
             builder: (context, userRightPoint) {
-              return Text("${userRightPoint ?? 0}", style: context.textTheme.titleSmall);
+              return Text('${userRightPoint ?? 0}', style: context.textTheme.titleSmall);
             },
           ),
         ],
@@ -70,7 +70,7 @@ class _SavedPointField extends StatelessWidget {
               ).tr(),
               const Spacer(),
               Text(
-                "$lastSavedPoint",
+                '$lastSavedPoint',
                 style: context.textTheme.titleSmall,
               ),
             ],
@@ -100,7 +100,7 @@ class _CurrentPointField extends StatelessWidget {
               ).tr(),
               const Spacer(),
               Text(
-                "$currentTotalPoint",
+                '$currentTotalPoint',
                 style: context.textTheme.titleSmall,
               ),
             ],
@@ -156,7 +156,7 @@ class _MainListViewBody extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14.0),
+                    borderRadius: BorderRadius.circular(14),
                     color: AppColors.mainPrimary,
                   ),
                   child: Text(
@@ -165,7 +165,7 @@ class _MainListViewBody extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                _FoodOptionsBody(index: i)
+                _FoodOptionsBody(index: i),
               ],
             );
           },
@@ -176,8 +176,8 @@ class _MainListViewBody extends StatelessWidget {
 }
 
 class _FoodOptionsBody extends StatelessWidget {
-  final int index;
   const _FoodOptionsBody({required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -191,26 +191,29 @@ class _FoodOptionsBody extends StatelessWidget {
           itemBuilder: (BuildContext ctx, int j) {
             return Card(
               color: context.theme.cardColor,
-              child: Row(children: [
-                SizedBox(
-                  width: 200.w,
-                  child: Text(
-                    foods[index].icerik![j].isim.toString(),
-                    style: context.textTheme.titleSmall,
-                    overflow: TextOverflow.ellipsis,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 200.w,
+                    child: Text(
+                      foods[index].icerik![j].isim.toString(),
+                      style: context.textTheme.titleSmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-                Expanded(child: Container()),
-                Text(
-                  "${foods[index].icerik![j].puan!.toDouble()} ${LocaleKeys.Diet_score.tr()}",
-                  style: context.textTheme.titleSmall,
-                ),
-                Checkbox(
+                  Expanded(child: Container()),
+                  Text(
+                    '${foods[index].icerik![j].puan} ${LocaleKeys.Diet_score.tr()}',
+                    style: context.textTheme.titleSmall,
+                  ),
+                  Checkbox(
                     activeColor: AppColors.mainPrimary,
                     value: foods[index].icerik![j].kontrol,
                     onChanged: (value) =>
-                        context.read<DietCubit>().checkBoxActivity(index, j, value!)),
-              ]),
+                        context.read<DietCubit>().checkBoxActivity(index, j, value: value!),
+                  ),
+                ],
+              ),
             );
           },
         );

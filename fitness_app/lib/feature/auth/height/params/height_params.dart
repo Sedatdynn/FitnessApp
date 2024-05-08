@@ -1,14 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class HeightParams extends Equatable {
-  final String? username;
-  final String? mail;
-  final String? name;
-  final String? password;
-  final String? gender;
-  final int? birthYear;
-  final String? mobility;
-
   const HeightParams({
     required this.username,
     required this.mail,
@@ -18,6 +10,13 @@ class HeightParams extends Equatable {
     required this.birthYear,
     required this.mobility,
   });
+  final String? username;
+  final String? mail;
+  final String? name;
+  final String? password;
+  final String? gender;
+  final int? birthYear;
+  final String? mobility;
 
   @override
   List<Object?> get props => [username, mail, name, password, gender, birthYear, mobility];

@@ -13,12 +13,13 @@ class _TopImageInfoWidget extends StatelessWidget {
           icon: const Icon(Icons.chevron_left_rounded),
         ),
         Positioned(
-            bottom: 10.h,
-            left: 10.w,
-            child: Text(
-              "Exercises",
-              style: context.textTheme.titleLarge?.copyWith(color: AppColors.white),
-            ))
+          bottom: 10.h,
+          left: 10.w,
+          child: Text(
+            'Exercises',
+            style: context.textTheme.titleLarge?.copyWith(color: AppColors.white),
+          ),
+        ),
       ],
     );
   }
@@ -41,9 +42,11 @@ class _ExercisesBodyWidget extends StatelessWidget {
               color: AppColors.darkText,
               child: ListTile(
                 contentPadding: const AppPadding.minAll(),
-                onTap: () => RouteManager.instance.push(DetailExercisesRoute(
-                  items: exercises[index],
-                )),
+                onTap: () => RouteManager.instance.push(
+                  DetailExercisesRoute(
+                    items: exercises[index],
+                  ),
+                ),
                 leading: CachedNetworkManager.instance!.cachedNetworkImage(
                   imageUrl: exercises![index].imgUrl!,
                   width: 92.w,

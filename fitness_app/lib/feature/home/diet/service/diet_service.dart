@@ -1,10 +1,9 @@
 import 'package:fistness_app_firebase/core/base/exception/exception.dart';
 import 'package:fistness_app_firebase/core/init/network/network_manager.dart';
 import 'package:fistness_app_firebase/feature/home/diet/model/foods_model.dart';
+import 'package:fistness_app_firebase/feature/home/diet/service/i_diet_service.dart';
 import 'package:fistness_app_firebase/product/utils/typedef.dart';
 import 'package:fpdart/fpdart.dart';
-
-import 'i_diet_service.dart';
 
 class DietService extends IDietService {
   DietService();
@@ -16,7 +15,7 @@ class DietService extends IDietService {
     if (response is ServerException) {
       return Left(ServerException(message: response.message, statusCode: response.statusCode));
     } else {
-      return Right(response);
+      return Right(response as FoodsModel);
     }
   }
 }

@@ -77,12 +77,14 @@ class _PasswordTextFieldWidget extends StatelessWidget {
               ? null
               : LocaleKeys.Warning_registerInvalidPassword.tr(),
           decoration: InputDecoration(
-              suffixIcon: InkWell(
-                  onTap: () => context.read<RegisterCubit>().changeVisible(),
-                  child: _CheckVisible(isVisible: visibility)),
-              prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
-              hintText: LocaleKeys.Auth_passwordText.tr(),
-              hintStyle: context.textTheme.bodyLarge),
+            suffixIcon: InkWell(
+              onTap: () => context.read<RegisterCubit>().changeVisible(),
+              child: _CheckVisible(isVisible: visibility),
+            ),
+            prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
+            hintText: LocaleKeys.Auth_passwordText.tr(),
+            hintStyle: context.textTheme.bodyLarge,
+          ),
         );
       },
     );
@@ -108,13 +110,14 @@ class _ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonButton(
-        text: LocaleKeys.continueText,
-        onPressed: () {
-          if (formKey.currentState!.validate()) {
-            context.read<RegisterCubit>().registerUser();
-          } else {
-            warningToast(LocaleKeys.Auth_fillErrorText.tr());
-          }
-        });
+      text: LocaleKeys.continueText,
+      onPressed: () {
+        if (formKey.currentState!.validate()) {
+          context.read<RegisterCubit>().registerUser();
+        } else {
+          warningToast(LocaleKeys.Auth_fillErrorText.tr());
+        }
+      },
+    );
   }
 }

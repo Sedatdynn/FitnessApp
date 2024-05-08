@@ -23,8 +23,8 @@ part '../widget/height_widget.dart';
 
 @RoutePage()
 class HeightView extends StatelessWidget {
+  const HeightView({required this.params, super.key});
   final HeightParams params;
-  const HeightView({Key? key, required this.params}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -5,8 +5,6 @@ class HeightState extends BaseState {
     required this.states,
     required this.selectedValue,
   });
-  final HeightStates states;
-  final int? selectedValue;
 
   factory HeightState.initial() {
     return const HeightState(
@@ -14,6 +12,8 @@ class HeightState extends BaseState {
       selectedValue: null,
     );
   }
+  final HeightStates states;
+  final int? selectedValue;
 
   @override
   List<Object?> get props => [states, selectedValue];

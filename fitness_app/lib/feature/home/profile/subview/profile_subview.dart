@@ -7,8 +7,9 @@ class _CustomProfileAppBar extends StatelessWidget implements PreferredSizeWidge
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => RouteManager.instance.pushNamed(path: RouteConstants.main)),
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => RouteManager.instance.pushNamed(path: RouteConstants.main),
+      ),
       actions: const [
         Padding(
           padding: AppPadding.normalHorizontal(),
@@ -23,8 +24,12 @@ class _CustomProfileAppBar extends StatelessWidget implements PreferredSizeWidge
 }
 
 class _ProfileSectionListTile extends StatelessWidget {
-  const _ProfileSectionListTile(
-      {required this.icon, required this.title, required this.subtitle, required this.onTap});
+  const _ProfileSectionListTile({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
 
   final IconData icon;
   final String title;

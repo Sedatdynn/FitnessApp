@@ -5,13 +5,11 @@ import 'package:flutter/material.dart';
 /// language singleton manager
 @immutable
 final class LanguageManager {
+  const LanguageManager._init();
   static LanguageManager? _instance;
   static LanguageManager get instance {
-    _instance ??= const LanguageManager._init();
-    return _instance!;
+    return _instance ??= const LanguageManager._init();
   }
-
-  const LanguageManager._init();
 
   /// language asset path
   String get localizationPath => 'assets/translations';
@@ -25,7 +23,7 @@ final class LanguageManager {
   // change application language
   void changeLanguage({required BuildContext context}) {
     //getting selected current language
-    Locale currentLocale = EasyLocalization.of(context)!.currentLocale!;
+    final currentLocale = EasyLocalization.of(context)!.currentLocale!;
     // toggle language between English and Turkish
     currentLocale == Locales.en.locale
         ? context.setLocale(Locales.tr.locale)

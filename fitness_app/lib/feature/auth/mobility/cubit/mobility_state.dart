@@ -3,8 +3,6 @@ import 'package:fistness_app_firebase/feature/auth/mobility/enum/mobility_states
 
 class MobilityState extends BaseState {
   const MobilityState({required this.states, required this.selectedItem});
-  final MobilityStates states;
-  final String? selectedItem;
 
   factory MobilityState.initial() {
     return const MobilityState(
@@ -12,6 +10,8 @@ class MobilityState extends BaseState {
       selectedItem: null,
     );
   }
+  final MobilityStates states;
+  final String? selectedItem;
 
   @override
   List<Object?> get props => [states, selectedItem];

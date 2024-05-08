@@ -6,24 +6,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return MaterialApp.router(
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            debugShowCheckedModeBanner: false,
-            theme: context.watch<GlobalCubit>().getCurrentTheme(),
-            routerDelegate: AppConstants.appRouter.delegate(),
-            routeInformationParser: AppConstants.appRouter.defaultRouteParser(),
-          );
-        });
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp.router(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          debugShowCheckedModeBanner: false,
+          theme: context.watch<GlobalCubit>().getCurrentTheme(),
+          routerDelegate: AppConstants.appRouter.delegate(),
+          routeInformationParser: AppConstants.appRouter.defaultRouteParser(),
+        );
+      },
+    );
   }
 }

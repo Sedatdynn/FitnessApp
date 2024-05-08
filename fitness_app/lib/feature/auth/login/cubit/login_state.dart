@@ -8,11 +8,6 @@ class LoginState extends BaseState {
     required this.isVisible,
     required this.errorMessage,
   });
-  final LoginStates states;
-  final String? email;
-  final String? password;
-  final bool isVisible;
-  final String? errorMessage;
 
   factory LoginState.initial() {
     return const LoginState(
@@ -23,6 +18,11 @@ class LoginState extends BaseState {
       errorMessage: null,
     );
   }
+  final LoginStates states;
+  final String? email;
+  final String? password;
+  final bool isVisible;
+  final String? errorMessage;
 
   @override
   List<Object?> get props => [states, email, password, isVisible, errorMessage];

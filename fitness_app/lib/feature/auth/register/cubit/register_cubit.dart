@@ -23,12 +23,15 @@ class RegisterCubit extends IRegisterCubit {
 
   @override
   void registerUser() {
-    RouteManager.instance.push(GenderRoute(
+    RouteManager.instance.push(
+      GenderRoute(
         params: GenderParams(
-      username: state.username,
-      mail: state.email,
-      password: state.password,
-      name: state.nameSurname,
-    )));
+          username: state.username,
+          mail: state.email,
+          password: state.password,
+          name: state.nameSurname,
+        ),
+      ),
+    );
   }
 }

@@ -45,7 +45,7 @@ class _MainViewState extends State<MainView> with BottomNavigateMixin {
 }
 
 mixin BottomNavigateMixin on State<MainView> {
-  List pages = [const InitialView(), const ProfileView()];
+  List<Widget> pages = [const InitialView(), const ProfileView()];
   int selectedIndex = 0;
 
   //setting the selected index

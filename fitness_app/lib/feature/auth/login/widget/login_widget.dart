@@ -28,24 +28,25 @@ class _PasswordField extends StatelessWidget {
       selector: (state) => state.isVisible,
       builder: (context, isVisible) {
         return TextFormField(
-            style: context.textTheme.titleSmall,
-            onChanged: (val) {
-              if (val.isEmpty) return;
-              context.read<LoginCubit>().setPassword(val);
-            },
-            obscureText: isVisible,
-            cursorColor: AppColors.whiteText,
-            validator: (value) => ValidateRegexExtension(value!).isPassword
-                ? null
-                : LocaleKeys.Warning_registerInvalidPassword.tr(),
-            decoration: InputDecoration(
-              suffixIcon: InkWell(
-                onTap: () => context.read<LoginCubit>().changeVisible(),
-                child: _CheckVisible(isVisible: isVisible),
-              ),
-              prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
-              hintText: LocaleKeys.Auth_passwordText.tr(),
-            ));
+          style: context.textTheme.titleSmall,
+          onChanged: (val) {
+            if (val.isEmpty) return;
+            context.read<LoginCubit>().setPassword(val);
+          },
+          obscureText: isVisible,
+          cursorColor: AppColors.whiteText,
+          validator: (value) => ValidateRegexExtension(value!).isPassword
+              ? null
+              : LocaleKeys.Warning_registerInvalidPassword.tr(),
+          decoration: InputDecoration(
+            suffixIcon: InkWell(
+              onTap: () => context.read<LoginCubit>().changeVisible(),
+              child: _CheckVisible(isVisible: isVisible),
+            ),
+            prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
+            hintText: LocaleKeys.Auth_passwordText.tr(),
+          ),
+        );
       },
     );
   }
@@ -88,13 +89,14 @@ class _SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonButton(
-        text: LocaleKeys.Auth_login,
-        onPressed: () async {
-          if (formKey.currentState!.validate()) {
-            await context.read<LoginCubit>().signIn();
-          } else {
-            warningToast(LocaleKeys.Auth_fillErrorText.tr());
-          }
-        });
+      text: LocaleKeys.Auth_login,
+      onPressed: () async {
+        if (formKey.currentState!.validate()) {
+          await context.read<LoginCubit>().signIn();
+        } else {
+          await warningToast(LocaleKeys.Auth_fillErrorText.tr());
+        }
+      },
+    );
   }
 }

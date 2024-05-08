@@ -3,6 +3,7 @@ import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/i_auto_route_manager.dart';
 
 class RouteManager implements IRouteManager {
+  RouteManager._init();
   static RouteManager? _instance;
   static RouteManager get instance {
     _instance ??= RouteManager._init();
@@ -10,8 +11,6 @@ class RouteManager implements IRouteManager {
   }
 
   late AppRouter _router;
-
-  RouteManager._init();
   @override
   void init(AppRouter router) {
     _router = router;

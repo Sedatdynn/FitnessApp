@@ -4,12 +4,11 @@ import 'package:fistness_app_firebase/product/widget/circular_progress/circular_
 import 'package:flutter/material.dart';
 
 class CachedNetworkManager {
-  static CachedNetworkManager? _instance;
   CachedNetworkManager._init();
+  static CachedNetworkManager? _instance;
 
   static CachedNetworkManager? get instance {
-    _instance ??= CachedNetworkManager._init();
-    return _instance;
+    return _instance ??= CachedNetworkManager._init();
   }
 
   Widget cachedNetworkImage({
@@ -19,7 +18,7 @@ class CachedNetworkManager {
     BoxFit? fit,
   }) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(16.0),
+      borderRadius: BorderRadius.circular(16),
       child: CachedNetworkImage(
         width: width,
         height: height,

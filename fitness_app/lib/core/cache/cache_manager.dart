@@ -11,7 +11,7 @@ class CacheManager {
 
   SharedPreferences? _preferences;
   static CacheManager get instance => _instance;
-  static Future preferencesInit() async {
+  static Future<void> preferencesInit() async {
     instance._preferences ??= await SharedPreferences.getInstance();
   }
 

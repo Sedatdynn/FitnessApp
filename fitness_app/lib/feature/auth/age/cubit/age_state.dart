@@ -8,10 +8,6 @@ class AgeState extends BaseState {
     required this.maxValue,
     required this.minValue,
   });
-  final AgeStates states;
-  final int? birthYear;
-  final int? maxValue;
-  final int? minValue;
 
   //initial state
   factory AgeState.initial() {
@@ -22,6 +18,10 @@ class AgeState extends BaseState {
       minValue: null,
     );
   }
+  final AgeStates states;
+  final int? birthYear;
+  final int? maxValue;
+  final int? minValue;
 
   @override
   List<Object?> get props => [states, birthYear, maxValue, minValue];

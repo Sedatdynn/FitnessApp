@@ -6,7 +6,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 mixin DetailVideoViewMixin on State<DetailVideoView> {
   late YoutubePlayerController youtubeController;
   late VideoPlayerController videoController;
-  String url = "";
+  String url = '';
   late bool checkUrl;
   int currentIndex = 0;
 
@@ -27,13 +27,14 @@ mixin DetailVideoViewMixin on State<DetailVideoView> {
 
   void _playYoutubeVideo() {
     youtubeController = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(url) ?? "",
-        flags: const YoutubePlayerFlags(mute: true, autoPlay: false));
+      initialVideoId: YoutubePlayer.convertUrlToId(url) ?? '',
+      flags: const YoutubePlayerFlags(mute: true, autoPlay: false),
+    );
   }
 
   void checkVideoType() {
     url = widget.items.videoUrl.toString();
-    checkUrl = url.contains("youtube");
+    checkUrl = url.contains('youtube');
   }
 
   @override

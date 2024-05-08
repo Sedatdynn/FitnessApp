@@ -9,22 +9,21 @@ class _DropDownWidget extends StatelessWidget {
       selector: (state) => state.selectedItem,
       builder: (context, selectedValue) {
         return DropdownButton<String>(
-            hint: const Center(child: Text('select')),
-            dropdownColor: Colors.deepPurpleAccent,
-            isExpanded: true,
-            value: selectedValue,
-            style: context.textTheme.titleSmall,
-            underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
-            onChanged: (String? value) => context.read<MobilityCubit>().setSelectedItem(value!),
-            items: GlobalService.items.map((e) {
-              return _dropdownMenuItem(e);
-            }).toList());
+          hint: const Center(child: Text('select')),
+          dropdownColor: Colors.deepPurpleAccent,
+          isExpanded: true,
+          value: selectedValue,
+          style: context.textTheme.titleSmall,
+          underline: Container(height: 2.h, color: Colors.deepPurpleAccent),
+          onChanged: (String? value) => context.read<MobilityCubit>().setSelectedItem(value!),
+          items: GlobalService.items.map(_dropdownMenuItem).toList(),
+        );
       },
     );
   }
 
   DropdownMenuItem<String> _dropdownMenuItem(String item) =>
-      DropdownMenuItem(value: item, child: Center(child: Text(item.toString())));
+      DropdownMenuItem(value: item, child: Center(child: Text(item)));
 }
 
 class _NextButton extends StatelessWidget {
@@ -38,13 +37,14 @@ class _NextButton extends StatelessWidget {
       selector: (state) => state.selectedItem,
       builder: (context, mobility) {
         return CommonButton(
-            text: LocaleKeys.nextText,
-            onPressed: () {
-              if (mobility == null) {
-                warningToast(LocaleKeys.Auth_selectMobility.tr());
-                return;
-              }
-              RouteManager.instance.push(HeightRoute(
+          text: LocaleKeys.nextText,
+          onPressed: () {
+            if (mobility == null) {
+              warningToast(LocaleKeys.Auth_selectMobility.tr());
+              return;
+            }
+            RouteManager.instance.push(
+              HeightRoute(
                 params: HeightParams(
                   username: params.username,
                   mail: params.mail,
@@ -54,8 +54,10 @@ class _NextButton extends StatelessWidget {
                   birthYear: params.birthYear,
                   mobility: mobility,
                 ),
-              ));
-            });
+              ),
+            );
+          },
+        );
       },
     );
   }

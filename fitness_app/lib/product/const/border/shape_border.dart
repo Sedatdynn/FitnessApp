@@ -1,6 +1,5 @@
+import 'package:fistness_app_firebase/product/const/border/border_radi.dart';
 import 'package:flutter/material.dart';
-
-import 'border_radi.dart';
 
 @immutable
 final class ShapedBorders extends RoundedRectangleBorder {

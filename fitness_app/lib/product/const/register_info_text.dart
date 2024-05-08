@@ -1,12 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-
-import '../../feature/views_shelf.dart';
 
 class RegisterInfoQuestionText extends StatelessWidget {
   const RegisterInfoQuestionText({
-    super.key,
     required this.text,
+    super.key,
   });
 
   final String text;

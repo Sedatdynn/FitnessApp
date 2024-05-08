@@ -7,6 +7,6 @@ enum Locales {
   //English locale language
   en(Locale('en', 'US'));
 
-  final Locale locale;
   const Locales(this.locale);
+  final Locale locale;
 }

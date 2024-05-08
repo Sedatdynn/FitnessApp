@@ -1,26 +1,26 @@
 part of '../view/bmi_view.dart';
 
 class BmiWidget extends StatelessWidget {
-  const BmiWidget({Key? key}) : super(key: key);
+  const BmiWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocSelector<GlobalCubit, GlobalState, UserModel?>(
       selector: (state) => state.user,
       builder: (context, user) {
-        final int height = user?.height ?? 0;
-        final int weight = user?.weight ?? 0;
+        final height = user?.height ?? 0;
+        final weight = user?.weight ?? 0;
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const BmiGaugeWidget(),
             CustomSize.xLargeHeight(),
-            _BmiInfoField(title: "Height:", text: height.toString()),
+            _BmiInfoField(title: 'Height:', text: height.toString()),
             CustomSize.largeHeight(),
-            _BmiInfoField(title: "Weight:", text: weight.toString()),
+            _BmiInfoField(title: 'Weight:', text: weight.toString()),
             CustomSize.largeHeight(),
             _BmiInfoField(
-              title: "BMI Result:",
+              title: 'BMI Result:',
               text: GlobalService().calculateBmi(user: user!),
             ),
           ],
@@ -31,24 +31,28 @@ class BmiWidget extends StatelessWidget {
 }
 
 class _BmiInfoField extends StatelessWidget {
+  const _BmiInfoField({required this.title, required this.text});
   final String title;
   final String text;
-  const _BmiInfoField({required this.title, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: commonBoxDecoration(
-            AppColors.black, AppColors.mainPrimary, AppColors.keyTextShadowColor),
-        height: 48.h,
-        padding: const AppPadding.normalAll(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _BmiTextWidget(text: title),
-            _BmiTextWidget(text: text),
-          ],
-        ));
+      decoration: commonBoxDecoration(
+        AppColors.black,
+        AppColors.mainPrimary,
+        AppColors.keyTextShadowColor,
+      ),
+      height: 48.h,
+      padding: const AppPadding.normalAll(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _BmiTextWidget(text: title),
+          _BmiTextWidget(text: text),
+        ],
+      ),
+    );
   }
 }
 

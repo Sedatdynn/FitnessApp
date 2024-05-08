@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BaseViewWithCubit extends StatelessWidget {
-  const BaseViewWithCubit({super.key, this.child, required this.cubit});
+  const BaseViewWithCubit({required this.cubit, super.key, this.child});
   final Widget? child;
   final BaseCubit cubit;
 

@@ -16,7 +16,7 @@ class _GridBodyWidgetState extends State<_GridBodyWidget> {
 
   void checkUser() {
     final user = context.read<GlobalCubit>().user;
-    user.email == null ? context.read<GlobalCubit>().getUser() : null;
+    user.email ?? context.read<GlobalCubit>().getUser();
   }
 
   @override
@@ -39,23 +39,25 @@ class _GridBodyWidgetState extends State<_GridBodyWidget> {
 }
 
 class _OptionWidgets extends StatelessWidget {
+  const _OptionWidgets({required this.text, required this.child});
   final String text;
   final Widget child;
-
-  const _OptionWidgets({required this.text, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const AppPadding.minAll(),
-        decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(12)),
-        child: Center(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <Widget>[
+      margin: const AppPadding.minAll(),
+      decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(12)),
+      child: Center(
+        child: Column(
+          children: <Widget>[
             Expanded(
               child: child,
             ),
             Text(text, style: context.textTheme.titleLarge).tr(),
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 }

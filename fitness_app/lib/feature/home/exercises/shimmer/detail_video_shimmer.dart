@@ -8,13 +8,13 @@ class DetailVideoShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-        baseColor: Colors.grey.shade300,
-        highlightColor: AppColors.mainPrimary,
-        child: Container(
-          decoration:
-              BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(12)),
-          width: double.infinity,
-          height: 250,
-        ));
+      baseColor: Colors.grey.shade300,
+      highlightColor: AppColors.mainPrimary,
+      child: Container(
+        decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(12)),
+        width: double.infinity,
+        height: 250,
+      ),
+    );
   }
 }

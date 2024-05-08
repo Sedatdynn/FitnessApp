@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
+import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/gen/assets.gen.dart';
@@ -19,7 +19,7 @@ part '../widget/launch_subview.dart';
 
 @RoutePage()
 class LaunchView extends StatelessWidget {
-  const LaunchView({Key? key}) : super(key: key);
+  const LaunchView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class LaunchView extends StatelessWidget {
             CustomSize.largeHeight(),
             const _GoogleButton(),
             CustomSize.xLargeHeight(),
-            const _AccountsInfoTextWidget()
+            const _AccountsInfoTextWidget(),
           ],
         ),
       ),

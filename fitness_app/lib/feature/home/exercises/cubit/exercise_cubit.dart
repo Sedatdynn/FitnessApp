@@ -7,12 +7,11 @@ import 'package:fistness_app_firebase/feature/home/exercises/service/i_exercise_
 import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
 
 class ExerciseCubit extends IExerciseCubit {
-  late IExerciseService _exerciseService;
-  String item = "exercises";
-
   ExerciseCubit() : super(ExerciseState.initial()) {
     init();
   }
+  late IExerciseService _exerciseService;
+  String item = 'exercises';
 
   @override
   Future<void> init() async {
@@ -23,7 +22,7 @@ class ExerciseCubit extends IExerciseCubit {
   @override
   Future<void> fetchExercises() async {
     final response = await _exerciseService.fetchExercises();
-    response.fold((l) => warningToast(l.message), (r) {
+    await response.fold((l) => warningToast(l.message), (r) {
       emit(state.copyWith(exercises: r.exercise));
       log(state.exercises!.length.toString());
     });

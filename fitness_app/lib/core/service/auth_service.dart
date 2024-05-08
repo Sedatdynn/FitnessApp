@@ -10,26 +10,27 @@ import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
+  AuthService._init();
   static AuthService? _instance;
+
   static AuthService get instance {
     _instance ??= AuthService._init();
     return _instance!;
   }
 
-  AuthService._init();
-
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final String userCollection = "users";
+  final String userCollection = 'users';
 
+  /// google sign out func
   Future<void> signOut() async {
     if (_googleSignIn.currentUser == null) return;
     await _auth.signOut();
     await _googleSignIn.disconnect();
-    _auth.currentUser == null;
   }
 
+  /// Getting data from firestore db
   BaseResponseData<dynamic> fetchCurrentUserDoc() async {
     try {
       final userInfo =
@@ -45,13 +46,15 @@ class AuthService {
     }
   }
 
+  /// Setting user data to firestore db
   Future<void> setUser({required UserModel model}) async {
-    return await _firestore
+    return _firestore
         .collection(userCollection)
         .doc(_auth.currentUser!.uid)
         .set(model.toJsonWithoutPassword());
   }
 
+  /// Update user data in firestore db
   BaseVoidData updateData({required UserModel model}) async {
     try {
       await _firestore
@@ -64,10 +67,15 @@ class AuthService {
     }
   }
 
+  /// Create user with email and password
   BaseVoidData createPerson({required UserModel model}) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: model.email!, password: model.password!);
+
+      /// save user to firestore db
       await setUser(model: model);
+
+      /// send email verification
       await sendEmailVerified();
       return const Right(null);
     } on FirebaseAuthException catch (e) {
@@ -77,11 +85,13 @@ class AuthService {
     }
   }
 
-  Future sendEmailVerified() async {
+  /// send email verification
+  Future<void> sendEmailVerified() async {
     final user = _auth.currentUser!;
     await user.sendEmailVerification();
   }
 
+  /// send email to reset user's password
   BaseVoidData resetPassword(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email.trim());
@@ -93,15 +103,22 @@ class AuthService {
     }
   }
 
+  /// Sign in with google func
   Future<bool> signInWithGoogle() async {
-    final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
+    final googleAccount = await _googleSignIn.signIn();
     if (googleAccount != null) {
-      final GoogleSignInAuthentication googleAuth = await googleAccount.authentication;
+      final googleAuth = await googleAccount.authentication;
       if (googleAuth.accessToken != null && googleAuth.idToken != null) {
         try {
-          await _auth.signInWithCredential(GoogleAuthProvider.credential(
-              idToken: googleAuth.idToken, accessToken: googleAuth.accessToken));
-          final String? token = googleAuth.accessToken;
+          await _auth.signInWithCredential(
+            GoogleAuthProvider.credential(
+              idToken: googleAuth.idToken,
+              accessToken: googleAuth.accessToken,
+            ),
+          );
+          final token = googleAuth.accessToken;
+
+          /// save user's token to cache
           await CacheManager.instance.setStringValue(CacheKeys.token, token!);
           return true;
         } on FirebaseException catch (_) {
@@ -112,12 +129,15 @@ class AuthService {
     return false;
   }
 
+  /// Sign in with email and password func
   BaseVoidData signInWithEmailAndPassword({required LoginModel model}) async {
     try {
-      final UserCredential credential =
+      final credential =
           await _auth.signInWithEmailAndPassword(email: model.email!, password: model.password!);
       if (credential.user!.emailVerified) {
-        final String? idToken = await credential.user!.getIdToken();
+        final idToken = await credential.user!.getIdToken();
+
+        /// save user's token to cache
         if (idToken != null) await CacheManager.instance.setStringValue(CacheKeys.token, idToken);
         return const Right(null);
       } else {

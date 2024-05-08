@@ -5,14 +5,13 @@ part 'token_model.g.dart';
 
 @JsonSerializable(createToJson: false)
 class TokenModel extends Equatable {
-  final String? token;
-
   const TokenModel({this.token});
 
   @override
   factory TokenModel.fromJson(Map<String, dynamic> json) {
     return _$TokenModelFromJson(json);
   }
+  final String? token;
 
   @override
   List<Object?> get props => [token];

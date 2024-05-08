@@ -19,7 +19,7 @@ final class ResponsiveConstants {
 
   static const BorderSide _customPickerBorderSide = BorderSide(
     color: Color(0xFFC4FB6D),
-    width: 3.0,
+    width: 3,
   );
   static const Border customPickerBorder =
       Border(top: _customPickerBorderSide, bottom: _customPickerBorderSide);

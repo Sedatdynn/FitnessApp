@@ -44,7 +44,7 @@ class _GoogleButton extends StatelessWidget {
       buttonText: LocaleKeys.Auth_googleText.tr(),
       icon: SizedBox(height: 32, child: Assets.png.google.image()),
       onPressed: () async {
-        bool? isSuccess = await AuthService.instance.signInWithGoogle();
+        final isSuccess = await AuthService.instance.signInWithGoogle();
         if (isSuccess) {
           RouteManager.instance.pushAndPopUntil(const MainRoute());
         }

@@ -1,18 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
+import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../theme/colors.dart';
-
 // Button for using all registration and home pages
 class CommonButton extends StatelessWidget {
+  const CommonButton({
+    required this.text,
+    required this.onPressed,
+    super.key,
+    this.color = AppColors.mainPrimary,
+  });
   final String text;
-  final dynamic onPressed;
+  final VoidCallback onPressed;
   final Color? color;
-  const CommonButton(
-      {Key? key, required this.text, required this.onPressed, this.color = AppColors.mainPrimary})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,8 @@ class CommonButton extends StatelessWidget {
 
   ButtonStyle get customButtonStyle => ButtonStyle(
         shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
         foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
         backgroundColor: MaterialStateProperty.all(color),
       );

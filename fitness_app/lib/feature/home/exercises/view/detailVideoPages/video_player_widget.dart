@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerWidget extends StatelessWidget {
+  const VideoPlayerWidget({required this.controller, super.key});
   final VideoPlayerController controller;
-  const VideoPlayerWidget({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) => controller.value.isInitialized
@@ -20,15 +20,14 @@ class VideoPlayerWidget extends StatelessWidget {
               ),
               SizedBox(height: 10.h),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _PlayPauseButton(controller: controller),
                   Expanded(
                     child:
                         SizedBox(height: 20.h, child: _VideoProgressWidget(controller: controller)),
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         )
@@ -43,8 +42,9 @@ class _PlayPauseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        onPressed: () => controller.value.isPlaying ? controller.pause() : controller.play(),
-        icon: Icon(controller.value.isPlaying ? Icons.pause : Icons.play_arrow));
+      onPressed: () => controller.value.isPlaying ? controller.pause() : controller.play(),
+      icon: Icon(controller.value.isPlaying ? Icons.pause : Icons.play_arrow),
+    );
   }
 }
 

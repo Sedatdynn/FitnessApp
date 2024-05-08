@@ -19,8 +19,8 @@ part '../widget/age_widget.dart';
 
 @RoutePage()
 class AgeView extends StatelessWidget {
+  const AgeView({required this.params, super.key});
   final AgeParams params;
-  const AgeView({Key? key, required this.params}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

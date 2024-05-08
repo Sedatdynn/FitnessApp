@@ -5,15 +5,14 @@ import 'package:fistness_app_firebase/core/base/exception/exception.dart';
 import 'package:fistness_app_firebase/core/init/network/i_network_manager.dart';
 
 class NetworkManager extends INetworkManager {
+  NetworkManager._init();
   late final Dio _dio;
-
   static NetworkManager? _instance;
+
   static NetworkManager get instance {
     _instance ??= NetworkManager._init();
     return _instance!;
   }
-
-  NetworkManager._init();
 
   @override
   init({
@@ -45,9 +44,9 @@ class NetworkManager extends INetworkManager {
   }
 
   @override
-  Future dioGet({required String path, required model}) async {
+  Future<dynamic> dioGet({required String path, required model}) async {
     try {
-      final response = await _dio.get(path);
+      final response = await _dio.get<dynamic>(path);
       if (response.statusCode == HttpStatus.ok) {
         final jsonBody = response.data;
         if (jsonBody is Map<String, dynamic>) {
@@ -56,7 +55,11 @@ class NetworkManager extends INetworkManager {
       }
     } on DioException catch (e) {
       return ServerException(
-          message: e.message.toString(), statusCode: e.response?.statusCode.toString() ?? "505");
+        message: e.message.toString(),
+        statusCode: e.response?.statusCode.toString() ?? '505',
+      );
+    } catch (e) {
+      return ServerException(message: e.toString(), statusCode: '505');
     }
   }
 }

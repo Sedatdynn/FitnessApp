@@ -10,7 +10,6 @@ class _WeightNumberPicker extends StatelessWidget {
       builder: (context, number) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomNumberPicker(
               value: number!,
@@ -18,7 +17,7 @@ class _WeightNumberPicker extends StatelessWidget {
               maxValue: 200,
               onChanged: (value) => context.read<WeightCubit>().setSelectedValue(value),
             ),
-            Text(LocaleKeys.Auth_kgText, style: context.textTheme.titleSmall).tr()
+            Text(LocaleKeys.Auth_kgText, style: context.textTheme.titleSmall).tr(),
           ],
         );
       },
@@ -27,9 +26,8 @@ class _WeightNumberPicker extends StatelessWidget {
 }
 
 class _CompleteButton extends StatelessWidget {
-  final WeightParams params;
-
   const _CompleteButton({required this.params});
+  final WeightParams params;
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +41,30 @@ class _CompleteButton extends StatelessWidget {
                 .read<WeightCubit>()
                 .calculateTotalPoints(
                   params: UserModel(
-                      age: params.birthYear!,
-                      gender: params.gender!,
-                      height: params.height!,
-                      weight: number,
-                      mobility: params.mobility!),
+                    age: params.birthYear,
+                    gender: params.gender,
+                    height: params.height,
+                    weight: number,
+                    mobility: params.mobility,
+                  ),
                 )
-                .then((_) => {
-                      context.read<WeightCubit>().createPerson(
+                .then(
+                  (_) => {
+                    context.read<WeightCubit>().createPerson(
                           params: params,
                           function: () async {
-                            await warningToast(LocaleKeys.Auth_registerSuccessfully.tr(),
-                                color: AppColors.green);
-                            await warningToast(LocaleKeys.Auth_verifyWarning.tr(),
-                                color: AppColors.green);
-                          })
-                    });
+                            await warningToast(
+                              LocaleKeys.Auth_registerSuccessfully.tr(),
+                              color: AppColors.green,
+                            );
+                            await warningToast(
+                              LocaleKeys.Auth_verifyWarning.tr(),
+                              color: AppColors.green,
+                            );
+                          },
+                        ),
+                  },
+                );
           },
         );
       },

@@ -28,12 +28,12 @@ class ExercisesView extends StatelessWidget {
           children: [
             const _TopImageInfoWidget(),
             BlocSelector<ExerciseCubit, ExerciseState, bool>(
-              selector: (state) => state.exercises != null ? true : false,
+              selector: (state) => state.exercises != null,
               builder: (context, state) {
                 debugPrint(state.toString());
                 return state ? const _ExercisesBodyWidget() : const ExerciseViewShimmer();
               },
-            )
+            ),
           ],
         ),
       ),

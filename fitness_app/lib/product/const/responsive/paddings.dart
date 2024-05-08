@@ -1,4 +1,6 @@
-import '../../../feature/views_shelf.dart';
+// ignore_for_file: comment_references
+
+import 'package:fistness_app_firebase/feature/views_shelf.dart';
 
 @immutable
 final class AppPadding extends EdgeInsets {

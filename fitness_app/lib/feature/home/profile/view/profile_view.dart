@@ -19,10 +19,10 @@ part '../subview/profile_subview.dart';
 
 @RoutePage()
 class ProfileView extends StatelessWidget {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({super.key});
 
   // delete user token from cache
-  Future deleteToken() async {
+  Future<void> deleteToken() async {
     await CacheManager.instance.removeValue(CacheKeys.token);
   }
 
@@ -37,8 +37,9 @@ class ProfileView extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                    alignment: Alignment.center,
-                    child: Text(state.user?.name ?? '', style: context.textTheme.titleLarge)),
+                  alignment: Alignment.center,
+                  child: Text(state.user?.name ?? '', style: context.textTheme.titleLarge),
+                ),
                 SizedBox(height: 60.h),
                 Column(
                   children: <Widget>[
@@ -47,7 +48,7 @@ class ProfileView extends StatelessWidget {
                       tiles: _tilesList(state, context),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           );
@@ -72,7 +73,7 @@ class ProfileView extends StatelessWidget {
       ),
       _ProfileSectionListTile(
         icon: Icons.leave_bags_at_home_outlined,
-        title: "BMI",
+        title: 'BMI',
         subtitle: LocaleKeys.Profile_bmiResult.tr(),
         onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.bmiCalculator),
       ),
@@ -97,7 +98,7 @@ class ProfileView extends StatelessWidget {
           await AuthService.instance.signOut();
           RouteManager.instance.pushNamed(path: RouteConstants.launch);
         },
-      )
+      ),
     ];
   }
 }
