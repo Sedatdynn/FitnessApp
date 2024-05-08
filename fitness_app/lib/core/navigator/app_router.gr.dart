@@ -20,8 +20,8 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AgeView(
-          key: args.key,
           params: args.params,
+          key: args.key,
         ),
       );
     },
@@ -36,8 +36,8 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: DailyMobilityView(
-          key: args.key,
           params: args.params,
+          key: args.key,
         ),
       );
     },
@@ -46,8 +46,8 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: DetailExercisesView(
-          key: args.key,
           items: args.items,
+          key: args.key,
         ),
       );
     },
@@ -56,8 +56,8 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: DetailVideoView(
-          key: args.key,
           items: args.items,
+          key: args.key,
         ),
       );
     },
@@ -84,8 +84,8 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: GenderView(
-          key: args.key,
           params: args.params,
+          key: args.key,
         ),
       );
     },
@@ -94,8 +94,8 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: HeightView(
-          key: args.key,
           params: args.params,
+          key: args.key,
         ),
       );
     },
@@ -157,8 +157,8 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: WeightView(
-          key: args.key,
           params: args.params,
+          key: args.key,
         ),
       );
     },
@@ -169,14 +169,14 @@ abstract class _$AppRouter extends RootStackRouter {
 /// [AgeView]
 class AgeRoute extends PageRouteInfo<AgeRouteArgs> {
   AgeRoute({
-    Key? key,
     required AgeParams params,
+    Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           AgeRoute.name,
           args: AgeRouteArgs(
-            key: key,
             params: params,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -188,17 +188,17 @@ class AgeRoute extends PageRouteInfo<AgeRouteArgs> {
 
 class AgeRouteArgs {
   const AgeRouteArgs({
-    this.key,
     required this.params,
+    this.key,
   });
-
-  final Key? key;
 
   final AgeParams params;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'AgeRouteArgs{key: $key, params: $params}';
+    return 'AgeRouteArgs{params: $params, key: $key}';
   }
 }
 
@@ -220,14 +220,14 @@ class BmiCalculatorRoute extends PageRouteInfo<void> {
 /// [DailyMobilityView]
 class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
   DailyMobilityRoute({
-    Key? key,
     required MobilityParams params,
+    Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           DailyMobilityRoute.name,
           args: DailyMobilityRouteArgs(
-            key: key,
             params: params,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -240,17 +240,17 @@ class DailyMobilityRoute extends PageRouteInfo<DailyMobilityRouteArgs> {
 
 class DailyMobilityRouteArgs {
   const DailyMobilityRouteArgs({
-    this.key,
     required this.params,
+    this.key,
   });
-
-  final Key? key;
 
   final MobilityParams params;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'DailyMobilityRouteArgs{key: $key, params: $params}';
+    return 'DailyMobilityRouteArgs{params: $params, key: $key}';
   }
 }
 
@@ -258,14 +258,14 @@ class DailyMobilityRouteArgs {
 /// [DetailExercisesView]
 class DetailExercisesRoute extends PageRouteInfo<DetailExercisesRouteArgs> {
   DetailExercisesRoute({
-    Key? key,
     required Exercise items,
+    Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           DetailExercisesRoute.name,
           args: DetailExercisesRouteArgs(
-            key: key,
             items: items,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -278,17 +278,17 @@ class DetailExercisesRoute extends PageRouteInfo<DetailExercisesRouteArgs> {
 
 class DetailExercisesRouteArgs {
   const DetailExercisesRouteArgs({
-    this.key,
     required this.items,
+    this.key,
   });
-
-  final Key? key;
 
   final Exercise items;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'DetailExercisesRouteArgs{key: $key, items: $items}';
+    return 'DetailExercisesRouteArgs{items: $items, key: $key}';
   }
 }
 
@@ -296,14 +296,14 @@ class DetailExercisesRouteArgs {
 /// [DetailVideoView]
 class DetailVideoRoute extends PageRouteInfo<DetailVideoRouteArgs> {
   DetailVideoRoute({
-    Key? key,
     required VideoPageData items,
+    Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           DetailVideoRoute.name,
           args: DetailVideoRouteArgs(
-            key: key,
             items: items,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -316,17 +316,17 @@ class DetailVideoRoute extends PageRouteInfo<DetailVideoRouteArgs> {
 
 class DetailVideoRouteArgs {
   const DetailVideoRouteArgs({
-    this.key,
     required this.items,
+    this.key,
   });
-
-  final Key? key;
 
   final VideoPageData items;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'DetailVideoRouteArgs{key: $key, items: $items}';
+    return 'DetailVideoRouteArgs{items: $items, key: $key}';
   }
 }
 
@@ -376,14 +376,14 @@ class ForgotPasswordRoute extends PageRouteInfo<void> {
 /// [GenderView]
 class GenderRoute extends PageRouteInfo<GenderRouteArgs> {
   GenderRoute({
-    Key? key,
     required GenderParams params,
+    Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           GenderRoute.name,
           args: GenderRouteArgs(
-            key: key,
             params: params,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -395,17 +395,17 @@ class GenderRoute extends PageRouteInfo<GenderRouteArgs> {
 
 class GenderRouteArgs {
   const GenderRouteArgs({
-    this.key,
     required this.params,
+    this.key,
   });
-
-  final Key? key;
 
   final GenderParams params;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'GenderRouteArgs{key: $key, params: $params}';
+    return 'GenderRouteArgs{params: $params, key: $key}';
   }
 }
 
@@ -413,14 +413,14 @@ class GenderRouteArgs {
 /// [HeightView]
 class HeightRoute extends PageRouteInfo<HeightRouteArgs> {
   HeightRoute({
-    Key? key,
     required HeightParams params,
+    Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           HeightRoute.name,
           args: HeightRouteArgs(
-            key: key,
             params: params,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -432,17 +432,17 @@ class HeightRoute extends PageRouteInfo<HeightRouteArgs> {
 
 class HeightRouteArgs {
   const HeightRouteArgs({
-    this.key,
     required this.params,
+    this.key,
   });
-
-  final Key? key;
 
   final HeightParams params;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'HeightRouteArgs{key: $key, params: $params}';
+    return 'HeightRouteArgs{params: $params, key: $key}';
   }
 }
 
@@ -585,14 +585,14 @@ class UpdateInfosRoute extends PageRouteInfo<void> {
 /// [WeightView]
 class WeightRoute extends PageRouteInfo<WeightRouteArgs> {
   WeightRoute({
-    Key? key,
     required WeightParams params,
+    Key? key,
     List<PageRouteInfo>? children,
   }) : super(
           WeightRoute.name,
           args: WeightRouteArgs(
-            key: key,
             params: params,
+            key: key,
           ),
           initialChildren: children,
         );
@@ -604,16 +604,16 @@ class WeightRoute extends PageRouteInfo<WeightRouteArgs> {
 
 class WeightRouteArgs {
   const WeightRouteArgs({
-    this.key,
     required this.params,
+    this.key,
   });
-
-  final Key? key;
 
   final WeightParams params;
 
+  final Key? key;
+
   @override
   String toString() {
-    return 'WeightRouteArgs{key: $key, params: $params}';
+    return 'WeightRouteArgs{params: $params, key: $key}';
   }
 }

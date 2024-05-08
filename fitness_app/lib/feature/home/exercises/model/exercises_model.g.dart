@@ -29,9 +29,7 @@ CategoryData _$CategoryDataFromJson(Map<String, dynamic> json) => CategoryData(
       exerciseName: json['exerciseName'] as String?,
       videoPageData: json['videoPageData'] == null
           ? null
-          : VideoPageData.fromJson(
-              json['videoPageData'] as Map<String, dynamic>,
-            ),
+          : VideoPageData.fromJson(json['videoPageData'] as Map<String, dynamic>),
     );
 
 VideoPageData _$VideoPageDataFromJson(Map<String, dynamic> json) => VideoPageData(

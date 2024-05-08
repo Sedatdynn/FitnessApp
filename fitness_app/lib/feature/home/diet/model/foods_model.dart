@@ -1,19 +1,24 @@
 import 'package:equatable/equatable.dart';
+import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'foods_model.g.dart';
 
 @JsonSerializable(createToJson: false)
-class FoodsModel extends Equatable {
-  const FoodsModel({this.kategori});
+class FoodsModel extends BaseModel<FoodsModel> {
+  FoodsModel({this.kategori});
   final List<Kategori>? kategori;
 
+  @override
   FoodsModel fromJson(Map<String, dynamic> json) {
     return _$FoodsModelFromJson(json);
   }
 
   @override
   List<Object?> get props => [];
+
+  @override
+  Map<String, dynamic> toJson() => {};
 }
 
 @JsonSerializable(createToJson: false)

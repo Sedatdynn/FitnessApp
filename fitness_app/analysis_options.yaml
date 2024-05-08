@@ -3,6 +3,8 @@ analyzer:
   exclude:
     - test/
     - pubspec.yaml
+    - "**/*.g.dart"
+
   errors:
     directives_ordering: warning
     prefer_const_constructors: error

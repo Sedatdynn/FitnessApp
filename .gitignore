@@ -20,6 +20,10 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+
+# dont commit generated files
+*.g.dart
+
 # firebase
 /android/app/google-services.json
 /ios/Runner/GoogleService-Info.plist

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fistness_app_firebase/core/base/exception/exception.dart';
+import 'package:fistness_app_firebase/core/base/model/base_model.dart';
+import 'package:fistness_app_firebase/core/base/model/base_response_model.dart';
 import 'package:fistness_app_firebase/core/init/network/i_network_manager.dart';
 
 class NetworkManager extends INetworkManager {
@@ -15,7 +17,7 @@ class NetworkManager extends INetworkManager {
   }
 
   @override
-  init({
+  Future<void> init({
     /// base url
     required String baseUrl,
 
@@ -27,7 +29,7 @@ class NetworkManager extends INetworkManager {
 
     /// receive time out seconds
     required int receiveTimeOut,
-  }) {
+  }) async {
     final baseOptions = BaseOptions(
       baseUrl: baseUrl,
       sendTimeout: Duration(seconds: sendTimeOut),
@@ -44,22 +46,32 @@ class NetworkManager extends INetworkManager {
   }
 
   @override
-  Future<dynamic> dioGet({required String path, required model}) async {
+  Future<BaseResponseModel<T>> dioGet<T extends BaseModel<T>>({
+    required String path,
+    required T model,
+  }) async {
     try {
       final response = await _dio.get<dynamic>(path);
       if (response.statusCode == HttpStatus.ok) {
         final jsonBody = response.data;
         if (jsonBody is Map<String, dynamic>) {
-          return model.fromJson(jsonBody);
+          return BaseResponseModel(data: model.fromJson(jsonBody));
         }
       }
     } on DioException catch (e) {
-      return ServerException(
-        message: e.message.toString(),
-        statusCode: e.response?.statusCode.toString() ?? '505',
+      return BaseResponseModel(
+        serverException: ServerException(
+          message: e.message.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '505',
+        ),
       );
     } catch (e) {
-      return ServerException(message: e.toString(), statusCode: '505');
+      return BaseResponseModel(
+        serverException: ServerException(message: e.toString(), statusCode: '505'),
+      );
     }
+    return BaseResponseModel(
+      serverException: const ServerException(message: 'Unknown Error', statusCode: '505'),
+    );
   }
 }

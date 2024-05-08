@@ -1,19 +1,22 @@
 import 'package:equatable/equatable.dart';
+import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'exercises_model.g.dart';
 
 @JsonSerializable(createToJson: false)
-class ExercisesModel extends Equatable {
-  const ExercisesModel({this.exercise});
+class ExercisesModel extends BaseModel<ExercisesModel> {
+  ExercisesModel({this.exercise});
   final List<Exercise>? exercise;
 
-  ExercisesModel fromJson(Map<String, dynamic> json) {
-    return _$ExercisesModelFromJson(json);
-  }
+  @override
+  ExercisesModel fromJson(Map<String, dynamic> json) => _$ExercisesModelFromJson(json);
 
   @override
   List<Object?> get props => [];
+
+  @override
+  Map<String, dynamic> toJson() => {};
 }
 
 @JsonSerializable(createToJson: false)
