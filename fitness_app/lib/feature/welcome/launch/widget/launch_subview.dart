@@ -42,7 +42,7 @@ class _GoogleButton extends StatelessWidget {
       color: AppColors.shadeGreyColor,
       textColor: AppColors.darkText,
       buttonText: LocaleKeys.Auth_googleText.tr(),
-      icon: SizedBox(height: 32, child: ImagePath.google.toPng()),
+      icon: SizedBox(height: 32, child: Assets.png.google.image()),
       onPressed: () async {
         bool? isSuccess = await AuthService.instance.signInWithGoogle();
         if (isSuccess) {

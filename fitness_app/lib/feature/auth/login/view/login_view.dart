@@ -66,8 +66,9 @@ class _BodyScrollWidget extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
+              CustomSize.xxLargeHeight(),
               const LogoBody(),
-              CustomSize.largeHeight(),
+              CustomSize.xxLargeHeight(),
               const _EmailTextFieldWidget(),
               CustomSize.largeHeight(),
               const _PasswordField(),

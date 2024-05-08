@@ -58,10 +58,12 @@ dependencies:
   youtube_player_flutter: ^8.1.1
   shimmer: ^3.0.0
   easy_localization: ^3.0.6
+  flutter_gen: ^5.4.0
 
 dev_dependencies:
   auto_route_generator: ^7.3.2
   build_runner: ^2.3.2
+  flutter_gen_runner: ^5.4.0
   json_serializable: ^6.5.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -76,6 +78,9 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
+flutter_gen:
+  integrations:
+    lottie: true
 flutter:
   uses-material-design: true
   assets:

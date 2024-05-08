@@ -12,6 +12,7 @@
     "appName": "Fitness ve Diyet Uygulaması",
     "complete": "Tamamla",
     "Auth": {
+      "login": "Giriş Yap",
       "registerSuccessfully": "Kaydınız başarıyla tamamlandı.",
       "verifyWarning": "Doğrulama için bir e-posta gönderdik. Lütfen e-postanızı doğrulayın.",
       "signEmailText": "E-posta ile Giriş Yap",

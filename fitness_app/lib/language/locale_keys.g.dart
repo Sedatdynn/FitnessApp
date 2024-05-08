@@ -13,6 +13,7 @@ abstract class  LocaleKeys {
   static const fitText = 'fitText';
   static const appName = 'appName';
   static const complete = 'complete';
+  static const Auth_login = 'Auth.login';
   static const Auth_registerSuccessfully = 'Auth.registerSuccessfully';
   static const Auth_verifyWarning = 'Auth.verifyWarning';
   static const Auth_signEmailText = 'Auth.signEmailText';

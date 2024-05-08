@@ -7,7 +7,7 @@ class _TopImageInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ImagePath.largeExrc.toPng(),
+        Assets.png.largeExrc.image(),
         IconButton(
           onPressed: () => RouteManager.instance.pop(),
           icon: const Icon(Icons.chevron_left_rounded),

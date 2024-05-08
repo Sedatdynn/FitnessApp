@@ -27,11 +27,11 @@ class _GridBodyWidgetState extends State<_GridBodyWidget> {
         InkWell(
           onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.exercise),
           child:
-              _OptionWidgets(text: LocaleKeys.exercises, child: ImagePath.main_exercises.toPng()),
+              _OptionWidgets(text: LocaleKeys.exercises, child: Assets.png.mainExercises.image()),
         ),
         InkWell(
           onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.diet),
-          child: _OptionWidgets(text: LocaleKeys.diet, child: ImagePath.diet_list.toPng()),
+          child: _OptionWidgets(text: LocaleKeys.diet, child: Assets.png.dietList.image()),
         ),
       ],
     );

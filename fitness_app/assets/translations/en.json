@@ -12,6 +12,7 @@
 "appName" : "Fitness and Diet App" ,
 "complete" : "Complete",
 "Auth": {
+    "login": "Log In",
     "registerSuccessfully": "Your registration has been completed successfully.",
     "verifyWarning" : "We sent an email to verification. Please Verify your email.",
     "signEmailText" : "Sign in with Email",

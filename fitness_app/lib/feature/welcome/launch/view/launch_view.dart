@@ -5,11 +5,11 @@ import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.
 import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
 import 'package:fistness_app_firebase/core/service/auth_service.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
+import 'package:fistness_app_firebase/gen/assets.gen.dart';
 import 'package:fistness_app_firebase/language/locale_keys.g.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
-import 'package:fistness_app_firebase/product/enum/image/png/image_path.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:fistness_app_firebase/product/widget/button/auth_button.dart';
 import 'package:fistness_app_firebase/product/widget/logo/logo.dart';
@@ -28,6 +28,7 @@ class LaunchView extends StatelessWidget {
         padding: const AppPadding.normalAll(),
         child: ListView(
           children: [
+            CustomSize.largeHeight(),
             const LogoBody(),
             const _TitleTextWidget(),
             CustomSize.xxLargeHeight(),

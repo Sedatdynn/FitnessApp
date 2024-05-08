@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fistness_app_firebase/product/enum/image/png/image_path.dart';
+import 'package:fistness_app_firebase/gen/assets.gen.dart';
 import 'package:fistness_app_firebase/product/widget/circular_progress/circular_progress.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +27,7 @@ class CachedNetworkManager {
         cacheKey: imageUrl,
         imageUrl: imageUrl,
         placeholder: (context, url) => const LoadingCircularWidget(),
-        errorWidget: (context, url, error) => ImagePath.logo.toPng(),
+        errorWidget: (context, url, error) => Assets.png.logo.image(),
       ),
     );
   }
