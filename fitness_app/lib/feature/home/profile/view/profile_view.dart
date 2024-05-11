@@ -74,7 +74,7 @@ class ProfileView extends StatelessWidget {
       _ProfileSectionListTile(
         icon: Icons.leave_bags_at_home_outlined,
         title: 'BMI',
-        subtitle: LocaleKeys.Profile_bmiResult.tr(),
+        subtitle: LocaleKeys.Profile_seeBmiResult.tr(),
         onTap: () => RouteManager.instance.pushNamed(path: RouteConstants.bmiCalculator),
       ),
       _ProfileSectionListTile(
@@ -87,7 +87,7 @@ class ProfileView extends StatelessWidget {
         icon: Icons.language_outlined,
         title: LocaleKeys.Profile_language.tr(),
         subtitle: LocaleKeys.Profile_changeLanguage.tr(),
-        onTap: () => LanguageManager.instance.changeLanguage(context: context),
+        onTap: () => LanguageManager.instance!.changeLanguage(context: context),
       ),
       _ProfileSectionListTile(
         icon: Icons.logout,
@@ -95,7 +95,7 @@ class ProfileView extends StatelessWidget {
         subtitle: LocaleKeys.Profile_logoutSubtitle.tr(),
         onTap: () async {
           await deleteToken();
-          await AuthService.instance.signOut();
+          await AuthService.instance!.signOut();
           RouteManager.instance.pushNamed(path: RouteConstants.launch);
         },
       ),

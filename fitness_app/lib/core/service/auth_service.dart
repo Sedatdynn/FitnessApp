@@ -13,9 +13,8 @@ class AuthService {
   AuthService._init();
   static AuthService? _instance;
 
-  static AuthService get instance {
-    _instance ??= AuthService._init();
-    return _instance!;
+  static AuthService? get instance {
+    return _instance ??= AuthService._init();
   }
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

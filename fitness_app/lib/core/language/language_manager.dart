@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 final class LanguageManager {
   const LanguageManager._init();
   static LanguageManager? _instance;
-  static LanguageManager get instance {
+  static LanguageManager? get instance {
     return _instance ??= const LanguageManager._init();
   }
 

@@ -11,9 +11,8 @@ class NetworkManager extends INetworkManager {
   late final Dio _dio;
   static NetworkManager? _instance;
 
-  static NetworkManager get instance {
-    _instance ??= NetworkManager._init();
-    return _instance!;
+  static NetworkManager? get instance {
+    return _instance ??= NetworkManager._init();
   }
 
   @override

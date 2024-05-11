@@ -57,13 +57,19 @@
   "Profile": {
     "theme": "Theme Light",
     "changeTheme": "Change theme mode",
-    "bmiResult": "See BMI result",
+    "seeBmiResult": "See BMI result",
+    "update":"Update",
     "updateProfileTitle": "Update Profile",
+    "updateInformation": "Update your information",
+
     "updateProfileSubtitle": "Update your weight, height...",
     "language": "Language",
     "changeLanguage": "Change language",
     "logOut": "Log out",
-    "logoutSubtitle":"Have a good day..."
+    "logoutSubtitle":"Have a good day...",
+    "height": "Height",
+    "weight": "Weight",
+    "bmiResult": "BMI Result:"
   },
    "Diet": {
       "InitialScore": "Initial Score:",

@@ -21,7 +21,7 @@ class LocalizationWidget extends StatelessWidget {
       create: (_) => GlobalCubit(),
       child: EasyLocalization(
         supportedLocales: LanguageManager.supportedLocales,
-        path: LanguageManager.instance.localizationPath,
+        path: LanguageManager.instance!.localizationPath,
         useOnlyLangCode: true,
         child: const App(),
       ),

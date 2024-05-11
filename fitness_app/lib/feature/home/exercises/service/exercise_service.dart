@@ -11,7 +11,7 @@ class ExerciseService extends IExerciseService {
   @override
   BaseResponseData<ExercisesModel> fetchExercises() async {
     final response =
-        await NetworkManager.instance.dioGet(path: '/exercises', model: ExercisesModel());
+        await NetworkManager.instance!.dioGet(path: '/exercises', model: ExercisesModel());
     if (response is ServerException) {
       return Left(
         ServerException(

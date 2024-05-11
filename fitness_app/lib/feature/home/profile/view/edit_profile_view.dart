@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/core/navigator/app_router.dart';
 import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
+import 'package:fistness_app_firebase/language/locale_keys.g.dart';
 import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
 import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
 import 'package:fistness_app_firebase/product/const/responsive/space.dart';
@@ -29,7 +31,7 @@ class UpdateInfosView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Update your information', style: context.textTheme.titleLarge),
+            Text(LocaleKeys.Profile_updateInformation, style: context.textTheme.titleLarge).tr(),
             CustomSize.xxLargeHeight(),
             CustomSize.xxLargeHeight(),
             _HeightWeightTextField(
@@ -38,7 +40,8 @@ class UpdateInfosView extends StatelessWidget {
                 final newValue = int.parse(val);
                 context.read<GlobalCubit>().updateUserHeight(newValue);
               },
-              hintText: 'Height ${context.read<GlobalCubit>().user.height}',
+              hintText:
+                  '${LocaleKeys.Profile_height.tr()} ${context.read<GlobalCubit>().user.height}',
               icon: Icons.height,
             ),
             CustomSize.normalHeight(),
@@ -48,7 +51,8 @@ class UpdateInfosView extends StatelessWidget {
                 final newValue = int.parse(val);
                 context.read<GlobalCubit>().updateUserWeight(newValue);
               },
-              hintText: 'Weight ${context.read<GlobalCubit>().user.weight}',
+              hintText:
+                  '${LocaleKeys.Profile_weight.tr()} ${context.read<GlobalCubit>().user.weight}',
               icon: Icons.line_weight,
             ),
             CustomSize.normalHeight(),
@@ -58,7 +62,7 @@ class UpdateInfosView extends StatelessWidget {
               selector: (state) => state.user,
               builder: (context, user) {
                 return CommonButton(
-                  text: 'Update',
+                  text: LocaleKeys.Profile_update,
                   onPressed: () async {
                     await context.read<GlobalCubit>().updateUserRightPoint();
                     await warningToast(

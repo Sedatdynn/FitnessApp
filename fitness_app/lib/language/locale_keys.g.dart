@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const usernameText = 'usernameText';
   static const bnFirstText = 'bnFirstText';
   static const bnSecondText = 'bnSecondText';
@@ -55,13 +55,18 @@ abstract class LocaleKeys {
   static const Warning = 'Warning';
   static const Profile_theme = 'Profile.theme';
   static const Profile_changeTheme = 'Profile.changeTheme';
-  static const Profile_bmiResult = 'Profile.bmiResult';
+  static const Profile_seeBmiResult = 'Profile.seeBmiResult';
+  static const Profile_update = 'Profile.update';
   static const Profile_updateProfileTitle = 'Profile.updateProfileTitle';
+  static const Profile_updateInformation = 'Profile.updateInformation';
   static const Profile_updateProfileSubtitle = 'Profile.updateProfileSubtitle';
   static const Profile_language = 'Profile.language';
   static const Profile_changeLanguage = 'Profile.changeLanguage';
   static const Profile_logOut = 'Profile.logOut';
   static const Profile_logoutSubtitle = 'Profile.logoutSubtitle';
+  static const Profile_height = 'Profile.height';
+  static const Profile_weight = 'Profile.weight';
+  static const Profile_bmiResult = 'Profile.bmiResult';
   static const Profile = 'Profile';
   static const Diet_InitialScore = 'Diet.InitialScore';
   static const Diet_savedDailyScore = 'Diet.savedDailyScore';
@@ -70,4 +75,5 @@ abstract class LocaleKeys {
   static const Diet_resetScore = 'Diet.resetScore';
   static const Diet_score = 'Diet.score';
   static const Diet = 'Diet';
+
 }

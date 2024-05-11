@@ -51,7 +51,7 @@ class GlobalCubit extends IGlobalCubit {
   /// Getting user date from firestore db
   @override
   Future<void> getUser() async {
-    final userDoc = await AuthService.instance.fetchCurrentUserDoc();
+    final userDoc = await AuthService.instance!.fetchCurrentUserDoc();
     userDoc.fold(
       (l) => warningToast(l.message),
       (user) => emit(state.copyWith(user: user as UserModel)),
@@ -69,7 +69,7 @@ class GlobalCubit extends IGlobalCubit {
   Future<void> updateUserRightPoint() async {
     final userRightPoint = await GlobalService().calculateTotalPoints(user: user);
     final updatedUser = state.user?.copyWith(userRightPoint: userRightPoint);
-    await AuthService.instance.updateData(model: updatedUser!);
+    await AuthService.instance!.updateData(model: updatedUser!);
     emit(state.copyWith(user: updatedUser));
   }
 

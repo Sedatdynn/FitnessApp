@@ -34,7 +34,7 @@ class LoginCubit extends ILoginCubit {
   // Sign in method with firebase authentication
   @override
   Future<void> signIn() async {
-    final result = await AuthService.instance.signInWithEmailAndPassword(
+    final result = await AuthService.instance!.signInWithEmailAndPassword(
       model: LoginModel(email: state.email, password: state.password),
     );
     result.fold(

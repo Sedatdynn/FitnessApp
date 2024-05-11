@@ -38,7 +38,7 @@ class WeightCubit extends IWeightCubit {
     required WeightParams params,
     required Future<void> Function() function,
   }) async {
-    final result = await AuthService.instance.createPerson(
+    final result = await AuthService.instance!.createPerson(
       model: UserModel(
         username: params.username,
         email: params.mail,

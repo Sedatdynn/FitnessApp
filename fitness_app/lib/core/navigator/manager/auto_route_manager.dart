@@ -6,8 +6,7 @@ class RouteManager implements IRouteManager {
   RouteManager._init();
   static RouteManager? _instance;
   static RouteManager get instance {
-    _instance ??= RouteManager._init();
-    return _instance!;
+    return _instance ??= RouteManager._init();
   }
 
   late AppRouter _router;

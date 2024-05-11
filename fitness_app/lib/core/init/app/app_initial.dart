@@ -28,7 +28,7 @@ final class AppInitialize {
     await CacheManager.preferencesInit();
 
     //initialize the network manager
-    await NetworkManager.instance.init(
+    await NetworkManager.instance!.init(
       baseUrl: AppConstants.baseUrl,
       sendTimeOut: AppConstants.sendTimeout,
       connectTimeOut: AppConstants.connectTimeout,

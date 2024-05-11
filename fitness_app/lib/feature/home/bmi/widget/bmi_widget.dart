@@ -15,12 +15,12 @@ class BmiWidget extends StatelessWidget {
           children: [
             const BmiGaugeWidget(),
             CustomSize.xLargeHeight(),
-            _BmiInfoField(title: 'Height:', text: height.toString()),
+            _BmiInfoField(title: LocaleKeys.Profile_height, text: height.toString()),
             CustomSize.largeHeight(),
-            _BmiInfoField(title: 'Weight:', text: weight.toString()),
+            _BmiInfoField(title: LocaleKeys.Profile_weight, text: weight.toString()),
             CustomSize.largeHeight(),
             _BmiInfoField(
-              title: 'BMI Result:',
+              title: LocaleKeys.Profile_bmiResult,
               text: GlobalService().calculateBmi(user: user!),
             ),
           ],
@@ -66,6 +66,6 @@ class _BmiTextWidget extends StatelessWidget {
       text,
       style: context.textTheme.titleSmall,
       textAlign: TextAlign.center,
-    );
+    ).tr();
   }
 }

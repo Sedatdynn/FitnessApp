@@ -57,13 +57,18 @@
     "Profile": {
       "theme": "Tema Işığı",
       "changeTheme": "Tema modunu değiştir",
-      "bmiResult": "BMI sonucunu görün",
+      "seeBmiResult": "BMI sonucunu görün",
+      "update":"Güncelle",
       "updateProfileTitle": "Profili Güncelle",
       "updateProfileSubtitle": "Kilonuzu, boyunuzu güncelleyin...",
+      "updateInformation": "Bilgilerinizi güncelleyin",
       "language": "Dil",
       "changeLanguage": "Dili değiştir",
       "logOut": "Çıkış Yap",
-      "logoutSubtitle":"İyi günler..."
+      "logoutSubtitle":"İyi günler...",
+      "height": "Boyunuz",
+      "weight": "Kilonuz",
+      "bmiResult": "BMI Sonuç:"
     },
     "Diet": {
       "InitialScore": "Başlangıç Puanı:",
