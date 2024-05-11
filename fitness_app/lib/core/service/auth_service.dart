@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fistness_app_firebase/core/base/exception/exception.dart';
-import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/feature/auth/login/model/login_model.dart';
-import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
-import 'package:fistness_app_firebase/product/models/user_model.dart';
-import 'package:fistness_app_firebase/product/utils/typedef.dart';
+import 'package:fistness_app_firebase/product/product_shelf.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

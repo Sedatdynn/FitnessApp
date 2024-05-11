@@ -1,14 +1,8 @@
-import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
-import 'package:fistness_app_firebase/core/init/theme/theme.dart';
-import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
-import 'package:fistness_app_firebase/product/enum/theme/theme_enum.dart';
-import 'package:fistness_app_firebase/product/global/cubit/global_state.dart';
 import 'package:fistness_app_firebase/product/global/cubit/i_global_cubit.dart';
-import 'package:fistness_app_firebase/product/global/service/global_service.dart';
-
-import 'package:fistness_app_firebase/product/models/user_model.dart';
+import 'package:fistness_app_firebase/product/global/global_shelf.dart';
+import 'package:fistness_app_firebase/product/product_shelf.dart';
 import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
 
 class GlobalCubit extends IGlobalCubit {

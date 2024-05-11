@@ -1,6 +1,4 @@
-import 'package:fistness_app_firebase/core/navigator/auto_route_path.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/core/service/auth_service.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/feature/auth/login/cubit/i_login_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/login/cubit/login_state.dart';
 import 'package:fistness_app_firebase/feature/auth/login/model/login_model.dart';

@@ -45,6 +45,7 @@ class _PasswordField extends StatelessWidget {
             ),
             prefixIcon: const Icon(Icons.vpn_key, color: AppColors.mainPrimary),
             hintText: LocaleKeys.Auth_passwordText.tr(),
+            hintStyle: context.textTheme.bodyLarge,
           ),
         );
       },

@@ -1,12 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
-import 'package:fistness_app_firebase/core/init/network/network_manager.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/firebase_options.dart';
-import 'package:fistness_app_firebase/product/config/app_env.dart';
 import 'package:fistness_app_firebase/product/const/app/app_constant.dart';
-import 'package:fistness_app_firebase/product/utils/bloc_observer.dart';
+import 'package:fistness_app_firebase/product/product_shelf.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @immutable

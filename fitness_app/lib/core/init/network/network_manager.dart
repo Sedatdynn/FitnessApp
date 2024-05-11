@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:fistness_app_firebase/core/base/exception/exception.dart';
-import 'package:fistness_app_firebase/core/base/model/base_model.dart';
-import 'package:fistness_app_firebase/core/base/model/base_response_model.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/core/init/network/i_network_manager.dart';
 
 class NetworkManager extends INetworkManager {

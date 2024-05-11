@@ -3,8 +3,7 @@ import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/mixin/detail_video_view_mixin.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/detailVideoPages/video_player_widget.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
+import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 
 import 'package:flutter/material.dart';

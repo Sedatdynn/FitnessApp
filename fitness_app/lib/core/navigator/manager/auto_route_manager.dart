@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/navigator/app_router.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/i_auto_route_manager.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 
 class RouteManager implements IRouteManager {
   RouteManager._init();

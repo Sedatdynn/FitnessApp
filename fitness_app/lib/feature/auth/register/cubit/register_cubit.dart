@@ -1,5 +1,4 @@
-import 'package:fistness_app_firebase/core/navigator/app_router.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/feature/auth/gender/params/gender_params.dart';
 import 'package:fistness_app_firebase/feature/auth/register/cubit/i_register_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/register/cubit/register_state.dart';

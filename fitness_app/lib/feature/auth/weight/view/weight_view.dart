@@ -1,21 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fistness_app_firebase/feature/auth/weight/cubit/weight_cubit.dart';
-import 'package:fistness_app_firebase/feature/auth/weight/cubit/weight_state.dart';
-import 'package:fistness_app_firebase/feature/auth/weight/params/weight_params.dart';
-import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/language/locale_keys.g.dart';
-import 'package:fistness_app_firebase/product/const/register_info_text.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/const/responsive/space.dart';
-import 'package:fistness_app_firebase/product/models/user_model.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
-import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';
-import 'package:fistness_app_firebase/product/widget/button/common_button.dart';
-import 'package:fistness_app_firebase/product/widget/logo/logo.dart';
-import 'package:fistness_app_firebase/product/widget/numberPicker/number_picker.dart';
-import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
+import 'package:fistness_app_firebase/feature/auth/weight/weight_shelf.dart';
+import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part '../widget/weight_widget.dart';

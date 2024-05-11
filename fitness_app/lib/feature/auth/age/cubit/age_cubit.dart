@@ -1,5 +1,4 @@
-import 'package:fistness_app_firebase/feature/auth/age/cubit/age_state.dart';
-import 'package:fistness_app_firebase/feature/auth/age/cubit/i_age_cubit.dart';
+import 'package:fistness_app_firebase/feature/auth/age/age_shelf.dart';
 
 class AgeCubit extends IAgeCubit {
   AgeCubit() : super(AgeState.initial()) {

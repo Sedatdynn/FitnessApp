@@ -1,5 +1,4 @@
-import 'package:fistness_app_firebase/core/base/model/base_model.dart';
-import 'package:fistness_app_firebase/core/base/model/base_response_model.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 
 abstract class INetworkManager {
   Future<void> init({

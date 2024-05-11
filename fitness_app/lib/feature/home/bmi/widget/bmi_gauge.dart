@@ -1,11 +1,8 @@
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/global/cubit/global_cubit.dart';
-import 'package:fistness_app_firebase/product/global/cubit/global_state.dart';
-import 'package:fistness_app_firebase/product/global/service/global_service.dart';
-import 'package:fistness_app_firebase/product/models/user_model.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
+import 'package:fistness_app_firebase/product/const/const_shelf.dart';
+import 'package:fistness_app_firebase/product/global/global_shelf.dart';
+import 'package:fistness_app_firebase/product/product_shelf.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';

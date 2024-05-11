@@ -1,19 +1,5 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/navigator/app_router.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
-import 'package:fistness_app_firebase/feature/auth/age/cubit/age_cubit.dart';
-import 'package:fistness_app_firebase/feature/auth/age/cubit/age_state.dart';
-import 'package:fistness_app_firebase/feature/auth/age/params/age_params.dart';
-import 'package:fistness_app_firebase/feature/auth/mobility/params/mobility_params.dart';
-import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/language/locale_keys.g.dart';
-import 'package:fistness_app_firebase/product/const/register_info_text.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/const/responsive/space.dart';
-import 'package:fistness_app_firebase/product/widget/appBar/custom_app_bar.dart';
-import 'package:fistness_app_firebase/product/widget/button/common_button.dart';
-import 'package:fistness_app_firebase/product/widget/logo/logo.dart';
-import 'package:fistness_app_firebase/product/widget/numberPicker/number_picker.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:fistness_app_firebase/feature/auth/age/age_shelf.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part '../widget/age_widget.dart';
 

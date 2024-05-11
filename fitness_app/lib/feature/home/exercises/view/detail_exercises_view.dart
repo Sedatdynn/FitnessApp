@@ -1,12 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/navigator/app_router.dart';
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
-import 'package:fistness_app_firebase/product/const/responsive/paddings.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/const/responsive/space.dart';
-import 'package:fistness_app_firebase/product/global/cachedManager/cached_network_manager.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
+import 'package:fistness_app_firebase/product/const/const_shelf.dart';
+import 'package:fistness_app_firebase/product/global/global_shelf.dart';
+import 'package:fistness_app_firebase/product/product_shelf.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
