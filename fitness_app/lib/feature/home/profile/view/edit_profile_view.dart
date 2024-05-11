@@ -37,8 +37,7 @@ class UpdateInfosView extends StatelessWidget {
             _HeightWeightTextField(
               onChanged: (val) {
                 if (val.isEmpty) return;
-                final newValue = int.parse(val);
-                context.read<GlobalCubit>().updateUserHeight(newValue);
+                context.read<GlobalCubit>().updateUserHeight(int.parse(val));
               },
               hintText:
                   '${LocaleKeys.Profile_height.tr()} ${context.read<GlobalCubit>().user.height}',
@@ -48,8 +47,7 @@ class UpdateInfosView extends StatelessWidget {
             _HeightWeightTextField(
               onChanged: (val) {
                 if (val.isEmpty) return;
-                final newValue = int.parse(val);
-                context.read<GlobalCubit>().updateUserWeight(newValue);
+                context.read<GlobalCubit>().updateUserWeight(int.parse(val));
               },
               hintText:
                   '${LocaleKeys.Profile_weight.tr()} ${context.read<GlobalCubit>().user.weight}',
@@ -58,26 +56,35 @@ class UpdateInfosView extends StatelessWidget {
             CustomSize.normalHeight(),
             const _DropDownWidget(),
             CustomSize.largeHeight(),
-            BlocSelector<GlobalCubit, GlobalState, UserModel?>(
-              selector: (state) => state.user,
-              builder: (context, user) {
-                return CommonButton(
-                  text: LocaleKeys.Profile_update,
-                  onPressed: () async {
-                    await context.read<GlobalCubit>().updateUserRightPoint();
-                    await warningToast(
-                      'Your information updated successfully',
-                      color: AppColors.green,
-                    );
-                    await Future<void>.delayed(const Duration(seconds: 2));
-                    RouteManager.instance.pushAndPopLast(const BmiCalculatorRoute());
-                  },
-                );
-              },
-            ),
+            const _UpdateButton(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _UpdateButton extends StatelessWidget {
+  const _UpdateButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<GlobalCubit, GlobalState, UserModel?>(
+      selector: (state) => state.user,
+      builder: (context, user) {
+        return CommonButton(
+          text: LocaleKeys.Profile_update,
+          onPressed: () async {
+            await context.read<GlobalCubit>().updateUserRightPoint();
+            await warningToast(
+              'Your information updated successfully',
+              color: AppColors.green,
+            );
+            await Future<void>.delayed(const Duration(seconds: 2));
+            RouteManager.instance.pushAndPopLast(const BmiCalculatorRoute());
+          },
+        );
+      },
     );
   }
 }

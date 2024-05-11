@@ -6,7 +6,8 @@ part of 'exercises_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ExercisesModel _$ExercisesModelFromJson(Map<String, dynamic> json) => ExercisesModel(
+ExercisesModel _$ExercisesModelFromJson(Map<String, dynamic> json) =>
+    ExercisesModel(
       exercise: (json['exercise'] as List<dynamic>?)
           ?.map((e) => Exercise.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -29,10 +30,12 @@ CategoryData _$CategoryDataFromJson(Map<String, dynamic> json) => CategoryData(
       exerciseName: json['exerciseName'] as String?,
       videoPageData: json['videoPageData'] == null
           ? null
-          : VideoPageData.fromJson(json['videoPageData'] as Map<String, dynamic>),
+          : VideoPageData.fromJson(
+              json['videoPageData'] as Map<String, dynamic>),
     );
 
-VideoPageData _$VideoPageDataFromJson(Map<String, dynamic> json) => VideoPageData(
+VideoPageData _$VideoPageDataFromJson(Map<String, dynamic> json) =>
+    VideoPageData(
       videoUrl: json['videoUrl'] as String?,
       fullBodyImage: json['fullBodyImage'] as String?,
       firstTitle: json['firstTitle'] as String?,

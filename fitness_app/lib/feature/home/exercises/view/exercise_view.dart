@@ -30,7 +30,6 @@ class ExercisesView extends StatelessWidget {
             BlocSelector<ExerciseCubit, ExerciseState, bool>(
               selector: (state) => state.exercises != null,
               builder: (context, state) {
-                debugPrint(state.toString());
                 return state ? const _ExercisesBodyWidget() : const ExerciseViewShimmer();
               },
             ),

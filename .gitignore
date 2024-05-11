@@ -10,6 +10,8 @@ pubspec.lock
 .idea
 # dont commit generated files
 *.g.dart
+*.env
+
 
 
 # Directory created by dartdoc

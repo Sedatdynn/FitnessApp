@@ -10,7 +10,8 @@ class DietService extends IDietService {
 
   @override
   BaseResponseData<FoodsModel> fetchDiets() async {
-    final response = await NetworkManager.instance!.dioGet(path: '/foods', model: FoodsModel());
+    final response =
+        await NetworkManager.instance!.dioGet<FoodsModel>(path: '/foods', model: FoodsModel());
     if (response is ServerException) {
       return Left(
         ServerException(
