@@ -39,6 +39,21 @@ class UserModel extends Equatable {
     return updatedJson as Map<String, dynamic>;
   }
 
+  // Empty constructor with default values
+  const UserModel.example()
+      : this(
+          username: 'sedatD',
+          email: 'sedat@example.com',
+          password: '123456',
+          name: 'sedat dayan',
+          gender: 'male',
+          age: 26,
+          mobility: 'active',
+          height: 190,
+          weight: 88,
+          userRightPoint: 36,
+        );
+
   @override
   List<Object?> get props =>
       [username, email, name, password, gender, age, mobility, height, weight, userRightPoint];
