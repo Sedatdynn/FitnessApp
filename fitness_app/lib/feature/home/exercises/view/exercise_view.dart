@@ -4,6 +4,7 @@ import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_cubi
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_state.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/shimmer/exercise_shimmer.dart';
+import 'package:fistness_app_firebase/feature/home/exercises/view/widget/custom_sliver_app_bar.dart';
 import 'package:fistness_app_firebase/gen/assets.gen.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/global/cachedManager/cached_network_manager.dart';
@@ -22,13 +23,16 @@ class ExercisesView extends StatelessWidget {
     return BlocProvider(
       create: (context) => ExerciseCubit(),
       child: Scaffold(
-        body: ListView(
-          children: [
-            const _TopImageInfoWidget(),
+        body: CustomScrollView(
+          slivers: [
+            const CustomExerciseSliverAppBar(exercise: null),
+            const SliverPadding(padding: AppPadding.lowVertical()),
             BlocSelector<ExerciseCubit, ExerciseState, bool>(
               selector: (state) => state.exercises != null,
               builder: (context, state) {
-                return state ? const _ExercisesBodyWidget() : const ExerciseViewShimmer();
+                return state
+                    ? const _ExercisesBodyWidget()
+                    : const SliverToBoxAdapter(child: ExerciseViewShimmer());
               },
             ),
           ],

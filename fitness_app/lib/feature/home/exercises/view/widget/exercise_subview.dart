@@ -33,9 +33,7 @@ class _ExercisesBodyWidget extends StatelessWidget {
     return BlocSelector<ExerciseCubit, ExerciseState, List<Exercise>?>(
       selector: (state) => state.exercises,
       builder: (context, exercises) {
-        return ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
+        return SliverList.builder(
           itemCount: exercises?.length ?? 0,
           itemBuilder: (BuildContext context, int index) {
             return Card(
