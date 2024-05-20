@@ -1,43 +1,5 @@
 part of '../detail_exercises_view.dart';
 
-class _TopImageInfoWidget extends StatelessWidget {
-  const _TopImageInfoWidget({required this.items});
-  final Exercise items;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        CachedNetworkManager.instance!.cachedNetworkImage(
-          imageUrl: items.imgUrl.toString(),
-        ),
-        Positioned(
-          left: 0,
-          child: IconButton(
-            onPressed: () => RouteManager.instance.pop(),
-            icon: const Icon(Icons.chevron_left_sharp),
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 10.w,
-          child: Container(
-            padding: const AppPadding.minAll(),
-            decoration: BoxDecoration(
-              color: AppColors.mainPrimary,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              items.categoryName.toString(),
-              style: context.textTheme.titleLarge?.copyWith(color: AppColors.backgroundColor),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class _DetailBodyCard extends StatelessWidget {
   const _DetailBodyCard({required this.items, required this.index});
   final Exercise items;
