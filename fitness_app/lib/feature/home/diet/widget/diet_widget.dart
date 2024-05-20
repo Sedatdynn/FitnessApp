@@ -139,18 +139,15 @@ class _SaveResetButtons extends StatelessWidget {
   }
 }
 
-class _MainListViewBody extends StatelessWidget {
-  const _MainListViewBody();
+class _MainSliverListBody extends StatelessWidget {
+  const _MainSliverListBody();
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DietCubit, DietState>(
       builder: (context, state) {
-        return ListView.builder(
-          shrinkWrap: true,
-          primary: false,
-          itemCount: state.foods.length,
-          itemBuilder: (BuildContext ctxt, int i) {
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(childCount: state.foods.length, (context, index) {
             return Column(
               children: [
                 Container(
@@ -160,15 +157,15 @@ class _MainListViewBody extends StatelessWidget {
                     color: AppColors.mainPrimary,
                   ),
                   child: Text(
-                    state.foods[i].name.toString(),
+                    state.foods[index].name.toString(),
                     style: context.textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
                 ),
-                _FoodOptionsBody(index: i),
+                _FoodOptionsBody(index: index),
               ],
             );
-          },
+          }),
         );
       },
     );

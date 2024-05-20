@@ -43,16 +43,13 @@ class _ScrollBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const AppPadding.minAll(),
-        child: Column(
-          children: [
-            const _MainListViewBody(),
-            CustomSize.largeHeight(),
-          ],
+    return const CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: AppPadding.minAll(),
         ),
-      ),
+        _MainSliverListBody(),
+      ],
     );
   }
 }
