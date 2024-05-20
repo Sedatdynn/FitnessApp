@@ -22,17 +22,8 @@ class DietView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => DietCubit(),
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(100.h),
-              child: const _TopInfoWidget(),
-            ),
-          ),
-          body: const _ScrollBodyWidget(),
-        ),
+      child: const Scaffold(
+        body: _ScrollBodyWidget(),
       ),
     );
   }
@@ -45,6 +36,7 @@ class _ScrollBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomScrollView(
       slivers: [
+        _CustomSliverAppBar(),
         SliverPadding(
           padding: AppPadding.minAll(),
         ),

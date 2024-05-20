@@ -1,17 +1,35 @@
 part of '../view/diet_view.dart';
 
+class _CustomSliverAppBar extends StatelessWidget {
+  const _CustomSliverAppBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      automaticallyImplyLeading: false,
+      floating: true,
+      snap: true,
+      backgroundColor: const Color.fromARGB(255, 72, 84, 88),
+      toolbarHeight: context.dynamicHeight(0.2),
+      flexibleSpace: const FlexibleSpaceBar(
+        background: _TopInfoWidget(),
+      ),
+    );
+  }
+}
+
 class _TopInfoWidget extends StatelessWidget {
   const _TopInfoWidget();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const AppPadding.minAll(),
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: AppColors.keyTextMainColor,
         borderRadius: BorderRadius.circular(12.w),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const _InitialPointField(),
           CustomSize.minHeight(),
@@ -20,7 +38,6 @@ class _TopInfoWidget extends StatelessWidget {
           const _CurrentPointField(),
           CustomSize.minHeight(),
           const _SaveResetButtons(),
-          CustomSize.minHeight(),
         ],
       ),
     );
@@ -116,25 +133,28 @@ class _SaveResetButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(
-          child: CommonButton(
-            color: AppColors.green,
-            text: LocaleKeys.Diet_saveScore,
-            onPressed: () async => context.read<DietCubit>().savePoint(),
+    return Padding(
+      padding: const AppPadding.minAll(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            child: CommonButton(
+              color: AppColors.green,
+              text: LocaleKeys.Diet_saveScore,
+              onPressed: () async => context.read<DietCubit>().savePoint(),
+            ),
           ),
-        ),
-        CustomSize.minWidth(),
-        Expanded(
-          child: CommonButton(
-            color: AppColors.error,
-            text: LocaleKeys.Diet_resetScore,
-            onPressed: () async => context.read<DietCubit>().resetPoint(),
+          CustomSize.minWidth(),
+          Expanded(
+            child: CommonButton(
+              color: AppColors.error,
+              text: LocaleKeys.Diet_resetScore,
+              onPressed: () async => context.read<DietCubit>().resetPoint(),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
