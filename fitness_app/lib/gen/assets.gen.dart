@@ -10,6 +10,16 @@
 import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 
+class $AssetsIconGen {
+  const $AssetsIconGen();
+
+  /// File path: assets/icon/app_icon.png
+  AssetGenImage get appIcon => const AssetGenImage('assets/icon/app_icon.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [appIcon];
+}
+
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
@@ -84,6 +94,7 @@ class $AssetsTranslationsGen {
 class Assets {
   Assets._();
 
+  static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
   static const $AssetsPngGen png = $AssetsPngGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();

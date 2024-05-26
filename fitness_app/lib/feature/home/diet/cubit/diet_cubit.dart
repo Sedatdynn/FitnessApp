@@ -1,6 +1,7 @@
 import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/diet_state.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/i_diet_cubit.dart';
+import 'package:fistness_app_firebase/feature/home/diet/model/foods_model.dart';
 import 'package:fistness_app_firebase/feature/home/diet/service/diet_service.dart';
 import 'package:fistness_app_firebase/feature/home/diet/service/i_diet_service.dart';
 import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
@@ -27,7 +28,7 @@ class DietCubit extends IDietCubit {
   Future<void> fetch() async {
     final response = await _dietService.fetchDiets();
     await response.fold((l) => warningToast(l.message), (r) {
-      emit(state.copyWith(foods: r.kategori ?? []));
+      emit(state.copyWith(foods: r.category ?? []));
     });
   }
 
@@ -48,15 +49,26 @@ class DietCubit extends IDietCubit {
   }
 
   Future<void> checkBoxActivity(int index1, int index2, {required bool value}) async {
-    state.foods[index1].icerik![index2] =
-        state.foods[index1].icerik![index2].copyWith(kontrol: value);
-    if (state.foods[index1].icerik![index2].kontrol!) {
-      totalPoint += state.foods[index1].icerik![index2].puan!;
-      emit(state.copyWith(currentTotalPoint: totalPoint));
-    } else {
-      totalPoint -= state.foods[index1].icerik![index2].puan!;
-      emit(state.copyWith(currentTotalPoint: totalPoint));
-    }
+    // check if content is exist
+    final content = state.foods[index1].content;
+    if (content == null || content.length <= index2) return;
+
+    final item = content[index2];
+    final updatedItem = item.copyWith(control: value);
+
+    // update score
+    final scoreChange =
+        (updatedItem.control ?? false) ? updatedItem.score ?? 0 : -(item.score ?? 0);
+
+    // update total score and updated content
+    final updatedContent = List<Content>.from(content);
+    updatedContent[index2] = updatedItem;
+    state.foods[index1] = state.foods[index1].copyWith(content: updatedContent);
+
+    // update total score
+    totalPoint += scoreChange;
+
+    emit(state.copyWith(currentTotalPoint: totalPoint));
   }
 
   Future<void> clearList() async {

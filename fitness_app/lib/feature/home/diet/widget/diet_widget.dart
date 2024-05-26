@@ -198,13 +198,13 @@ class _FoodOptionsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<DietCubit, DietState, List<Kategori>>(
+    return BlocSelector<DietCubit, DietState, List<Category>>(
       selector: (state) => state.foods,
       builder: (context, foods) {
         return ListView.builder(
           shrinkWrap: true,
           primary: false,
-          itemCount: foods[index].icerik!.length,
+          itemCount: foods[index].content!.length,
           itemBuilder: (BuildContext ctx, int j) {
             return Card(
               color: context.theme.cardColor,
@@ -213,19 +213,19 @@ class _FoodOptionsBody extends StatelessWidget {
                   SizedBox(
                     width: 200.w,
                     child: Text(
-                      foods[index].icerik![j].isim.toString(),
+                      foods[index].content![j].name.toString(),
                       style: context.textTheme.titleSmall,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Expanded(child: Container()),
                   Text(
-                    '${foods[index].icerik![j].puan} ${LocaleKeys.Diet_score.tr()}',
+                    '${foods[index].content![j].score} ${LocaleKeys.Diet_score.tr()}',
                     style: context.textTheme.titleSmall,
                   ),
                   Checkbox(
                     activeColor: AppColors.mainPrimary,
-                    value: foods[index].icerik![j].kontrol,
+                    value: foods[index].content![j].control,
                     onChanged: (value) =>
                         context.read<DietCubit>().checkBoxActivity(index, j, value: value!),
                   ),

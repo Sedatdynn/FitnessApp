@@ -35,8 +35,8 @@ class AuthButton extends StatelessWidget {
           ),
         ),
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(color ?? AppColors.mainPrimary),
-          side: MaterialStateProperty.all<BorderSide>(BorderSide.none),
+          backgroundColor: WidgetStateProperty.all<Color>(color ?? AppColors.mainPrimary),
+          side: WidgetStateProperty.all<BorderSide>(BorderSide.none),
         ),
       ),
     );

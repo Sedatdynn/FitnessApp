@@ -7,21 +7,21 @@ part of 'foods_model.dart';
 // **************************************************************************
 
 FoodsModel _$FoodsModelFromJson(Map<String, dynamic> json) => FoodsModel(
-      kategori: (json['kategori'] as List<dynamic>?)
-          ?.map((e) => Kategori.fromJson(e as Map<String, dynamic>))
+      category: (json['kategori'] as List<dynamic>?)
+          ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Kategori _$KategoriFromJson(Map<String, dynamic> json) => Kategori(
+Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
       id: json['id'] as int?,
       name: json['name'] as String?,
-      icerik: (json['icerik'] as List<dynamic>?)
-          ?.map((e) => Icerik.fromJson(e as Map<String, dynamic>))
+      content: (json['icerik'] as List<dynamic>?)
+          ?.map((e) => Content.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Icerik _$IcerikFromJson(Map<String, dynamic> json) => Icerik(
-      isim: json['isim'] as String?,
-      puan: (json['puan'] as num?)?.toDouble(),
-      kontrol: json['kontrol'] as bool?,
+Content _$ContentFromJson(Map<String, dynamic> json) => Content(
+      name: json['isim'] as String?,
+      score: (json['puan'] as num?)?.toDouble(),
+      control: json['kontrol'] as bool?,
     );
