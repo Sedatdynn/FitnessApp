@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -6,13 +7,12 @@ part 'foods_model.g.dart';
 
 @JsonSerializable(createToJson: false)
 class FoodsModel extends BaseModel<FoodsModel> {
-  FoodsModel({this.kategori});
-  final List<Kategori>? kategori;
+  FoodsModel({this.category});
+  @JsonKey(name: 'kategori')
+  final List<Category>? category;
 
   @override
-  FoodsModel fromJson(Map<String, dynamic> json) {
-    return _$FoodsModelFromJson(json);
-  }
+  FoodsModel fromJson(Map<String, dynamic> json) => _$FoodsModelFromJson(json);
 
   @override
   List<Object?> get props => [];
@@ -22,43 +22,59 @@ class FoodsModel extends BaseModel<FoodsModel> {
 }
 
 @JsonSerializable(createToJson: false)
-class Kategori extends Equatable {
-  const Kategori({this.id, this.name, this.icerik});
+class Category extends Equatable {
+  const Category({this.id, this.name, this.content});
 
-  factory Kategori.fromJson(Map<String, dynamic> json) {
-    return _$KategoriFromJson(json);
+  factory Category.fromJson(Map<String, dynamic> json) {
+    return _$CategoryFromJson(json);
   }
   final int? id;
   final String? name;
-  final List<Icerik>? icerik;
+  @JsonKey(name: 'icerik')
+  final List<Content>? content;
 
   @override
-  List<Object?> get props => [id, name, icerik];
+  List<Object?> get props => [id, name, content];
+
+  Category copyWith({
+    int? id,
+    String? name,
+    List<Content>? content,
+  }) {
+    return Category(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      content: content ?? this.content,
+    );
+  }
 }
 
 @JsonSerializable(createToJson: false)
-class Icerik extends Equatable {
-  const Icerik({this.isim, this.puan, this.kontrol});
+class Content extends Equatable {
+  const Content({this.name, this.score, this.control});
 
-  factory Icerik.fromJson(Map<String, dynamic> json) {
-    return _$IcerikFromJson(json);
+  factory Content.fromJson(Map<String, dynamic> json) {
+    return _$ContentFromJson(json);
   }
-  final String? isim;
-  final double? puan;
-  final bool? kontrol;
+  @JsonKey(name: 'isim')
+  final String? name;
+  @JsonKey(name: 'puan')
+  final double? score;
+  @JsonKey(name: 'kontrol')
+  final bool? control;
 
   @override
-  List<Object?> get props => [isim, puan, kontrol];
+  List<Object?> get props => [name, score, control];
 
-  Icerik copyWith({
-    String? isim,
-    double? puan,
-    bool? kontrol,
+  Content copyWith({
+    String? name,
+    double? score,
+    bool? control,
   }) {
-    return Icerik(
-      isim: isim ?? this.isim,
-      puan: puan ?? this.puan,
-      kontrol: kontrol ?? this.kontrol,
+    return Content(
+      name: name ?? this.name,
+      score: score ?? this.score,
+      control: control ?? this.control,
     );
   }
 }

@@ -20,7 +20,7 @@ class DietState extends BaseState {
   final DietStates states;
   final double? lastSavedPoint;
   final double? currentTotalPoint;
-  final List<Kategori> foods;
+  final List<Category> foods;
 
   @override
   List<Object?> get props => [states, lastSavedPoint, currentTotalPoint, foods];
@@ -29,7 +29,7 @@ class DietState extends BaseState {
     DietStates? states,
     double? lastSavedPoint,
     double? currentTotalPoint,
-    List<Kategori>? foods,
+    List<Category>? foods,
   }) {
     return DietState(
       states: states ?? this.states,

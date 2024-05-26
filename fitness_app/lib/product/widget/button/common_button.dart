@@ -32,10 +32,10 @@ class CommonButton extends StatelessWidget {
   }
 
   ButtonStyle get customButtonStyle => ButtonStyle(
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
-        foregroundColor: MaterialStateProperty.all<Color>(AppColors.whiteText),
-        backgroundColor: MaterialStateProperty.all(color),
+        foregroundColor: WidgetStateProperty.all<Color>(AppColors.whiteText),
+        backgroundColor: WidgetStateProperty.all(color),
       );
 }
