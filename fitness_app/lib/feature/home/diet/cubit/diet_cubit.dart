@@ -14,17 +14,20 @@ class DietCubit extends IDietCubit {
   late IDietService _dietService;
   double totalPoint = 0;
 
+  /// initial func calling when diet cubit detected for first time
   @override
   Future<void> init() async {
     _dietService = DietService();
     emit(
       state.copyWith(
-        lastSavedPoint: CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0,
+        lastSavedPoint: getCachedPoint,
       ),
     );
     await fetch();
   }
 
+  /// fetch diet items from the server
+  @override
   Future<void> fetch() async {
     final response = await _dietService.fetchDiets();
     await response.fold((l) => warningToast(l.message), (r) {
@@ -32,22 +35,30 @@ class DietCubit extends IDietCubit {
     });
   }
 
+  /// save the current point over cached point
+  @override
   Future<void> savePoint() async {
-    final lastPoint = CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0;
-    await CacheManager.instance
-        .setDoubleValue(CacheKeys.point, lastPoint + state.currentTotalPoint!);
+    final currentTotalPoint = state.currentTotalPoint ?? 0.0;
+    final newTotalPoint = getCachedPoint + currentTotalPoint;
+    await CacheManager.instance.setDoubleValue(CacheKeys.point, newTotalPoint);
 
-    final savedPoint = CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0;
-    emit(state.copyWith(lastSavedPoint: savedPoint));
+    emit(state.copyWith(lastSavedPoint: getCachedPoint));
     await clearList();
   }
 
+  /// get cached point
+  @override
+  double get getCachedPoint => CacheManager.instance.getDoubleValue(CacheKeys.point.name) ?? 0.0;
+
+  /// reset saved score from the cache
+  @override
   Future<void> resetPoint() async {
     await CacheManager.instance.removeValue(CacheKeys.point);
     emit(state.copyWith(lastSavedPoint: 0));
     await clearList();
   }
 
+  @override
   Future<void> checkBoxActivity(int index1, int index2, {required bool value}) async {
     // check if content is exist
     final content = state.foods[index1].content;
@@ -71,8 +82,10 @@ class DietCubit extends IDietCubit {
     emit(state.copyWith(currentTotalPoint: totalPoint));
   }
 
+  /// clear the current point
+  @override
   Future<void> clearList() async {
-    await fetch().then((value) {
+    await fetch().then((_) {
       emit(state.copyWith(currentTotalPoint: 0));
       totalPoint = 0;
     });
