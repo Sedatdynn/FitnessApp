@@ -14,5 +14,6 @@ abstract class IGlobalCubit extends BaseCubit<GlobalState> {
   void updateUserWeight(int weight);
   void updateUserMobility(String mobility);
 
+  bool get isLightTheme;
   UserModel get user;
 }

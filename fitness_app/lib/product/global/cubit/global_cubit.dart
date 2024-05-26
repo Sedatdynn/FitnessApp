@@ -20,27 +20,25 @@ class GlobalCubit extends IGlobalCubit {
   /// getting current theme from cache
   @override
   ThemeData getCurrentTheme() {
-    var value = CacheManager.instance.getStringValue(CacheKeys.theme.name);
-    value ??= ThemeConstants.dark.name;
-    if (value == ThemeConstants.light.name) {
-      emit(state.copyWith(currentTheme: CustomTheme().lightTheme));
-      return state.currentTheme!;
-    } else {
-      emit(state.copyWith(currentTheme: CustomTheme().darkTheme));
-      return state.currentTheme!;
-    }
+    final theme = isLightTheme ? CustomTheme().lightTheme : CustomTheme().darkTheme;
+    emit(state.copyWith(currentTheme: theme));
+    return theme;
   }
 
   /// change the current theme
   @override
   Future<void> changeTheme() async {
-    if (state.currentTheme != CustomTheme().lightTheme) {
-      await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.light.name);
-    } else {
-      await CacheManager.instance.setStringValue(CacheKeys.theme, ThemeConstants.dark.name);
-    }
+    final newTheme = isLightTheme ? ThemeConstants.dark.name : ThemeConstants.light.name;
+    // save new theme to cache
+    await CacheManager.instance.setStringValue(CacheKeys.theme, newTheme);
     getCurrentTheme();
   }
+
+  // check if current theme is light
+  @override
+  bool get isLightTheme =>
+      (CacheManager.instance.getStringValue(CacheKeys.theme.name) ?? ThemeConstants.dark.name) ==
+      ThemeConstants.light.name;
 
   /// Getting user date from firestore db
   @override
@@ -54,9 +52,7 @@ class GlobalCubit extends IGlobalCubit {
 
   /// setting the user into the state
   @override
-  void setUser(UserModel user) {
-    emit(state.copyWith(user: user));
-  }
+  void setUser(UserModel user) => emit(state.copyWith(user: user));
 
   /// update user Score when user updated information
   @override

@@ -13,12 +13,14 @@ class ExerciseCubit extends IExerciseCubit {
   late IExerciseService _exerciseService;
   String item = 'exercises';
 
+  /// initialize func
   @override
   Future<void> init() async {
     _exerciseService = ExerciseService();
     await fetchExercises();
   }
 
+  /// fetching exercise from the service
   @override
   Future<void> fetchExercises() async {
     final response = await _exerciseService.fetchExercises();
