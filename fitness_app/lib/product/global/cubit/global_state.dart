@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
+import 'package:core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
 

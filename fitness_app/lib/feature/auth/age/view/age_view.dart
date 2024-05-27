@@ -1,5 +1,6 @@
-import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/auth/age/age_shelf.dart';
+import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part '../widget/age_widget.dart';
 

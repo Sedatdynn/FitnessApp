@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:core/core.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fistness_app_firebase/core/core_shelf.dart';
 import 'package:fistness_app_firebase/gen/assets.gen.dart';
 import 'package:fistness_app_firebase/language/locale_keys.g.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';

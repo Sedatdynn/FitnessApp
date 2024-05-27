@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:core/core.dart';
 import 'package:fistness_app_firebase/feature/auth/login/cubit/i_login_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/login/cubit/login_state.dart';
 import 'package:fistness_app_firebase/feature/auth/login/model/login_model.dart';

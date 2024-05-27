@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
+import 'package:core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/register/enum/register_states.dart';
 
 class RegisterState extends BaseState {

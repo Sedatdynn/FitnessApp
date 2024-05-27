@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
+import 'package:core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/product/global/cubit/global_state.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
 import 'package:flutter/material.dart';

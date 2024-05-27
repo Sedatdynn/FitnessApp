@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
+import 'package:core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/age/enum/age_states.dart';
 
 class AgeState extends BaseState {

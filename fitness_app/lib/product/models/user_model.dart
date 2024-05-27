@@ -1,22 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:equatable/equatable.dart';
+import 'package:core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';
 
 @JsonSerializable()
-class UserModel extends Equatable {
-  final String? username;
-  final String? email;
-  final String? password;
-  final String? name;
-  final String? gender;
-  final int? age;
-  final String? mobility;
-  final int? height;
-  final int? weight;
-  final int? userRightPoint;
-  const UserModel({
+class UserModel extends BaseModel<UserModel> {
+  UserModel({
     this.username,
     this.email,
     this.name,
@@ -28,19 +17,9 @@ class UserModel extends Equatable {
     this.weight,
     this.userRightPoint,
   });
-  UserModel fromJson(Map<String, dynamic> json) {
-    return _$UserModelFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() => _$UserModelToJson(this);
-  Map<String, dynamic> toJsonWithoutPassword() {
-    final json = _$UserModelToJson(this);
-    final updatedJson = json.remove('password');
-    return updatedJson as Map<String, dynamic>;
-  }
 
   // Empty constructor with default values
-  const UserModel.example()
+  UserModel.example()
       : this(
           username: 'sedatD',
           email: 'sedat@example.com',
@@ -53,6 +32,28 @@ class UserModel extends Equatable {
           weight: 88,
           userRightPoint: 36,
         );
+  final String? username;
+  final String? email;
+  final String? password;
+  final String? name;
+  final String? gender;
+  final int? age;
+  final String? mobility;
+  final int? height;
+  final int? weight;
+  final int? userRightPoint;
+  @override
+  UserModel fromJson(Map<String, dynamic> json) {
+    return _$UserModelFromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
+  Map<String, dynamic> toJsonWithoutPassword() {
+    final json = _$UserModelToJson(this);
+    json.remove('password');
+    return json;
+  }
 
   @override
   List<Object?> get props =>

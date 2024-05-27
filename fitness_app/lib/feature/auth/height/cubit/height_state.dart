@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
+import 'package:core/base/cubit/base_cubit.dart';
 
 class HeightState extends BaseState {
   const HeightState({

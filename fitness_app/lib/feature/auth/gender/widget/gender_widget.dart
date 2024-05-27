@@ -28,16 +28,21 @@ class _MaleField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(Icons.male, size: 130.w, color: context.read<GenderCubit>().maleIconColor),
-        Text(
-          LocaleKeys.Auth_manText,
-          style: context.textTheme.titleSmall
-              ?.copyWith(color: context.read<GenderCubit>().maleTextColor),
-        ).tr(),
-      ],
+    debugPrint(context.read<GenderCubit>().maleIconColor.toString());
+    return BlocBuilder<GenderCubit, GenderState>(
+      builder: (context, state) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(Icons.male, size: 130.w, color: context.read<GenderCubit>().maleIconColor),
+            Text(
+              LocaleKeys.Auth_manText,
+              style: context.textTheme.titleSmall
+                  ?.copyWith(color: context.read<GenderCubit>().maleTextColor),
+            ).tr(),
+          ],
+        );
+      },
     );
   }
 }
@@ -47,16 +52,20 @@ class _FemaleField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Icon(Icons.female, size: 130.w, color: context.read<GenderCubit>().femaleIconColor),
-        Text(
-          LocaleKeys.Auth_womanText,
-          style: context.textTheme.titleSmall
-              ?.copyWith(color: context.read<GenderCubit>().femaleTextColor),
-        ).tr(),
-      ],
+    return BlocBuilder<GenderCubit, GenderState>(
+      builder: (context, state) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(Icons.female, size: 130.w, color: context.read<GenderCubit>().femaleIconColor),
+            Text(
+              LocaleKeys.Auth_womanText,
+              style: context.textTheme.titleSmall
+                  ?.copyWith(color: context.read<GenderCubit>().femaleTextColor),
+            ).tr(),
+          ],
+        );
+      },
     );
   }
 }

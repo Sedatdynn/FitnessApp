@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/navigator/manager/auto_route_manager.dart';
+import 'package:core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/gen/assets.gen.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
