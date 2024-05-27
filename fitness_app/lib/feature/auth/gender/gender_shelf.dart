@@ -1,4 +1,3 @@
-export 'package:fistness_app_firebase/core/core_shelf.dart';
 export 'package:fistness_app_firebase/feature/auth/age/params/age_params.dart';
 export 'package:fistness_app_firebase/feature/auth/gender/gender_shelf.dart';
 export 'package:fistness_app_firebase/feature/views_shelf.dart';

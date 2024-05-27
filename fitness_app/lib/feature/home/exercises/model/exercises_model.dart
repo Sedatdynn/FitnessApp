@@ -1,5 +1,5 @@
+import 'package:core/base/model/base_model.dart';
 import 'package:equatable/equatable.dart';
-import 'package:fistness_app_firebase/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'exercises_model.g.dart';

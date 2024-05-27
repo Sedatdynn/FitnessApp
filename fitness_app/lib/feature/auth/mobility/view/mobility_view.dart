@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:core/navigator/manager/auto_route_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/feature/auth/mobility/mobility_shelf.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
+import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_cubit.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_state.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
@@ -8,6 +8,7 @@ import 'package:fistness_app_firebase/feature/home/exercises/view/widget/custom_
 import 'package:fistness_app_firebase/gen/assets.gen.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/global/cachedManager/cached_network_manager.dart';
+import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

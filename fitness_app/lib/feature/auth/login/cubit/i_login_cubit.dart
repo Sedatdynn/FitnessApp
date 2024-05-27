@@ -1,4 +1,4 @@
-import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
+import 'package:core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/login/cubit/login_state.dart';
 
 abstract class ILoginCubit extends BaseCubit<LoginState> {

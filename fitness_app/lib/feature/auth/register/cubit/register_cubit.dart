@@ -1,7 +1,8 @@
-import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/auth/gender/params/gender_params.dart';
 import 'package:fistness_app_firebase/feature/auth/register/cubit/i_register_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/register/cubit/register_state.dart';
+import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 
 class RegisterCubit extends IRegisterCubit {
   RegisterCubit() : super(RegisterState.initial());

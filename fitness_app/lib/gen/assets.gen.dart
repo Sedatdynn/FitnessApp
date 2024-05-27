@@ -78,18 +78,6 @@ class $AssetsPngGen {
       ];
 }
 
-class $AssetsTranslationsGen {
-  const $AssetsTranslationsGen();
-
-  /// File path: assets/translations/en.json
-  String get en => 'assets/translations/en.json';
-
-  /// File path: assets/translations/tr.json
-  String get tr => 'assets/translations/tr.json';
-
-  /// List of all assets
-  List<String> get values => [en, tr];
-}
 
 class Assets {
   Assets._();
@@ -97,7 +85,6 @@ class Assets {
   static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
   static const $AssetsPngGen png = $AssetsPngGen();
-  static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 
 class AssetGenImage {

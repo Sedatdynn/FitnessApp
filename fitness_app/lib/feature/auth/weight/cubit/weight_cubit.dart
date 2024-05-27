@@ -1,9 +1,10 @@
-import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:core/core.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/cubit/i_weight_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/cubit/weight_state.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/params/weight_params.dart';
 import 'package:fistness_app_firebase/product/global/service/global_service.dart';
 import 'package:fistness_app_firebase/product/models/user_model.dart';
+import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 
 class WeightCubit extends IWeightCubit {
   WeightCubit() : super(WeightState.initial()) {

@@ -1,4 +1,3 @@
-export 'package:fistness_app_firebase/core/core_shelf.dart';
 export 'package:fistness_app_firebase/feature/auth/height/height_shelf.dart';
 export 'package:fistness_app_firebase/feature/auth/weight/params/weight_params.dart';
 export 'package:fistness_app_firebase/feature/views_shelf.dart';

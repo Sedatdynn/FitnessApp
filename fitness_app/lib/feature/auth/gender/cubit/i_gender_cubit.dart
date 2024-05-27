@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:fistness_app_firebase/core/base/cubit/base_cubit.dart';
+import 'package:core/base/cubit/base_cubit.dart';
 import 'package:fistness_app_firebase/feature/auth/gender/cubit/gender_state.dart';
 
 abstract class IGenderCubit extends BaseCubit<GenderState> {

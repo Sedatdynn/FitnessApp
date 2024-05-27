@@ -1,8 +1,9 @@
-import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:core/core.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/product/global/cubit/i_global_cubit.dart';
 import 'package:fistness_app_firebase/product/global/global_shelf.dart';
 import 'package:fistness_app_firebase/product/product_shelf.dart';
+import 'package:fistness_app_firebase/product/theme/theme.dart';
 import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
 
 class GlobalCubit extends IGlobalCubit {
@@ -43,7 +44,8 @@ class GlobalCubit extends IGlobalCubit {
   /// Getting user date from firestore db
   @override
   Future<void> getUser() async {
-    final userDoc = await AuthService.instance!.fetchCurrentUserDoc();
+    //TODO: check if user EXIST
+    final userDoc = await AuthService.instance!.fetchCurrentUserDoc(user);
     userDoc.fold(
       (l) => warningToast(l.message),
       (user) => emit(state.copyWith(user: user as UserModel)),
@@ -59,7 +61,7 @@ class GlobalCubit extends IGlobalCubit {
   Future<void> updateUserRightPoint() async {
     final userRightPoint = await GlobalService().calculateTotalPoints(user: user);
     final updatedUser = state.user?.copyWith(userRightPoint: userRightPoint);
-    await AuthService.instance!.updateData(model: updatedUser!);
+    await AuthService.instance?.updateData(model: updatedUser!);
     emit(state.copyWith(user: updatedUser));
   }
 
@@ -89,5 +91,5 @@ class GlobalCubit extends IGlobalCubit {
 
   /// getter for user
   @override
-  UserModel get user => state.user ?? const UserModel();
+  UserModel get user => state.user ?? UserModel();
 }

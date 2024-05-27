@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:fistness_app_firebase/core/init/app/app_initial.dart';
+import 'package:fistness_app_firebase/product/app/app_initial.dart';
 import 'package:flutter/material.dart';
 
 Future<void> bootstrap(

@@ -1,7 +1,7 @@
-import 'package:fistness_app_firebase/core/core_shelf.dart';
+import 'package:core/core.dart';
 import 'package:fistness_app_firebase/feature/views_shelf.dart';
 import 'package:fistness_app_firebase/feature/welcome/splash/view/splash_view.dart';
-import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
+import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 
 mixin SplashMixin on State<SplashView> {
   @override

@@ -1,10 +1,9 @@
-import 'package:fistness_app_firebase/core/cache/cache_manager.dart';
+import 'package:core/core.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/diet_state.dart';
 import 'package:fistness_app_firebase/feature/home/diet/cubit/i_diet_cubit.dart';
 import 'package:fistness_app_firebase/feature/home/diet/model/foods_model.dart';
 import 'package:fistness_app_firebase/feature/home/diet/service/diet_service.dart';
 import 'package:fistness_app_firebase/feature/home/diet/service/i_diet_service.dart';
-import 'package:fistness_app_firebase/product/enum/cache/cache_enum.dart';
 import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
 
 class DietCubit extends IDietCubit {

@@ -1,19 +1,20 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:equatable/equatable.dart';
+import 'package:core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_model.g.dart';
 
 @JsonSerializable()
-class LoginModel extends Equatable {
-  const LoginModel({required this.email, required this.password});
+class LoginModel extends BaseModel<LoginModel> {
+  LoginModel({required this.email, required this.password});
   final String? email;
   final String? password;
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) {
+  @override
+  LoginModel fromJson(Map<String, dynamic> json) {
     return _$LoginModelFromJson(json);
   }
 
+  @override
   Map<String, dynamic> toJson() => _$LoginModelToJson(this);
 
   @override
