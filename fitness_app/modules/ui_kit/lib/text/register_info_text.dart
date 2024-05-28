@@ -1,6 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
+import 'package:flutter/material.dart';
 
 class RegisterInfoQuestionText extends StatelessWidget {
   const RegisterInfoQuestionText({
@@ -15,7 +13,7 @@ class RegisterInfoQuestionText extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: context.textTheme.titleLarge,
-    ).tr();
+      style: Theme.of(context).textTheme.titleLarge,
+    );
   }
 }

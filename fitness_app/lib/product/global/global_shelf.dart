@@ -1,4 +1,3 @@
-export 'cachedManager/cached_network_manager.dart';
 export 'cubit/global_cubit.dart';
 export 'cubit/global_state.dart';
 export 'service/calculate/calculate_service.dart';

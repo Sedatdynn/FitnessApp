@@ -6,6 +6,7 @@ import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 part '../widget/gender_widget.dart';
 

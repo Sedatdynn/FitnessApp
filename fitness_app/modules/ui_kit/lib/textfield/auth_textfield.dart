@@ -1,5 +1,3 @@
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 /// TextFormField widget for using in different screens
@@ -20,8 +18,8 @@ class AuthTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       textInputAction: TextInputAction.next,
-      style: context.textTheme.titleSmall,
-      cursorColor: AppColors.whiteText,
+      style: Theme.of(context).textTheme.titleSmall,
+      cursorColor: Colors.white,
       keyboardType: TextInputType.emailAddress,
       onChanged: onChanged,
       validator: validator,
@@ -33,10 +31,10 @@ class AuthTextField extends StatelessWidget {
     return InputDecoration(
       prefixIcon: Icon(
         icon,
-        color: AppColors.mainPrimary,
+        color: const Color(0xffdabcf6),
       ),
       hintText: hintText,
-      hintStyle: context.textTheme.bodyLarge,
+      hintStyle: Theme.of(context).textTheme.bodyLarge,
     );
   }
 }

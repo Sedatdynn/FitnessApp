@@ -12,15 +12,3 @@ extension CustomTheme on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
   ThemeData get theme => Theme.of(this);
 }
-
-@immutable
-final class ResponsiveConstants {
-  const ResponsiveConstants._();
-
-  static const BorderSide _customPickerBorderSide = BorderSide(
-    color: Color(0xFFC4FB6D),
-    width: 3,
-  );
-  static const Border customPickerBorder =
-      Border(top: _customPickerBorderSide, bottom: _customPickerBorderSide);
-}

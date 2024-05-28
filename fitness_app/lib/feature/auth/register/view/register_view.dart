@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/feature/auth/register/register_shelf.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 part '../widget/register_widget.dart';
 

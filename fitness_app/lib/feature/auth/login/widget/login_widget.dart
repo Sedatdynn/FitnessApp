@@ -90,7 +90,7 @@ class _SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonButton(
-      text: LocaleKeys.Auth_login,
+      text: LocaleKeys.Auth_login.tr(),
       onPressed: () async {
         if (formKey.currentState!.validate()) {
           await context.read<LoginCubit>().signIn();

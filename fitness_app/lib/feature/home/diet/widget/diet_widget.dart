@@ -140,16 +140,16 @@ class _SaveResetButtons extends StatelessWidget {
         children: [
           Expanded(
             child: CommonButton(
+              text: LocaleKeys.Diet_saveScore.tr(),
               color: AppColors.green,
-              text: LocaleKeys.Diet_saveScore,
               onPressed: () async => context.read<DietCubit>().savePoint(),
             ),
           ),
           CustomSize.minWidth(),
           Expanded(
             child: CommonButton(
+              text: LocaleKeys.Diet_resetScore.tr(),
               color: AppColors.error,
-              text: LocaleKeys.Diet_resetScore,
               onPressed: () async => context.read<DietCubit>().resetPoint(),
             ),
           ),

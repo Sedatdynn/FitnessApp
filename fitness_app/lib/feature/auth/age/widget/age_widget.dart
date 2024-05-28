@@ -28,7 +28,7 @@ class _NextButton extends StatelessWidget {
       selector: (state) => state.birthYear,
       builder: (context, birthYear) {
         return CommonButton(
-          text: LocaleKeys.continueText,
+          text: LocaleKeys.continueText.tr(),
           onPressed: () => RouteManager.instance.push(
             DailyMobilityRoute(
               params: MobilityParams(

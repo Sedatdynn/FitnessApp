@@ -7,9 +7,9 @@ import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/global/global_shelf.dart';
 import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/product_shelf.dart';
-import 'package:fistness_app_firebase/product/widget/widgets_shelf.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 part '../widget/profile_widget.dart';
 
@@ -67,7 +67,7 @@ class _UpdateButton extends StatelessWidget {
       selector: (state) => state.user,
       builder: (context, user) {
         return CommonButton(
-          text: LocaleKeys.Profile_update,
+          text: LocaleKeys.Profile_update.tr(),
           onPressed: () async {
             await context.read<GlobalCubit>().updateUserRightPoint();
             await warningToast(

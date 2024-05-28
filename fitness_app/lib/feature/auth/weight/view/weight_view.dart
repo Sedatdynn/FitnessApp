@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fistness_app_firebase/feature/auth/weight/weight_shelf.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 part '../widget/weight_widget.dart';
 
@@ -49,7 +50,7 @@ class _ScaffoldBodyWidget extends StatelessWidget {
             children: [
               const LogoBody(),
               CustomSize.xxLargeHeight(),
-              const RegisterInfoQuestionText(text: LocaleKeys.Question_weightText),
+              RegisterInfoQuestionText(text: LocaleKeys.Question_weightText.tr()),
               CustomSize.xxLargeHeight(),
               const _WeightNumberPicker(),
               CustomSize.xxLargeHeight(),

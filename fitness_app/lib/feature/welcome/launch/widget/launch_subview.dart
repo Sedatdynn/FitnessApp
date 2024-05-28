@@ -29,6 +29,7 @@ class _EmailButton extends StatelessWidget {
       onPressed: () {
         RouteManager.instance.pushNamed(path: RouteConstants.login);
       },
+      color: AppColors.mainPrimary,
     );
   }
 }

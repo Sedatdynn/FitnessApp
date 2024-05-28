@@ -9,6 +9,7 @@ import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:fistness_app_firebase/product/widget/widgets_shelf.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 part '../widget/launch_subview.dart';
 

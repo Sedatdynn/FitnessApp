@@ -4,7 +4,7 @@ import 'package:fistness_app_firebase/feature/home/exercises/cubit/exercise_stat
 import 'package:fistness_app_firebase/feature/home/exercises/cubit/i_exercise_cubit.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/service/exercise_service.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/service/i_exercise_service.dart';
-import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
+import 'package:ui_kit/warning/warning_toast.dart';
 
 class ExerciseCubit extends IExerciseCubit {
   ExerciseCubit() : super(ExerciseState.initial()) {
