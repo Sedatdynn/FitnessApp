@@ -3,9 +3,9 @@ import 'package:core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/view/widget/custom_sliver_app_bar.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
-import 'package:fistness_app_firebase/product/global/global_shelf.dart';
 import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:fistness_app_firebase/product/product_shelf.dart';
+import 'package:fistness_app_firebase/product/widget/cached_network_image/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 part 'widget/detail_exercise_subview.dart';

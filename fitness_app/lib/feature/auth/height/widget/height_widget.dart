@@ -35,7 +35,7 @@ class _NextButton extends StatelessWidget {
       selector: (state) => state.selectedValue,
       builder: (context, selectedValue) {
         return CommonButton(
-          text: LocaleKeys.nextText,
+          text: LocaleKeys.nextText.tr(),
           onPressed: () => RouteManager.instance.push(
             WeightRoute(
               params: WeightParams(

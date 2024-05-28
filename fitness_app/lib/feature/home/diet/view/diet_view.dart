@@ -8,9 +8,9 @@ import 'package:fistness_app_firebase/language/locale_keys.g.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/global/global_shelf.dart';
 import 'package:fistness_app_firebase/product/product_shelf.dart';
-import 'package:fistness_app_firebase/product/widget/button/common_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ui_kit/button/common_button.dart';
 
 part '../widget/diet_widget.dart';
 

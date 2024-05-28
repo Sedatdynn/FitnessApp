@@ -35,7 +35,7 @@ class _CompleteButton extends StatelessWidget {
       selector: (state) => state.selectedValue,
       builder: (context, number) {
         return CommonButton(
-          text: LocaleKeys.complete,
+          text: LocaleKeys.complete.tr(),
           onPressed: () async {
             await context
                 .read<WeightCubit>()

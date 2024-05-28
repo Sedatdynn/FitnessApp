@@ -1,8 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // Button for using all registration and home pages
 class CommonButton extends StatelessWidget {
@@ -10,7 +6,7 @@ class CommonButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     super.key,
-    this.color = AppColors.mainPrimary,
+    this.color = const Color(0xffdabcf6),
   });
   final String text;
   final VoidCallback onPressed;
@@ -20,12 +16,12 @@ class CommonButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 48.h,
-        width: 284.w,
+        height: 48,
+        width: 284,
         child: OutlinedButton(
           style: customButtonStyle,
           onPressed: onPressed,
-          child: Text(text, style: context.textTheme.titleSmall).tr(),
+          child: Text(text, style: Theme.of(context).textTheme.titleSmall),
         ),
       ),
     );
@@ -35,7 +31,7 @@ class CommonButton extends StatelessWidget {
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
-        foregroundColor: WidgetStateProperty.all<Color>(AppColors.whiteText),
+        foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
         backgroundColor: WidgetStateProperty.all(color),
       );
 }

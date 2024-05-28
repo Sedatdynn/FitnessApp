@@ -14,7 +14,7 @@ class _DetailBodyCard extends StatelessWidget {
           CustomSize.minWidth(),
           Expanded(
             flex: 2,
-            child: CachedNetworkManager.instance!.cachedNetworkImage(
+            child: CustomCachedNetworkImage(
               imageUrl: items.categoryData![index].contentImage.toString(),
             ),
           ),

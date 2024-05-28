@@ -37,7 +37,7 @@ class _NextButton extends StatelessWidget {
       selector: (state) => state.selectedItem,
       builder: (context, mobility) {
         return CommonButton(
-          text: LocaleKeys.nextText,
+          text: LocaleKeys.nextText.tr(),
           onPressed: () {
             if (mobility == null) {
               warningToast(LocaleKeys.Auth_selectMobility.tr());

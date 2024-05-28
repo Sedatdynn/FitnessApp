@@ -1,6 +1,4 @@
-import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart';
 
 class AuthButton extends StatelessWidget {
   const AuthButton({
@@ -8,11 +6,11 @@ class AuthButton extends StatelessWidget {
     required this.icon,
     required this.onPressed,
     super.key,
-    this.color,
+    required this.color,
     this.textColor,
   });
   final String buttonText;
-  final Color? color;
+  final Color color;
   final Widget icon;
   final Color? textColor;
   final VoidCallback onPressed;
@@ -20,8 +18,8 @@ class AuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48.h,
-      width: 342.w,
+      height: 48,
+      width: 342,
       child: OutlinedButton.icon(
         icon: icon,
         onPressed: onPressed,
@@ -31,11 +29,11 @@ class AuthButton extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .titleSmall
-                ?.copyWith(color: textColor ?? AppColors.whiteText, fontWeight: FontWeight.bold),
+                ?.copyWith(color: textColor ?? Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
         style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all<Color>(color ?? AppColors.mainPrimary),
+          backgroundColor: WidgetStateProperty.all<Color>(color),
           side: WidgetStateProperty.all<BorderSide>(BorderSide.none),
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:fistness_app_firebase/feature/auth/height/height_shelf.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
 import 'package:fistness_app_firebase/product/navigator/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ui_kit/ui_kit.dart';
 part '../widget/height_widget.dart';
 
 @RoutePage()
@@ -24,7 +25,7 @@ class HeightView extends StatelessWidget {
             child: Column(
               children: [
                 const LogoBody(),
-                const RegisterInfoQuestionText(text: LocaleKeys.Question_heightText),
+                RegisterInfoQuestionText(text: LocaleKeys.Question_heightText.tr()),
                 CustomSize.xxLargeHeight(),
                 const _HeightNumberPickerWidget(),
                 CustomSize.xxLargeHeight(),

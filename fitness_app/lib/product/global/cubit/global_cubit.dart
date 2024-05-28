@@ -4,7 +4,7 @@ import 'package:fistness_app_firebase/product/global/cubit/i_global_cubit.dart';
 import 'package:fistness_app_firebase/product/global/global_shelf.dart';
 import 'package:fistness_app_firebase/product/product_shelf.dart';
 import 'package:fistness_app_firebase/product/theme/theme.dart';
-import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
+import 'package:ui_kit/warning/warning_toast.dart';
 
 class GlobalCubit extends IGlobalCubit {
   GlobalCubit() : super(GlobalState.initial()) {

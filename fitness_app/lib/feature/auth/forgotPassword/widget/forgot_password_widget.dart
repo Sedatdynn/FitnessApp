@@ -52,7 +52,7 @@ class _ResetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonButton(
-      text: LocaleKeys.Auth_resetPasswordText,
+      text: LocaleKeys.Auth_resetPasswordText.tr(),
       onPressed: () async {
         if (email != null && email!.isNotEmpty) await resetPassword();
       },

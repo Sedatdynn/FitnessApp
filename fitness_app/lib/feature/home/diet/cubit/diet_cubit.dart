@@ -4,7 +4,7 @@ import 'package:fistness_app_firebase/feature/home/diet/cubit/i_diet_cubit.dart'
 import 'package:fistness_app_firebase/feature/home/diet/model/foods_model.dart';
 import 'package:fistness_app_firebase/feature/home/diet/service/diet_service.dart';
 import 'package:fistness_app_firebase/feature/home/diet/service/i_diet_service.dart';
-import 'package:fistness_app_firebase/product/widget/warning/warning_toast.dart';
+import 'package:ui_kit/warning/warning_toast.dart';
 
 class DietCubit extends IDietCubit {
   DietCubit() : super(DietState.initial()) {

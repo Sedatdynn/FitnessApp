@@ -80,7 +80,7 @@ class _NextButton extends StatelessWidget {
       selector: (state) => state.selectedGender,
       builder: (context, selectedGender) {
         return CommonButton(
-          text: LocaleKeys.continueText,
+          text: LocaleKeys.continueText.tr(),
           onPressed: () => RouteManager.instance.push(
             AgeRoute(
               params: AgeParams(

@@ -45,7 +45,7 @@ class _ExercisesBodyWidget extends StatelessWidget {
                     items: exercises[index],
                   ),
                 ),
-                leading: CachedNetworkManager.instance!.cachedNetworkImage(
+                leading: CustomCachedNetworkImage(
                   imageUrl: exercises![index].imgUrl!,
                   width: 92.w,
                 ),

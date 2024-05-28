@@ -1,6 +1,5 @@
-import 'package:fistness_app_firebase/feature/views_shelf.dart';
-import 'package:fistness_app_firebase/product/const/responsive/responsive.dart';
-import 'package:fistness_app_firebase/product/theme/colors.dart';
+import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 
 /// Number picker Widget for using age/height/weight pages with different values
 class CustomNumberPicker extends StatelessWidget {
@@ -18,14 +17,22 @@ class CustomNumberPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return NumberPicker(
-      selectedTextStyle: context.textTheme.titleLarge?.copyWith(color: AppColors.mainPrimary),
-      textStyle: context.textTheme.titleSmall,
-      decoration: const BoxDecoration(border: ResponsiveConstants.customPickerBorder),
+      selectedTextStyle: textTheme.titleLarge?.copyWith(color: const Color(0xffdabcf6)),
+      textStyle: textTheme.titleSmall,
+      decoration: BoxDecoration(border: customPickerBorder),
       value: value,
       minValue: minValue,
       maxValue: maxValue,
       onChanged: onChanged,
     );
   }
+
+  static const BorderSide _customPickerBorderSide = BorderSide(
+    color: Color(0xFFC4FB6D),
+    width: 3,
+  );
+  final Border customPickerBorder =
+      const Border(top: _customPickerBorderSide, bottom: _customPickerBorderSide);
 }

@@ -2,8 +2,8 @@ import 'package:core/navigator/manager/auto_route_manager.dart';
 import 'package:fistness_app_firebase/feature/home/exercises/model/exercises_model.dart';
 import 'package:fistness_app_firebase/gen/assets.gen.dart';
 import 'package:fistness_app_firebase/product/const/const_shelf.dart';
-import 'package:fistness_app_firebase/product/global/cachedManager/cached_network_manager.dart';
-import 'package:fistness_app_firebase/product/product_shelf.dart';
+import 'package:fistness_app_firebase/product/theme/colors.dart';
+import 'package:fistness_app_firebase/product/widget/cached_network_image/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 /// showing top of the exercise detail's page an image and title for the exercises
@@ -33,9 +33,8 @@ class CustomExerciseSliverAppBar extends StatelessWidget {
         ),
         background: exercise?.imgUrl == null
             ? Assets.png.largeExrc.image(fit: BoxFit.cover)
-            : CachedNetworkManager.instance!.cachedNetworkImage(
+            : CustomCachedNetworkImage(
                 imageUrl: exercise!.imgUrl.toString(),
-                fit: BoxFit.cover,
               ),
       ),
       leading: IconButton(
